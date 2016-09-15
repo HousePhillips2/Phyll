@@ -1,0 +1,26 @@
+{
+  "name": "phyll",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HousePhillips2/Phyll.git"
+  },
+  "author": "House Phillips 2",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HousePhillips2/Phyll/issues"
+  },
+  "homepage": "https://github.com/HousePhillips2/Phyll#readme",
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "mocha": "^3.0.2",
+    "redux": "^3.6.0",
+    "webpack": "^1.13.2"
+  }
+}
