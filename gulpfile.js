@@ -1,6 +1,9 @@
-const gulp = require('gulp');
-const eslint = require('gulp-eslint');
+const gulp    = require('gulp');
+const eslint  = require('gulp-eslint');
 const connect = require('gulp-connect');
+const nodemon = require('gulp-nodemon');
+const mocha   = require('gulp-mocha');
+const should  = require('should');
 
 gulp.task('checkin', () => console.log('From what I can tell I\'m working fine'))
 
@@ -12,22 +15,31 @@ gulp.task('lint', () => {
 });
 
 gulp.task('startLocal', function() {
-  connect.server({
-    root: 'src/public/',
-    port: process.env.PORT || 8080,
-    livereload: true
-  });
+    connect.server({
+      root: 'src/public/',
+      port: process.env.PORT || 8080,
+      livereload: true
+    });
 });
 
-gulp.task('html', function () {
-  gulp.src('./src/**/*.html')
+gulp.task('any', function () {
+  gulp.src('./src/**/*.*')
     .pipe(connect.reload());
 });
  
 gulp.task('watch', function () {
-  gulp.watch(['./src/**/*.html'], ['html']);
+  gulp.watch(['./src/**/*.*'], ['any']);
 });
 
-gulp.task('dev', ['lint', 'startLocal', 'watch'], function() {
-  console.log('You old so and so. That\'s some clean code!')
+gulp.task('mochaSuite', () => 
+  gulp.src('./src/server/tests/mocha/*.js', {read: false, require: ['should']})
+    .pipe(mocha({reporter: 'progress'}))
+);
+
+gulp.task('default', ['lint', 'mochaSuite'], () => {
+  console.log('👌')
+})
+
+gulp.task('dev', ['lint', 'startLocal', 'watch'], ()=> {
+  console.log('That\'s some clean code!')
 });
