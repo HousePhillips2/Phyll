@@ -28,6 +28,6 @@ gulp.task('watch', function () {
   gulp.watch(['./src/**/*.html'], ['html']);
 });
 
-gulp.task('default', ['lint', 'startLocal', 'watch'], function() {
+gulp.task('dev', ['lint', 'startLocal', 'watch'], function() {
   console.log('You old so and so. That\'s some clean code!')
 });
