@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/server/server.js",
   "scripts": {
-    "start": "nodemon src/server/server.js"
+    "start": "nodemon src/server/server.js",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -32,11 +33,14 @@
     "babel": "^6.5.2",
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
+    "favicons-webpack-plugin": "0.0.7",
     "gulp": "^3.9.1",
     "gulp-inject": "^4.1.0",
     "gulp-webpack": "^1.5.0",
     "gulp-wiredep": "0.0.0",
+    "html-webpack-plugin": "^2.22.0",
     "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.2",
     "webpack-stream": "^3.2.0"
   }
 }
