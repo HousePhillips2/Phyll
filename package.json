@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/server/server.js",
   "scripts": {
-    "start": "nodemon src/server/server.js"
+    "start": "nodemon src/server/server.js",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -18,25 +19,46 @@
   "homepage": "https://github.com/HousePhillips2/Phyll#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
-    "chai": "^3.5.0",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "express-partials": "^0.3.0",
     "express-session": "^1.14.1",
     "http": "0.0.0",
     "mocha": "^3.0.2",
-    "redux": "^3.6.0",
-    "semantic-ui": "^2.2.4"
+    "redux": "^3.6.0"
   },
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
+    "chai": "^3.5.0",
+    "eslint": "^3.5.0",
+    "favicons-webpack-plugin": "0.0.7",
     "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
     "gulp-inject": "^4.1.0",
+    "gulp-less": "^3.1.0",
+    "gulp-mocha": "^3.0.1",
+    "gulp-util": "^3.0.7",
     "gulp-webpack": "^1.5.0",
     "gulp-wiredep": "0.0.0",
+    "html-webpack-plugin": "^2.22.0",
+    "jstest": "^1.0.5",
+    "mocha": "^3.0.2",
     "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.2",
     "webpack-stream": "^3.2.0"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "rules": {
+      "semi": 2
+    }
   }
 }
