@@ -15,4 +15,4 @@ console.log('Up and running on ' + port);
 
 app.use(express.static('src/public'));
 
-app.get('/', (req, res) => res.redirect('/index.html'))
+app.get('/', (req, res) => res.redirect('/index.html'));
