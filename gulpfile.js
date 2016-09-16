@@ -4,6 +4,10 @@ const connect = require('gulp-connect');
 const nodemon = require('gulp-nodemon');
 const mocha   = require('gulp-mocha');
 const should  = require('should');
+const enzyme  = require('enzyme');
+const chai    = require('chai');
+const sinon   = require('sinon');
+
 
 gulp.task('checkin', () => console.log('From what I can tell I\'m working fine'))
 
@@ -32,7 +36,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('mochaSuite', () => 
-  gulp.src('./src/server/tests/mocha/*.js', {read: false, require: ['should']})
+  gulp.src('./src/server/tests/mocha/*.js', {read: false, require: ['should', 'enzyme', 'chai', 'sinon']})
     .pipe(mocha({reporter: 'progress'}))
 );
 

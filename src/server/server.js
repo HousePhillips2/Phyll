@@ -6,7 +6,6 @@ const session       = require('express-session');
 const bodyParser    = require('body-parser');
 const http          = require('http');
 const fs            = require('fs');
-const chai          = require('chai'); // sitepoint.com/unit-test-javascript-mocha-chai/
 
 const port          = process.env.PORT||8080;
 
