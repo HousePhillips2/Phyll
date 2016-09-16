@@ -1,28 +1,15 @@
-var gulp = require('gulp');
-var webpack = require('webpack-stream');
+const gulp = require('gulp');
+const eslint = require('gulp-eslint');
 
-// Boilerplate Webpack stuff
+gulp.task('checkin', () => console.log('From what I can tell I\'m working fine'))
 
-gulp.task('default', function() {
-  return gulp.src('src/entry.js')
-    .pipe(webpack())
-    .pipe(gulp.dest('dist/'));
+gulp.task('lint', () => {
+    return gulp.src('src/**/*.js')
+      .pipe(eslint())
+      .pipe(eslint.format())
+      .pipe(eslint.failAfterError())
 });
 
-gulp.task("webpack-dev-server", function(callback) {
-    // Start a webpack-dev-server
-    var compiler = webpack({
-        // configuration
-    });
-
-    new WebpackDevServer(compiler, {
-        // server and middleware options
-    }).listen(8080, "localhost", function(err) {
-        if(err) throw new gutil.PluginError("webpack-dev-server", err);
-        // Server listening
-        gutil.log("[webpack-dev-server]", "http://localhost:8080/webpack-dev-server/index.html");
-
-        // keep the server alive or continue?
-        // callback();
-    });
+gulp.task('default', ['lint'], function() {
+  console.log('You old so and so.')
 });
