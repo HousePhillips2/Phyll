@@ -43,7 +43,7 @@ gulp.task('mochaSuite', () =>
 );
 
 gulp.task('default', ['lint', 'mochaSuite'], () => {
-  console.log('👌👌👌👌👌')
+  console.log('That\'s some good looking code. Proceed.')
 })
 
 gulp.task('dev', ['lint', 'startLocal', 'watch'], ()=> {
