@@ -12,6 +12,6 @@ const port          = process.env.PORT||8080;
 app.listen(port);
 console.log('Up and running on ' + port);
 
-app.use(express.static('src'));
+app.use(express.static('dist'));
 
 app.get('/', (req, res) => res.redirect('/index.html'));

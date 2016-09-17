@@ -5,7 +5,7 @@
   "main": "server/server.js",
   "scripts": {
     "start": "gulp dev",
-    "build": "webpack"
+    "build": "gulp webpack"
   },
   "repository": {
     "type": "git",
