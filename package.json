@@ -46,6 +46,7 @@
     "gulp-mocha": "^3.0.1",
     "gulp-nodemon": "^2.1.0",
     "gulp-prompt": "^0.2.0",
+    "gulp-react-tools": "^0.3.0",
     "gulp-rsync": "0.0.6",
     "gulp-util": "^3.0.7",
     "gulp-webpack": "^1.5.0",
