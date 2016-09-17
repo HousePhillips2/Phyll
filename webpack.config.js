@@ -1,11 +1,12 @@
-const Webpack         = require('webpack');
-const path            = require('path');
-const babel           = require('babel-core');
-const es2015          = require('babel-preset-es2015');
-const react           = require('babel-preset-react');
-const nodeModulesPath = path.resolve(__dirname, 'node_modules');
-const buildPath       = path.resolve(__dirname, 'dist');
-const mainPath        = path.resolve(__dirname, 'src/components', 'app.jsx');
+const Webpack           = require('webpack');
+const path              = require('path');
+const babel             = require('babel-core');
+const es2015            = require('babel-preset-es2015');
+const react             = require('babel-preset-react');
+const nodeModulesPath   = path.resolve(__dirname, 'node_modules');
+const buildPath         = path.resolve(__dirname, 'dist');
+const mainPath          = path.resolve(__dirname, 'src', 'app.jsx');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
 
@@ -14,8 +15,8 @@ const config = {
     ],
   output: {
     path: buildPath,
-    filename: 'bundle.js',
-    publicPath: '/dist/'
+    filename: 'app.js',
+    publicPath: ''
   },
   module: {
     loaders: [{
@@ -31,7 +32,12 @@ const config = {
       loader: 'style!css'
     }]
   },
-
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.template.ejs',
+      inject: 'body'
+    })
+  ]
 };
 
 module.exports = config;

@@ -23,19 +23,23 @@ gulp.task('lint', () => {
 
 gulp.task('startLocal', () => {
   connect.server({
-    root: 'src/',
+    root: 'dist/',
     port: process.env.PORT || 8080,
     livereload: true
   });
 });
 
-gulp.task('anyChange', () => {
-  gulp.src('./src/**/*.*')
+gulp.task('distChange',() => {
+  gulp.src('./dist/index.html')
     .pipe(connect.reload());
 });
  
-gulp.task('watch', () => {
-  gulp.watch(['./src/**/*.*'], ['anyChange']);
+gulp.task('srcWatch', () => {
+  gulp.watch(['./src/**/*.*'], ['webpack']);
+});
+
+gulp.task('distWatch', () => {
+  gulp.watch(['./dist/**/*.*'], ['distChange']);
 });
 
 gulp.task('mochaSuite', () => 
@@ -44,31 +48,15 @@ gulp.task('mochaSuite', () =>
 );
 
 gulp.task('webpack', () => {
-  gulp.src('src/components/app.js')
+  gulp.src('src/app.js')
     .pipe(webpack(require('./webpack.config.js')))
     .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('webpack-dev-server', (callback) => {
-  var compiler = webpack({
-      // configuration
-  });
-
-  new WebpackDevServer(compiler, {})
-    .listen(3000, "localhost", (err) => {
-      if(err) throw new gutil.PluginError('webpack-dev-server', err);
-      gutil.log('[webpack-dev-server]', 'http://localhost:8080/webpack-dev-server/index.html');
-    });
-});
-
-gulp.task('dev', ['lint', 'startLocal', 'watch'], ()=> {
+gulp.task('dev', ['lint', 'webpack', 'startLocal','srcWatch', 'distWatch'], ()=> {
   console.log('That\'s some clean code!')
 });
 
-gulp.task('dev', ['lint', 'startLocal', 'watch'], ()=> {
-  console.log('That\'s some clean code!')
-});
-
-gulp.task('default', ['lint', 'mochaSuite'], () => {
+gulp.task('default', ['lint', 'mochaSuite', 'webpack'], () => {
   console.log('That\'s some good looking code. Proceed.')
 })
