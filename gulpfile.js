@@ -11,6 +11,7 @@ const sinon            = require('sinon');
 const webpack          = require('webpack-stream');
 const WebpackDevServer = require('webpack-dev-server');
 
+
 gulp.task('checkin', () => console.log('From what I can tell I\'m working fine'))
 
 gulp.task('lint', () => {
