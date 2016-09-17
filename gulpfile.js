@@ -47,7 +47,7 @@ gulp.task('nodemon',  (cb) => {
 });
 
 gulp.task('start', ['browser-sync'], function () {
-  gulp.watch(['./src/**/*.*'], ['webpack'], reload);
+  gulp.watch(['./server/**/*.*','./src/**/*.*'], ['webpack'], reload);
 });
 
 gulp.task('lint', () => {
