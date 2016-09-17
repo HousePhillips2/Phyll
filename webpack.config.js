@@ -1,6 +1,22 @@
 const path = require('path');
-const html = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const paths = {
-  app: path.join(__dirname + 'src/public')
+const PATHS = {
+  app: path.join(__dirname, 'src'),
+  build: path.join(__dirname, 'dist')
+};
+
+module.exports = {
+  entry: {
+    app: PATHS.app
+  },
+  output: {
+    path: PATHS.built,
+    filename: '[name].js'
+  },
+  plugins: [
+    new HtmlWebpackPlugin([
+      title: 'Phyll'
+    ])
+  ]
 }
