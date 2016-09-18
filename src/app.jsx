@@ -1,14 +1,18 @@
 // import React from 'react';
 // import ReactDOM from 'react-dom';
+import {Router, Route} from 'react-router';
+import Layout from './layout.jsx';
 
 // ES6 CLASS SYNTAX TO CREATE A REACT COMPONENT
 class MyApp extends React.Component {
  render() {
    return (
-     <div>
-          Hello Phoebe!
-     </div>
-   );
+    <Router>
+      <Route path='/' component={Layout}>
+        
+      </Route>
+    </Router>
+   )
  }
 }
 
