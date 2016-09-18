@@ -4,8 +4,8 @@
   "description": "",
   "main": "server/server.js",
   "scripts": {
-    "start": "gulp dev",
-    "build": "gulp webpack"
+    "postinstall": "webpack",
+    "start": "gulp start"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
     "express": "^4.14.0",
     "express-partials": "^0.3.0",
     "express-session": "^1.14.1",
+    "foreman": "^2.0.0",
     "http": "0.0.0",
     "react": "^15.3.1",
     "react-addons-test-utils": "^15.3.1",
