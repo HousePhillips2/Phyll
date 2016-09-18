@@ -4,42 +4,57 @@ const connect          = require('gulp-connect');
 const nodemon          = require('gulp-nodemon');
 const mocha            = require('gulp-mocha');
 const inject           = require('gulp-inject');
+const babel            = require('gulp-babel');
 const should           = require('should');
 const enzyme           = require('enzyme');
 const chai             = require('chai');
 const sinon            = require('sinon');
 const webpack          = require('webpack-stream');
 const WebpackDevServer = require('webpack-dev-server');
-
+var browserSync        = require('browser-sync');
+var reload             = browserSync.reload;
 
 gulp.task('checkin', () => console.log('From what I can tell I\'m working fine'))
+
+gulp.task('browser-sync', ['webpack','nodemon'], () => {
+  browserSync({
+    proxy: "localhost:8080",  // local node app address
+    port: 8888,  // use *different* port than above
+    notify: true
+  });
+});
+
+gulp.task('nodemon',  (cb) => {
+  let called = false;
+  return nodemon({
+    script: 'server/server.js',
+    ignore: [
+      'gulpfile.js',
+      'node_modules/'
+    ]
+  })
+  .on('start',  () => {
+    if (!called) {
+      called = true;
+      cb();
+    }
+  })
+  .on('restart',  () => {
+    setTimeout( () => {
+      reload({ stream: false });
+    }, 1000);
+  });
+});
+
+gulp.task('start', ['browser-sync'], function () {
+  gulp.watch(['./server/**/*.*','./src/**/*.*'], ['webpack'], reload);
+});
 
 gulp.task('lint', () => {
   gulp.src('src/**/*.js')
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError())
-});
-
-gulp.task('startLocal', () => {
-  connect.server({
-    root: 'dist/',
-    port: process.env.PORT || 8080,
-    livereload: true
-  });
-});
-
-gulp.task('distChange',() => {
-  gulp.src('./dist/index.html')
-    .pipe(connect.reload());
-});
- 
-gulp.task('srcWatch', () => {
-  gulp.watch(['./src/**/*.*'], ['webpack']);
-});
-
-gulp.task('distWatch', () => {
-  gulp.watch(['./dist/**/*.*'], ['distChange']);
 });
 
 gulp.task('mochaSuite', () => 
@@ -53,7 +68,7 @@ gulp.task('webpack', () => {
     .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('dev', ['lint', 'webpack', 'startLocal','srcWatch', 'distWatch'], ()=> {
+gulp.task('dev', ['lint', 'mochaSuite', 'start'], ()=> {
   console.log('That\'s some clean code!')
 });
 
