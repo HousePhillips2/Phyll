@@ -15,3 +15,8 @@ console.log('Up and running on ' + port);
 app.use(express.static('dist'));
 
 app.get('/', (req, res) => res.redirect('/index.html'));
+
+app.get('/plantData', (req, res) => {
+  const plantData = {User: 'Phoebe', Water: 'Medium', Soil: 'pH 7.5', Light: 'Full Sun'};
+  res.send(plantData);
+});
