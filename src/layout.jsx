@@ -5,7 +5,17 @@ export default class Layout extends React.Component {
     return (
       <div>
         <div className='menu'>
-          the routing is working!
+          <ul>
+            <li>
+              <Link to='/addPlant'>Add My Plant</Link>
+            </li>
+            <li>
+              <Link to='/myDashboard'>My Dashboard</Link>
+            </li>
+            <li>
+              <Link to='/garden'>iGarden</Link>
+            </li>
+          </ul>
         </div>
         {this.props.children}
       </div>
