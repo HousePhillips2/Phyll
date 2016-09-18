@@ -13,7 +13,7 @@ const WebpackDevServer = require('webpack-dev-server');
 const browserSync      = require('browser-sync');
 const reload           = browserSync.reload;
 
-// fire up the server
+// fire up the server with hooks for browser-sync
 gulp.task('server-sync',  (cb) => {
   let called = false;
   return nodemon({
@@ -73,14 +73,14 @@ gulp.task('webpack', () => {
     .pipe(gulp.dest('dist/'));
 });
 
-// run webpack and start the server
+// run webpack and start the server for a more organic approach
 gulp.task('build', ['webpack'], () => {
   nodemon({
     script: 'server/server.js'
   });
 });
 
-// start and watch the local dev environment with no linting or tests
+// start and watch the complete local dev environment with no linting or tests
 gulp.task('start', ['browser-sync'], () => {
   gulp.watch(['./server/**/*.*','./src/**/*.*'], ['webpack'], reload);
 });
@@ -94,8 +94,3 @@ gulp.task('process', ['lint', 'mochaSuite', 'webpack'], () => {
 gulp.task('dev', ['process', 'start'], ()=> {
   console.log('That\'s some clean code!');
 });
-
-// deploy dev branch, run build
-
-
-// deploy master branch, run build
