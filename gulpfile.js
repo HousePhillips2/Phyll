@@ -10,8 +10,8 @@ const chai             = require('chai');
 const sinon            = require('sinon');
 const webpack          = require('webpack-stream');
 const WebpackDevServer = require('webpack-dev-server');
-var browserSync        = require('browser-sync');
-var reload             = browserSync.reload;
+const browserSync      = require('browser-sync');
+const reload           = browserSync.reload;
 
 // fire up the server
 gulp.task('server-sync',  (cb) => {
