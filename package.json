@@ -8,7 +8,8 @@
   "main": "server/server.js",
   "scripts": {
     "postinstall": "gulp webpack",
-    "start": "gulp start"
+    "start": "gulp start",
+    "test": "gulp mochaSuite"
   },
   "repository": {
     "type": "git",
