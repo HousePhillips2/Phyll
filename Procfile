@@ -1,1 +1,1 @@
-web nf start
+web node server/server.js

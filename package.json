@@ -7,7 +7,8 @@
   },
   "main": "server/server.js",
   "scripts": {
-    "start": "gulp build"
+    "postinstall": "gulp webpack",
+    "start": "gulp start"
   },
   "repository": {
     "type": "git",
