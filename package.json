@@ -2,10 +2,12 @@
   "name": "phyll",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "6.4.0"
+  },
   "main": "server/server.js",
   "scripts": {
-    "postinstall": "webpack",
-    "start": "gulp start"
+    "start": "gulp build"
   },
   "repository": {
     "type": "git",
