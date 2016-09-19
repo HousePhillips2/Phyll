@@ -7,15 +7,11 @@
   },
   "main": "server/server.js",
   "scripts": {
-<<<<<<< 0fc92f321cc85c387cb25cd268214efd3f3f6eed
     "postinstall": "gulp webpack",
     "start": "node server/server.js",
     "test": "gulp mochaSuite",
     "mocha": "mocha --compilers js:babel-core/register --require ./test/mocha/test-helper.js  --recursive",
     "wp-dev": "webpack-dev-server --progress --inline"
-=======
-    "start": "nodemon server/server.js"
->>>>>>> [feature] Write server with key dependencies and structure
   },
   "repository": {
     "type": "git",
@@ -28,7 +24,6 @@
   },
   "homepage": "https://github.com/HousePhillips2/Phyll#readme",
   "dependencies": {
-<<<<<<< 0fc92f321cc85c387cb25cd268214efd3f3f6eed
     "app": "^0.1.0",
     "autoprefixer": "^6.4.1",
     "babel": "^6.5.2",
@@ -53,18 +48,12 @@
     "d3-scale": "^0.9.3",
     "d3-shape": "^0.7.1",
     "d3-time-format": "^0.4.0",
-=======
-    "babel": "^6.5.2",
-    "body-parser": "^1.15.2",
-    "chai": "^3.5.0",
->>>>>>> [feature] Write server with key dependencies and structure
     "dotenv": "^2.0.0",
     "enzyme": "^2.4.1",
     "eslint": "^3.5.0",
     "express": "^4.14.0",
     "express-partials": "^0.3.0",
     "express-session": "^1.14.1",
-<<<<<<< 0fc92f321cc85c387cb25cd268214efd3f3f6eed
     "extract-text-webpack-plugin": "^1.0.1",
     "favicons-webpack-plugin": "0.0.7",
     "file-loader": "^0.9.0",
@@ -92,9 +81,6 @@
     "mapbox": "^1.0.0-beta3",
     "mapbox-gl": "^0.24.0",
     "minimist": "^1.2.0",
-=======
-    "http": "0.0.0",
->>>>>>> [feature] Write server with key dependencies and structure
     "mocha": "^3.0.2",
     "mongoose": "^4.6.1",
     "node-sass": "^3.10.0",
