@@ -13,7 +13,6 @@ export default class AddPlant extends React.Component {
     if (length!==0){
       return (
         <div>
-          <SearchBar addMyPlant={this._addMyPlant.bind(this)}/>
           <PlantForm plantName={this.state.plantFacts.Common_Name}/>
           <PlantFacts plantFacts = {this.state.plantFacts}/>
         </div>
@@ -22,7 +21,6 @@ export default class AddPlant extends React.Component {
       return (
         <div>
           <SearchBar addMyPlant={this._addMyPlant.bind(this)}/>
-          <PlantFacts plantFacts = {this.state.plantFacts}/>
         </div>
       );
     }
