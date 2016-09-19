@@ -17,6 +17,7 @@ const plantFacts    = require('./controllers/plant-facts');
 const plantData     = require('./controllers/plant-data');
 const scrape        = require('./helpers/scrape');
 
+
 // MOUNT middleware
 app.use(express.static('dist'));
 app.use(bodyParser.json());

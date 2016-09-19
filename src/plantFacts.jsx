@@ -4,6 +4,7 @@ export default class PlantFacts extends React.Component {
     super(props);
   }
   render() {
+    
       const keys = Object.keys(this.props.plantFacts);
       const plantFacts = this.props.plantFacts;
       console.log(plantFacts, 'inside PlantFacts');
