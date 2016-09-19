@@ -11,21 +11,22 @@ const client = new pg.Client({
   port: 5432,
   ssl: true
 });
+module.exports = client; 
 
 // connect to our database
-client.connect(function (err) {
-  if (err) throw err;
+// client.connect(function (err) {
+//   if (err) throw err;
 
-  // execute a query on our database
-  client.query('SELECT id, user_name from api.users', function (err, result) {
-    if (err) throw err;
+//   // execute a query on our database
+//   client.query('SELECT id, user_name from api.users', function (err, result) {
+//     if (err) throw err;
 
-    // just print the result to the console
-    console.log(result.rows[1]); // outputs: { user_name: 'Phoebe Maio' }
+//     // just print the result to the console
+//     console.log(result.rows[1]); // outputs: { user_name: 'Phoebe Maio' }
 
-    // disconnect the client
-    client.end(function (err) {
-      if (err) throw err;
-    });
-  });
-});
+//     // disconnect the client
+//     client.end(function (err) {
+//       if (err) throw err;
+//     });
+//   });
+// });
