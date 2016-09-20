@@ -13,3 +13,5 @@ router.get('/', (req, res) => {
 
   res.send(plantData);
 });
+
+module.exports = router;

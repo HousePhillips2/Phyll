@@ -11,7 +11,7 @@ const fs            = require('fs');
 //////////////    SERVER MODULES    //////////////
 // TODO: CONSIDER using pg-promise:
 // https://github.com/vitaly-t/pg-promise/wiki/Learn-by-Example
-const db            = require('./models/test_pg.js');
+const db            = require('./models/pg-config');
 const garden        = require('./controllers/garden');
 const plantFacts    = require('./controllers/plant-facts');
 const plantData     = require('./controllers/plant-data');
@@ -25,7 +25,7 @@ app.get('/', (req, res) => res.redirect('/index.html'));
 app.use('/garden', garden);
 app.use('/plantData', plantData);
 app.use('/plantFacts', plantFacts);
-app.get('/gather', (req, res) => {scrape(res);})
+app.get('/gather', (req, res) => {scrape(res);});
 
 app.set('port', process.env.PORT || 8080);
-app.listen(app.get('port'), () => console.log('Up and running on ' + port));
+app.listen(app.get('port'), () => console.log('Up and running on ' + app.get('port')));

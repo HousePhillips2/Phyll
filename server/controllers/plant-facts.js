@@ -36,4 +36,7 @@ router.post('/', (req, res) => {
   console.log(result);
 
   res.send(result);
+
 });
+
+module.exports = router;

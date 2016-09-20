@@ -2,7 +2,7 @@
 const express = require('express');
 const router  = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', function(req, res) {
 
   const friends = [
     {User: 'Phoebe', user_img:'https://figuya.com/uploads/product/profile_picture/6195/profile_Pop-Animation-67-Natsu-Dragneel-Vorschau.jpg', plants: '4 Plants', Light: 'Full Sun'},
@@ -12,5 +12,7 @@ router.get('/', (req, res) => {
   ];
 
   res.send(friends);
-  
+
 });
+
+module.exports = router;
