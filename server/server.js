@@ -1,4 +1,4 @@
-                      require('dotenv').config();
+                      // require('dotenv').config();
 const express       = require('express');
 const app           = express();
 const partials      = require('express-partials');
@@ -7,6 +7,7 @@ const bodyParser    = require('body-parser');
 const http          = require('http');
 const fs            = require('fs');
 const db        = require('./models/test_pg.js');//may consider using pg-promise https://github.com/vitaly-t/pg-promise/wiki/Learn-by-Example
+
 
 // instantiate a new client
 // the client will read connection information from
@@ -20,6 +21,13 @@ const db        = require('./models/test_pg.js');//may consider using pg-promise
 //   ssl: true
 // });
 const port          = process.env.PORT||8080;
+
+// *******************************  only here to gather data REMOVE ME  ************************
+const request = require('request');
+const cheerio = require('cheerio');
+// const records = require('./records.js');
+//*****************************************   END    ***********************************************
+
 
 app.listen(port);
 console.log('Up and running on ' + port);
@@ -62,7 +70,7 @@ app.post('/plantFacts', (req,res) => {
             Water: 'The top 50% of the soil of the soil in a Spider Plant pot should dry out before you water. A good way to tell when a Spider Plant needs water is to look at the leaves. The green color in the leaves of a Spider plant starts to fade when the soil is dry. Water high in salts and chemicals causes brown tips on a Spider Plant. Never use water that had passed through a water softener for a Spider Plant.',
             Light: 'Spider Plants like medium to bright indirect light. Solid green Spider Plants need less light than variegated Spider Plants. No Spider Plant should ever be put in the direct sun.',
             Fertilizer: 'Fertilize a Spider Plant once a month with a balanced plant food at 1/2 the recommended strength. Spider Plants need food only when they are actively growing. Feeding a Spider Plant too often causes the tips of the leaves to turn brown.',
-            Soil: 'Spider Plants grow well in a good organic houseplant soil. An African Violet soil is very good for Spider plants also.',  
+            Soil: 'Spider Plants grow well in a good organic houseplant soil. An African Violet soil is very good for Spider plants also.',
             img: 'http://cdn1.bigcommerce.com/server4100/6ys4nr/product_images/uploaded_images/money-tree-bonsai-tree.jpg'
           },
           {
@@ -70,7 +78,7 @@ app.post('/plantFacts', (req,res) => {
             Water: 'The top 50% of the soil of the soil in a Spider Plant pot should dry out before you water. A good way to tell when a Spider Plant needs water is to look at the leaves. The green color in the leaves of a Spider plant starts to fade when the soil is dry. Water high in salts and chemicals causes brown tips on a Spider Plant. Never use water that had passed through a water softener for a Spider Plant.',
             Light: 'Spider Plants like medium to bright indirect light. Solid green Spider Plants need less light than variegated Spider Plants. No Spider Plant should ever be put in the direct sun.',
             Fertilizer: 'Fertilize a Spider Plant once a month with a balanced plant food at 1/2 the recommended strength. Spider Plants need food only when they are actively growing. Feeding a Spider Plant too often causes the tips of the leaves to turn brown.',
-            Soil: 'Spider Plants grow well in a good organic houseplant soil. An African Violet soil is very good for Spider plants also.',  
+            Soil: 'Spider Plants grow well in a good organic houseplant soil. An African Violet soil is very good for Spider plants also.',
             img: 'http://gardeners.s3.amazonaws.com/p/VETOM30892_3.jpg'
           }]
   let result = plantFacts.filter((plant) => plant.Common_Name === name);
@@ -93,4 +101,7 @@ db.connect(function (err) {
   });
 });
 
+app.get('/', (req, res) => res.redirect('/index.html'));
+
+app.get('/gather', (req, res) => {scrape(res);})
 
