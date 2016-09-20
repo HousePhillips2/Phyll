@@ -44,7 +44,7 @@ var records = [
     "waterS": "medium",
     "waterL": "Watering thoroughly once the soil begins to dry to the touch, is suggested. Watering with distilled or rain water, that's tepid is advised. Do not allow the plant to sit in water within its tray because this may cause root rot (remove excess water).",
     "soilS": "peat and perlite",
-    "soilL": "If you plan to re-pot after the flowering season then use a potting mix that contains peat moss, perlite and vermiculite or similar."
+    "soilL": "If you plan to re-pot after the flowering season then use a potting mix that contains peat moss, perlite and vermiculite or similar.",
     "fertilizerS": "normal",
     "fertilizerL": "A balanced fertilizer should be used about once every 4 weeks from February - November, with a balanced liquid solution",
     "repotting": "If you plan to re-pot after the flowering season then use a potting mix that contains peat moss, perlite and vermiculite or similar.",
@@ -73,7 +73,7 @@ var records = [
     "type": "flowering"
 }, {
     "id": 4,
-    "name": "Flamingo Flower Plant\n\"waxy and wonderful\"",
+    "name": "Flamingo Flower Plant",
     "family": "Anthurium Scherzerianum",
     "lightS": "medium-high",
     "lightL": "The flamingo flower is a lover of light - but not direct sunlight.",
@@ -244,8 +244,8 @@ var records = [
     "soilS": "perlite",
     "soilL": "A well draining soil mix is advised..something like 60% perlite, 20% peat, and 20% compost, or a variation of this. You can buy a mix that is prepared if you do not want to prepare your own. You can add a type of gravel mix or small pebbles, laid at the top ( maybe an inch deep) which gives the cactus a dry desert look.",
     "fertilizerS": "normal",
-    "fertilizerL": "no special instructions"
-    "repotting": "When they're young (up to 3 -4 years) you can re-pot in to a slightly bigger pot every spring. After 3 -4 years only re-pot when necessary.",
+    "fertilizerL": "no special instructions",
+    "repotting": "When they\'re young (up to 3 -4 years) you can re-pot in to a slightly bigger pot every spring. After 3 -4 years only re-pot when necessary.",
     "humidityS": "normal",
     "humidityL": "Normal indoor humidity is fine for the Goat's horn cactus and provide fresh air when it's hot inside.",
     "poisonousS": false,
@@ -253,7 +253,7 @@ var records = [
     "type": "succulent"
 }, {
     "id": 14,
-    "name": "Kaffir Lily Plant\n\"with clusters of bell shaped blooms\"",
+    "name": "Kaffir Lily Plant",
     "family": "Clivia Miniata",
     "lightS": "medium",
     "lightL": "Bright light is best (it can also be fine with less) and avoid direct sunlight.",
@@ -261,8 +261,8 @@ var records = [
     "waterL": "Keeping the soil fairly moist (to touch) within summer is advisable. Water sparingly at winter time and allow the soil to become quite dry, for about two months (this may encourage an early bloom).",
     "soilS": "organic",
     "soilL": "A good organic soil that drains well is ideal to use. ",
-    "fertilizerS": "",
-    "fertilizerL":
+    "fertilizerS": "as-needed",
+    "fertilizerL": "as-needed",
     "repotting": "The kaffir lily would prefer you not to disturb it, so only re-pot when necessary and after it has flowered. Becoming pot bound is something this plant enjoys, and is suitable for it to grow well. ",
     "humidityS": "normal",
     "humidityL":  "If the temperature is correct there will be no need for concern about the humidity. Sponging the leaves gently will help. Stuffy rooms with central heating should be avoided.",
@@ -424,7 +424,7 @@ var records = [
     "soilS": "draining",
     "soilL": "A fast draining pot mixture used for cactus plants is ideal.",
     "fertilizerS": "normal",
-    "fertilizerL": "normal"
+    "fertilizerL": "normal",
     "repotting": "While they're young they can be re-potted each year in spring. Once they mature re-pot only when necessary, with a slightly larger pot.",
     "humidityS": "normal",
     "humidityL": "No misting is required. A well ventilated room during the summer is preferable.",
@@ -460,7 +460,7 @@ var records = [
     "soilS": "cactus mix",
     "soilL": "Potting mix that keeps the roots well aerated and drains well is required. To keep it simple I would pot up with a ready made cactus soil mix.",
     "fertilizerS": "normal",
-    "fertilizerL": "normal"
+    "fertilizerL": "normal",
     "repotting": "You will only need to repot this plant during spring when the existing pot has become to small for it and use a shallow pot (the roots do not grow very long).",
     "humidityS": "normal",
     "humidityL": "Normal room humidity seems to work fine. Try and provide plenty of air circulation (open windows, doors, etc.) during summer.",
@@ -532,7 +532,7 @@ var records = [
     "soilS": "draining",
     "soilL": "Lithops prefer a soil that drains well with very little organic matter. A permeable substrate can be added to the soil along with gravel and sand to improve drainage",
     "fertilizerS": "None",
-    "fertilizerL": "It will not require fertilization as this only weaken the tissues of the plant which can lead to rot."
+    "fertilizerL": "It will not require fertilization as this only weaken the tissues of the plant which can lead to rot.",
     "repotting": "The best time to re-pot is prior to its first watering with a well-drained loam-based compost being the best choice. ",
     "humidityS": "normal",
     "humidityL": "Normal room humidity will work fine but air circulation is advisable providing it is not directly placed near a cold draft.",
@@ -621,8 +621,8 @@ var records = [
     "waterL": "Keep the soil damp and water frequently during summer. Water sparingly winter time. ",
     "soilS": "draining",
     "soilL": "A decent fast draining potting soil mix, will suffice.",
-    "fertilizerS": "",
-    "fertilizerL":
+    "fertilizerS": "as-needed",
+    "fertilizerL": "as-needed",
     "repotting": " Re-pot during spring each year. If not each year, then at-least when the roots start to grow from the pot drainage holes.",
     "humidityS": "medium-high",
     "humidityL": "The golden shrimp enjoys misting (summertime).",
@@ -721,7 +721,7 @@ var records = [
     "type": "foliage"
 }, {
     "id": 40,
-    "name": "Kentia Palm Plant\n \"One of the most popular palms for the indoor gardener\"",
+    "name": "Kentia Palm Plant",
     "family": "Howea Forsteriana",
     "lightS": "low",
     "lightL": "Indirect sun light for many of the popular indoor palms is advisable and the Kentia particularly grows well and maintains it's health in low light conditions.",
@@ -901,7 +901,7 @@ var records = [
     "type": "foliage"
 }, {
     "id": 50,
-    "name": "The Peace Lily Plant...an Indoor Air Cleaner\n\"Glossy foliage and charming lily flower's\"",
+    "name": "The Peace Lily Plant",
     "family": "Spathiphyllum Wallisii",
     "lightS": "medium",
     "lightL": "As mentioned above they like light, however, direct sunshine can damage plant leaves. A mixture of light and shade is great, if you can provide it. If you see the leaves yellowing this could be caused by too much sunlight.",
@@ -974,7 +974,7 @@ var records = [
 }, {
 
     "id": 54,
-    "name": "The Rat Tail Cactus\n\"An easy hanging basket plant\"",
+    "name": "The Rat Tail Cactus",
     "family": "Disocactus Flagelliformis",
     "lightS": "medium-high",
     "lightL": "The rat tail cactus thrives on bright light, but not direct sunlight. It also enjoys the warmth of the summer sun while it sits within a shaded area. Some sunlight and shade is great.",
@@ -1235,7 +1235,7 @@ var records = [
     "soilS": "",
     "soilL": "Due to its hardy nature, it has the ability to deal with a number of soil types although it does not do particularly well in soils that do not drain well. A cactus ready mix works well.",
     "fertilizerS": "monthly",
-    "fertilizerL": "During the spring and summer months it should be fertilized once a month with a diluted liquid feed at maybe half the strength."
+    "fertilizerL": "During the spring and summer months it should be fertilized once a month with a diluted liquid feed at maybe half the strength.",
     "repotting": "I would suggest a grower repot every two years unless the plant as outgrown the pot. This is best done during spring.",
     "humidityS": "normal",
     "humidityL": "Normal room humidity is fine. Providing air circulation during the warmer months is advised (open doors or windows).",
@@ -1334,7 +1334,7 @@ var records = [
     "type": "succulent"
 }, {
     "id": 74,
-    "name": "Jade Plant \"Show me the MONEY plant\"",
+    "name": "Jade Plant",
     "family": "Crassula Ovata",
     "lightS": "medium",
     "lightL": "The jade plant flourishes in good health with plenty of light. If you can provide a few hours of sunshine a day your going to have a happy plant.",
@@ -1496,7 +1496,7 @@ var records = [
     "type": "succulent"
 }, {
     "id": 83,
-    "name": "Winter Cherry \n\"Flowers for Summer and Berries at Christmas\"",
+    "name": "Winter Cherry",
     "family": "Solanum Capsicastrum",
     "lightS": "medium-high",
     "lightL": "A lover of bright light, and some direct sunlight (not too much). Placed near a window that receives day time sun is advised.",
@@ -1514,7 +1514,7 @@ var records = [
     "type": "flowering"
 }, {
     "id": 84,
-    "name": "Coral Berry \"Blooms for The Summer and Berries at Christmas\"",
+    "name": "Coral Berry",
     "family": "Ardisia Crenata",
     "lightS": "medium-high",
     "lightL": "A lover of bright light, not direct sunlight (or at least not much).",
@@ -1820,7 +1820,7 @@ var records = [
     "type": "foliage"
 }, {
     "id": 101,
-    "name": "Madagascar Dragon Tree \"Tough and Easy\"",
+    "name": "Madagascar Dragon Tree",
     "family": "Dracaena Marginata",
     "lightS": "normal",
     "lightL": "Bright conditions with shade is suitable for the dragon plant. Direct sunlight will damage the leaves.",
@@ -1856,7 +1856,7 @@ var records = [
     "type": "foliage"
 }, {
     "id": 103,
-    "name": "The Flowering Maple Plant \n\"With Beautiful Bell Shaped Blooms\"",
+    "name": "The Flowering Maple Plant",
     "family": "Abutilon Hybridum",
     "lightS": "medium-high",
     "lightL": "As mentioned above these love sunshine and bright rooms near windows. The maple will also thank you for taking it outside in the summer.",
@@ -1926,9 +1926,33 @@ var records = [
     "poisonousS": false,
     "poisonousL": "Not known..",
     "type": "flowering"
-}]
+}];
 
-module.exports = records;
+const plantsData = records.map((plant) => {
+    return [
+    plant.name,
+    plant.family,
+    plant.waterS,
+    plant.waterL,
+    "",
+    plant.soilS,
+    plant.soilL,
+    plant.lightS,
+    plant.lightL,
+    plant.fertilizerS,
+    plant.fertilizerL,
+    plant.humidityS,
+    plant.humidityL,
+    plant.poisonousS,
+    plant.poisonousL,
+    plant.repotting,
+    plant.type,
+    null
+    ];
+});
+
+
+module.exports = plantsData;
 
 
 
