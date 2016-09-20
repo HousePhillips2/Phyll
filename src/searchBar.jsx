@@ -15,11 +15,11 @@ export default class SearchBar extends React.Component {
           <button className="btn btn-default" style={{color:'green'}} type="submit" id="search" >Search</button>
         </form>
       </div>
-    )
+    );
   }
   _handleSubmit(e){
     e.preventDefault();
-    console.log(this._plant.value, "this typein in SearchBar")
+    console.log(this._plant.value, "this typein in SearchBar");
     this.props.addMyPlant(this._plant.value);
     this._plant.value = '';
   }

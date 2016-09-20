@@ -28,9 +28,9 @@ export default class Layout extends React.Component {
       method: 'GET',
       url: '/garden',
       success: (friends) => {
-        this.setState({friends})
+        this.setState({friends});
       }
-    })
+    });
   }
 
 }

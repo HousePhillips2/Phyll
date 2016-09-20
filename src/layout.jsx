@@ -22,6 +22,6 @@ export default class Layout extends React.Component {
         </nav>
         {this.props.children}
       </div>
-    )
+    );
   }
-} 
+}
