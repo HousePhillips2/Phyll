@@ -1,6 +1,6 @@
-import SearchBar from './searchBar.jsx';
-import PlantFacts from './plantFacts.jsx';
-import PlantForm from './plantForm.jsx';
+import SearchBar from '../components/searchBar.jsx';
+import PlantFacts from '../components/plantFacts.jsx';
+import PlantForm from '../components/plantForm.jsx';
 
 export default class AddPlant extends React.Component {
   constructor() {
