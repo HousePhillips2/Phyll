@@ -4,3 +4,4 @@ node_modules
 logs
 *.log
 dist
+.DS_Store
