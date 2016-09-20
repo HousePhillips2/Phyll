@@ -14,7 +14,6 @@ const db            = require('./models/pg-config');
 const garden        = require('./controllers/garden');
 const plantFacts    = require('./controllers/plant-facts');
 const plantData     = require('./controllers/plant-data');
-const db        = require('./models/test_pg.js');//may consider using pg-promise https://github.com/vitaly-t/pg-promise/wiki/Learn-by-Example
 const scrape        = require('./helpers/scrape');
 
 
@@ -32,7 +31,6 @@ app.use('/plantInput', plantData);
 
 app.set('port', process.env.PORT || 8080);
 app.listen(app.get('port'), () => console.log('Up and running on ' + app.get('port')));
-
 
 
 
