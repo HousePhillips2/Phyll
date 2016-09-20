@@ -1,6 +1,7 @@
 import { INITIAL_STATE, setUsers } from '../containers/app';
 
-export default reducer = (state = INITIAL_STATE, action) => {
+export default function reducer(state = INITIAL_STATE, action){
+  
   switch( action.type ){
     case 'SET_USERS':
 
