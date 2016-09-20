@@ -1,13 +1,10 @@
 // import React from 'react';
 // import ReactDOM from 'react-dom';
 import {Router, Route, Redirect, hashHistory} from 'react-router';
-import Layout from './layout.jsx';
-import SearchBar from './searchBar.jsx';
-import Garden from './garden.jsx';
-import MyDashboard from './dashBoard.jsx';
-import PlantFacts from './plantFacts.jsx';
-import PlantForm from './plantForm.jsx';
-import AddPlant from './addPlant.jsx';
+import Layout from './layout/layout.jsx';
+import Garden from './pages/garden.jsx';
+import MyDashboard from './pages/dashBoard.jsx';
+import AddPlant from './pages/addPlant.jsx';
 
 // ES6 CLASS SYNTAX TO CREATE A REACT COMPONENT
 class MyApp extends React.Component {
