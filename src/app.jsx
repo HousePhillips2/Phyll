@@ -21,7 +21,7 @@ class MyApp extends React.Component {
         <Route path='garden' component={Garden} />
       </Route>
     </Router>
-   )
+  );
  }
 }
 

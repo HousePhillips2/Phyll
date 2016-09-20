@@ -17,19 +17,19 @@ export default class AddPlant extends React.Component {
           <PlantForm plantName={this.state.plantFacts.Common_Name}/>
           <PlantFacts plantFacts = {this.state.plantFacts}/>
         </div>
-      )      
+      );
     }else{
       return (
         <div>
           <SearchBar addMyPlant={this._addMyPlant.bind(this)}/>
           <PlantFacts plantFacts = {this.state.plantFacts}/>
         </div>
-      )            
+      );
     }
   }
 
   _addMyPlant(plant){
-    console.log(plant, "inside addMyPlant")
+    console.log(plant, "inside addMyPlant");
     $.ajax({
       method: 'POST',
       url: '/plantFacts',
@@ -37,7 +37,7 @@ export default class AddPlant extends React.Component {
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({plant:plant}),
       success: (plantFacts) => {
-        console.log(plantFacts, "plantFacts")
+        console.log(plantFacts, "plantFacts");
         this.setState({plantFacts: plantFacts[0]});
       }
     });

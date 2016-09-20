@@ -18,16 +18,15 @@ export default class MyDashboard extends React.Component {
             <img style={{width: '300px', heigh: '380px', display: 'inline-block'}} src='http://www.ikea.com/ie/en/images/range-introduction/ikea-plant-and-pot__1364299621645-s4.jpg'/>
             <div style={{display: 'inline-block'}}>{keys.map(key=> <li>{`${key}: ${plant_data[key]}`}</li>)}</div>
        </div>
-      );      
+      );
   }
   _getData() {
     $.ajax({
       method: 'GET',
       url: '/plantData',
       success: (plant) => {
-        this.setState({plant})
+        this.setState({plant});
       }
-    })
+    });
   }
 }
-
