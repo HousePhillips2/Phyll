@@ -165,7 +165,7 @@ const scrape = (res) => {
           plant.humidityL = plantDetails[13];
           plant.name = $('.title-xl').text();
           plant.family = $('.heading-page').text();
-          plant.poisonousL = $('b:contains("Poisonous")').parent().next().text();
+          plant.poisonousL = $('b:contains("Poisonous"), b:contains("Poisionous")').parent().next().text();
 
            data.push(plant);
            counter++;
@@ -183,7 +183,7 @@ const scrape = (res) => {
     scraper(foliageList[j], 'foliage');
   }
   for (let k = 0; k < succulentsList.length; k++){
-  scraper(succulentsList[k], 'foliage');
+  scraper(succulentsList[k], 'succulent');
 }
 
   setTimeout(function(){res.send(data)}, 5000);
