@@ -17,6 +17,7 @@ const plantFacts    = require('./controllers/plant-facts');
 const plantData     = require('./controllers/plant-data');
 const scrape        = require('./helpers/scrape');
 
+
 // MOUNT middleware
 app.use(express.static('dist'));
 app.use(bodyParser.json());
@@ -26,6 +27,12 @@ app.use('/garden', garden);
 app.use('/plantData', plantData);
 app.use('/plantFacts', plantFacts);
 app.get('/gather', (req, res) => {scrape(res);});
+app.use('/plantInput', plantData);
+
 
 app.set('port', process.env.PORT || 8080);
 app.listen(app.get('port'), () => console.log('Up and running on ' + app.get('port')));
+
+
+
+

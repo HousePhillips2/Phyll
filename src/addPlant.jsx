@@ -13,22 +13,20 @@ export default class AddPlant extends React.Component {
     if (length!==0){
       return (
         <div>
-          <SearchBar addMyPlant={this._addMyPlant.bind(this)}/>
-          <PlantForm plantName={this.state.plantFacts.Common_Name}/>
+          <PlantForm plantName={this.state.plantFacts.Common_Name} />
           <PlantFacts plantFacts = {this.state.plantFacts}/>
         </div>
       );
     }else{
       return (
         <div>
-          <SearchBar addMyPlant={this._addMyPlant.bind(this)}/>
-          <PlantFacts plantFacts = {this.state.plantFacts}/>
+          <SearchBar fetchPlant={this._fetchPlant.bind(this)}/>
         </div>
       );
     }
   }
 
-  _addMyPlant(plant){
+  _fetchPlant(plant){
     console.log(plant, "inside addMyPlant");
     $.ajax({
       method: 'POST',
