@@ -14,4 +14,13 @@ router.get('/', (req, res) => {
   res.send(plantData);
 });
 
+router.post('/', (req, res) => {
+
+  let plantName = req.body.plantName;
+  let plantNickName = req.body.plantNickName;
+  //to add user plant input into database
+  res.send('Success!');
+});
+
 module.exports = router;
+

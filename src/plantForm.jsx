@@ -41,7 +41,7 @@ export default class PlantForm extends React.Component {
       success: (data) => {
         console.log('redirect me to dashboard');
       }
-    })
+    });
   }
 }
 
