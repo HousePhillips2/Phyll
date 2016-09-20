@@ -11,6 +11,7 @@ const fs            = require('fs');
 // TODO: CONSIDER using pg-promise:
 // https://github.com/vitaly-t/pg-promise/wiki/Learn-by-Example
 const db            = require('./models/pg-config');
+const mdb           = require('./models/mdb-config.js');
 const garden        = require('./controllers/garden');
 const plantFacts    = require('./controllers/plant-facts');
 const plantData     = require('./controllers/plant-data');
