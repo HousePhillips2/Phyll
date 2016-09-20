@@ -1,6 +1,11 @@
 const db = require('./pg-config');
 
+<<<<<<< 5f598d0637864319328e8b087da0201d02b95931
 db.any("select user_name from api.users")
+=======
+
+db.any("select user_name from api.users", [true])// see below for field names in plants table
+>>>>>>> [Update] Insert database with 107 plants data; add basic query function in models
   .then(function (data) {
     console.log(data[1].user_name);//print out user name 'Phoebe Maio'
   })
@@ -8,6 +13,7 @@ db.any("select user_name from api.users")
       console.log(error);
   });
 
+<<<<<<< 5f598d0637864319328e8b087da0201d02b95931
 db.none("insert into api.users (user_name) values ('Marvin Maio')")
   .then( () => {
     console.log('success');
@@ -24,4 +30,8 @@ db.none("insert into api.users (user_name) values ('Marvin Maio')")
     oauth_key:
     img:
   */
+=======
+
+
+>>>>>>> [Update] Insert database with 107 plants data; add basic query function in models
   
