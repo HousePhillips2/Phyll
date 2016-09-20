@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
           }];
 
   let result = plantFacts.filter((plant) => plant.Common_Name === name);
-  console.log(result);
+  //console.log(result);
 
   res.send(result);
 
