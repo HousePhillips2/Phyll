@@ -32,6 +32,9 @@ db.none("insert into api.users (user_name) values ('Marvin Maio')")
   */
 =======
 
+<<<<<<< 076dcc6eaa969a90b10f745d4fdb384fada41836
 
 >>>>>>> [Update] Insert database with 107 plants data; add basic query function in models
   
+=======
+>>>>>>> [refactor] Update database using pg-promise from pg
