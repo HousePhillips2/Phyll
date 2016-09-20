@@ -63,6 +63,7 @@
     "jquery": "^3.1.0",
     "minimist": "^1.2.0",
     "mocha": "^3.0.2",
+    "mongoose": "^4.6.1",
     "pg": "^6.1.0",
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.1",
