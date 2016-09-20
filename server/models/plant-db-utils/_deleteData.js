@@ -1,3 +1,8 @@
+<<<<<<< 5f598d0637864319328e8b087da0201d02b95931
+=======
+           require('dotenv').config({path: '../../.env'});
+
+>>>>>>> [Update] Insert database with 107 plants data; add basic query function in models
 const db = require('./pg-config');
 
 
