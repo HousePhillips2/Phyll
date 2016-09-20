@@ -15,7 +15,6 @@ const mdb           = require('./models/mdb-config.js');
 const garden        = require('./controllers/garden');
 const plantFacts    = require('./controllers/plant-facts');
 const plantData     = require('./controllers/plant-data');
-const db        = require('./models/test_pg.js');//may consider using pg-promise https://github.com/vitaly-t/pg-promise/wiki/Learn-by-Example
 const scrape        = require('./helpers/scrape');
 
 
