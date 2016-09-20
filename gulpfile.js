@@ -63,7 +63,7 @@ gulp.task('mochaSuite', () => {
       'chai',
       'sinon'
       ]})
-    .pipe(mocha({reporter: 'progress'}))
+    .pipe(mocha({reporter: 'progress'}));
 });
 
 // process src directory with webpack
