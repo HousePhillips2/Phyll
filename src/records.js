@@ -73,7 +73,7 @@ var records = [
     "type": "flowering"
 }, {
     "id": 4,
-    "name": "Flamingo Flower Plant\n\"waxy and wonderful\"",
+    "name": "Flamingo Flower Plant",
     "family": "Anthurium Scherzerianum",
     "lightS": "medium-high",
     "lightL": "The flamingo flower is a lover of light - but not direct sunlight.",
@@ -253,7 +253,7 @@ var records = [
     "type": "succulent"
 }, {
     "id": 14,
-    "name": "Kaffir Lily Plant\n\"with clusters of bell shaped blooms\"",
+    "name": "Kaffir Lily Plant",
     "family": "Clivia Miniata",
     "lightS": "medium",
     "lightL": "Bright light is best (it can also be fine with less) and avoid direct sunlight.",
@@ -721,7 +721,7 @@ var records = [
     "type": "foliage"
 }, {
     "id": 40,
-    "name": "Kentia Palm Plant\n \"One of the most popular palms for the indoor gardener\"",
+    "name": "Kentia Palm Plant",
     "family": "Howea Forsteriana",
     "lightS": "low",
     "lightL": "Indirect sun light for many of the popular indoor palms is advisable and the Kentia particularly grows well and maintains it's health in low light conditions.",
@@ -901,7 +901,7 @@ var records = [
     "type": "foliage"
 }, {
     "id": 50,
-    "name": "The Peace Lily Plant...an Indoor Air Cleaner\n\"Glossy foliage and charming lily flower's\"",
+    "name": "The Peace Lily Plant",
     "family": "Spathiphyllum Wallisii",
     "lightS": "medium",
     "lightL": "As mentioned above they like light, however, direct sunshine can damage plant leaves. A mixture of light and shade is great, if you can provide it. If you see the leaves yellowing this could be caused by too much sunlight.",
@@ -974,7 +974,7 @@ var records = [
 }, {
 
     "id": 54,
-    "name": "The Rat Tail Cactus\n\"An easy hanging basket plant\"",
+    "name": "The Rat Tail Cactus",
     "family": "Disocactus Flagelliformis",
     "lightS": "medium-high",
     "lightL": "The rat tail cactus thrives on bright light, but not direct sunlight. It also enjoys the warmth of the summer sun while it sits within a shaded area. Some sunlight and shade is great.",
@@ -1334,7 +1334,7 @@ var records = [
     "type": "succulent"
 }, {
     "id": 74,
-    "name": "Jade Plant \"Show me the MONEY plant\"",
+    "name": "Jade Plant",
     "family": "Crassula Ovata",
     "lightS": "medium",
     "lightL": "The jade plant flourishes in good health with plenty of light. If you can provide a few hours of sunshine a day your going to have a happy plant.",
@@ -1496,7 +1496,7 @@ var records = [
     "type": "succulent"
 }, {
     "id": 83,
-    "name": "Winter Cherry \n\"Flowers for Summer and Berries at Christmas\"",
+    "name": "Winter Cherry",
     "family": "Solanum Capsicastrum",
     "lightS": "medium-high",
     "lightL": "A lover of bright light, and some direct sunlight (not too much). Placed near a window that receives day time sun is advised.",
@@ -1514,7 +1514,7 @@ var records = [
     "type": "flowering"
 }, {
     "id": 84,
-    "name": "Coral Berry \"Blooms for The Summer and Berries at Christmas\"",
+    "name": "Coral Berry",
     "family": "Ardisia Crenata",
     "lightS": "medium-high",
     "lightL": "A lover of bright light, not direct sunlight (or at least not much).",
@@ -1820,7 +1820,7 @@ var records = [
     "type": "foliage"
 }, {
     "id": 101,
-    "name": "Madagascar Dragon Tree \"Tough and Easy\"",
+    "name": "Madagascar Dragon Tree",
     "family": "Dracaena Marginata",
     "lightS": "normal",
     "lightL": "Bright conditions with shade is suitable for the dragon plant. Direct sunlight will damage the leaves.",
@@ -1856,7 +1856,7 @@ var records = [
     "type": "foliage"
 }, {
     "id": 103,
-    "name": "The Flowering Maple Plant \n\"With Beautiful Bell Shaped Blooms\"",
+    "name": "The Flowering Maple Plant",
     "family": "Abutilon Hybridum",
     "lightS": "medium-high",
     "lightL": "As mentioned above these love sunshine and bright rooms near windows. The maple will also thank you for taking it outside in the summer.",
@@ -1949,7 +1949,8 @@ const plantsData = records.map((plant) => {
     plant.type,
     null
     ];
-})
+});
+
 
 
 module.exports = plantsData;
