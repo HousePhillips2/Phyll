@@ -12,5 +12,3 @@ db.any("select user_name from api.users", [true])// see below for field names in
   });
 
 
-
-  

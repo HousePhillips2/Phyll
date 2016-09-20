@@ -33,5 +33,18 @@ app.use('/plantInput', plantData);
 app.set('port', process.env.PORT || 8080);
 app.listen(app.get('port'), () => console.log('Up and running on ' + app.get('port')));
 
-
+db.connect(err => {
+  if (err) throw err;
+  console.log('getting here');
+  // execute a query on our database
+  db.query('SELECT id, user_name from api.users', (err, result) => {
+    if (err) throw err;
+    // LOG result to the console
+    console.log(result.rows[1], "query result"); // outputs: { user_name: 'Phoebe Maio' }
+    // DISCONNECT from client
+    db.end(function (err) {
+      if (err) throw err;
+    });
+  });
+});
 
