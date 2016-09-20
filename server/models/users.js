@@ -1,7 +1,6 @@
 const db = require('./pg-config');
 
 
-
 function query_user(user_obj, callback) {
 
   db.one(`select id from api.users where fb_id = ${user_obj.fb_id}`)
@@ -32,5 +31,6 @@ Table: api.users
   oauth_key:
   img:
 */
+
 
 
