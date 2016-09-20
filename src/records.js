@@ -44,7 +44,7 @@ var records = [
     "waterS": "medium",
     "waterL": "Watering thoroughly once the soil begins to dry to the touch, is suggested. Watering with distilled or rain water, that's tepid is advised. Do not allow the plant to sit in water within its tray because this may cause root rot (remove excess water).",
     "soilS": "peat and perlite",
-    "soilL": "If you plan to re-pot after the flowering season then use a potting mix that contains peat moss, perlite and vermiculite or similar."
+    "soilL": "If you plan to re-pot after the flowering season then use a potting mix that contains peat moss, perlite and vermiculite or similar.",
     "fertilizerS": "normal",
     "fertilizerL": "A balanced fertilizer should be used about once every 4 weeks from February - November, with a balanced liquid solution",
     "repotting": "If you plan to re-pot after the flowering season then use a potting mix that contains peat moss, perlite and vermiculite or similar.",
@@ -244,8 +244,8 @@ var records = [
     "soilS": "perlite",
     "soilL": "A well draining soil mix is advised..something like 60% perlite, 20% peat, and 20% compost, or a variation of this. You can buy a mix that is prepared if you do not want to prepare your own. You can add a type of gravel mix or small pebbles, laid at the top ( maybe an inch deep) which gives the cactus a dry desert look.",
     "fertilizerS": "normal",
-    "fertilizerL": "no special instructions"
-    "repotting": "When they're young (up to 3 -4 years) you can re-pot in to a slightly bigger pot every spring. After 3 -4 years only re-pot when necessary.",
+    "fertilizerL": "no special instructions",
+    "repotting": "When they\'re young (up to 3 -4 years) you can re-pot in to a slightly bigger pot every spring. After 3 -4 years only re-pot when necessary.",
     "humidityS": "normal",
     "humidityL": "Normal indoor humidity is fine for the Goat's horn cactus and provide fresh air when it's hot inside.",
     "poisonousS": false,
@@ -261,8 +261,8 @@ var records = [
     "waterL": "Keeping the soil fairly moist (to touch) within summer is advisable. Water sparingly at winter time and allow the soil to become quite dry, for about two months (this may encourage an early bloom).",
     "soilS": "organic",
     "soilL": "A good organic soil that drains well is ideal to use. ",
-    "fertilizerS": "",
-    "fertilizerL":
+    "fertilizerS": "as-needed",
+    "fertilizerL": "as-needed",
     "repotting": "The kaffir lily would prefer you not to disturb it, so only re-pot when necessary and after it has flowered. Becoming pot bound is something this plant enjoys, and is suitable for it to grow well. ",
     "humidityS": "normal",
     "humidityL":  "If the temperature is correct there will be no need for concern about the humidity. Sponging the leaves gently will help. Stuffy rooms with central heating should be avoided.",
@@ -424,7 +424,7 @@ var records = [
     "soilS": "draining",
     "soilL": "A fast draining pot mixture used for cactus plants is ideal.",
     "fertilizerS": "normal",
-    "fertilizerL": "normal"
+    "fertilizerL": "normal",
     "repotting": "While they're young they can be re-potted each year in spring. Once they mature re-pot only when necessary, with a slightly larger pot.",
     "humidityS": "normal",
     "humidityL": "No misting is required. A well ventilated room during the summer is preferable.",
@@ -460,7 +460,7 @@ var records = [
     "soilS": "cactus mix",
     "soilL": "Potting mix that keeps the roots well aerated and drains well is required. To keep it simple I would pot up with a ready made cactus soil mix.",
     "fertilizerS": "normal",
-    "fertilizerL": "normal"
+    "fertilizerL": "normal",
     "repotting": "You will only need to repot this plant during spring when the existing pot has become to small for it and use a shallow pot (the roots do not grow very long).",
     "humidityS": "normal",
     "humidityL": "Normal room humidity seems to work fine. Try and provide plenty of air circulation (open windows, doors, etc.) during summer.",
@@ -532,7 +532,7 @@ var records = [
     "soilS": "draining",
     "soilL": "Lithops prefer a soil that drains well with very little organic matter. A permeable substrate can be added to the soil along with gravel and sand to improve drainage",
     "fertilizerS": "None",
-    "fertilizerL": "It will not require fertilization as this only weaken the tissues of the plant which can lead to rot."
+    "fertilizerL": "It will not require fertilization as this only weaken the tissues of the plant which can lead to rot.",
     "repotting": "The best time to re-pot is prior to its first watering with a well-drained loam-based compost being the best choice. ",
     "humidityS": "normal",
     "humidityL": "Normal room humidity will work fine but air circulation is advisable providing it is not directly placed near a cold draft.",
@@ -621,8 +621,8 @@ var records = [
     "waterL": "Keep the soil damp and water frequently during summer. Water sparingly winter time. ",
     "soilS": "draining",
     "soilL": "A decent fast draining potting soil mix, will suffice.",
-    "fertilizerS": "",
-    "fertilizerL":
+    "fertilizerS": "as-needed",
+    "fertilizerL": "as-needed",
     "repotting": " Re-pot during spring each year. If not each year, then at-least when the roots start to grow from the pot drainage holes.",
     "humidityS": "medium-high",
     "humidityL": "The golden shrimp enjoys misting (summertime).",
@@ -1235,7 +1235,7 @@ var records = [
     "soilS": "",
     "soilL": "Due to its hardy nature, it has the ability to deal with a number of soil types although it does not do particularly well in soils that do not drain well. A cactus ready mix works well.",
     "fertilizerS": "monthly",
-    "fertilizerL": "During the spring and summer months it should be fertilized once a month with a diluted liquid feed at maybe half the strength."
+    "fertilizerL": "During the spring and summer months it should be fertilized once a month with a diluted liquid feed at maybe half the strength.",
     "repotting": "I would suggest a grower repot every two years unless the plant as outgrown the pot. This is best done during spring.",
     "humidityS": "normal",
     "humidityL": "Normal room humidity is fine. Providing air circulation during the warmer months is advised (open doors or windows).",
@@ -1926,9 +1926,33 @@ var records = [
     "poisonousS": false,
     "poisonousL": "Not known..",
     "type": "flowering"
-}]
+}];
 
-module.exports = records;
+const plantsData = records.map((plant) => {
+    return [
+    plant.name,
+    plant.family,
+    plant.waterS,
+    plant.waterL,
+    "",
+    plant.soilS,
+    plant.soilL,
+    plant.lightS,
+    plant.lightL,
+    plant.fertilizerS,
+    plant.fertilizerL,
+    plant.humidityS,
+    plant.humidityL,
+    plant.poisonousS,
+    plant.poisonousL,
+    plant.repotting,
+    plant.type,
+    null
+    ];
+})
+
+
+module.exports = plantsData;
 
 
 
