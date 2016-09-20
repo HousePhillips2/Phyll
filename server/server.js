@@ -28,5 +28,15 @@ app.use('/plantData', plantData);
 app.use('/plantFacts', plantFacts);
 app.get('/gather', (req, res) => {scrape(res);});
 
+
 app.set('port', process.env.PORT || 8080);
 app.listen(app.get('port'), () => console.log('Up and running on ' + app.get('port')));
+
+
+app.post('/plantInput', (req, res) => {
+  let plantName = req.body.plantName;
+  let plantNickName = req.body.plantNickName;
+  //to add user plant input into database
+  res.send('Success!');
+});
+

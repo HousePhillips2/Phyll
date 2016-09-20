@@ -11,7 +11,7 @@ export default class SearchBar extends React.Component {
     return (
       <div style={{margin:'50px'}}>
         <form id="searchform" onSubmit={this._handleSubmit.bind(this)}>
-          <input type="text" id="searchterm" className="form-control" placeholder="Add My Plant" ref={input => this._plant = input}/>
+          <input type="text" id="searchterm" className="form-control" placeholder="Find My Plant" ref={input => this._plant = input}/>
           <button className="btn btn-default" style={{color:'green'}} type="submit" id="search" >Search</button>
         </form>
       </div>
