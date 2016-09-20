@@ -1949,6 +1949,7 @@ const plantsData = records.map((plant) => {
     plant.type,
     null
     ];
+
 });
 
 
