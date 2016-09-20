@@ -1,18 +1,31 @@
 const db = require('./pg-config');
 
+<<<<<<< d2e8a4627f5abe018364289f46c4cee723ef9bbf
 <<<<<<< 5f598d0637864319328e8b087da0201d02b95931
 db.any("select user_name from api.users")
 =======
 
 db.any("select user_name from api.users", [true])// see below for field names in plants table
 >>>>>>> [Update] Insert database with 107 plants data; add basic query function in models
+=======
+db.none("insert into api.users(user_name) values($1)", ['Eric Churchie'])
+  .then(function () {
+    console.log(success);
+  })
+  .catch(function (error) {
+      // error;
+  });
+
+db.any("select * from api.users", [true])
+>>>>>>> [update] add basic insert data method for database
   .then(function (data) {
-    console.log(data[1].user_name);//print out user name 'Phoebe Maio'
+      console.log(data);
   })
   .catch(function (error) {
       console.log(error);
   });
 
+<<<<<<< d2e8a4627f5abe018364289f46c4cee723ef9bbf
 <<<<<<< 5f598d0637864319328e8b087da0201d02b95931
 db.none("insert into api.users (user_name) values ('Marvin Maio')")
   .then( () => {
@@ -38,3 +51,5 @@ db.none("insert into api.users (user_name) values ('Marvin Maio')")
   
 =======
 >>>>>>> [refactor] Update database using pg-promise from pg
+=======
+>>>>>>> [update] add basic insert data method for database
