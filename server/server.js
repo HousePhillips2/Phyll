@@ -103,44 +103,5 @@ db.connect(function (err) {
 
 app.get('/', (req, res) => res.redirect('/index.html'));
 
-// ******************************    only here to gather data, REMOVE ME *******************************
-
-app.get('/gather', (req, res) => {
-
-    let url = 'http://www.houseplantsexpert.com/a-z-list-of-house-plants.html';
-
-    var data = 'blah ';
-    // The callback function takes 3 parameters, an error, response status code and the html
-    request(url, function(error, response, html){
-      console.log('inside data :', data);
-
-        if(!error){
-            const $ = cheerio.load(html);
-
-           let classs = $.root('.simplePagerPage1').find('a').text();
-           // let class2 = $.root('.simplePagerPage1 a').text();
-           // let class3 = $.root('.simplePagerPage1').children().find('a').text();
-           // let class4 = $.root('.simplePagerPage1').children().find('a').attr('href');
-           let name = $('h1').text();
-
-             $(".simplePagerPage1").each(function() {
-              console.log('works');
-              console.log($(this));
-                var plant = $(this).find('a');;
-                var text = plant.text();
-                var href = plant.attr("href");
-                console.log(text + " -> " + href);
-              });
-             console.log(name, typeof name);
-             // console.log(class2);
-             data += classs;
-             res.send(data);
-             // console.log(classs);
-        } else {
-          console.log(error);
-        }
-    });
-})
-
-// ***************************************** end ***********************************
+app.get('/gather', (req, res) => {scrape(res);})
 
