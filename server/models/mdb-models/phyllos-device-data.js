@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const deviceSchema = mongoose.Schema({
   deviceId    : String,
   deviceOS    : String,
-  deviceAlert : Boolean,
+  deviceAlert : {type: Boolean, default: false},
   date        : [],
   moisture    : [],
   ph          : [],
@@ -14,7 +14,9 @@ const deviceSchema = mongoose.Schema({
   noise       : []
 });
 
-// deviceSchema.methods.record
+// deviceSchema.methods.record = function record(cb) {
+//   Device.find
+// }
   // updates record or creates new
   // up to 43k records (one month at one per minute)
 
@@ -25,7 +27,10 @@ const deviceSchema = mongoose.Schema({
   // destroy all environmental data from device
 
 // deviceSchema.methods.retrieve
-  // fetch target device record
+  // fetch target device record by id
+
+// deviceSchema.methods.list
+  // fetch a list of all active devices (post within last hour), each bundled with most recent measurements
 
 // deviceSchema.methods.discard
   // delete device from db
