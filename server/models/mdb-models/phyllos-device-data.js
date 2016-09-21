@@ -1,4 +1,6 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+
+// todo: header handler to share between methods
 
 const deviceSchema = mongoose.Schema({
   deviceId    : String,
@@ -15,7 +17,7 @@ const deviceSchema = mongoose.Schema({
 });
 
 deviceSchema.methods.record = (req, res) => { // req should be complete post body of device status
-  Device.findOneAndUpdate({deviceId: rec}, {
+  Device.findOneAndUpdate({deviceId: req.deviceId}, {
     $set: {
       deviceId    : req.deviceId,
       deviceOS    : req.deviceOS,
@@ -24,23 +26,54 @@ deviceSchema.methods.record = (req, res) => { // req should be complete post bod
     $push: {
       date        : req.date,
       moisture    : req.moisture,
-      ph          : rec.ph,
-      light       : rec.light,
-      humidity    : rec.humidity,
-      temperature : rec.temperature,
-      pressure    : rec.pressure,
-      noise       : rec.noise
+      ph          : req.ph,
+      light       : req.light,
+      humidity    : req.humidity,
+      temperature : req.temperature,
+      pressure    : req.pressure,
+      noise       : req.noise
     }
   }, {upsert: true}, (err) => {
-    
-  })
-}
+    if (err) res.status(500).send(err);
+    res.status(200).send('Conditions for ', req.deviceId, ' recorded!');
+  });
+};
 
-// deviceSchema.methods.prune TODO
-  // empties device results arrays of all but a week's data (10k at one per minute)
+// deviceSchema.methods.prune = (req, res) => { // req should be a device id string
+//   Device.findOneAndUpdate({deviceId: req},
+//     {
+//       date        : {$slice:[]}, // Unsolved
+//       moisture    : [],
+//       ph          : [],
+//       light       : [],
+//       humidity    : [],
+//       temperature : [],
+//       pressure    : [],
+//       noise       : []
+//     }, 
+//     {upsert: false}, (err) => {
+//       if (err) res.status(500).send(err);
+//       res.status(200).send('Conditions for ', req, ' recorded!');
+//   });
+// };
 
-// deviceSchema.methods.purge TODO
-  // destroy all environmental data from device
+deviceSchema.methods.purge = (req, res) => { // req should be a device id string
+  Device.findOneAndUpdate({deviceId: req}, {
+    $set: {
+      date        : [],
+      moisture    : [],
+      ph          : [],
+      light       : [],
+      humidity    : [],
+      temperature : [],
+      pressure    : [],
+      noise       : []
+    }
+  }, {upsert: false}, (err) => {
+    if (err) res.status(500).send(err);
+    res.status(200).send('Conditions for ', req, ' recorded!');
+  });
+};
 
 deviceSchema.methods.retrieve = (req, res) => {
   Device.findOne({deviceId: req}).exec((err, device) => { // req should be a device id string
