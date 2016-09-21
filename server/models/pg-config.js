@@ -1,4 +1,4 @@
-const pgp = require('pg-promise')({
+const pgp = require('pg-promise')({ //pg-promise->learn by examples: https://github.com/vitaly-t/pg-promise/wiki/Learn-by-Example#simple-select
     // Initialization Options
 });
 const connection = {
