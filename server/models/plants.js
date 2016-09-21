@@ -1,5 +1,3 @@
-           require('dotenv').config({path: '../../.env'});
-
 const db = require('./pg-config');
 const plantsData = require('../../src/records.js');// an array of arrays of plants data (107 records)
 
