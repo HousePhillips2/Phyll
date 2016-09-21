@@ -50,7 +50,7 @@ module.exports = {query_plant, store_plant};
 const db = require('./pg-config');
 const plantsData = require('../../src/records.js');// an array of arrays of plants data (107 records)
 
-db.any("select plant_name from api.plants", [true])// see below for field names in plants table
+db.any("select plant_name from api.plants")// see below for field names in plants table
   .then(function (data) {
     //console.log(data[0].plant_name);//print out the first plant name in the plants table
   })
