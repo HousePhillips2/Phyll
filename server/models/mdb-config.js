@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Device = require('./mdb-models/phyllos-device-data')
 const path = require('path');
 
 mongoose.connect(process.env.MONGO_DB_URI);
