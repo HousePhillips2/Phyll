@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// todo: header handler to share between methods
+// todo: header handler to share between all methods
 
 const deviceSchema = mongoose.Schema({
   deviceId    : String,
@@ -47,6 +47,7 @@ deviceSchema.statics.retrieve = (req, res) => {
   });
 };
 
+// TODO: limit content of returned list to static elements and most recent post in each array
 deviceSchema.statics.list = (req, res) => { // no arguments - returns all devices
   Device.find((err, devices)=> {
     if (err) res.status(500).send(err);
