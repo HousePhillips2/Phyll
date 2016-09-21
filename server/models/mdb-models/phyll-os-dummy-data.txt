@@ -3,7 +3,10 @@
       "deviceId":"test",
       "deviceOS":"shrug",
       "deviceAlert":false,
+<<<<<<< f58f4ea9ce8c605e4cc9903a22f985365a7b2073
       "location:"{lat:x, long:y, zipcode:z}"
+=======
+>>>>>>> [feature] Add routes for device pings
       "date":"today",
       "moisture":"wet",
       "ph":"meh",

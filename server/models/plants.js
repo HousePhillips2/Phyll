@@ -1,5 +1,9 @@
+<<<<<<< 04b651307640077d63587fd5d2a22ed298410670
 <<<<<<< 470215616f0d2c6eac64604545c03119c9a3c8f3
 =======
+=======
+<<<<<<< f58f4ea9ce8c605e4cc9903a22f985365a7b2073
+>>>>>>> [feature] Add routes for device pings
 <<<<<<< 5f598d0637864319328e8b087da0201d02b95931
            require('dotenv').config( {path: '../../.env'});
 >>>>>>> [Update] Insert database with 107 plants data; add basic query function in models
@@ -41,6 +45,8 @@ module.exports = {query_plant, store_plant};
 =======
            require('dotenv').config({path: '../../.env'});
 
+=======
+>>>>>>> [feature] Add routes for device pings
 const db = require('./pg-config');
 const plantsData = require('../../src/records.js');// an array of arrays of plants data (107 records)
 
