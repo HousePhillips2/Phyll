@@ -18,8 +18,7 @@ const garden        = require('./controllers/garden');
 const plantFacts    = require('./controllers/plant-facts');
 const plantData     = require('./controllers/plant-data');
 const scrape        = require('./helpers/scrape');
-const admins        = require('./controllers/admins');
-const api           = require('./controllers/api/api');
+const apiApp        = require('./controllers/api/api');
 
 
 // MOUNT middleware
@@ -33,9 +32,8 @@ app.use('/plantData', plantData);
 app.use('/plantFacts', plantFacts);
 app.get('/gather', (req, res) => {scrape(res);});
 app.use('/plantInput', plantData);
-app.use('/admins', admins);
 
-app.use('/api', api);
+app.use('/api', apiApp);
 
 // PHYLLOS ROUTES
 app.post('/io/record', (req, res) => {Device.record(req.body.status, res)});

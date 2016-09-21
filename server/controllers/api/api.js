@@ -10,13 +10,12 @@ const plantFacts  = require('./plant-facts');
 
 
 // ROUTE requests
-router.get('/admins', admins);
-router.get('/garden', garden);
+router.use('/admins', admins);
+router.use('/garden', garden);
 
 // TODO: SPLIT INTO SUB ROUTES?
-router.get('/plantData', plantData);
-router.post('/plantData', plantData);
-router.post('/plantFacts', plantFacts);
+router.use('/plantData', plantData);
+router.use('/plantFacts', plantFacts);
 
 
 module.exports = router;
