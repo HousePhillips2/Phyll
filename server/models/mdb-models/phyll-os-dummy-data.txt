@@ -1,0 +1,15 @@
+{  
+   "status":{  
+      "deviceId":"test",
+      "deviceOS":"shrug",
+      "deviceAlert":false,
+      "date":"today",
+      "moisture":"wet",
+      "ph":"meh",
+      "light":"bright",
+      "humidity":"dry",
+      "temperature":"hot",
+      "pressure":"severe",
+      "noise":"shh"
+   }
+}

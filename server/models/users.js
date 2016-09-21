@@ -1,7 +1,4 @@
-           require('dotenv').config({path: '../../.env'});
-
 const db = require('./pg-config');
-
 
 db.any("select user_name from api.users", [true])// see below for field names in plants table
   .then(function (data) {

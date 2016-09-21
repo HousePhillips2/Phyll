@@ -1,5 +1,3 @@
-           require('dotenv').config({path: '../../.env'});
-
 const db = require('./pg-config');
 
 
