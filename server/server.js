@@ -1,4 +1,3 @@
-
 ///////////////    NODE MODULES    ///////////////
                   require('dotenv').config();
 const express     = require('express');
@@ -75,7 +74,6 @@ app.get('/callback',
   }
 );
 
-
 // **********************************    MOVE ME! **********************************
 // app.use('/plantsLibrary', plantsLibrary);
 
@@ -92,5 +90,3 @@ let port = process.env.PORT || 8080;
 http.listen(port, function(){
   console.log('Up and running on ' + port);
 });
-
-

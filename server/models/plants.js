@@ -1,3 +1,4 @@
+<<<<<<< f58f4ea9ce8c605e4cc9903a22f985365a7b2073
 <<<<<<< 5f598d0637864319328e8b087da0201d02b95931
            require('dotenv').config( {path: '../../.env'});
 const db = require('./pg-config');
@@ -24,6 +25,8 @@ db.any("select plant_name from api.plants")// see below for field names in plant
 =======
            require('dotenv').config({path: '../../.env'});
 
+=======
+>>>>>>> [feature] Add routes for device pings
 const db = require('./pg-config');
 const plantsData = require('../../src/records.js');// an array of arrays of plants data (107 records)
 
