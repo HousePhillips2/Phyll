@@ -1954,7 +1954,8 @@ const plantsData = records.map((plant) => {
 
 
 
-module.exports = plantsData;
+
+module.exports = {plantsData, records};
 
 
 

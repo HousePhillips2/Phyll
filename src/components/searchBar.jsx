@@ -1,27 +1,89 @@
-import $ from 'jquery'; //(cannot find jquery in node modules when compiling) npm install jquery
+import Autosuggest from 'react-autosuggest';//Reference:  https://github.com/moroshko/react-autosuggest
+import './theme.css';
+import {records} from '../records.js';
 
-/*Come back: implement autosuggest bar*/
-/*Come back: position the search bar in the center of the page*/
+// Revisit to improve search performance and implement fetch plant data function for plantFacts component use
+const plantsName = records.map((plant) => {
+    return {name: plant.name};
+});
+
+function escapeRegexCharacters(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function getSuggestions(value) {
+  const escapedValue = escapeRegexCharacters(value.trim());
+  
+  if (escapedValue === '') {
+    return [];
+  }
+
+  const regex = new RegExp('^' + escapedValue, 'i');
+
+  return plantsName.filter(language => regex.test(language.name));
+}
+
+function getSuggestionValue(suggestion) {
+  return suggestion.name;
+}
+
+function renderSuggestion(suggestion) {
+  return (
+    <span>{suggestion.name}</span>
+  );
+}
 
 export default class SearchBar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <div style={{margin:'50px'}}>
-        <form id="searchform" onSubmit={this._handleSubmit.bind(this)}>
-          <input type="text" id="searchterm" className="form-control" placeholder="Find My Plant" ref={input => this._plant = input}/>
-          <button className="btn btn-default" style={{color:'green'}} type="submit" id="search" >Search</button>
-        </form>
-      </div>
-    );
-  }
-  _handleSubmit(e){
-    e.preventDefault();
-    console.log(this._plant.value, "this typein in SearchBar");
-    this.props.fetchPlant(this._plant.value);
-    this._plant.value = '';
+  constructor() {
+    super();
+
+    this.state = {
+      value: '',
+      suggestions: []
+    };    
   }
 
+  onChange (event, { newValue, method }) {
+    this.setState({
+      value: newValue
+    });
+  };
+  
+  onSuggestionsFetchRequested ({ value }) {
+    this.setState({
+      suggestions: getSuggestions(value)
+    });
+  };
+
+  onSuggestionsClearRequested () {
+    this.setState({
+      suggestions: []
+    });
+  };
+  
+  onSuggestionSelected () {
+    this.setState({
+      value: ''
+    });
+  };
+
+  render() {
+    const { value, suggestions } = this.state;
+    const inputProps = {
+      placeholder: "Find about your plants: ",
+      value,
+      onChange: this.onChange.bind(this)
+    };
+
+    return (
+      <Autosuggest
+        suggestions={suggestions}
+        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
+        onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
+        getSuggestionValue={getSuggestionValue}
+        renderSuggestion={renderSuggestion}
+        onSuggestionSelected={this.onSuggestionSelected.bind(this)}
+        inputProps={inputProps} />
+    );
+  }
 }
