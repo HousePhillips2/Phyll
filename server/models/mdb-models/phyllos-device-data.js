@@ -47,7 +47,7 @@ deviceSchema.statics.retrieve = (req, res) => {
   });
 };
 
-// Returns a list of all devices and their most recent environmental data
+// Return a list of all devices and their most recent environmental data
 deviceSchema.statics.list = (req, res) => { // no arguments
   Device.find({}, {
     deviceId    : 1,
@@ -64,7 +64,7 @@ deviceSchema.statics.list = (req, res) => { // no arguments
   });
 };
 
-// Purges all but the 1k most recent posts from a device
+// Purge all but the 1k most recent posts from a device
 deviceSchema.statics.prune = (req, res) => { // query with {deviceId: "id to be found"}
   const trim = {$each: [], $slice: -1000}
   Device.findOneAndUpdate({deviceId: req}, {
@@ -84,6 +84,7 @@ deviceSchema.statics.prune = (req, res) => { // query with {deviceId: "id to be 
   });
 };
 
+// Empty all data arrays for a registered device
 deviceSchema.statics.purge = (req, res) => { // query with {deviceId: "id to be found", confirm: "yes" or "no"}
   if (req.confirm === "yes") {
     Device.findOneAndUpdate({deviceId: req.deviceId}, {
@@ -106,6 +107,7 @@ deviceSchema.statics.purge = (req, res) => { // query with {deviceId: "id to be 
   }
 };
 
+// Delete a registered device
 deviceSchema.statics.discard = (req, res) => { // query with {deviceId: "id to be found", confirm: "yes" or "no"}
   if (req.confirm === 'yes') {
     Device.findOneAndRemove({deviceId: req.deviceId}, (err) => {
