@@ -58,6 +58,7 @@ export default class SearchBar extends React.Component {
   };
 
   onSuggestionsClearRequested () {
+    console.log(this.state.suggestions,"before clear");
     this.setState({
       suggestions: []
     });
