@@ -1,37 +1,36 @@
 import { ajax } from 'jquery';
 
-export default class userCard extends React.component {
-  constructor(props) {
+export default class userCard extends React.Component {
+
+  constructor() {
     super();
-    this.state.admins = {
-      admins: [],
-      syle: {
-        width: '150px',
-        height: '180px'
-      }
-    };
+    this.state={admins:[]};//initate state
   }
-  componentWillMount(){
+
+  componentWillMount() {
     this._getAdmins();
   }
+
   render() {
-    const admin = this.state.admins[0];
-    const style = this.state.style;
+    const admin = this.state.admins[0] || { plants: [] };
+    console.log('admin:', admin);
+
     return(
       // TODO: DEFINE CSS styles for user card
       // TODO: CHANGE instances of admin to user
-      <div class={ 'user-card' }>
-        <div class={ 'user-card image' }>
-          <img style={ {style} } src={ admin.user_img }/>
+      <div className={ 'user-card' }>
+        <div className={ 'user-card image' }>
+          <img style={ {width: '150px', heigh: '180px'} } src={ admin.user_img }/>
         </div>
-        <div class={ 'user-card information' }>
+        <div className={ 'user-card information' }>
           <li style={ {display:'inline-block',margin:'5px'} }>{`${ admin.User }`}</li>
         </div>
-        <div class={ 'user-card plants' }>
+        <div className={ 'user-card plants' }>
           { admin.plants.map( plant => {
+            // TODO: REMOVE return statement
             return(
-              <div class={ 'plant' }>
-                <img style={ {style} } src={ plant.plant_img }/>
+              <div className={ 'plant' }>
+                <img style={ {width: '150px', heigh: '180px'} } src={ plant.img }/>
                 <li>{`${ plant.name }`}</li>
               </div>
             );
@@ -40,14 +39,16 @@ export default class userCard extends React.component {
       </div>
     );
   }
+
   _getAdmins() {
     // TODO: DELEGATE GET request to senior component
     ajax({
       method: 'GET',
-      url: 'api/admins',
+      url: 'api/admin',
 
-      success: data => {
-        this.setState({ data });
+      success: admins => {
+        console.log(admins);
+        this.setState( {admins} );
       },
 
       error: err => {
