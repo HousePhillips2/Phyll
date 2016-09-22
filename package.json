@@ -8,7 +8,7 @@
   "main": "server/server.js",
   "scripts": {
     "postinstall": "gulp webpack",
-    "start": "gulp start",
+    "start": "node server/server.js",
     "test": "gulp mochaSuite",
     "mocha": "mocha --compilers js:babel-core/register --require ./test/mocha/test-helper.js  --recursive"
   },
