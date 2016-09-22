@@ -51,6 +51,7 @@ deviceSchema.statics.retrieve = (req, res) => {
 deviceSchema.statics.list = (req, res) => { // no arguments
   Device.find({}, {
     deviceId    : 1,
+    date        : {$slice: -1},
     moisture    : {$slice: -1},
     ph          : {$slice: -1},
     light       : {$slice: -1},
