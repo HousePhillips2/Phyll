@@ -12,15 +12,17 @@ function escapeRegexCharacters(str) {
 }
 
 function getSuggestions(value) {
-  const escapedValue = escapeRegexCharacters(value.trim());
+  const escapedValue = escapeRegexCharacters(value.trim().toLowerCase());
+
   
   if (escapedValue === '') {
     return [];
   }
 
-  const regex = new RegExp('^' + escapedValue, 'i');
+  //const regex = new RegExp('^' + escapedValue, 'i');
+  const regex = new RegExp(escapedValue);
 
-  return plantsName.filter(language => regex.test(language.name));
+  return plantsName.filter(plant => regex.test(plant.name.toLowerCase()));
 }
 
 function getSuggestionValue(suggestion) {
