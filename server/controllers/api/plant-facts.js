@@ -8,11 +8,11 @@ router.post('/', (req, res) => {
   let name = req.body.plant;
   db.any("select * from api.plants where plant_name = $1",[name])// see below for field names in plants table
   .then(function (data) {
-    console.log(data);
+    //console.log(data);
     res.send(data);
   })
   .catch(function (error) {
-      console.log(error);
+    console.log(error);
   });
 });
 

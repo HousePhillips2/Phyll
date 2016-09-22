@@ -76,7 +76,7 @@ export default class SearchBar extends React.Component {
     if (autosuggest !== null) {
       this.input = autosuggest.input;
       let selected = autosuggest.input.value;
-      console.log(autosuggest.input.value,"input value");
+      //console.log(autosuggest.input.value,"input value");
       this.props.fetchPlant(selected);
     }
   }

@@ -26,7 +26,7 @@ export default class AddPlant extends React.Component {
   }
 
   _fetchPlant(plant){
-    console.log(plant, "inside addMyPlant");
+    //console.log(plant, "inside addMyPlant");
     $.ajax({
       method: 'POST',
       url: '/api/plantFacts',
@@ -34,8 +34,9 @@ export default class AddPlant extends React.Component {
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({plant:plant}),
       success: (plantFacts) => {
-        //console.log(plantFacts, "plantFacts");
-        this.setState({plantFacts:plantFacts[0]});
+        if(plantFacts.length!==0){
+          this.setState({plantFacts:plantFacts[0]});
+        }
       }
     });
   }
