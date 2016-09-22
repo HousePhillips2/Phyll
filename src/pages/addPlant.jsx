@@ -20,7 +20,7 @@ export default class AddPlant extends React.Component {
     }else{
       return (
         <div>
-          <SearchBar fetchPlant={this._fetchPlant.bind(this)}/>
+          <SearchBar />
         </div>
       );
     }
