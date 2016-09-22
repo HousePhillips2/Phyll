@@ -47,17 +47,26 @@ deviceSchema.statics.retrieve = (req, res) => {
   });
 };
 
-// TODO: limit content of returned list to static elements and most recent post in each array
-deviceSchema.statics.list = (req, res) => { // no arguments - returns all devices
-  Device.find((err, devices)=> {
+// Returns a list of all devices and their most recent environmental data
+deviceSchema.statics.list = (req, res) => { // no arguments
+  Device.find({}, {
+    deviceId    : 1,
+    moisture    : {$slice: -1},
+    ph          : {$slice: -1},
+    light       : {$slice: -1},
+    humidity    : {$slice: -1},
+    temperature : {$slice: -1},
+    pressure    : {$slice: -1},
+    noise       : {$slice: -1}
+  }, (err, devices)=> {
     if (err) res.status(500).send(err);
     else res.status(200).send(devices);
   });
 };
 
-// Purges all but the 10k most recent posts from a device
+// Purges all but the 1k most recent posts from a device
 deviceSchema.statics.prune = (req, res) => { // query with {deviceId: "id to be found"}
-  const trim = {$each: [], $slice: -10000}
+  const trim = {$each: [], $slice: -1000}
   Device.findOneAndUpdate({deviceId: req}, {
     $push: {
       date        : trim,
