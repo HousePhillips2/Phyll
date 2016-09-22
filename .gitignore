@@ -5,3 +5,5 @@ logs
 *.log
 dist
 .DS_Store
+RTEllipsoidFit
+RTIMULib.ini
