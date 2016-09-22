@@ -63,11 +63,23 @@ export default class SearchBar extends React.Component {
     });
   };
   
-  onSuggestionSelected () {
-    this.setState({
-      value: ''
-    });
-  };
+  // onSuggestionSelected () {
+  //   console.log(this.state,"selected value");
+  //   //this.props.fetchPlant(this.state.value);
+  //   this.setState({
+  //     value: ''
+  //   });
+  // };
+
+  storeInputReference (autosuggest) {
+    if (autosuggest !== null) {
+      this.input = autosuggest.input;
+      let selected = autosuggest.input.value;
+      console.log(autosuggest.input.value,"input value");
+      this.props.fetchPlant(selected);
+    }
+  }
+  
 
   render() {
     const { value, suggestions } = this.state;
@@ -84,8 +96,8 @@ export default class SearchBar extends React.Component {
         onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
         getSuggestionValue={getSuggestionValue}
         renderSuggestion={renderSuggestion}
-        onSuggestionSelected={this.onSuggestionSelected.bind(this)}
-        inputProps={inputProps} />
+        inputProps={inputProps}
+        ref={this.storeInputReference.bind(this)} />
     );
   }
 }

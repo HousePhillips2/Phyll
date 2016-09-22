@@ -5,22 +5,21 @@ import PlantForm from '../components/plantForm.jsx';
 export default class AddPlant extends React.Component {
   constructor() {
     super();
-    this.state={plantFacts:{}};//initate state
+    this.state={plantFacts:[]};//initate state
   }
 
   render() {
-    let length = Object.keys(this.state.plantFacts).length;
-    if (length!==0){
+    if (this.state.plantFacts.length!==0){
       return (
         <div>
-          <PlantForm plantName={this.state.plantFacts.Common_Name} />
+          <PlantForm plantName={this.state.plantFacts.plantName} />
           <PlantFacts plantFacts = {this.state.plantFacts}/>
         </div>
       );
     }else{
       return (
         <div>
-          <SearchBar />
+          <SearchBar fetchPlant={this._fetchPlant.bind(this)}/>
         </div>
       );
     }
@@ -30,13 +29,13 @@ export default class AddPlant extends React.Component {
     console.log(plant, "inside addMyPlant");
     $.ajax({
       method: 'POST',
-      url: '/plantFacts',
+      url: '/api/plantFacts',
       json: true,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({plant:plant}),
       success: (plantFacts) => {
-        console.log(plantFacts, "plantFacts");
-        this.setState({plantFacts: plantFacts[0]});
+        //console.log(plantFacts, "plantFacts");
+        this.setState({plantFacts:plantFacts[0]});
       }
     });
   }
