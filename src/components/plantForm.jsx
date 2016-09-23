@@ -39,7 +39,7 @@ export default class PlantForm extends React.Component {
     let plant_img ='http://cdn1.bigcommerce.com/server4100/6ys4nr/product_images/uploaded_images/money-tree-bonsai-tree.jpg';
     //later on, use Oauth id to get user info (i.e. user_name, oauth_key, email, img) and send it along with the ajax request below;
     this._addPlant(this._plantName.value, this._plantNickName.value, this.props.plantId,this._deviceId.value, user_name,oauth_key,email,user_img,plant_img);
-    console.log(this._plantName.value, this._plantNickName.value, this.props.plantId,this._deviceId,'inside add plant input submit');
+    //console.log(this._plantName.value, this._plantNickName.value, this.props.plantId,this._deviceId,'inside add plant input submit');
 
     this.context.router.push('/myDashboard');
   }
