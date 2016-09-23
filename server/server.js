@@ -54,8 +54,7 @@ const apiApp      = require('./controllers/api/api');
 const ioApp       = require('./controllers/io/io');
 
 // **********************************    MOVE ME! **********************************
-const plantsLibrary = require('./controllers/plants-library');
-
+// const plantsLibrary = require('./controllers/api/plants-library');
 
 // MOUNT middleware
 app.use(express.static('dist'));
@@ -68,7 +67,7 @@ app.use('/api', apiApp);
 app.use('/io', ioApp);
 
 // **********************************    MOVE ME! **********************************
-app.use('/plantsLibrary', plantsLibrary);
+// app.use('/plantsLibrary', plantsLibrary);
 
 
 // static files route

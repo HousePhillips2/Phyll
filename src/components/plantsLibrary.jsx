@@ -31,7 +31,7 @@ export default class Layout extends React.Component {
   _getPlants() {
     $.ajax({
       method: 'GET',
-      url: '/plantsLibrary',
+      url: '/api/plantsLibrary',
       success: (plantsLibrary) => {
         this.setState({plantsLibrary});
       }
