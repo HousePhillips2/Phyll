@@ -3,6 +3,7 @@
       "deviceId":"test",
       "deviceOS":"shrug",
       "deviceAlert":false,
+      "location:"{lat:x, long:y, zipcode:z}"
       "date":"today",
       "moisture":"wet",
       "ph":"meh",

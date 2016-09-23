@@ -6,14 +6,19 @@ const deviceSchema = mongoose.Schema({
   deviceId    : String,
   deviceOS    : String,
   deviceAlert : {type: Boolean, default: false},
+  deviceLoc   : {
+    lat: {type: String},
+    long: {type: String},
+    zipcode: {type: String}
+  },
   date        : [],
   moisture    : [],
-  ph          : [],
-  light       : [],
-  humidity    : [],
-  temperature : [],
-  pressure    : [],
-  noise       : []
+  light       : []
+  // humidity    : [],
+  // ph          : [],
+  // temperature : [],
+  // pressure    : [],
+  // noise       : []
 });
 
 // Update environmental data for device or add new device with data
