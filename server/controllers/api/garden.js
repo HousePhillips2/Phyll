@@ -13,7 +13,6 @@ router.get('/', function(req, res) {
   // ];
   db.any("select * from api.users")// see below for field names in plants table
   .then(function (data) {
-    console.log(data);
     res.send(data);
   })
   .catch(function (error) {

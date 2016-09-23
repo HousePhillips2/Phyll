@@ -7,11 +7,21 @@ router.post('/', (req, res) => {
   
   let name = req.body.plant;
   db.any("select * from api.plants where plant_name = $1",[name])// see below for field names in plants table
-  .then(function (data) {
+  .then((data) => {
     //console.log(data);
     res.send(data);
   })
-  .catch(function (error) {
+  .catch((error)=> {
+    console.log(error);
+  });
+});
+
+router.get('/', (req,res) => {
+  db.any('select plant_name from api.plants')
+  .then((data) =>{
+    res.send(data);
+  })
+  .catch((error) =>{
     console.log(error);
   });
 });

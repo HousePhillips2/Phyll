@@ -23,7 +23,7 @@ export default class MyDashboard extends React.Component {
   _getData() {
     $.ajax({
       method: 'GET',
-      url: '/plantData',
+      url: 'api/plantData',
       success: (plant) => {
         this.setState({plant});
       }
