@@ -13,9 +13,9 @@ export default class Layout extends React.Component {
         <h1>Make The World A Better Place</h1>
         <div>{friends.map(ppl=>
           <li>
-            <img style={{width: '150px', heigh: '180px'}} src={ppl.user_img}/>
+            <img style={{width: '150px', heigh: '180px'}} src={ppl.img}/>
             <div style={{display:'inline-block'}}>
-              <li style={{display:'inline-block',margin:'5px'}}>{`${ppl.User}: `}</li>
+              <li style={{display:'inline-block',margin:'5px'}}>{`${ppl.user_name}: `}</li>
               <li style={{display:'inline-block',margin:'5px'}}>{ppl.plants}</li>
             </div>
           </li>)}
@@ -26,7 +26,7 @@ export default class Layout extends React.Component {
   _getFriends() {
     $.ajax({
       method: 'GET',
-      url: '/garden',
+      url: '/api/garden',
       success: (friends) => {
         this.setState({friends});
       }

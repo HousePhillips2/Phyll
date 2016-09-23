@@ -12,15 +12,17 @@ function escapeRegexCharacters(str) {
 }
 
 function getSuggestions(value) {
-  const escapedValue = escapeRegexCharacters(value.trim());
+  const escapedValue = escapeRegexCharacters(value.trim().toLowerCase());
+
   
   if (escapedValue === '') {
     return [];
   }
 
-  const regex = new RegExp('^' + escapedValue, 'i');
+  //const regex = new RegExp('^' + escapedValue, 'i');
+  const regex = new RegExp(escapedValue);
 
-  return plantsName.filter(language => regex.test(language.name));
+  return plantsName.filter(plant => regex.test(plant.name.toLowerCase()));
 }
 
 function getSuggestionValue(suggestion) {
@@ -56,16 +58,29 @@ export default class SearchBar extends React.Component {
   };
 
   onSuggestionsClearRequested () {
+    console.log(this.state.suggestions,"before clear");
     this.setState({
       suggestions: []
     });
   };
   
-  onSuggestionSelected () {
-    this.setState({
-      value: ''
-    });
-  };
+  // onSuggestionSelected () {
+  //   console.log(this.state,"selected value");
+  //   //this.props.fetchPlant(this.state.value);
+  //   this.setState({
+  //     value: ''
+  //   });
+  // };
+
+  storeInputReference (autosuggest) {
+    if (autosuggest !== null) {
+      this.input = autosuggest.input;
+      let selected = autosuggest.input.value;
+      //console.log(autosuggest.input.value,"input value");
+      this.props.fetchPlant(selected);
+    }
+  }
+  
 
   render() {
     const { value, suggestions } = this.state;
@@ -82,8 +97,8 @@ export default class SearchBar extends React.Component {
         onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
         getSuggestionValue={getSuggestionValue}
         renderSuggestion={renderSuggestion}
-        onSuggestionSelected={this.onSuggestionSelected.bind(this)}
-        inputProps={inputProps} />
+        inputProps={inputProps}
+        ref={this.storeInputReference.bind(this)} />
     );
   }
 }
