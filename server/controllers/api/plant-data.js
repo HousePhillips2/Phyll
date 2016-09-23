@@ -28,7 +28,8 @@ router.post('/', (req, res) => {
   let plant_img = req.body.plant_img;
   console.log(req.body);
   //to add user plant input into database
-
+  //db.one with return result;
+  //db.none with no return result;
   db.one("insert into api.users(user_name, email, oauth_key,img) values($1, $2, $3, $4) returning id", [user_name, email,oauth_key,user_img])
     .then((user_data) => {
         let user_id = user_data.id; // returning user id from user table
