@@ -5,9 +5,12 @@ const app         = express();
 const bodyParser  = require('body-parser');
 
 //////////////    SERVER MODULES    //////////////
-const scrape      = require('./helpers/scrape');
+
 const apiApp      = require('./controllers/api/api');
 const ioApp       = require('./controllers/io/io');
+
+// **********************************    MOVE ME! **********************************
+const plantsLibrary = require('./controllers/plants-library');
 
 
 // MOUNT middleware
@@ -19,6 +22,10 @@ app.use('/api', apiApp);
 
 // PHYLLOS sub-app
 app.use('/io', ioApp);
+
+// **********************************    MOVE ME! **********************************
+app.use('/plantsLibrary', plantsLibrary);
+
 
 // static files route
 app.get('/', (req, res) => res.redirect('/index.html'));

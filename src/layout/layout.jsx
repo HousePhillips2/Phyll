@@ -10,13 +10,16 @@ export default class Layout extends React.Component {
               <a className="nav-link" href="#"><em>Phyll </em><span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to='/addPlant' ><strong>Add My Plant</strong></Link>
+              <Link className="nav-link" to='/addPlant' ><strong>Add My plant</strong></Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to='/myDashboard'><strong>My Dashboard</strong></Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to='/garden'><strong>iGarden</strong></Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to='/plantsLibrary'><strong>Conservatory</strong></Link>
             </li>
           </ul>
         </nav>

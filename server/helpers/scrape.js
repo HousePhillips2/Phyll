@@ -137,35 +137,37 @@ const scrape = (res) => {
           const plant = {
           id: counter,
           name: "",
-          family: "",
-          lightS: "",
-          lightL: "",
-          waterS: "",
-          waterL: "",
-          soilS: "",
-          soilL: "",
-          fertilizerS: "",
-          fertilizerL: "",
-          repotting: "",
-          humidityS: "",
-          humidityL: "",
-          poisonousS: false,
-          poisonousL: "",
-          type: type
+          // family: "",
+          // lightS: "",
+          // lightL: "",
+          // waterS: "",
+          // waterL: "",
+          // soilS: "",
+          // soilL: "",
+          // fertilizerS: "",
+          // fertilizerL: "",
+          // repotting: "",
+          // humidityS: "",
+          // humidityL: "",
+          // poisonousS: false,
+          // poisonousL: "",
+          // type: type,
+          img: "",
           };
 
           const plantDetails = [];
           const distribute = $('tbody').last().find('tr').find('td').each(function(){ plantDetails.push($(this).text()) } );
 
-          plant.lightL = plantDetails[3];
-          plant.waterL = plantDetails[5];
-          plant.soilL = plantDetails[7];
-          plant.fertilizerL = plantDetails[9];
-          plant.repotting = plantDetails[11];
-          plant.humidityL = plantDetails[13];
+          // plant.lightL = plantDetails[3];
+          // plant.waterL = plantDetails[5];
+          // plant.soilL = plantDetails[7];
+          // plant.fertilizerL = plantDetails[9];
+          // plant.repotting = plantDetails[11];
+          // plant.humidityL = plantDetails[13];
           plant.name = $('.title-xl').text();
-          plant.family = $('.heading-page').text();
-          plant.poisonousL = $('b:contains("Poisonous"), b:contains("Poisionous")').parent().next().text();
+          // plant.family = $('.heading-page').text();
+          // plant.poisonousL = $('b:contains("Poisonous"), b:contains("Poisionous")').parent().next().text();
+          plant.img = $('div.col-md-12').find('img').first().attr('src');
 
            data.push(plant);
            counter++;
