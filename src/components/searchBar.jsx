@@ -1,37 +1,31 @@
 import Autosuggest from 'react-autosuggest';//Reference:  https://github.com/moroshko/react-autosuggest
 import './theme.css';
-import {records} from '../records.js';
 
-// Revisit to improve search performance and implement fetch plant data function for plantFacts component use
-const plantsName = records.map((plant) => {
-    return {name: plant.name};
-});
+// const plantsName = records.map((plant) => {
+//     return {name: plant.name};
+// });
 
 function escapeRegexCharacters(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-function getSuggestions(value) {
-  const escapedValue = escapeRegexCharacters(value.trim().toLowerCase());
-
-  
-  if (escapedValue === '') {
-    return [];
-  }
-
-  //const regex = new RegExp('^' + escapedValue, 'i');
-  const regex = new RegExp(escapedValue);
-
-  return plantsName.filter(plant => regex.test(plant.name.toLowerCase()));
-}
+// function getSuggestions(value) {
+//   const escapedValue = escapeRegexCharacters(value.trim().toLowerCase());
+//   if (escapedValue === '') {
+//     return [];
+//   }
+//   //const regex = new RegExp('^' + escapedValue, 'i');
+//   const regex = new RegExp(escapedValue);
+//   return plantsName.filter(plant => regex.test(plant.plant_name.toLowerCase()));
+// }
 
 function getSuggestionValue(suggestion) {
-  return suggestion.name;
+  return suggestion.plant_name;
 }
 
 function renderSuggestion(suggestion) {
   return (
-    <span>{suggestion.name}</span>
+    <span>{suggestion.plant_name}</span>
   );
 }
 
@@ -41,9 +35,25 @@ export default class SearchBar extends React.Component {
 
     this.state = {
       value: '',
-      suggestions: []
+      suggestions: [],
+      plantsName:[]
     };    
   }
+
+  componentWillMount() {
+    this._getPlantsName();
+  }
+  
+  getSuggestions(value) {
+  const escapedValue = escapeRegexCharacters(value.trim().toLowerCase()); 
+  if (escapedValue === '') {
+    return [];
+  }
+  //const regex = new RegExp('^' + escapedValue, 'i');
+  const regex = new RegExp(escapedValue);
+  const plantsName = this.state.plantsName;
+  return plantsName.filter(plant => regex.test(plant.plant_name.toLowerCase()));
+  } 
 
   onChange (event, { newValue, method }) {
     this.setState({
@@ -51,14 +61,14 @@ export default class SearchBar extends React.Component {
     });
   };
   
-  onSuggestionsFetchRequested ({ value }) {
+  onSuggestionsFetchRequested ({value}) {
     this.setState({
-      suggestions: getSuggestions(value)
+      suggestions: this.getSuggestions(value)
     });
   };
 
   onSuggestionsClearRequested () {
-    console.log(this.state.suggestions,"before clear");
+    //console.log(this.state.suggestions,"before clear");
     this.setState({
       suggestions: []
     });
@@ -100,5 +110,14 @@ export default class SearchBar extends React.Component {
         inputProps={inputProps}
         ref={this.storeInputReference.bind(this)} />
     );
+  }
+    _getPlantsName() {
+    $.ajax({
+      method: 'GET',
+      url: '/api/plantFacts',
+      success: (plantsName) => {
+        this.setState({plantsName});
+      }
+    });
   }
 }

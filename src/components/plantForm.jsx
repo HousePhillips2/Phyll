@@ -5,7 +5,7 @@ export default class PlantForm extends React.Component {
     super(props);
   }
   render() {
-    console.log(this.props.plantName,"plant name inside PlantForm");
+    //console.log(this.props.plantName,"plant name inside PlantForm");
     return (
       <div style={{margin:'50px', border: '2px'}}>
         <form id="searchform" onSubmit={this._handleSubmit.bind(this)}>
@@ -51,7 +51,7 @@ export default class PlantForm extends React.Component {
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({plantName, plantNickName,plantId,deviceId,user_name, oauth_key,email, user_img, plant_img}),
       success: (data) => {
-        console.log('redirect me to dashboard');
+        //console.log('redirect me to dashboard');
       }
     });
   }
