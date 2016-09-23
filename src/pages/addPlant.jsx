@@ -12,7 +12,7 @@ export default class AddPlant extends React.Component {
     if (this.state.plantFacts.length!==0){
       return (
         <div>
-          <PlantForm plantName={this.state.plantFacts.plantName} />
+          <PlantForm plantName={this.state.plantFacts.plant_name} plantId={this.state.plantFacts.id}/>
           <PlantFacts plantFacts = {this.state.plantFacts}/>
         </div>
       );
