@@ -17,9 +17,11 @@ db.none("insert into api.users (user_name) values ('Marvin Maio')")
   });
 
   /*
-  Table: users.js
+  Table: api.users
+    id:
     user_name:
     email:
-    oauth_key 
+    oauth_key:
+    img:
   */
   
