@@ -6,6 +6,7 @@ const HtmlWebpackPlugin     = require('html-webpack-plugin');
 const ExtractTextPlugin     = require('extract-text-webpack-plugin');
 const NpmInstallPlugin      = require('npm-install-webpack-plugin');
 const autoprefixer          = require('autoprefixer');
+const validate              = require('webpack-validator');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const nodeModulesPath       = path.resolve(__dirname, 'node_modules');
 
@@ -81,7 +82,8 @@ const common = {
     }),
     new Webpack.ProvidePlugin({
       $: "jquery",
-      jQuery: "jquery"
+      jQuery: "jquery",
+      Tether: 'tether'
     }),
   ],
   postcss: function() {
@@ -116,3 +118,5 @@ if (TARGET === 'build') {
     },
   });
 }
+
+module.exports = validate(common);
