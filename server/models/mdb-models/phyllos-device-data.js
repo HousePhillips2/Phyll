@@ -27,7 +27,12 @@ deviceSchema.statics.record = (req, res) => { // req should be {status: {DEVICE 
     $set: {
       deviceId    : req.deviceId,
       deviceOS    : req.deviceOS,
-      deviceAlert : req.deviceAlert
+      deviceAlert : req.deviceAlert,
+      deviceLoc: {
+        lat: req.location.lat,
+        long: req.location.long,
+        zipcode: req.location.zipcode
+      },
     }, 
     $push: {
       date        : new Date(),
@@ -56,6 +61,7 @@ deviceSchema.statics.retrieve = (req, res) => {
 deviceSchema.statics.list = (req, res) => { // no arguments
   Device.find({}, {
     deviceId    : 1,
+    deviceLoc   : 1,
     date        : {$slice: -1},
     moisture    : {$slice: -1},
     ph          : {$slice: -1},
