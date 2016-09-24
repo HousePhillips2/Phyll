@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import $ from 'jquery';
 import Autosuggest from 'react-autosuggest';//Reference:  https://github.com/moroshko/react-autosuggest
 import './theme.css';
-import {records} from '../records.js';
 
 // Revisit to improve search performance and implement fetch plant data function for plantFacts component use
 const plantsName = records.map((plant) => {

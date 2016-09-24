@@ -6,11 +6,11 @@ import Search from '../components/searchBar.jsx';
 export default class Home extends React.Component {
   constructor() {
     super();
-    this.state = { admin: [], records: [] };
+    this.state = { admin: [], plants: [] };
   }
 
   componentWillMount() {
-    this._getRecords();
+    this._getPlants();
     this._getAdmin();
   }
 
@@ -33,7 +33,7 @@ export default class Home extends React.Component {
         </nav>
         <div>
           <div className={ 'home-banner' }>
-            <Search records={ this.state.records }/>
+            <Search/>
             <img src="http://ghk.h-cdn.co/assets/15/33/980x490/landscape-1439490128-plants.jpg"/>
           </div>
         </div>
@@ -44,12 +44,12 @@ export default class Home extends React.Component {
     );
   }
 
-  _getRecords() {
+  _getPlants() {
     ajax({
       method: 'GET',
-      url: '/api/admin',
-      success: (admin) => {
-        this.setState({ admin });
+      url: '/api/plantFacts',
+      success: (plants) => {
+        this.setState({ plants });
       },
       error: (err) => {
         throw new Error(err);
