@@ -1,9 +1,6 @@
 import React from 'react';
-<<<<<<< bee7bb5e257545ee6f1dc51fb1d15e114f434a4a
 import $ from 'jquery';
 
-=======
->>>>>>> [bug out] Add another missing dependency
 export default class Layout extends React.Component {
   constructor() {
     super();
