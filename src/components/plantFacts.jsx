@@ -10,6 +10,7 @@ export default class PlantFacts extends React.Component {
       return (
        <div className='row' style={{margin:'50px'}}>
             <div className='col-xs-10'>
+              <img style={{width: '50%'}} src={plantFacts.img}/>
               <div>{keys.map(key=> <li>{`${key}: ${plantFacts[key]}`}</li>)}</div>
             </div>
        </div>
