@@ -32,6 +32,8 @@ function renderSuggestion(suggestion) {
   );
 }
 
+let counter=0;
+
 export default class SearchBar extends React.Component {
   constructor() {
     super();
@@ -39,12 +41,27 @@ export default class SearchBar extends React.Component {
     this.state = {
       value: '',
       suggestions: [],
-      plantsName:[]
+      plantsName:[],
+      placeholder:''
     };    
   }
 
   componentWillMount() {
     this._getPlantsName();
+  }
+
+  componentDidMount() {
+    this._timer = setInterval(() => this.counter(), 800);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._timer);
+  }
+
+  counter() {
+    counter = counter>100? 0: counter+1;
+    let name = this.state.plantsName[counter].plant_name
+    this.setState({placeholder:`Find out your plant: ${name}`});
   }
   
   getSuggestions(value) {
@@ -96,12 +113,13 @@ export default class SearchBar extends React.Component {
   
 
   render() {
-    const { value, suggestions } = this.state;
+    const { value, suggestions, placeholder} = this.state;
     const inputProps = {
-      placeholder: "Find about your plants: ",
+      placeholder,
       value,
       onChange: this.onChange.bind(this)
     };
+
 
     return (
       <Autosuggest
@@ -114,11 +132,12 @@ export default class SearchBar extends React.Component {
         ref={this.storeInputReference.bind(this)} />
     );
   }
-    _getPlantsName() {
+  _getPlantsName() {
     $.ajax({
       method: 'GET',
       url: '/api/plantFacts',
       success: (plantsName) => {
+        //console.log(plantsName);
         this.setState({plantsName});
       }
     });

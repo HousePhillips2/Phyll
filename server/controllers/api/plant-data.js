@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
   let user_img = req.body.user_img;
   let deviceId = req.body.deviceId;
   let plant_img = req.body.plant_img;
-  console.log(req.body);
+  //console.log(req.body);
   //to add user plant input into database
   //db.one with return result;
   //db.none with no return result;
