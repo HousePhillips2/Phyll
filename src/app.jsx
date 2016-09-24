@@ -6,13 +6,15 @@ import Garden from './pages/garden.jsx';
 import MyDashboard from './pages/dashBoard.jsx';
 import AddPlant from './pages/addPlant.jsx';
 import plantsLibrary from './components/plantsLibrary.jsx';
+import Home from './views/home.jsx';
 
 // ES6 CLASS SYNTAX TO CREATE A REACT COMPONENT
 class MyApp extends React.Component {
  render() {
    return (
     <Router history={hashHistory}>
-    <Redirect from='/' to='/addPlant'/>
+      {/* <Route path='/' component={ Home }/> */}
+      <Redirect from='/' to='/addPlant'/>
       <Route path='/' component={Layout}>
         <Route path='addPlant' component={AddPlant} />
         <Route path='myDashboard' component={MyDashboard} />
