@@ -11,28 +11,24 @@ const nodeModulesPath            = path.resolve(__dirname, 'node_modules');
 const buildPath                  = path.resolve(__dirname, 'dist');
 const mainPath                   = path.resolve(__dirname, 'src', 'app.jsx');
 
-const config = {
+var appName = 'app';
+var outputFile = appName + '.js';
 
-  entry: [
-    mainPath
-    ],
+var config = {
+  entry: mainPath,
+  devtool: 'source-map',
   output: {
     path: buildPath,
-    filename: 'app.js',
-    publicPath: ''
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
+    filename: outputFile,
+    publicPath: '/'
   },
   module: {
-    loaders: [{
-      test: /\.jsx$|\.js$/,
-      loader: 'babel',
-      query: {
-        presets:['es2015','react', 'stage-0']
+    loaders: [
+      {
+        test: /(\.jsx|\.js)$/,
+        loader: 'babel',
+        exclude: /(node_modules|bower_components)/
       },
-      exclude: [nodeModulesPath]
-    },
     {
       test: /\.css$/,
       loader: 'style!css'
