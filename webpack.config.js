@@ -1,33 +1,39 @@
-const Webpack                    = require('webpack');
-const path                       = require('path');
-const babel                      = require('babel-core');
-const es2015                     = require('babel-preset-es2015');
-const react                      = require('babel-preset-react');
-const HotModuleReplacementPlugin = require('webpack-hot-middleware')
-const HtmlWebpackPlugin          = require('html-webpack-plugin');
-const NpmInstallPlugin           = require('npm-install-webpack-plugin');
-const plugins                    = require('webpack-load-plugins')();
-const nodeModulesPath            = path.resolve(__dirname, 'node_modules');
-const buildPath                  = path.resolve(__dirname, 'dist');
-const mainPath                   = path.resolve(__dirname, 'src', 'app.jsx');
+const Webpack               = require('webpack');
+const path                  = require('path');
+const merge                 = require('webpack-merge');
+const HMRPlugin             = require('webpack-hot-middleware')
+const HtmlWebpackPlugin     = require('html-webpack-plugin');
+const ExtractTextPlugin     = require('extract-text-webpack-plugin');
+const NpmInstallPlugin      = require('npm-install-webpack-plugin');
+const autoprefixer          = require('autoprefixer');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const nodeModulesPath       = path.resolve(__dirname, 'node_modules');
+
+const TARGET                = process.env.npm_lifecycle_event;
+
+console.log("Packing for: " + TARGET);
+
+const buildPath             = path.resolve(__dirname, 'dist');
+const mainPath              = path.resolve(__dirname, 'src', 'app.jsx');
 
 var appName = 'app';
 var outputFile = appName + '.js';
 
-var config = {
+const common = {
+  cache: true,
+  debug: true,
   entry: mainPath,
-  devtool: 'source-map',
   output: {
     path: buildPath,
     filename: outputFile,
-    publicPath: '/'
+    sourceMapFilename: 'app.map'
   },
   module: {
     loaders: [
       {
-        test: /(\.jsx|\.js)$/,
-        loader: 'babel',
-        exclude: /(node_modules|bower_components)/
+      test: /\.js[x]?$/,
+      loaders: ['babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-0'],
+      exclude: /(node_modules|bower_components)/
       },
     {
       test: /\.css$/,
@@ -38,8 +44,8 @@ var config = {
       loader: "style!css!less"
     },
     {
-      test: /\.sass$/,
-      loader: "style!css!sass"
+      test: /\.scss$/,
+      loader: "style!css!postcss!sass"
     },
     { 
       test: /\.png$/, 
@@ -51,7 +57,7 @@ var config = {
     },
     {
       test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, 
-      loader: 'url?limit=10000&mimetype=application/font-woff'
+      loader: 'url?limit=10000&mimetype=application/font-woff&name=[path][name].[ext]"'
     },
     {
       test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, 
@@ -70,10 +76,43 @@ var config = {
     new NpmInstallPlugin(),
     new Webpack.optimize.OccurrenceOrderPlugin(),
     new HtmlWebpackPlugin({
-      template: 'src/index.template.ejs',
-      inject: 'body'
-    })
-  ]
+        template: './src/index.template.ejs',
+        inject: 'body'
+    }),
+    new Webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    }),
+  ],
+  postcss: function() {
+    return [autoprefixer({
+      browsers: ['last 3 versions']
+    })];
+  }
 };
 
-module.exports = config;
+if (TARGET === 'dev' || !TARGET) {
+  module.exports = merge(common, {
+    devtool: 'eval-source-map',
+    devServer: {
+      historyApiFallback: true
+    },
+    output: {
+      publicPath: ''
+    },
+    plugins: [
+      new NpmInstallPlugin({
+        save: true // --save
+      })
+    ]
+  });
+}
+
+if (TARGET === 'build') {
+  module.exports = merge(common, {
+    devtool: 'source-map',
+    output: {
+      path: './dist'
+    },
+  });
+}
