@@ -3,32 +3,38 @@ import { render } from 'react-dom';
 import $ from 'jquery';
 import Autosuggest from 'react-autosuggest';//Reference:  https://github.com/moroshko/react-autosuggest
 import './theme.css';
+import {records} from '../records.js';
 
-// const plantsName = records.map((plant) => {
-//     return {name: plant.name};
-// });
+// Revisit to improve search performance and implement fetch plant data function for plantFacts component use
+const plantsName = records.map((plant) => {
+    return {name: plant.name};
+});
 
 function escapeRegexCharacters(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-// function getSuggestions(value) {
-//   const escapedValue = escapeRegexCharacters(value.trim().toLowerCase());
-//   if (escapedValue === '') {
-//     return [];
-//   }
-//   //const regex = new RegExp('^' + escapedValue, 'i');
-//   const regex = new RegExp(escapedValue);
-//   return plantsName.filter(plant => regex.test(plant.plant_name.toLowerCase()));
-// }
+function getSuggestions(value) {
+  const escapedValue = escapeRegexCharacters(value.trim().toLowerCase());
+
+
+  if (escapedValue === '') {
+    return [];
+  }
+
+  //const regex = new RegExp('^' + escapedValue, 'i');
+  const regex = new RegExp(escapedValue);
+
+  return plantsName.filter(plant => regex.test(plant.name.toLowerCase()));
+}
 
 function getSuggestionValue(suggestion) {
-  return suggestion.plant_name;
+  return suggestion.name;
 }
 
 function renderSuggestion(suggestion) {
   return (
-    <span>{suggestion.plant_name}</span>
+    <span>{suggestion.name}</span>
   );
 }
 
@@ -43,7 +49,7 @@ export default class SearchBar extends React.Component {
       suggestions: [],
       plantsName:[],
       placeholder:''
-    };    
+    };
   }
 
   componentWillMount() {
@@ -63,44 +69,31 @@ export default class SearchBar extends React.Component {
     let name = this.state.plantsName[counter].plant_name
     this.setState({placeholder:`Find out your plant: ${name}`});
   }
-  
+
   getSuggestions(value) {
-  const escapedValue = escapeRegexCharacters(value.trim().toLowerCase()); 
+  const escapedValue = escapeRegexCharacters(value.trim().toLowerCase());
   if (escapedValue === '') {
     return [];
   }
-  //const regex = new RegExp('^' + escapedValue, 'i');
-  const regex = new RegExp(escapedValue);
-  const plantsName = this.state.plantsName;
-  return plantsName.filter(plant => regex.test(plant.plant_name.toLowerCase()));
-  } 
 
   onChange (event, { newValue, method }) {
     this.setState({
       value: newValue
     });
   };
-  
-  onSuggestionsFetchRequested ({value}) {
+
+  onSuggestionsFetchRequested ({ value }) {
     this.setState({
-      suggestions: this.getSuggestions(value)
+      suggestions: getSuggestions(value)
     });
   };
 
   onSuggestionsClearRequested () {
-    //console.log(this.state.suggestions,"before clear");
+    console.log(this.state.suggestions,"before clear");
     this.setState({
       suggestions: []
     });
   };
-  
-  // onSuggestionSelected () {
-  //   console.log(this.state,"selected value");
-  //   //this.props.fetchPlant(this.state.value);
-  //   this.setState({
-  //     value: ''
-  //   });
-  // };
 
   storeInputReference (autosuggest) {
     if (autosuggest !== null) {
@@ -110,7 +103,7 @@ export default class SearchBar extends React.Component {
       this.props.fetchPlant(selected);
     }
   }
-  
+
 
   render() {
     const { value, suggestions, placeholder} = this.state;
@@ -131,15 +124,5 @@ export default class SearchBar extends React.Component {
         inputProps={inputProps}
         ref={this.storeInputReference.bind(this)} />
     );
-  }
-  _getPlantsName() {
-    $.ajax({
-      method: 'GET',
-      url: '/api/plantFacts',
-      success: (plantsName) => {
-        //console.log(plantsName);
-        this.setState({plantsName});
-      }
-    });
   }
 }
