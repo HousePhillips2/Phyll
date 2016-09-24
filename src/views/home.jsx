@@ -6,7 +6,11 @@ import Search from '../components/searchBar.jsx';
 export default class Home extends React.Component {
   constructor() {
     super();
-    this.state = { admin: [], plants: [] };
+    this.state = {
+      admin: [],
+      plants: [],
+      _fetchPlant: this._fetchPlant
+    };
   }
 
   componentWillMount() {
@@ -27,7 +31,7 @@ export default class Home extends React.Component {
         </nav>
         <div>
           <div className={ 'home-banner' }>
-            <Search plants={ plants }/>
+            <Search plants={ this.state.plants } fetchPlant={ this.state._fetchPlant }/>
             <img src="http://ghk.h-cdn.co/assets/15/33/980x490/landscape-1439490128-plants.jpg"/>
           </div>
         </div>
@@ -60,6 +64,21 @@ export default class Home extends React.Component {
       },
       error: (err) => {
         throw new Error(err);
+      }
+    });
+  }
+
+  _fetchPlant(plant){
+    $.ajax({
+      method: 'POST',
+      url: 'api/plantFacts',
+      json: true,
+      contentType: 'application/json; charset=utf-8',
+      data: JSON.stringify({ plant:plant }),
+      success: (plantFacts) => {
+        if(plantFacts.length!==0){
+          this.setState({plantFacts:plantFacts[0]});
+        }
       }
     });
   }
