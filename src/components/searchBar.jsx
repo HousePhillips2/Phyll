@@ -31,6 +31,12 @@ export default class SearchBar extends React.Component {
     };
   }
 
+  counter() {
+    counter = counter>100? 0: counter+1;
+    let name = this.state.plantsName[counter].plant_name;
+    this.setState({placeholder:`Find out your plant: ${name}`});
+  }
+  
   getSuggestions(value) {
     const escapedValue = escapeRegexCharacters(value.trim().toLowerCase());
     if (escapedValue === '') {
