@@ -1,5 +1,5 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
+import React from 'react';
+import { render } from 'react-dom';
 import {Router, Route, Redirect, hashHistory} from 'react-router';
 import Layout from './layout/layout.jsx';
 import Garden from './pages/garden.jsx';
@@ -22,4 +22,4 @@ class MyApp extends React.Component {
  }
 }
 
-ReactDOM.render(<MyApp />, document.getElementById('app'));
+render(<MyApp />, document.getElementById('app'));

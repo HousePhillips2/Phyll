@@ -1,3 +1,6 @@
+import React from 'react';
+import { render } from 'react-dom';
+import $ from 'jquery';
 import SearchBar from '../components/searchBar.jsx';
 import PlantFacts from '../components/plantFacts.jsx';
 import PlantForm from '../components/plantForm.jsx';
