@@ -4,75 +4,43 @@ import $ from 'jquery';
 import Autosuggest from 'react-autosuggest';//Reference:  https://github.com/moroshko/react-autosuggest
 import './theme.css';
 
-// Revisit to improve search performance and implement fetch plant data function for plantFacts component use
-const plantsName = records.map((plant) => {
-    return {name: plant.name};
-});
 
 function escapeRegexCharacters(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-function getSuggestions(value) {
-  const escapedValue = escapeRegexCharacters(value.trim().toLowerCase());
-
-
-  if (escapedValue === '') {
-    return [];
-  }
-
-  //const regex = new RegExp('^' + escapedValue, 'i');
-  const regex = new RegExp(escapedValue);
-
-  return plantsName.filter(plant => regex.test(plant.name.toLowerCase()));
-}
-
 function getSuggestionValue(suggestion) {
-  return suggestion.name;
+  return suggestion.plant_name;
 }
 
 function renderSuggestion(suggestion) {
   return (
-    <span>{suggestion.name}</span>
+    <span>{suggestion.plant_name}</span>
   );
 }
 
 let counter=0;
 
 export default class SearchBar extends React.Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
       value: '',
       suggestions: [],
-      plantsName:[],
-      placeholder:''
+      plants: this.props.plants
     };
   }
 
-  componentWillMount() {
-    this._getPlantsName();
-  }
-
-  componentDidMount() {
-    this._timer = setInterval(() => this.counter(), 800);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this._timer);
-  }
-
-  counter() {
-    counter = counter>100? 0: counter+1;
-    let name = this.state.plantsName[counter].plant_name
-    this.setState({placeholder:`Find out your plant: ${name}`});
-  }
-
   getSuggestions(value) {
-  const escapedValue = escapeRegexCharacters(value.trim().toLowerCase());
-  if (escapedValue === '') {
-    return [];
+    const escapedValue = escapeRegexCharacters(value.trim().toLowerCase());
+    if (escapedValue === '') {
+      return [];
+    }
+    const regex = new RegExp(escapedValue);
+    const plants = this.props.plants;
+
+    let filteredPlants = plants.filter(plant => regex.test(plant.plant_name.toLowerCase()));
+    return filteredPlants.slice(0, 8);
   }
 
   onChange (event, { newValue, method }) {
@@ -81,14 +49,13 @@ export default class SearchBar extends React.Component {
     });
   };
 
-  onSuggestionsFetchRequested ({ value }) {
+  onSuggestionsFetchRequested ({value}) {
     this.setState({
-      suggestions: getSuggestions(value)
+      suggestions: this.getSuggestions(value)
     });
   };
 
   onSuggestionsClearRequested () {
-    console.log(this.state.suggestions,"before clear");
     this.setState({
       suggestions: []
     });
@@ -98,7 +65,6 @@ export default class SearchBar extends React.Component {
     if (autosuggest !== null) {
       this.input = autosuggest.input;
       let selected = autosuggest.input.value;
-      //console.log(autosuggest.input.value,"input value");
       this.props.fetchPlant(selected);
     }
   }
