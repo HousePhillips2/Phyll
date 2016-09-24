@@ -1,5 +1,5 @@
+import React from 'react';
 import $ from 'jquery';
-
 export default class MyDashboard extends React.Component {
   constructor() {
     super();

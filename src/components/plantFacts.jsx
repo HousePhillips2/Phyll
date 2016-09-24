@@ -1,4 +1,4 @@
-
+import React from 'react';
 export default class PlantFacts extends React.Component {
   constructor(props) {
     super(props);
