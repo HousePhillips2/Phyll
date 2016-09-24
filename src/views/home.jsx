@@ -1,4 +1,4 @@
-import ajax from 'jquery';
+import $ from 'jquery';
 
 import Users from '../components/users.jsx';
 import Search from '../components/searchBar.jsx';
@@ -18,22 +18,16 @@ export default class Home extends React.Component {
     return(
       <div id="home-container">
         <nav>
-          <div>
+          <li>
             About
-          </div>
-          {/* <Router>
-            <Route path='/about' component={ home }/>
-          </Router>
-          <div>
+          </li>
+          <li>
             Login
-          </div>
-          <Router>
-            <Route path='/about' component={ home }/>
-          </Router> */}
+          </li>
         </nav>
         <div>
           <div className={ 'home-banner' }>
-            <Search/>
+            <Search plants={ plants }/>
             <img src="http://ghk.h-cdn.co/assets/15/33/980x490/landscape-1439490128-plants.jpg"/>
           </div>
         </div>
@@ -45,9 +39,9 @@ export default class Home extends React.Component {
   }
 
   _getPlants() {
-    ajax({
+    $.ajax({
       method: 'GET',
-      url: '/api/plantFacts',
+      url: 'api/plantFacts',
       success: (plants) => {
         this.setState({ plants });
       },
@@ -58,9 +52,9 @@ export default class Home extends React.Component {
   }
 
   _getAdmin() {
-    ajax({
+    $.ajax({
       method: 'GET',
-      url: '/api/admin',
+      url: 'api/admin',
       success: (admin) => {
         this.setState({ admin });
       },

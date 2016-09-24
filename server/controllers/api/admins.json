@@ -1,7 +1,7 @@
 [
   {
-    "User": "Phoebe",
-    "user_img": "https://figuya.com/uploads/product/profile_picture/6195/profile_Pop-Animation-67-Natsu-Dragneel-Vorschau.jpg",
+    "userName": "Phoebe Maio",
+    "userImg": "https://figuya.com/uploads/product/profile_picture/6195/profile_Pop-Animation-67-Natsu-Dragneel-Vorschau.jpg",
     "plants": [
       {
         "img": "https://figuya.com/uploads/product/profile_picture/6195/profile_Pop-Animation-67-Natsu-Dragneel-Vorschau.jpg",
@@ -11,8 +11,8 @@
     ]
   },
   {
-    "User": "Casey",
-    "user_img": "https://figuya.com/uploads/product/profile_picture/6189/profile_Pop-Animation-79-Soul-Vorschau.jpg",
+    "userName": "Casey Childers",
+    "userImg": "https://figuya.com/uploads/product/profile_picture/6189/profile_Pop-Animation-79-Soul-Vorschau.jpg",
     "plants": [
       {
         "img": "https://figuya.com/uploads/product/profile_picture/6195/profile_Pop-Animation-67-Natsu-Dragneel-Vorschau.jpg",
@@ -22,8 +22,8 @@
     ]
   },
   {
-    "User": "Eric",
-    "user_img": "https://figuya.com/uploads/product/profile_picture/6188/profile_Pop-Animation-80-Maka-Albarn-Vorschau.jpg",
+    "userName": "Eric Churchill",
+    "userImg": "https://figuya.com/uploads/product/profile_picture/6188/profile_Pop-Animation-80-Maka-Albarn-Vorschau.jpg",
     "plants": [
       {
         "img": "https://figuya.com/uploads/product/profile_picture/6195/profile_Pop-Animation-67-Natsu-Dragneel-Vorschau.jpg",
@@ -33,8 +33,8 @@
     ]
   },
   {
-    "User": "Sergey",
-    "user_img": "https://figuya.com/uploads/product/profile_picture/6191/profile_Pop-Animation-72-Sasuke-Uchiha-Vorschau.jpeg",
+    "userName": "Sergey Potashnikov",
+    "userImg": "https://figuya.com/uploads/product/profile_picture/6191/profile_Pop-Animation-72-Sasuke-Uchiha-Vorschau.jpeg",
     "plants": [
       {
         "img": "https://figuya.com/uploads/product/profile_picture/6195/profile_Pop-Animation-67-Natsu-Dragneel-Vorschau.jpg",
