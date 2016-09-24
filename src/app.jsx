@@ -13,14 +13,14 @@ class MyApp extends React.Component {
  render() {
    return (
     <Router history={hashHistory}>
-      <Route path='/' component={ Home }/>
-      {/* <Redirect from='/' to='/addPlant'/> */}
-      {/* <Route path='/' component={Layout}>
+      {/* <Route path='/' component={ Home }/> */}
+      <Redirect from='/' to='/addPlant'/>
+      <Route path='/' component={Layout}>
         <Route path='addPlant' component={AddPlant} />
         <Route path='myDashboard' component={MyDashboard} />
         <Route path='garden' component={Garden} />
         <Route path='plantsLibrary' component={plantsLibrary} />
-      </Route> */}
+      </Route>
     </Router>
   );
  }

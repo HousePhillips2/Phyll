@@ -32,7 +32,7 @@ export default class Home extends React.Component {
         <div>
           <div className={ 'home-banner' }>
             <Search plants={ this.state.plants } fetchPlant={ this.state._fetchPlant }/>
-            <img src="http://ghk.h-cdn.co/assets/15/33/980x490/landscape-1439490128-plants.jpg"/>
+            <img src="images/IMG_7495.jpg"/>
           </div>
         </div>
         <div>
