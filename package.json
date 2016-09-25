@@ -39,6 +39,7 @@
     "chai": "^3.5.0",
     "chai-immutable": "^1.6.0",
     "char-rnn": "^1.0.1",
+    "clean-webpack-plugin": "^0.1.10",
     "css-loader": "^0.25.0",
     "dotenv": "^2.0.0",
     "enzyme": "^2.4.1",
@@ -74,6 +75,7 @@
     "pg": "^6.1.0",
     "pg-promise": "^5.3.3",
     "purecss": "^0.6.0",
+    "purifycss-webpack-plugin": "^2.0.3",
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.1",
     "react-addons-transition-group": "^15.3.2",
@@ -98,9 +100,8 @@
     "webpack-load-plugins": "^0.1.2",
     "webpack-merge": "^0.14.1",
     "webpack-stream": "^3.2.0",
-    "xml2js": "^0.4.17",
-    "purifycss-webpack-plugin": "^2.0.3",
-    "webpack-validator": "^2.2.7"
+    "webpack-validator": "^2.2.7",
+    "xml2js": "^0.4.17"
   },
   "eslintConfig": {
     "parserOptions": {
@@ -114,6 +115,5 @@
       "semi": 2
     }
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
