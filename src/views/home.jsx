@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import React from 'react';
 
 import Users from '../components/users.jsx';
 import Search from '../components/searchBar.jsx';
