@@ -12,7 +12,7 @@ const nodeModulesPath       = path.resolve(__dirname, 'node_modules');
 
 const TARGET                = process.env.npm_lifecycle_event;
 
-console.log("Packing for: " + TARGET);
+console.log("Packing for: " + TARGET || 'a short trip to DEV town.');
 
 const buildPath             = path.resolve(__dirname, 'dist');
 const mainPath              = path.resolve(__dirname, 'src', 'app.jsx');
