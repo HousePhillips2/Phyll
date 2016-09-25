@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-import {LineChart} from 'react-easy-chart';
+
 
 
 export default class MyDashboard extends React.Component {
