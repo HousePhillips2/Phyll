@@ -1,4 +1,5 @@
 import { ajax } from 'jquery';
+import React from 'react';
 
 export default class userCard extends React.Component {
 
