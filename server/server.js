@@ -15,6 +15,7 @@ const plantsLibrary = require('./controllers/plants-library');
 
 // MOUNT middleware
 app.use(express.static('dist'));
+app.use('/static', express.static('node_modules'));
 app.use(bodyParser.json());
 
 // API sub-app

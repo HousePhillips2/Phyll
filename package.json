@@ -98,7 +98,9 @@
     "webpack-load-plugins": "^0.1.2",
     "webpack-merge": "^0.14.1",
     "webpack-stream": "^3.2.0",
-    "xml2js": "^0.4.17"
+    "xml2js": "^0.4.17",
+    "purifycss-webpack-plugin": "^2.0.3",
+    "webpack-validator": "^2.2.7"
   },
   "eslintConfig": {
     "parserOptions": {
@@ -113,8 +115,5 @@
     }
   },
   "devDependencies": {
-    "purifycss-webpack-plugin": "^2.0.3",
-    "webpack-dev-server": "^1.16.1",
-    "webpack-validator": "^2.2.7"
   }
 }
