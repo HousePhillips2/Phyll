@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import React from 'react';
-
 import Users from '../components/users.jsx';
 import Search from '../components/searchBar.jsx';
 
@@ -22,14 +21,14 @@ export default class Home extends React.Component {
   render() {
     return(
       <div id="home-container">
-        <nav>
+        <ul className="nav">
           <li>
             About
           </li>
           <li>
             Login
           </li>
-        </nav>
+        </ul>
         <div>
           <div className={ 'home-banner' }>
             <Search plants={ this.state.plants } fetchPlant={ this.state._fetchPlant }/>
