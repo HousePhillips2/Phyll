@@ -117,7 +117,7 @@ if (TARGET !== 'production') {
       historyApiFallback: true
     },
     output: {
-      publicPath: ''
+      path: buildPath
     },
     plugins: [
       new NpmInstallPlugin({
