@@ -29,6 +29,7 @@ app.use('/plantsLibrary', plantsLibrary);
 
 // static files route
 app.get('/', (req, res) => res.redirect('/index.html'));
+app.use('/static', express.static('node_modules'));
 
 app.set('port', process.env.PORT || 8080);
 app.listen(app.get('port'), () => console.log('Up and running on ' + app.get('port')));

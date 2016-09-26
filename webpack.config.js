@@ -3,16 +3,16 @@ const path                  = require('path');
 const merge                 = require('webpack-merge');
 const HMRPlugin             = require('webpack-hot-middleware')
 const HtmlWebpackPlugin     = require('html-webpack-plugin');
-const ExtractTextPlugin     = require('extract-text-webpack-plugin');
 const NpmInstallPlugin      = require('npm-install-webpack-plugin');
 const autoprefixer          = require('autoprefixer');
 const validate              = require('webpack-validator');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const utils                 = require('./server/helpers/webpack-helpers.js')
 const nodeModulesPath       = path.resolve(__dirname, 'node_modules');
 
 const TARGET                = process.env.npm_lifecycle_event;
 
-console.log("Packing for: " + TARGET);
+console.log("Packing for: " + TARGET || 'a short trip to DEV town.');
 
 const buildPath             = path.resolve(__dirname, 'dist');
 const mainPath              = path.resolve(__dirname, 'src', 'app.jsx');
@@ -23,7 +23,18 @@ var outputFile = appName + '.js';
 const common = {
   cache: true,
   debug: true,
-  entry: mainPath,
+  entry: {
+    app: mainPath,
+    vendor: [
+      'tether',
+      'bootstrap',
+      'react-bootstrap', 
+      'react',
+      'react-router',
+      'jquery',
+      'react-autosuggest'
+    ]
+  },
   output: {
     path: buildPath,
     filename: outputFile,
@@ -76,6 +87,7 @@ const common = {
   plugins: [
     new NpmInstallPlugin(),
     new Webpack.optimize.OccurrenceOrderPlugin(),
+    new Webpack.optimize.CommonsChunkPlugin("vendor", "externals.js"),
     new HtmlWebpackPlugin({
         template: './src/index.template.ejs',
         inject: 'body'
@@ -104,7 +116,7 @@ if (TARGET === 'dev' || !TARGET) {
     },
     plugins: [
       new NpmInstallPlugin({
-        save: true // --save
+        save: true
       })
     ]
   });
@@ -114,8 +126,10 @@ if (TARGET === 'build') {
   module.exports = merge(common, {
     devtool: 'source-map',
     output: {
-      path: './dist'
+      path: buildPath
     },
+    plugins: [
+    ]
   });
 }
 
