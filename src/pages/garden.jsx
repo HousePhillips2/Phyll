@@ -17,8 +17,8 @@ export default class Layout extends React.Component {
           <li>
             <img style={{width: '150px', heigh: '180px'}} src={ppl.img}/>
             <div style={{display:'inline-block'}}>
-              <li style={{display:'inline-block',margin:'5px'}}>{`${ppl.user_name}: `}</li>
-              <li style={{display:'inline-block',margin:'5px'}}>{ppl.plants}</li>
+              <li style={{display:'inline-block',margin:'5px'}} key={ppl.user_name}>{`${ppl.user_name}: `}</li>
+              <li style={{display:'inline-block',margin:'5px'}} key={ppl.plants}>{ppl.plants}</li>
             </div>
           </li>)}
         </div>
