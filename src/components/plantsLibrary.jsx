@@ -6,11 +6,58 @@ export default class Layout extends React.Component {
     super();
     this.state={plantsLibrary:[]};//initate state
   }
+
   componentWillMount() {
     this._getPlants();
   }
+
+  openModal() {
+    this.setState({modalIsOpen: true});
+  },
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
+  },
+
+
   render() {
     let plants= this.state.plantsLibrary;
+    let plantID = 0;
+
+    let library = this.state.plantsLibrary.reduce(function(acc, plant){
+      acc.push(
+        <Plant handleClick = {this.props.handleClickTrack}
+        track={track} key={track.id + '?' + keyID++}
+        style={this.props.trackStyle}/>
+        );
+      return acc;
+
+    }.bind(this), []);
+
+    return (
+      <div>
+        <button onClick={this.openModal}>Open Modal</button>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={customStyles} >
+
+          <h2 ref="subtitle">Hello</h2>
+          <button onClick={this.closeModal}>close</button>
+          <div>I am a modal</div>
+          <form>
+            <input />
+            <button>tab navigation</button>
+            <button>stays</button>
+            <button>inside</button>
+            <button>the modal</button>
+          </form>
+        </Modal>
+      </div>
+    );
+
+/*
     return(
       <div>
         <h1>Explore Plants Conservatory</h1>
@@ -27,6 +74,9 @@ export default class Layout extends React.Component {
         </div>
       </div>
     );
+*/
+
+
   }
   _getPlants() {
     $.ajax({

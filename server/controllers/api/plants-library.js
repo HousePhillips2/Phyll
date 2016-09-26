@@ -1,7 +1,7 @@
 ///////////////    NODE MODULES    ///////////////
 const express = require('express');
 const router  = express.Router();
-const db      = require('../models/pg-config.js');
+const db      = require('../../models/pg-config.js');
 
 router.get('/', function(req, res) {
 
