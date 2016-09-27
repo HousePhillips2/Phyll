@@ -17,8 +17,8 @@ class MyApp extends React.Component {
  render() {
    return (
     <Router history ={browserHistory}>
-      {/* <Route path='/' component={ Home }/> */}
-      <Route path='/' component={Layout}>
+      <Route path='/' component={ Home }/>
+      {/*<Route path='/' component={Layout}>
         <Route path='addPlant' component={AddPlant} />
         <Route path='myDashboard' component={MyDashboard} />
         <Route path='garden' component={Garden} />
