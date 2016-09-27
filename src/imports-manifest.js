@@ -9,6 +9,7 @@ import $ from 'jquery';
 import jQuery from 'jquery';
 import Ajax from 'jquery';
 import Autosuggest from 'react-autosuggest';
+import d3 from 'd3';
 // INTERNALS
 import Layout from './layout/layout.jsx';
 import Garden from './pages/garden.jsx';
