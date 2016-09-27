@@ -6,7 +6,7 @@ import Layout from './layout/layout.jsx';
 import Garden from './pages/garden.jsx';
 import MyDashboard from './pages/dashBoard.jsx';
 import AddPlant from './pages/addPlant.jsx';
-import plantsLibrary from './components/plantsLibrary.jsx';
+import PlantsLibrary from './pages/plantsLibrary.jsx';
 import Home from './views/home.jsx';
 
 require('./stylesheets/main.scss');
@@ -17,12 +17,12 @@ class MyApp extends React.Component {
    return (
     <Router history ={browserHistory}>
       <Route path='/' component={ Home }/>
-      {/*<Route path='/' component={Layout}>
+      {<Route path='/' component={Layout}>
         <Route path='addPlant' component={AddPlant} />
         <Route path='myDashboard' component={MyDashboard} />
+        <Route path='plantsLibrary' component={PlantsLibrary} plantStyle = {{transform:'scale(.5)', margin:'-2em'}}/>
         <Route path='garden' component={Garden} />
-        <Route path='plantsLibrary' component={plantsLibrary} />
-      </Route>*/}
+      </Route>}
     </Router>
   );
  }

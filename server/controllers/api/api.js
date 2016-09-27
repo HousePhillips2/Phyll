@@ -9,7 +9,6 @@ const plantData   = require('./plant-data');
 const plantFacts  = require('./plant-facts');
 const plantsLibrary = require('./plants-library');
 
-
 // ROUTE requests
 router.use('/admin', admin);
 router.use('/garden', garden);

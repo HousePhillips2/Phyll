@@ -15,7 +15,7 @@ import Layout from './layout/layout.jsx';
 import Garden from './pages/garden.jsx';
 import MyDashboard from './pages/dashBoard.jsx';
 import AddPlant from './pages/addPlant.jsx';
-import plantsLibrary from './components/plantsLibrary.jsx';
+import plantsLibrary from './pages/plantsLibrary.jsx';
 import SearchBar from './components/searchBar.jsx';
 import PlantFacts from './components/plantFacts.jsx';
 import PlantForm from './components/plantForm.jsx';

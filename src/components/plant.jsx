@@ -1,31 +1,34 @@
 import React from 'react';
 
-var Plant = React.createClass({
+export default class Plant extends React.Component {
 
-  handleClick:function(){
+    constructor() {
+    super();
+  }
+
+  handleClick(){
     if(this.props.handleClick){
       this.props.handleClick(this.props.plant);
     }
-  },
-
-  render:function(){
-    var plant = this.props.plant;
-
-    return <div className='plant clickable' onClick={this.handleClick} style={this.props.style} >
-            <div>
-              <label className='title'>{plant.plant_name}</label>
-              <br/>
-              <label>{plant.family}</label>
-               <br/>
-              <label>{plant.water_S}</label>
-               <br/>
-              <label>{plant.soil_S}</label>
-               <br/>
-              <label>{plant.fertilizer_S}</label>
-            </div>
-            <img className='artwork' src={plant.img}/>
-          </div>;
-
   }
 
-});
+  render(){
+    // let plant = this.props.plant;
+
+    return <div className='plant-clickable' onClick={this.handleClick} style={{display:'inline-block', width: '230px', transform:'scale(.7)', margin:'-2em'}} >
+            <div>
+              <label className='title'>{this.props.plant.plant_name}</label>
+            <img style={{width: '200px', height: '200px'}} className='img-circle' src={this.props.plant.img}/>
+              <br/>
+              <label>{this.props.plant.plant_family}</label>
+               <br/>
+              <label>{this.props.plant.water_s}</label>
+               <br/>
+              <label>{this.props.plant.soil_s}</label>
+               <br/>
+              <label>{this.props.plant.fertilizer_s}</label>
+            </div>
+          </div>;
+  }
+
+};
