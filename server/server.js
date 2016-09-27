@@ -7,6 +7,7 @@ const Auth0Strategy = require('passport-auth0');
 const passport = require('passport');
 const session = require ('express-session');
 
+
 const strategy = new Auth0Strategy({
    domain:       'phyllio.auth0.com',
    clientID:     'sZ4HijY2TahFgeq2d2HRKld4YxD6k2UA',
@@ -17,8 +18,6 @@ const strategy = new Auth0Strategy({
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
     // profile has all the information from the user
-    //console.log(accessToken,"accessToken")
-    console.log(profile.displayName, 'profile-----------');
     return done(null, profile);
   }
 );
@@ -52,19 +51,18 @@ app.get('/callback',
 
 app.get('/login',
   passport.authenticate('auth0', {}), function (req, res) {
-
   res.redirect("/");
 });
 
 app.get('/logout', function(req, res){
   req.logout();
-  console.log(req.logout,"logout function---------------");
+  //console.log(req.session.passport,"logout session.passport---------------");
   res.redirect('/');
 });
 
 app.get('/user', function(req,res){
-  console.log(req.session.passport,'passport')
-  if(req.session.passport!==undefined){
+  //console.log(req.session.passport,'passport')
+  if(req.session.passport.user!==undefined){
     res.send('hello, loggedin user');
   } else {
     res.send('hello, guest! You havent loggedin');
@@ -73,9 +71,9 @@ app.get('/user', function(req,res){
 });
 
 app.get('/other', function(req,res){
-  console.log(req.session.passport,'passport')
-  if(req.session!==undefined){
-    res.send('hello, loggedin user');
+  //console.log(req.session.passport,'passport')
+  if(req.session.passport.user!==undefined){
+    res.send('hello, loggedin other user');
   } else {
     res.send('hello, guest! You havent loggedin');
   }
