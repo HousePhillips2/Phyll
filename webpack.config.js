@@ -1,7 +1,8 @@
 const Webpack               = require('webpack');
 const path                  = require('path');
 const merge                 = require('webpack-merge');
-const HMRPlugin             = require('webpack-hot-middleware')
+const HMRPlugin             = require('webpack-hot-middleware');
+const ExtractTextPlugin     = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin     = require('html-webpack-plugin');
 const NpmInstallPlugin      = require('npm-install-webpack-plugin');
 const autoprefixer          = require('autoprefixer');
@@ -10,9 +11,9 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const utils                 = require('./server/helpers/webpack-helpers.js')
 const nodeModulesPath       = path.resolve(__dirname, 'node_modules');
 
-const TARGET                = process.env.npm_lifecycle_event;
+const TARGET                = process.env.npm_lifecycle_event || 'a short trip to DEV town.';
 
-console.log("Packing for: " + TARGET || 'a short trip to DEV town.');
+console.log("Packing for: " + TARGET);
 
 const buildPath             = path.resolve(__dirname, 'dist');
 const mainPath              = path.resolve(__dirname, 'src', 'app.jsx');
@@ -32,7 +33,8 @@ const common = {
       'react',
       'react-router',
       'jquery',
-      'react-autosuggest'
+      'react-autosuggest',
+      'd3'
     ]
   },
   output: {
@@ -49,7 +51,7 @@ const common = {
       },
     {
       test: /\.css$/,
-      loader: 'style!css'
+      loader: ExtractTextPlugin.extract('css')
     },
     {
       test: /\.less$/,
@@ -57,14 +59,14 @@ const common = {
     },
     {
       test: /\.scss$/,
-      loader: "style!css!postcss!sass"
+      loader: ExtractTextPlugin.extract('css!sass')
     },
     { 
       test: /\.png$/, 
       loader: "url-loader?limit=100000" 
     },
     { 
-      test: /\.jpg$/, 
+      test: /\.jpg$|\.jpeg$/, 
       loader: "file-loader" 
     },
     {
@@ -88,6 +90,9 @@ const common = {
     new NpmInstallPlugin(),
     new Webpack.optimize.OccurrenceOrderPlugin(),
     new Webpack.optimize.CommonsChunkPlugin("vendor", "externals.js"),
+    new ExtractTextPlugin('style.css', {
+      allChunks: true
+    }),
     new HtmlWebpackPlugin({
         template: './src/index.template.ejs',
         inject: 'body'
@@ -105,14 +110,14 @@ const common = {
   }
 };
 
-if (TARGET === 'dev' || !TARGET) {
+if (TARGET !== 'production') {
   module.exports = merge(common, {
     devtool: 'eval-source-map',
     devServer: {
       historyApiFallback: true
     },
     output: {
-      publicPath: ''
+      path: buildPath
     },
     plugins: [
       new NpmInstallPlugin({
@@ -122,7 +127,7 @@ if (TARGET === 'dev' || !TARGET) {
   });
 }
 
-if (TARGET === 'build') {
+if (TARGET === 'production') {
   module.exports = merge(common, {
     devtool: 'source-map',
     output: {
