@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router';
-import SignIn from '../components/signIn.jsx';
 
 export default class Layout extends React.Component {
   render(){

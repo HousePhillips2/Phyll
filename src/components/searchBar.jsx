@@ -25,15 +25,23 @@ export default class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      placeholder: '',
       value: '',
       suggestions: [],
       plants: this.props.plants
     };
   }
+  componentDidMount() {
+    this._timer = setInterval(() => this.counter(), 800);
+  }
+ 
+  componentWillUnmount() {
+    clearInterval(this._timer);
+  }
 
   counter() {
     counter = counter>100? 0: counter+1;
-    let name = this.state.plantsName[counter].plant_name;
+    let name = this.props.plants[counter].plant_name;
     this.setState({placeholder:`Find out your plant: ${name}`});
   }
   

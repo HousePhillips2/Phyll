@@ -16,7 +16,7 @@ const strategy = new Auth0Strategy({
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
     // profile has all the information from the user
-    console.log(accessToken,"accessToken")
+    //console.log(accessToken,"accessToken")
     return done(null, profile);
   }
 );
@@ -44,7 +44,7 @@ app.get('/callback',
 
 app.get('/login',
   passport.authenticate('auth0', {}), function (req, res) {
-  console.log('/login', req, '-------', res);
+  //console.log('/login', req, '-------', res);
   res.redirect("/");
 });
 
