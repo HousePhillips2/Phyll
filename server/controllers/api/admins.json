@@ -1,31 +1,6 @@
 [
   {
-<<<<<<< 13f29c6bafacbf0c1d34d32e1ecb5f2d9f53f309
-<<<<<<< 924459d164f7df12bde49699b9178b034ebc38b3
-<<<<<<< f91b96eaf31c2958c2513f24d1784cf6ac3feed5
-<<<<<<< c407e9b80df84f22b08411afef9e1acb3d09b0d6
-=======
-=======
-<<<<<<< 6f90980d75f66495e37e6e46ba2e2c8ba22e85b7
->>>>>>> [feature] Add logo via custom glyph font
-<<<<<<< 8c67e695d7c1fa60d84463f82cab9c5eafd2bb88
->>>>>>> [bug out] Handle errors with user loops and tether.js
-    "user_name": "Phoebe Maio",
-=======
     "user-name": "Phoebe Maio",
->>>>>>> [bug out] Handle errors with user loops and tether.js
-<<<<<<< 13f29c6bafacbf0c1d34d32e1ecb5f2d9f53f309
-<<<<<<< 924459d164f7df12bde49699b9178b034ebc38b3
-=======
-    "user_name": "Phoebe Maio",
->>>>>>> [feature] Add logo via custom glyph font
-=======
->>>>>>> [bug out] Handle errors with user loops and tether.js
-=======
-=======
-    "user_name": "Phoebe Maio",
->>>>>>> [feature] Add logo via custom glyph font
->>>>>>> [feature] Add logo via custom glyph font
     "id": "1",
     "img": "https://figuya.com/uploads/product/profile_picture/6195/profile_Pop-Animation-67-Natsu-Dragneel-Vorschau.jpg",
     "plants": [
@@ -37,33 +12,7 @@
     ]
   },
   {
-<<<<<<< 13f29c6bafacbf0c1d34d32e1ecb5f2d9f53f309
-<<<<<<< 924459d164f7df12bde49699b9178b034ebc38b3
-<<<<<<< f91b96eaf31c2958c2513f24d1784cf6ac3feed5
-<<<<<<< c407e9b80df84f22b08411afef9e1acb3d09b0d6
-    "user_name": "Casey Childers",
-=======
     "user-name": "Casey Childers",
->>>>>>> [bug out] Handle errors with user loops and tether.js
-=======
-    "user_name": "Casey Childers",
->>>>>>> [feature] Add logo via custom glyph font
-=======
-=======
-<<<<<<< 6f90980d75f66495e37e6e46ba2e2c8ba22e85b7
->>>>>>> [feature] Add logo via custom glyph font
-<<<<<<< 8c67e695d7c1fa60d84463f82cab9c5eafd2bb88
-    "user_name": "Casey Childers",
-=======
-    "user-name": "Casey Childers",
->>>>>>> [bug out] Handle errors with user loops and tether.js
-<<<<<<< 13f29c6bafacbf0c1d34d32e1ecb5f2d9f53f309
->>>>>>> [bug out] Handle errors with user loops and tether.js
-=======
-=======
-    "user_name": "Casey Childers",
->>>>>>> [feature] Add logo via custom glyph font
->>>>>>> [feature] Add logo via custom glyph font
     "id": "4",
     "img": "https://figuya.com/uploads/product/profile_picture/6189/profile_Pop-Animation-79-Soul-Vorschau.jpg",
     "plants": [
@@ -75,32 +24,7 @@
     ]
   },
   {
-<<<<<<< 13f29c6bafacbf0c1d34d32e1ecb5f2d9f53f309
-<<<<<<< 924459d164f7df12bde49699b9178b034ebc38b3
-<<<<<<< f91b96eaf31c2958c2513f24d1784cf6ac3feed5
-<<<<<<< c407e9b80df84f22b08411afef9e1acb3d09b0d6
-=======
-=======
-<<<<<<< 6f90980d75f66495e37e6e46ba2e2c8ba22e85b7
->>>>>>> [feature] Add logo via custom glyph font
-<<<<<<< 8c67e695d7c1fa60d84463f82cab9c5eafd2bb88
->>>>>>> [bug out] Handle errors with user loops and tether.js
-    "user_name": "Eric Churchill",
-=======
     "user-name": "Eric Churchill",
->>>>>>> [bug out] Handle errors with user loops and tether.js
-<<<<<<< 13f29c6bafacbf0c1d34d32e1ecb5f2d9f53f309
-<<<<<<< 924459d164f7df12bde49699b9178b034ebc38b3
-=======
-    "user_name": "Eric Churchill",
->>>>>>> [feature] Add logo via custom glyph font
-=======
->>>>>>> [bug out] Handle errors with user loops and tether.js
-=======
-=======
-    "user_name": "Eric Churchill",
->>>>>>> [feature] Add logo via custom glyph font
->>>>>>> [feature] Add logo via custom glyph font
     "id": "3",
     "img": "https://figuya.com/uploads/product/profile_picture/6188/profile_Pop-Animation-80-Maka-Albarn-Vorschau.jpg",
     "plants": [
@@ -112,33 +36,7 @@
     ]
   },
   {
-<<<<<<< 13f29c6bafacbf0c1d34d32e1ecb5f2d9f53f309
-<<<<<<< 924459d164f7df12bde49699b9178b034ebc38b3
-<<<<<<< f91b96eaf31c2958c2513f24d1784cf6ac3feed5
-<<<<<<< c407e9b80df84f22b08411afef9e1acb3d09b0d6
     "user_name": "Sergey Potashnikov",
-=======
-    "user-name": "Sergey Potashnikov",
->>>>>>> [bug out] Handle errors with user loops and tether.js
-=======
-    "user_name": "Sergey Potashnikov",
->>>>>>> [feature] Add logo via custom glyph font
-=======
-=======
-<<<<<<< 6f90980d75f66495e37e6e46ba2e2c8ba22e85b7
->>>>>>> [feature] Add logo via custom glyph font
-<<<<<<< 8c67e695d7c1fa60d84463f82cab9c5eafd2bb88
-    "user_name": "Sergey Potashnikov",
-=======
-    "user-name": "Sergey Potashnikov",
->>>>>>> [bug out] Handle errors with user loops and tether.js
-<<<<<<< 13f29c6bafacbf0c1d34d32e1ecb5f2d9f53f309
->>>>>>> [bug out] Handle errors with user loops and tether.js
-=======
-=======
-    "user_name": "Sergey Potashnikov",
->>>>>>> [feature] Add logo via custom glyph font
->>>>>>> [feature] Add logo via custom glyph font
     "id": "2",
     "img": "https://figuya.com/uploads/product/profile_picture/6191/profile_Pop-Animation-72-Sasuke-Uchiha-Vorschau.jpeg",
     "plants": [
