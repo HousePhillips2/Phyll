@@ -8,6 +8,10 @@ import MyDashboard from './pages/dashBoard.jsx';
 import AddPlant from './pages/addPlant.jsx';
 import PlantsLibrary from './pages/plantsLibrary.jsx';
 import Home from './views/home.jsx';
+import BarChart from './components/bar-chart.jsx';
+import Chart from './components/charts/radial-chart.jsx';
+import LineChart from './components/line-chart.jsx';
+
 
 require('./stylesheets/main.scss');
 

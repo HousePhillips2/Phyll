@@ -24,14 +24,14 @@ export default class Home extends React.Component {
     this._getUser();
   }
   render() {
-    console.log(this.state.isLoggedIn,'loggedin?')
+    console.log(this.state.isLoggedIn,'loggedin?');
     return(
       <div className="container">
         <div className="row header">
           <div className="col-xs-12">
             <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
             <div className="pull-sm-right">
-            
+
                 <ul className="nav nav-inline text-sm-right"style={{padding: .2 + 'em'}}>
                   <li className="nav-item">
                     <a className="nav-link graff" href="#">About</a>
@@ -44,6 +44,7 @@ export default class Home extends React.Component {
                   </li>
                 </ul>
                 <UserInfo userName={this.state.userName} userImg={this.state.userImg}/>
+
             </div>
           </div>
         </div>
