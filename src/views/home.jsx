@@ -33,6 +33,9 @@ export default class Home extends React.Component {
                 <li className="nav-item">
                   <a className="nav-link active graff" href="/login">Login</a>
                 </li>
+                <li className="nav-item">
+                  <a className="nav-link active graff" href="/logout">Log Out</a>
+                </li>
               </ul>
           </div>
         </div>
@@ -49,6 +52,7 @@ export default class Home extends React.Component {
         <div className="modal fade" id="plantModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
           <div className="modal-dialog " role="document">
             <div className="modal-content" id="plantFact">
+
             </div>
           </div>
         </div>
