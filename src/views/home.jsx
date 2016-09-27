@@ -46,6 +46,9 @@ export default class Home extends React.Component {
                 <li className="nav-item">
                   <a className="nav-link active graff" href="/api/auth/logout">Logout</a>
                 </li>
+                <li className="nav-item">
+                  <a className="nav-link active graff" href="/logout">Log Out</a>
+                </li>
               </ul>
               <UserInfo userName={this.state.userName} userImg={this.state.userImg}/>
           </div>
@@ -54,7 +57,6 @@ export default class Home extends React.Component {
           <div className="jumbotron jumbotron-fluid row jumbo-bg">
             <div className="container">
               {/*<img src="images/IMG_7495.jpg"/>*/}
-              
               <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
               
             </div>
