@@ -5,6 +5,7 @@ const app         = express();
 const bodyParser  = require('body-parser');
 const Auth0Strategy = require('passport-auth0');
 const passport = require('passport');
+const session = require ('express-session');
 
 const strategy = new Auth0Strategy({
    domain:       'phyllio.auth0.com',
@@ -17,9 +18,17 @@ const strategy = new Auth0Strategy({
     // extraParams.id_token has the JSON Web Token
     // profile has all the information from the user
     //console.log(accessToken,"accessToken")
+    console.log(profile.displayName, 'profile-----------');
     return done(null, profile);
   }
 );
+
+app.use(session({
+  secret: 'jelly beans many fingers',
+  resave: true,
+  cookie: {maxAge: 30000000},
+  saveUninitialized: true
+}));
 
 passport.use(strategy);
 passport.serializeUser(function(user, done) {
@@ -34,7 +43,6 @@ app.use(passport.session());
 app.get('/callback',
   passport.authenticate('auth0', { failureRedirect: '/login' }),
   function(req, res) {
-    console.log(req,res, 'inside /callback')
     if (!req.user) {
       throw new Error('user null');
     }
@@ -44,8 +52,33 @@ app.get('/callback',
 
 app.get('/login',
   passport.authenticate('auth0', {}), function (req, res) {
-  //console.log('/login', req, '-------', res);
+
   res.redirect("/");
+});
+
+app.get('/logout', function(req, res){
+  req.logout();
+  console.log(req.logout,"logout function---------------");
+  res.redirect('/');
+});
+
+app.get('/user', function(req,res){
+  console.log(req.session.passport,'passport')
+  if(req.session.passport!==undefined){
+    res.send('hello, loggedin user');
+  } else {
+    res.send('hello, guest! You havent loggedin');
+  }
+  
+});
+
+app.get('/other', function(req,res){
+  console.log(req.session.passport,'passport')
+  if(req.session!==undefined){
+    res.send('hello, loggedin user');
+  } else {
+    res.send('hello, guest! You havent loggedin');
+  }
 });
 
 //////////////    SERVER MODULES    //////////////
