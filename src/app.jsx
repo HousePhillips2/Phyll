@@ -8,7 +8,7 @@ import MyDashboard from './pages/dashBoard.jsx';
 import AddPlant from './pages/addPlant.jsx';
 import plantsLibrary from './components/plantsLibrary.jsx';
 import Home from './views/home.jsx';
-import SignIn from './components/signIn.jsx';
+
 
 require('./stylesheets/main.scss');
 
