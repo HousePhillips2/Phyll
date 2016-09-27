@@ -1,3 +1,4 @@
+import * as Tether from 'tether';
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, Redirect, hashHistory } from 'react-router';

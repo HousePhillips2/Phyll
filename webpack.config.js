@@ -66,7 +66,7 @@ const common = {
       loader: "url-loader?limit=100000" 
     },
     { 
-      test: /\.jpg$/, 
+      test: /\.jpg$|\.jpeg$/, 
       loader: "file-loader" 
     },
     {

@@ -1,0 +1,21 @@
+// LOGO font
+$phyll: 'Oleo Script', cursive;
+// HEADLINE font
+$head: 'Slabo 27px', serif;
+// BODY font
+$graff: 'Nunito', sans-serif;
+
+.title {
+  font-family: $phyll;
+  font-weight: normal;
+  font-size: 5em;
+}
+body {
+  font-family: $graff;
+  font-weight: normal;
+  font-size: 120%
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: $head;
+  font-weight: normal;
+}

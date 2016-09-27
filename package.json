@@ -74,6 +74,7 @@
     "gulp-wiredep": "0.0.0",
     "html-webpack-plugin": "^2.22.0",
     "http": "0.0.0",
+    "image-webpack-loader": "^2.0.0",
     "jquery": "^3.1.0",
     "minimist": "^1.2.0",
     "mocha": "^3.0.2",
