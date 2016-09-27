@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import $ from 'jquery';
 import Autosuggest from 'react-autosuggest';//Reference:  https://github.com/moroshko/react-autosuggest
-import './theme.css';
+// import './theme.css'; Moved to SCSS include at src/stylesheets/components/search-bar.scss
 
 
 function escapeRegexCharacters(str) {
