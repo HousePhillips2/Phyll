@@ -90,7 +90,7 @@ const common = {
     new NpmInstallPlugin(),
     new Webpack.optimize.OccurrenceOrderPlugin(),
     new Webpack.optimize.CommonsChunkPlugin("vendor", "externals.js"),
-    new ExtractTextPlugin('assets/style.css', {
+    new ExtractTextPlugin('style.css', {
       allChunks: true
     }),
     new HtmlWebpackPlugin({
