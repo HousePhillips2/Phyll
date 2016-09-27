@@ -6,12 +6,7 @@ import Search from '../components/searchBar.jsx';
 import PlantFacts from '../components/plantFacts.jsx';
 import UserInfo from '../components/userInfo.jsx';
 
-<<<<<<< a34a15dceb9dc05861902e35b993837b8d077d1b
-=======
-require('../stylesheets/main.scss');
 
-
->>>>>>> [feature] Able to display loggedIn user name and image
 export default class Home extends React.Component {
   constructor() {
     super();
@@ -67,6 +62,7 @@ export default class Home extends React.Component {
         <div className="modal fade" id="plantModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
           <div className="modal-dialog " role="document">
             <div className="modal-content" id="plantFact">
+
             </div>
           </div>
         </div>
