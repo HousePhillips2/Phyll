@@ -40,6 +40,6 @@ export default class userCard extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }

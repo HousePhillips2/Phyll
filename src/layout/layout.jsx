@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import SignIn from '../components/signIn.jsx';
 
 export default class Layout extends React.Component {
   render(){
@@ -21,6 +22,9 @@ export default class Layout extends React.Component {
             </li>
             <li className="nav-item" key='Conservatory'>
               <Link className="nav-link" to='/plantsLibrary'><strong>Conservatory</strong></Link>
+            </li>
+            <li className="nav-item" key='Sign In'>
+              <strong className="nav-link"><SignIn /></strong>
             </li>
           </ul>
         </nav>
