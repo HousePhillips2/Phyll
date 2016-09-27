@@ -100,7 +100,8 @@ const common = {
     new Webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
-      Tether: 'tether'
+      "window.jQuery": 'jquery',
+      "window.Tether": 'tether'
     }),
   ],
   postcss: function() {

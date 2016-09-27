@@ -9,7 +9,6 @@ import AddPlant from './pages/addPlant.jsx';
 import plantsLibrary from './components/plantsLibrary.jsx';
 import Home from './views/home.jsx';
 
-
 require('./stylesheets/main.scss');
 
 // ES6 CLASS SYNTAX TO CREATE A REACT COMPONENT

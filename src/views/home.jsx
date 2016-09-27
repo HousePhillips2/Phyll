@@ -3,8 +3,6 @@ import React from 'react';
 import Users from '../components/users.jsx';
 import Search from '../components/searchBar.jsx';
 
-require('../stylesheets/main.scss');
-
 export default class Home extends React.Component {
   constructor() {
     super();
@@ -40,7 +38,7 @@ export default class Home extends React.Component {
             <div className="container">
               {/*<img src="images/IMG_7495.jpg"/>*/}
               <span className="title">phyll.IO</span>
-              <p class="lead graff">Something about plants</p>
+              <p className="lead graff">Something about plants</p>
               <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant }/>
             </div>
           </div>
