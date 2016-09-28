@@ -16,14 +16,6 @@ export default class PlantsLibrary extends React.Component {
     this._getPlants();
   }
 
-  // openModal() {
-  //   this.setState({modalIsOpen: true});
-  // }
-
-  // closeModal() {
-  //   this.setState({modalIsOpen: false});
-  // }
-
   render() {
     let plants= this.state.plantsLibrary;
     let plantID = 0;
@@ -107,4 +99,4 @@ export default class PlantsLibrary extends React.Component {
     // );
 
 
-
+render(<PlantsLibrary />, document.getElementById('app'));

@@ -36,9 +36,10 @@ export default class View extends React.Component {
             <p>family: {this.props.plant.plant_family}</p>
             <p>watering: {this.props.plant.water_s}</p>
             <p>soil: {this.props.plant.soil_s}</p>
-            <p>fertilize: {this.props.plant.fertilize_s}</p>
+            <p>fertilize: {this.props.plant.fertilizer_s}</p>
             <p>sunlight: {this.props.plant.light_s}</p>
             <p>watering: {this.props.plant.water_s}</p>
+            <p>poisonous: {this.props.plant.poisonous_s}</p>
             <button
               onClick={this.handleButton}
             >

@@ -32,4 +32,4 @@ class MyApp extends React.Component {
  }
 }
 
-render(<MyApp />, document.getElementById('app'));
+// render(<MyApp />, document.getElementById('app'));
