@@ -1,5 +1,7 @@
 import * as Tether from 'tether';
 import React from 'react';
+import d3 from 'd3';
+
 import { render } from 'react-dom';
 import {Router, Route, Redirect, browserHistory} from 'react-router';
 import Layout from './layout/layout.jsx';
@@ -10,7 +12,7 @@ import PlantsLibrary from './pages/plantsLibrary.jsx';
 import Home from './views/home.jsx';
 import BarChart from './components/bar-chart.jsx';
 import Chart from './components/charts/radial-chart.jsx';
-import LineChart from './components/line-chart.jsx';
+import DataVisualization from './components/data-visualization.jsx';
 
 
 require('./stylesheets/main.scss');

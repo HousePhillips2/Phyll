@@ -1,12 +1,15 @@
 import React from 'react';
+import d3 from 'd3';
 import $ from 'jquery';
-import { LineChart } from 'react-easy-chart';
+import LineChart from './line-chart/index.jsx';
 
 
-export default class Chart extends React.Component {
+export default class DataVisualization extends React.Component {
   constructor() {
     super();
-    this.state = { rawData: [] };
+    this.state = {
+      rawData: [ ]
+    };
   }
 
   componentWillMount() {
@@ -19,19 +22,11 @@ export default class Chart extends React.Component {
         <h2>Loading data into application...</h2>
       );
     } else {
-      const data = [this.state.rawData];
-      console.log('data:', data);
       return(
         <div>
-          <LineChart
-            axes
-            xType={ 'text' }
-            dataPoints
-            lineColors={ [ 'green', 'cyan' ] }
-            width={ 500 }
-            height={ 250 }
-            interpolate={ 'cardinal' }
-            data={ data }/>
+          <svg width={ 300 } height={ 200 }>
+            <LineChart data={ this.state.rawData } />
+          </svg>
         </div>
       );
     }
@@ -46,20 +41,26 @@ export default class Chart extends React.Component {
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({"deviceId": id}),
       success: data => {
-         let rawData = data.date.map( (val, i) => {
-          return {
-            x       : val,
-            // moisture    : Number(data.moisture[i]) || null,
-            y       : Number(data.light[i]) || null
-          };
+        let rawData = data.date.slice(-288).map( (val, i) => {
+          try {
+            return {
+              date     : new Date(data.date[i]),
+              moisture : +(+data.moisture[i]).toFixed(2) || null,
+              light    : +(+data.light[i]).toFixed(2) || null
+            };
+          } catch(err) {
+            return null;
+          }
         });
-        this.setState({ rawData: rawData.slice(-20) });
+
+        this.setState({ rawData: rawData });
       },
+
       error: error => {
         console.error(error);
         console.error(error.stack);
       }
     });
-  }
 
+  }
 }
