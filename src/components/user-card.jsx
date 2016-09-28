@@ -17,7 +17,7 @@ export default class userCard extends React.Component {
           <div className="card card-inverse card pull-left" style={{ border: 0 }}>
             <img className="card-img-top media-middle text-sm-center" style={ {width: '150px', height: '150px'} } src={ user.img }/>
             <div className="card-block">
-              <h4 className="card-footer head text-success text-sm-center">{`${ user.user-name }`}</h4>
+              <h4 className="card-footer head text-success text-sm-center">{`${ user.user_name }`}</h4>
               {/*<p className="card-text graff">Some text of some sort</p>*/}
             </div>
           </div>

@@ -7,6 +7,7 @@ import PlantFacts from '../components/plantFacts.jsx';
 import UserInfo from '../components/userInfo.jsx';
 
 
+
 export default class Home extends React.Component {
   constructor() {
     super();
@@ -51,6 +52,7 @@ export default class Home extends React.Component {
           <div className="jumbotron jumbotron-fluid row jumbo-bg">
             <div className="container">
               {/*<img src="images/IMG_7495.jpg"/>*/}
+
               <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
               
             </div>
