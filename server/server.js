@@ -43,15 +43,6 @@ passport.deserializeUser(function(user, done) {
 });
 app.use(passport.initialize());
 app.use(passport.session());
-app.get('/callback',
-  passport.authenticate('auth0', { failureRedirect: '/login' }),
-  function(req, res) {
-    if (!req.user) {
-      throw new Error('user null');
-    }
-    res.redirect("/");
-  }
-);
 
 
 //////////////    SERVER MODULES    //////////////
@@ -72,6 +63,17 @@ app.use('/api', apiApp);
 
 // PHYLLOS sub-app
 app.use('/io', ioApp);
+
+//auth0 call back route
+app.get('/callback',
+  passport.authenticate('auth0', { failureRedirect: '/login' }),
+  function(req, res) {
+    if (!req.user) {
+      throw new Error('user null');
+    }
+    res.redirect("/");
+  }
+);
 
 // **********************************    MOVE ME! **********************************
 // app.use('/plantsLibrary', plantsLibrary);

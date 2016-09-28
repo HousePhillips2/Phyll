@@ -4,19 +4,7 @@ const router  = express.Router();
 const Auth0Strategy = require('passport-auth0');
 const passport = require('passport');
 const session = require ('express-session');
-const strategy = new Auth0Strategy({
-   domain:       'phyllio.auth0.com',
-   clientID:     'sZ4HijY2TahFgeq2d2HRKld4YxD6k2UA',
-   clientSecret: 'rkP-_fueImkM0y8qosiZoh31zxMlfGaKe9R2cE8_hcHzE1hz7YKzIF7BxWakVpfM',
-   callbackURL:  '/callback'
-  },
-  function(accessToken, refreshToken, extraParams, profile, done) {
-    // accessToken is the token to call Auth0 API (not needed in the most cases)
-    // extraParams.id_token has the JSON Web Token
-    // profile has all the information from the user
-    return done(null, profile);
-  }
-);
+
 
 // const strategy = new Auth0Strategy({
 //    domain:       'phyllio.auth0.com',
