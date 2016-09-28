@@ -1,6 +1,6 @@
 [
   {
-    "user-name": "Phoebe Maio",
+    "user_name": "Phoebe Maio",
     "id": "1",
     "img": "images/dummy/p.jpeg",
     "plants": [
@@ -24,7 +24,7 @@
     ]
   },
   {
-    "user-name": "Eric Churchill",
+    "user_name": "Eric Churchill",
     "id": "3",
     "img": "images/dummy/e.jpeg",
     "plants": [
