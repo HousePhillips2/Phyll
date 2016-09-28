@@ -55,7 +55,8 @@ router.get('/login',
 
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/');
+  //res.redirect('/');
+  res.send('success logout!');
 });
 
 router.get('/loggedin', (req,res) => {

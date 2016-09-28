@@ -7,9 +7,9 @@ const Auth0Strategy = require('passport-auth0');
 const passport = require('passport');
 const session = require ('express-session');
 const strategy = new Auth0Strategy({
-   domain:       'phyllio.auth0.com',
-   clientID:     'sZ4HijY2TahFgeq2d2HRKld4YxD6k2UA',
-   clientSecret: 'rkP-_fueImkM0y8qosiZoh31zxMlfGaKe9R2cE8_hcHzE1hz7YKzIF7BxWakVpfM',
+   domain:       process.env.AUTH_DOMAIN,
+   clientID:     process.env.AUTH_CLIENT_ID,
+   clientSecret: process.env.AUTH_CLIENTSECRET,
    callbackURL:  '/callback'
   },
   function(accessToken, refreshToken, extraParams, profile, done) {
@@ -19,6 +19,7 @@ const strategy = new Auth0Strategy({
     return done(null, profile);
   }
 );
+
 
 // MOUNT middleware
 app.use(express.static('dist'));
@@ -42,15 +43,6 @@ passport.deserializeUser(function(user, done) {
 });
 app.use(passport.initialize());
 app.use(passport.session());
-app.get('/callback',
-  passport.authenticate('auth0', { failureRedirect: '/login' }),
-  function(req, res) {
-    if (!req.user) {
-      throw new Error('user null');
-    }
-    res.redirect("/");
-  }
-);
 
 
 //////////////    SERVER MODULES    //////////////
@@ -71,6 +63,17 @@ app.use('/api', apiApp);
 
 // PHYLLOS sub-app
 app.use('/io', ioApp);
+
+//auth0 call back route
+app.get('/callback',
+  passport.authenticate('auth0', { failureRedirect: '/login' }),
+  function(req, res) {
+    if (!req.user) {
+      throw new Error('user null');
+    }
+    res.redirect("/");
+  }
+);
 
 // **********************************    MOVE ME! **********************************
 // app.use('/plantsLibrary', plantsLibrary);

@@ -8,13 +8,15 @@ export default class UserInfo extends React.Component {
   }
 
   render() {
-    return(
-      <div>
-        <span>{this.props.userName}</span>
-        <img src={this.props.userImg} />
-      </div>
-
-    );
+    if(this.props.isLoggedIn){
+      return(
+        <div>
+          <span>{this.props.userName}</span>
+          <img src={this.props.userImg} />
+        </div>
+      );
+    } else {
+      return <div></div>
+    }
   }
-
 }
