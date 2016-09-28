@@ -7,11 +7,12 @@ const admin      = require('./admin');
 const garden      = require('./garden');
 const plantData   = require('./plant-data');
 const plantFacts  = require('./plant-facts');
-
+const plantsLibrary = require('./plants-library');
 
 // ROUTE requests
 router.use('/admin', admin);
 router.use('/garden', garden);
+router.use('/plantsLibrary', plantsLibrary);
 
 // TODO: SPLIT INTO SUB ROUTES?
 router.use('/plantData', plantData);
