@@ -5,6 +5,8 @@ import Users from '../components/users.jsx';
 import Search from '../components/searchBar.jsx';
 import PlantFacts from '../components/plantFacts.jsx';
 import UserInfo from '../components/userInfo.jsx';
+import Login from '../components/login.jsx';
+
 require('../stylesheets/main.scss');
 export default class Home extends React.Component {
   constructor() {
@@ -36,9 +38,7 @@ export default class Home extends React.Component {
                   <li className="nav-item">
                     <a className="nav-link graff" href="#">About</a>
                   </li>
-                  <li className="nav-item">
-                    <a className="nav-link active graff" href="api/auth/login">Login</a>
-                  </li>
+                  <Login />
                   <li className="nav-item">
                     <a className="nav-link active graff" href="api/auth/logout">Logout</a>
                   </li>
