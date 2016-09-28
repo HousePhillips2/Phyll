@@ -6,7 +6,6 @@ import Search from '../components/searchBar.jsx';
 import PlantFacts from '../components/plantFacts.jsx';
 import UserInfo from '../components/userInfo.jsx';
 
-
 export default class Home extends React.Component {
   constructor() {
     super();
@@ -60,7 +59,10 @@ export default class Home extends React.Component {
         <div className="modal fade" id="plantModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
           <div className="modal-dialog " role="document">
             <div className="modal-content" id="plantFact">
+<<<<<<< f91b96eaf31c2958c2513f24d1784cf6ac3feed5
 
+=======
+>>>>>>> [feature] Add logo via custom glyph font
             </div>
           </div>
         </div>
