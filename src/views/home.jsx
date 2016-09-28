@@ -53,7 +53,8 @@ export default class Home extends React.Component {
         <div id="hero">
           <div className="jumbotron jumbotron-fluid row jumbo-bg">
             <div className="container">
-              {/*<img src="images/IMG_7495.jpg"/>*/}              
+              {/*<img src="images/IMG_7495.jpg"/>*/}
+              
               <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
               
             </div>
@@ -62,7 +63,6 @@ export default class Home extends React.Component {
         <div className="modal fade" id="plantModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
           <div className="modal-dialog " role="document">
             <div className="modal-content" id="plantFact">
-
             </div>
           </div>
         </div>
