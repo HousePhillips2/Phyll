@@ -6,8 +6,6 @@ const bodyParser  = require('body-parser');
 const Auth0Strategy = require('passport-auth0');
 const passport = require('passport');
 const session = require ('express-session');
-
-
 const strategy = new Auth0Strategy({
    domain:       'phyllio.auth0.com',
    clientID:     'sZ4HijY2TahFgeq2d2HRKld4YxD6k2UA',
@@ -22,6 +20,23 @@ const strategy = new Auth0Strategy({
   }
 );
 
+
+
+
+//////////////    SERVER MODULES    //////////////
+
+const apiApp      = require('./controllers/api/api');
+const ioApp       = require('./controllers/io/io');
+
+// **********************************    MOVE ME! **********************************
+const plantsLibrary = require('./controllers/plants-library');
+
+
+// MOUNT middleware
+app.use(express.static('dist'));
+app.use(bodyParser.json());
+
+//Authentication middleware
 app.use(session({
   secret: 'jelly beans many fingers',
   resave: true,
@@ -48,6 +63,7 @@ app.get('/callback',
     res.redirect("/");
   }
 );
+
 
 app.get('/login',
   passport.authenticate('auth0', {}), function (req, res) {
@@ -90,6 +106,7 @@ const ioApp       = require('./controllers/io/io');
 // MOUNT middleware
 app.use(express.static('dist'));
 app.use(bodyParser.json());
+
 
 // API sub-app
 app.use('/api', apiApp);
