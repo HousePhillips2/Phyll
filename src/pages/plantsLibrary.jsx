@@ -58,4 +58,4 @@ export default class PlantsLibrary extends React.Component {
 }
 
 
-render(<PlantsLibrary />, document.getElementById('app'));
+// render(<PlantsLibrary />, document.getElementById('app'));

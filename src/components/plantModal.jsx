@@ -10,6 +10,7 @@ export default class View extends React.Component {
   this.state={isShowingModal:false};
   }
 
+// handleButton decides what action will be taken when the button on the bottom of the modal form is clicked
   handleButton(){
       if(this.props.handleButton){
         this.props.handleButton(this.props.plant);

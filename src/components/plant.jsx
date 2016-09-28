@@ -1,5 +1,4 @@
 import React from 'react';
-import View from './plantModal.jsx';
 
 export default class Plant extends React.Component {
 
@@ -33,11 +32,3 @@ export default class Plant extends React.Component {
   }
 
 };
-
-
-
-    // return <div className='plant-clickable' onClick={this.handleClick} style={{display:'inline-block', width: '230px', transform:'scale(.55)', margin:'-2em'}} >
-
-          // </div>;
-
-              /* <View plant={plant}/> */
