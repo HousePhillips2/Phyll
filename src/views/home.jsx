@@ -31,46 +31,42 @@ export default class Home extends React.Component {
   render() {
     console.log(this.state.isLoggedIn,'loggedin?')
     return(
-      <div id="home-container" className="container">
-        <div className="container">
-          <span className="title pull-sm-left" style={{marginLeft: -.5 + 'em'}}><i className="phyll-glyphs logo"></i>phyll.IO</span>
-          <div className="pull-sm-right">
-              <ul className="nav nav-inline text-sm-right"style={{padding: .2 + 'em'}}>
-                <li className="nav-item">
-                  <a className="nav-link graff" href="#">About</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link active graff" href="/api/auth/login">Login</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link active graff" href="/api/auth/logout">Logout</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link active graff" href="/api/auth/logout">Logout</a>
-                </li>
-              </ul>
-              <UserInfo userName={this.state.userName} userImg={this.state.userImg}/>
-          </div>
-        </div>
-        <div id="hero">
-          <div className="jumbotron jumbotron-fluid row jumbo-bg">
-            <div className="container">
+      <div className="container">
+        <div className="row header">
+          <div className="col-xs-12">
+            <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
+            <div className="pull-sm-right">
+            
+                <ul className="nav nav-inline text-sm-right"style={{padding: .2 + 'em'}}>
+                  <li className="nav-item">
+                    <a className="nav-link graff" href="#">About</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link active graff" href="/login">Login</a>
+                  </li>
+                </ul>
 
-              {/*<img src="images/IMG_7495.jpg"/>*/}              
-
-              <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
-              
             </div>
           </div>
         </div>
-        <div className="modal fade" id="plantModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
-          <div className="modal-dialog " role="document">
-            <div className="modal-content" id="plantFact">
-            </div>
+        <div className="row search">
+          <div className="col-xs-12 jumbotron">
+            <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
           </div>
         </div>
-        <div className="container">
-          <Users users={ this.state.admin }/>
+        <div className="row content">
+          <div className="content-1 col-md-6">
+            <Users users={ this.state.admin }/>
+          </div>
+          <div className="content-2 col-md-6">
+            <h1>More content</h1>
+            <p>Lorem ipsum</p>
+          </div>
+        </div>
+        <div className="row footer">
+          <div className="col-xs-12">
+            <h1>Footer</h1>
+          </div>
         </div>
       </div>
     );

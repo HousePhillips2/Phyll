@@ -11,29 +11,17 @@ export default class userCard extends React.Component {
   render() {
     const user = this.props.user;
     return(
-      // TODO: DEFINE CSS styles for user card
-      <div className="card-deck-wrapper">
-        <div className="card-deck">
-          <div className="card card-inverse card pull-left" style={{ border: 0 }}>
-            <img className="card-img-top media-middle text-sm-center" style={ {width: '150px', height: '150px'} } src={ user.img }/>
-            <div className="card-block">
-              <h4 className="card-footer head text-success text-sm-center">{`${ user.user_name }`}</h4>
-              {/*<p className="card-text graff">Some text of some sort</p>*/}
-            </div>
+      <div className="container card-outline-success">
+        <div className="row">
+          <div className="col-xs-4">
+            <img className="img-rounded media-center" style={ {width: '100px', height: '100px'} } src={ user.img }/>
+            <h5 className="graff text-success">{`${ user.user_name }`}</h5>
           </div>
-          <div className="card center-block" style={{ border: 0 }}>
-            <div className="card-block media-middle text-sm-center center-block">
-              <h1 className=""><i className="fa fa-heart fa-lg head text-danger"></i></h1>
-            </div>
+          <div className="col-xs-4">
           </div>
-          <div className="card pull-right" style={{ border: 0 }}>
-            <div className="card card-inverse card" style={{ border: 0 }}>
-              <img className="card-img-top media-middle text-sm-center" style={ {width: '150px', height: '150px'} } src={ user.plants[0].img }/>
-              <div className="card-block">
-                <h4 className="card-footer head text-success text-sm-center">{`${ user.plants[0].name }`}</h4>
-                {/*<p className="card-text graff">Some text of some sort</p>*/}
-              </div>
-            </div>
+          <div className="col-xs-4">
+            <img className="img-rounded media-center" style={ {width: '100px', height: '100px'} } src={ user.plants[0].img }/>
+            <h5 className="graff text-success">{`${ user.plants[0].name }`}</h5>
           </div>
         </div>
       </div>

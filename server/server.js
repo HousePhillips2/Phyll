@@ -20,18 +20,6 @@ const strategy = new Auth0Strategy({
   }
 );
 
-
-
-
-//////////////    SERVER MODULES    //////////////
-
-const apiApp      = require('./controllers/api/api');
-const ioApp       = require('./controllers/io/io');
-
-// **********************************    MOVE ME! **********************************
-const plantsLibrary = require('./controllers/plants-library');
-
-
 // MOUNT middleware
 app.use(express.static('dist'));
 app.use(bodyParser.json());
@@ -121,6 +109,7 @@ app.use('/io', ioApp);
 // static files route
 app.get('/', (req, res) => res.redirect('/index.html'));
 app.use('/static', express.static('node_modules'));
+app.use('/images', express.static('src/images'));
 app.use('/glyphs', express.static('src/glyphs'));
 
 app.set('port', process.env.PORT || 8080);
