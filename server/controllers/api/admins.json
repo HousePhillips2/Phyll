@@ -2,22 +2,23 @@
   {
     "user-name": "Phoebe Maio",
     "id": "1",
-    "img": "https://figuya.com/uploads/product/profile_picture/6195/profile_Pop-Animation-67-Natsu-Dragneel-Vorschau.jpg",
+    "img": "images/dummy/p.jpeg",
     "plants": [
       {
-        "img": "http://www.ikea.com/ie/en/images/range-introduction/ikea-plant-and-pot__1364299621645-s4.jpg",
-        "name": "Spider Tomato",
+        "img": "images/dummy/plant4.jpeg",
+        "name": "Cactus",
         "Light": "Full Sun"
       }
     ]
   },
   {
-    "user-name": "Casey Childers",
-    "img": "https://figuya.com/uploads/product/profile_picture/6189/profile_Pop-Animation-79-Soul-Vorschau.jpg",
+    "user_name": "Casey Childers",
+    "id": "4",
+    "img": "images/dummy/c.jpeg",
     "plants": [
       {
-        "img": "http://www.ikea.com/ie/en/images/range-introduction/ikea-plant-and-pot__1364299621645-s4.jpg",
-        "name": "Spider Tomato",
+        "img": "images/dummy/plant1.jpeg",
+        "name": "Funeral Gift",
         "Light": "Full Sun"
       }
     ]
@@ -25,11 +26,11 @@
   {
     "user-name": "Eric Churchill",
     "id": "3",
-    "img": "https://figuya.com/uploads/product/profile_picture/6188/profile_Pop-Animation-80-Maka-Albarn-Vorschau.jpg",
+    "img": "images/dummy/e.jpeg",
     "plants": [
       {
-        "img": "http://www.ikea.com/ie/en/images/range-introduction/ikea-plant-and-pot__1364299621645-s4.jpg",
-        "name": "Spider Tomato",
+        "img": "images/dummy/plant3.jpeg",
+        "name": "Single Dad",
         "Light": "Full Sun"
       }
     ]
@@ -37,11 +38,11 @@
   {
     "user_name": "Sergey Potashnikov",
     "id": "2",
-    "img": "https://figuya.com/uploads/product/profile_picture/6191/profile_Pop-Animation-72-Sasuke-Uchiha-Vorschau.jpeg",
+    "img": "images/dummy/s.jpeg",
     "plants": [
       {
-        "img": "http://www.ikea.com/ie/en/images/range-introduction/ikea-plant-and-pot__1364299621645-s4.jpg",
-        "name": "Spider Tomato",
+        "img": "images/dummy/plant2.jpeg",
+        "name": "Cliff Plant",
         "Light": "Full Sun"
       }
     ]
