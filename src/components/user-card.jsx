@@ -1,6 +1,6 @@
 import { ajax } from 'jquery';
 import React from 'react';
-import {Chart} from '../components/line-chart.jsx';
+
 
 export default class userCard extends React.Component {
 

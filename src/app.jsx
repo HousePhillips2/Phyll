@@ -1,5 +1,7 @@
 import * as Tether from 'tether';
 import React from 'react';
+import d3 from 'd3';
+
 import { render } from 'react-dom';
 import {Router, Route, Redirect, browserHistory} from 'react-router';
 import Layout from './layout/layout.jsx';
@@ -8,6 +10,8 @@ import MyDashboard from './pages/dashBoard.jsx';
 import AddPlant from './pages/addPlant.jsx';
 import PlantsLibrary from './pages/plantsLibrary.jsx';
 import Home from './views/home.jsx';
+import Charts from './components/charts.jsx';
+
 
 require('./stylesheets/main.scss');
 
