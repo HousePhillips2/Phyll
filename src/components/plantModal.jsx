@@ -1,14 +1,13 @@
 import React from 'react';
-// import React, {PropTypes} from 'react';
 import {ModalContainer, ModalDialog} from 'react-modal-dialog';
-// import Modal from 'react-bootstrap-modal';
+import Plant from './plant.jsx';
 
 
 export default class View extends React.Component {
 
   constructor() {
   super();
-  this.state={isShowingModal:false};//initate state
+  this.state={isShowingModal:false};
   }
 
   handleButton(){
@@ -26,7 +25,11 @@ export default class View extends React.Component {
   }
 
   render() {
-    return <div onClick={this.handleClick.bind(this)}>Click for more info!
+    return (
+
+<div className='plant-clickable' onClick={this.handleClick.bind(this)} style={{display:'inline-block', width: '230px', transform:'scale(.55)', margin:'-2em'}} >
+    <div >
+            <Plant plant={this.props.plant}/>
       {
         this.state.isShowingModal &&
         <ModalContainer onClose={this.handleClose.bind(this)}>
@@ -35,13 +38,13 @@ export default class View extends React.Component {
             <img style={{width: '300px', height: '300px'}} className='img-circle' src={this.props.plant.img}/>
             <p>family: {this.props.plant.plant_family}</p>
             <p>watering: {this.props.plant.water_s}</p>
-            <p>soil: {this.props.plant.soil_s}</p>
+            <p class="bg-primary">soil: {this.props.plant.soil_s}</p>
             <p>fertilize: {this.props.plant.fertilizer_s}</p>
             <p>sunlight: {this.props.plant.light_s}</p>
             <p>watering: {this.props.plant.water_s}</p>
             <p>poisonous: {this.props.plant.poisonous_s}</p>
             <button
-              onClick={this.handleButton}
+              onClick={this.handleButton.bind(this)}
             >
               Adopt me!
            </button>
@@ -49,6 +52,10 @@ export default class View extends React.Component {
           </ModalDialog>
         </ModalContainer>
       }
-    </div>;
+    </div>
+    </div>
+
+    );
+
   }
 }
