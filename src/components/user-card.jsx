@@ -15,9 +15,9 @@ export default class userCard extends React.Component {
       <div className="card-deck-wrapper">
         <div className="card-deck">
           <div className="card card-inverse card pull-left" style={{ border: 0 }}>
-            <img className="card-img-top media-middle text-sm-center" style={ {width: '150px', height: '150px'} } src={ user.userImg }/>
+            <img className="card-img-top media-middle text-sm-center" style={ {width: '150px', height: '150px'} } src={ user.img }/>
             <div className="card-block">
-              <h4 className="card-footer head text-success text-sm-center">{`${ user.userName }`}</h4>
+              <h4 className="card-footer head text-success text-sm-center">{`${ user.user_name }`}</h4>
               {/*<p className="card-text graff">Some text of some sort</p>*/}
             </div>
           </div>
@@ -27,17 +27,13 @@ export default class userCard extends React.Component {
             </div>
           </div>
           <div className="card pull-right" style={{ border: 0 }}>
-            { user.plants.slice(0, 3).map( plant => { // This needs to just be one plant for the main view card. The dash will have all user plants.
-              return(
-                <div className="card card-inverse card" style={{ border: 0 }}>
-                  <img className="card-img-top media-middle text-sm-center" style={ {width: '150px', height: '150px'} } src={ plant.img }/>
-                  <div className="card-block">
-                    <h4 className="card-footer head text-success text-sm-center">{`${ plant.name }`}</h4>
-                    {/*<p className="card-text graff">Some text of some sort</p>*/}
-                  </div>
-                </div>
-              );
-            })}
+            <div className="card card-inverse card" style={{ border: 0 }}>
+              <img className="card-img-top media-middle text-sm-center" style={ {width: '150px', height: '150px'} } src={ user.plants[0].img }/>
+              <div className="card-block">
+                <h4 className="card-footer head text-success text-sm-center">{`${ user.plants[0].name }`}</h4>
+                {/*<p className="card-text graff">Some text of some sort</p>*/}
+              </div>
+            </div>
           </div>
         </div>
       </div>

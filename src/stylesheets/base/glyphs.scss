@@ -1,0 +1,13 @@
+@font-face {
+   font-family: 'PhyllGlyphs';
+   src: url("../glyphs/logo-a.ttf") format("truetype");
+   font-weight: normal;
+   font-style: normal;
+}
+.phyll-glyphs {
+   display: inline-block;
+   font-family: 'PhyllGlyphs';
+}
+.phyll-glyphs.logo:before {
+   content: '\0041';
+}
