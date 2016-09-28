@@ -6,6 +6,7 @@ import Search from '../components/searchBar.jsx';
 import PlantFacts from '../components/plantFacts.jsx';
 import UserInfo from '../components/userInfo.jsx';
 
+require('../stylesheets/main.scss');
 
 
 export default class Home extends React.Component {
@@ -45,7 +46,7 @@ export default class Home extends React.Component {
                   <a className="nav-link active graff" href="/api/auth/logout">Logout</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link active graff" href="/logout">Log Out</a>
+                  <a className="nav-link active graff" href="/api/auth/logout">Logout</a>
                 </li>
               </ul>
               <UserInfo userName={this.state.userName} userImg={this.state.userImg}/>
