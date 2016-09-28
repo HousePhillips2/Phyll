@@ -6,6 +6,12 @@ import Search from '../components/searchBar.jsx';
 import PlantFacts from '../components/plantFacts.jsx';
 import UserInfo from '../components/userInfo.jsx';
 
+<<<<<<< a34a15dceb9dc05861902e35b993837b8d077d1b
+=======
+require('../stylesheets/main.scss');
+
+
+>>>>>>> [feature] Able to display loggedIn user name and image
 export default class Home extends React.Component {
   constructor() {
     super();
@@ -43,7 +49,7 @@ export default class Home extends React.Component {
                   <a className="nav-link active graff" href="/api/auth/logout">Logout</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link active graff" href="/logout">Log Out</a>
+                  <a className="nav-link active graff" href="/api/auth/logout">Logout</a>
                 </li>
               </ul>
               <UserInfo userName={this.state.userName} userImg={this.state.userImg}/>
@@ -61,10 +67,6 @@ export default class Home extends React.Component {
         <div className="modal fade" id="plantModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
           <div className="modal-dialog " role="document">
             <div className="modal-content" id="plantFact">
-<<<<<<< f91b96eaf31c2958c2513f24d1784cf6ac3feed5
-
-=======
->>>>>>> [feature] Add logo via custom glyph font
             </div>
           </div>
         </div>
