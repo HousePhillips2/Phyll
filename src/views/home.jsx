@@ -6,6 +6,7 @@ import Search from '../components/searchBar.jsx';
 import PlantFacts from '../components/plantFacts.jsx';
 import UserInfo from '../components/userInfo.jsx';
 import Login from '../components/login.jsx';
+import Logout from '../components/logout.jsx';
 
 require('../stylesheets/main.scss');
 export default class Home extends React.Component {
@@ -26,7 +27,6 @@ export default class Home extends React.Component {
     this._getUser();
   }
   render() {
-    console.log(this.state.isLoggedIn,'loggedin?');
     return(
       <div className="container">
         <div className="row header">
@@ -39,11 +39,12 @@ export default class Home extends React.Component {
                     <a className="nav-link graff" href="#">About</a>
                   </li>
                   <Login />
-                  <li className="nav-item">
+                  <Logout logout={this._logout.bind(this)}/>
+                  {/*<li className="nav-item">
                     <a className="nav-link active graff" href="api/auth/logout">Logout</a>
-                  </li>
+                  </li>*/}
                 </ul>
-                <UserInfo userName={this.state.userName} userImg={this.state.userImg}/>
+                <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
 
             </div>
           </div>
@@ -121,6 +122,18 @@ export default class Home extends React.Component {
           this.setState({userImg: userInfo.img});
           this.setState({isLoggedIn:!this.state.isLoggedIn});
         }
+      },
+      error: (err) => {
+        throw new Error(err);
+      }
+    });
+  }
+  _logout() {
+    $.ajax({
+      method: 'GET',
+      url: 'api/auth/logout',
+      success: (data) => {
+        this.setState({isLoggedIn:!this.state.isLoggedIn})
       },
       error: (err) => {
         throw new Error(err);
