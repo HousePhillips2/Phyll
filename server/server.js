@@ -5,7 +5,7 @@ const app         = express();
 const bodyParser  = require('body-parser');
 const Auth0Strategy = require('passport-auth0');
 const passport = require('passport');
-
+const session = require ('express-session');
 const strategy = new Auth0Strategy({
    domain:       'phyllio.auth0.com',
    clientID:     'sZ4HijY2TahFgeq2d2HRKld4YxD6k2UA',
@@ -16,10 +16,33 @@ const strategy = new Auth0Strategy({
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
     // profile has all the information from the user
-    //console.log(accessToken,"accessToken")
     return done(null, profile);
   }
 );
+
+
+
+
+//////////////    SERVER MODULES    //////////////
+
+const apiApp      = require('./controllers/api/api');
+const ioApp       = require('./controllers/io/io');
+
+// **********************************    MOVE ME! **********************************
+const plantsLibrary = require('./controllers/plants-library');
+
+
+// MOUNT middleware
+app.use(express.static('dist'));
+app.use(bodyParser.json());
+
+//Authentication middleware
+app.use(session({
+  secret: 'jelly beans many fingers',
+  resave: true,
+  cookie: {maxAge: 30000000},
+  saveUninitialized: true
+}));
 
 passport.use(strategy);
 passport.serializeUser(function(user, done) {
@@ -34,7 +57,6 @@ app.use(passport.session());
 app.get('/callback',
   passport.authenticate('auth0', { failureRedirect: '/login' }),
   function(req, res) {
-    console.log(req,res, 'inside /callback')
     if (!req.user) {
       throw new Error('user null');
     }
@@ -42,10 +64,35 @@ app.get('/callback',
   }
 );
 
+
 app.get('/login',
   passport.authenticate('auth0', {}), function (req, res) {
-  //console.log('/login', req, '-------', res);
   res.redirect("/");
+});
+
+app.get('/logout', function(req, res){
+  req.logout();
+  //console.log(req.session.passport,"logout session.passport---------------");
+  res.redirect('/');
+});
+
+app.get('/user', function(req,res){
+  //console.log(req.session.passport,'passport')
+  if(req.session.passport.user!==undefined){
+    res.send('hello, loggedin user');
+  } else {
+    res.send('hello, guest! You havent loggedin');
+  }
+  
+});
+
+app.get('/other', function(req,res){
+  //console.log(req.session.passport,'passport')
+  if(req.session.passport.user!==undefined){
+    res.send('hello, loggedin other user');
+  } else {
+    res.send('hello, guest! You havent loggedin');
+  }
 });
 
 //////////////    SERVER MODULES    //////////////
@@ -59,6 +106,7 @@ const ioApp       = require('./controllers/io/io');
 // MOUNT middleware
 app.use(express.static('dist'));
 app.use(bodyParser.json());
+
 
 // API sub-app
 app.use('/api', apiApp);

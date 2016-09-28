@@ -1,6 +1,6 @@
 [
   {
-    "user_name": "Phoebe Maio",
+    "user-name": "Phoebe Maio",
     "id": "1",
     "img": "https://figuya.com/uploads/product/profile_picture/6195/profile_Pop-Animation-67-Natsu-Dragneel-Vorschau.jpg",
     "plants": [
@@ -12,8 +12,7 @@
     ]
   },
   {
-    "user_name": "Casey Childers",
-    "id": "4",
+    "user-name": "Casey Childers",
     "img": "https://figuya.com/uploads/product/profile_picture/6189/profile_Pop-Animation-79-Soul-Vorschau.jpg",
     "plants": [
       {
@@ -24,7 +23,7 @@
     ]
   },
   {
-    "user_name": "Eric Churchill",
+    "user-name": "Eric Churchill",
     "id": "3",
     "img": "https://figuya.com/uploads/product/profile_picture/6188/profile_Pop-Animation-80-Maka-Albarn-Vorschau.jpg",
     "plants": [
