@@ -12,7 +12,7 @@ export default class UserInfo extends React.Component {
       return(
         <div>
           <span>{this.props.userName}</span>
-          <img src={this.props.userImg} />
+          <img src={this.props.userImg} style={{height:'50px', width:'50px'}}/>
         </div>
       );
     } else {
