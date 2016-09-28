@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import Plant from '../components/plant.jsx';
+import View from '../components/plantModal.jsx';
 
 export default class PlantsLibrary extends React.Component {
 
@@ -13,13 +14,13 @@ export default class PlantsLibrary extends React.Component {
     this._getPlants();
   }
 
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
+  // openModal() {
+  //   this.setState({modalIsOpen: true});
+  // }
 
-  closeModal() {
-    this.setState({modalIsOpen: false});
-  }
+  // closeModal() {
+  //   this.setState({modalIsOpen: false});
+  // }
 
   render() {
     let plants= this.state.plantsLibrary;
@@ -55,7 +56,6 @@ export default class PlantsLibrary extends React.Component {
         <Plant
         handleClick = {this.props.handleClickPlant}
         plant={plant} key={plant.id + '-' + plantID++}
-        trackStyle = {{transform:'scale(.5)', margin:'-2em'}}
         // style={this.props.plantStyle}
         />
         );
@@ -63,7 +63,7 @@ export default class PlantsLibrary extends React.Component {
     }.bind(this), []);
 
     return (
-     <div style={{overflow: 'auto', width: '140%'}}>
+     <div className= { 'conservatory' } style={{overflow: 'auto', width: '140%'}}>
       <div style={{width: '1200px'}}>
         <div>
             {library}

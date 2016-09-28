@@ -1,4 +1,5 @@
 import React from 'react';
+import View from './plantModal.jsx';
 
 export default class Plant extends React.Component {
 
@@ -27,6 +28,8 @@ export default class Plant extends React.Component {
               <label>{this.props.plant.soil_s}</label>
                <br/>
               <label>{this.props.plant.fertilizer_s}</label>
+              <br/>
+              <View />
             </div>
           </div>;
   }
