@@ -42,7 +42,7 @@ export default class Home extends React.Component {
                     <a className="nav-link graff" href="#">About</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link active graff" href="/login">Login</a>
+                    <a className="nav-link active graff" href="api/auth/login">Login</a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link active graff" href="/api/auth/logout">Logout</a>

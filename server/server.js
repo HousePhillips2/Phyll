@@ -53,36 +53,6 @@ app.get('/callback',
 );
 
 
-app.get('/login',
-  passport.authenticate('auth0', {}), function (req, res) {
-  res.redirect("/");
-});
-
-app.get('/logout', function(req, res){
-  req.logout();
-  //console.log(req.session.passport,"logout session.passport---------------");
-  res.redirect('/');
-});
-
-app.get('/user', function(req,res){
-  //console.log(req.session.passport,'passport')
-  if(req.session.passport.user!==undefined){
-    res.send('hello, loggedin user');
-  } else {
-    res.send('hello, guest! You havent loggedin');
-  }
-  
-});
-
-app.get('/other', function(req,res){
-  //console.log(req.session.passport,'passport')
-  if(req.session.passport.user!==undefined){
-    res.send('hello, loggedin other user');
-  } else {
-    res.send('hello, guest! You havent loggedin');
-  }
-});
-
 //////////////    SERVER MODULES    //////////////
 
 const apiApp      = require('./controllers/api/api');
