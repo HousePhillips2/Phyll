@@ -44,7 +44,11 @@ export default class Home extends React.Component {
                   <li className="nav-item">
                     <a className="nav-link active graff" href="/login">Login</a>
                   </li>
+                  <li className="nav-item">
+                    <a className="nav-link active graff" href="/api/auth/logout">Logout</a>
+                  </li>
                 </ul>
+                <UserInfo userName={this.state.userName} userImg={this.state.userImg}/>
 
             </div>
           </div>
