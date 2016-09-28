@@ -4,11 +4,14 @@ import $ from 'jquery';
 import LineChart from './line-chart/index.jsx';
 
 
-export default class DataVisualization extends React.Component {
+export default class Charts extends React.Component {
   constructor() {
     super();
     this.state = {
-      rawData: [ ]
+      moisture: [ ],
+      rawData:  [ ],
+      dates:    [ ],
+      light:    [ ]
     };
   }
 
@@ -17,6 +20,18 @@ export default class DataVisualization extends React.Component {
   }
 
   render() {
+
+    let params = {
+      width: 500,
+      height: 200,
+      axisMargin: 83,
+      topMargin: 50,
+      bottomMargin: 50,
+      value: (d) => d.base_salary,
+      // ADJUST this value to change size of SVG element
+      fullWidth: 500
+    };
+
     if( !this.state.rawData.length ){
       return(
         <h2>Loading data into application...</h2>
@@ -24,8 +39,8 @@ export default class DataVisualization extends React.Component {
     } else {
       return(
         <div>
-          <svg width={ 300 } height={ 200 }>
-            <LineChart data={ this.state.rawData } />
+          <svg width={ params.fullWidth } height={ params.height }>
+            <LineChart { ...params } data={ this.state.rawData } />
           </svg>
         </div>
       );
@@ -41,19 +56,25 @@ export default class DataVisualization extends React.Component {
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({"deviceId": id}),
       success: data => {
+
+        this.setState({ date: data.date.slice(-288) });
+        this.setState({ light: data.light.slice(-288) });
+        this.setState({ moisture: data.moisture.slice(-288) });
+
         let rawData = data.date.slice(-288).map( (val, i) => {
           try {
             return {
-              date     : new Date(data.date[i]),
-              moisture : +(+data.moisture[i]).toFixed(2) || null,
-              light    : +(+data.light[i]).toFixed(2) || null
+              date     : new Date(this.state.date[i]),
+              moisture : +(+this.state.moisture[i]).toFixed(2) || null,
+              light    : +(+this.state.light[i]).toFixed(2) || null
             };
           } catch(err) {
+            console.error('Data point undefined and set to null.');
             return null;
           }
         });
 
-        this.setState({ rawData: rawData });
+        this.setState({ rawData: rawData.slice(-288) });
       },
 
       error: error => {
