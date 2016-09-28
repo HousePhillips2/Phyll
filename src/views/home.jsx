@@ -30,7 +30,7 @@ export default class Home extends React.Component {
   }
   render() {
     return(
-      <div className="container">
+      <div className="container-fluid">
         <div className="row header">
           <div className="col-xs-12">
             <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
@@ -54,16 +54,25 @@ export default class Home extends React.Component {
           </div>
         </div>
         <div className="row content">
-          <div className="content-1 col-md-6">
+          <div className="content-1 col-md-6 col-lg-5 col-xl-4">
             <Users users={ this.state.admin }/>
           </div>
+<<<<<<< d60583fa159e54331b473686823e8c6ebc5e8c14
           <div className="content-2 col-md-6">
             <div>
               <Map/>
             </div>
+<<<<<<< d48f9229a4c0a4ebac7ee3ce0844a3dea5c6ac30
             <h1>More content</h1>
             <p>Lorem ipsum</p>
             <Chatbot userName={this.state.userName}/>
+=======
+=======
+          <div className="content-2 col-md-6 col-lg-7 col-xl-8">
+            <h1>More content</h1>
+            <p>Lorem ipsum</p>
+>>>>>>> [style] Tighten grid behavior
+>>>>>>> [style] Tighten grid behavior
           </div>
         </div>
         <div className="row footer">

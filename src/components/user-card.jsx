@@ -11,20 +11,18 @@ export default class userCard extends React.Component {
   render() {
     const user = this.props.user;
     return(
-      <div className="container card-outline-success">
-        <div className="row">
-          <div className="col-xs-4">
-            <img className="img-rounded media-center" style={ {width: '100px', height: '100px'} } src={ user.img }/>
-            <h5 className="graff text-success">{`${ user.user_name }`}</h5>
+        <div className="row card-group card-outline-success text-xs-center">
+          <div className="col-xs-5 card text-xs-center" style={{ border: 'none' }}>
+            <img className="img-rounded media-center" style={ {width: '125px', height: '125px'} } src={ user.img }/>
+            <p className="card-block graff text-success">{`${ user.user_name }`}</p>
           </div>
-          <div className="col-xs-4">
+          <div className="col-xs-2 card text-xs-center" style={{ border: 'none' }}>
           </div>
-          <div className="col-xs-4">
-            <img className="img-rounded media-center" style={ {width: '100px', height: '100px'} } src={ user.plants[0].img }/>
-            <h5 className="graff text-success">{`${ user.plants[0].name }`}</h5>
+          <div className="col-xs-5 card text-xs-center" style={{ border: 'none' }}>
+            <img className="img-rounded media-center" style={ {width: '125px', height: '125px'} } src={ user.plants[0].img }/>
+            <p className="card-block graff text-success">{`${ user.plants[0].name }`}</p>
           </div>
         </div>
-      </div>
     );
   }
 }
