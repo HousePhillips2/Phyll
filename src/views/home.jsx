@@ -57,6 +57,7 @@ export default class Home extends React.Component {
           <div className="content-1 col-md-6 col-lg-5 col-xl-4">
             <Users users={ this.state.admin }/>
           </div>
+<<<<<<< 28376cf017ece1cbf036a394253fa3a2787d6de8
 <<<<<<< d60583fa159e54331b473686823e8c6ebc5e8c14
           <div className="content-2 col-md-6">
             <div>
@@ -68,6 +69,8 @@ export default class Home extends React.Component {
             <Chatbot userName={this.state.userName}/>
 =======
 =======
+=======
+>>>>>>> [style] Tighten grid behavior
           <div className="content-2 col-md-6 col-lg-7 col-xl-8">
             <h1>More content</h1>
             <p>Lorem ipsum</p>
