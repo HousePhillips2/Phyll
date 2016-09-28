@@ -74,6 +74,7 @@ app.use('/plantsLibrary', plantsLibrary);
 // static files route
 app.get('/', (req, res) => res.redirect('/index.html'));
 app.use('/static', express.static('node_modules'));
+app.use('/images', express.static('src/images'));
 app.use('/glyphs', express.static('src/glyphs'));
 
 app.set('port', process.env.PORT || 8080);
