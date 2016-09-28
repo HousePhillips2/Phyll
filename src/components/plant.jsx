@@ -16,20 +16,18 @@ export default class Plant extends React.Component {
   render(){
     // let plant = this.props.plant;
 
-    return <div className='plant-clickable' onClick={this.handleClick} style={{display:'inline-block', width: '230px', transform:'scale(.7)', margin:'-2em'}} >
+    return <div className='plant-clickable' onClick={this.handleClick} style={{display:'inline-block', width: '230px', transform:'scale(.55)', margin:'-2em'}} >
             <div>
-              <label className='title'>{this.props.plant.plant_name}</label>
+              <label>{this.props.plant.plant_name}</label>
             <img style={{width: '200px', height: '200px'}} className='img-circle' src={this.props.plant.img}/>
               <br/>
-              <label>{this.props.plant.plant_family}</label>
+              <label>light: {this.props.plant.light_s}</label>
                <br/>
-              <label>{this.props.plant.water_s}</label>
+              <label>water: {this.props.plant.water_s}</label>
                <br/>
-              <label>{this.props.plant.soil_s}</label>
+              <label>poisonous: {this.props.plant.poisonous_s}</label>
                <br/>
-              <label>{this.props.plant.fertilizer_s}</label>
-              <br/>
-              <View />
+              <View plant={this.props.plant}/>
             </div>
           </div>;
   }

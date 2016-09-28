@@ -3,6 +3,8 @@ import $ from 'jquery';
 import Plant from '../components/plant.jsx';
 import View from '../components/plantModal.jsx';
 
+import { render } from 'react-dom';
+
 export default class PlantsLibrary extends React.Component {
 
   constructor() {
@@ -63,8 +65,8 @@ export default class PlantsLibrary extends React.Component {
     }.bind(this), []);
 
     return (
-     <div className= { 'conservatory' } style={{overflow: 'auto', width: '140%'}}>
-      <div style={{width: '1200px'}}>
+     <div className= { 'conservatory' } style={{overflow: 'auto', width: '100%'}}>
+      <div style={{width: '1300px'}}>
         <div>
             {library}
         </div>
@@ -103,5 +105,6 @@ export default class PlantsLibrary extends React.Component {
     //     </div>
     //   </div>
     // );
+
 
 
