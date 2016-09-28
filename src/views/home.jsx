@@ -4,6 +4,8 @@ import { render } from 'react-dom';
 import Users from '../components/users.jsx';
 import Search from '../components/searchBar.jsx';
 import PlantFacts from '../components/plantFacts.jsx';
+import UserInfo from '../components/userInfo.jsx';
+
 
 export default class Home extends React.Component {
   constructor() {
@@ -11,16 +13,21 @@ export default class Home extends React.Component {
     this.state = {
       admin: [],
       plants: [],
-      _fetchPlant: this._fetchPlant
+      _fetchPlant: this._fetchPlant,
+      isLoggedIn: false,
+      userName:'',
+      userImg:''
     };
   }
 
   componentWillMount() {
     this._getPlants();
     this._getAdmin();
+    this._getUser();
   }
 
   render() {
+    console.log(this.state.isLoggedIn,'loggedin?')
     return(
       <div id="home-container" className="container">
         <div className="container">
@@ -31,12 +38,13 @@ export default class Home extends React.Component {
                   <a className="nav-link graff" href="#">About</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link active graff" href="/login">Login</a>
+                  <a className="nav-link active graff" href="/api/auth/login">Login</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link active graff" href="/logout">Log Out</a>
+                  <a className="nav-link active graff" href="/api/auth/logout">Logout</a>
                 </li>
               </ul>
+              <UserInfo userName={this.state.userName} userImg={this.state.userImg}/>
           </div>
         </div>
         <div id="hero">
@@ -103,6 +111,23 @@ export default class Home extends React.Component {
             document.getElementById('plantFact')
           );
         }
+      }
+    });
+  }
+
+  _getUser() {
+    $.ajax({
+      method: 'GET',
+      url: 'api/auth/loggedin',
+      success: (userInfo) => {
+        if(userInfo){
+          this.setState({userName: userInfo.name});
+          this.setState({userImg: userInfo.img});
+          this.setState({isLoggedIn:!this.state.isLoggedIn})
+        }
+      },
+      error: (err) => {
+        throw new Error(err);
       }
     });
   }
