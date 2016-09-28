@@ -5,10 +5,7 @@ import Users from '../components/users.jsx';
 import Search from '../components/searchBar.jsx';
 import PlantFacts from '../components/plantFacts.jsx';
 import UserInfo from '../components/userInfo.jsx';
-
 require('../stylesheets/main.scss');
-
-
 export default class Home extends React.Component {
   constructor() {
     super();
@@ -21,13 +18,11 @@ export default class Home extends React.Component {
       userImg:''
     };
   }
-
   componentWillMount() {
     this._getPlants();
     this._getAdmin();
     this._getUser();
   }
-
   render() {
     console.log(this.state.isLoggedIn,'loggedin?')
     return(
@@ -42,14 +37,13 @@ export default class Home extends React.Component {
                     <a className="nav-link graff" href="#">About</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link active graff" href="/login">Login</a>
+                    <a className="nav-link active graff" href="api/auth/login">Login</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link active graff" href="/api/auth/logout">Logout</a>
+                    <a className="nav-link active graff" href="api/auth/logout">Logout</a>
                   </li>
                 </ul>
                 <UserInfo userName={this.state.userName} userImg={this.state.userImg}/>
-
             </div>
           </div>
         </div>
@@ -75,7 +69,6 @@ export default class Home extends React.Component {
       </div>
     );
   }
-
   _getPlants() {
     $.ajax({
       method: 'GET',
@@ -88,7 +81,6 @@ export default class Home extends React.Component {
       }
     });
   }
-
   _getAdmin() {
     $.ajax({
       method: 'GET',
@@ -101,7 +93,6 @@ export default class Home extends React.Component {
       }
     });
   }
-
   _fetchPlant(plant){
     $.ajax({
       method: 'POST',
@@ -119,7 +110,6 @@ export default class Home extends React.Component {
       }
     });
   }
-
   _getUser() {
     $.ajax({
       method: 'GET',
@@ -128,7 +118,7 @@ export default class Home extends React.Component {
         if(userInfo){
           this.setState({userName: userInfo.name});
           this.setState({userImg: userInfo.img});
-          this.setState({isLoggedIn:!this.state.isLoggedIn})
+          this.setState({isLoggedIn:!this.state.isLoggedIn});
         }
       },
       error: (err) => {
@@ -136,5 +126,4 @@ export default class Home extends React.Component {
       }
     });
   }
-
 }
