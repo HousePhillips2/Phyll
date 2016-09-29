@@ -8,7 +8,7 @@ const NpmInstallPlugin      = require('npm-install-webpack-plugin');
 const autoprefixer          = require('autoprefixer');
 const validate              = require('webpack-validator');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const utils                 = require('./server/helpers/webpack-helpers.js')
+const utils                 = require('./server/helpers/webpack-helpers.js');
 const nodeModulesPath       = path.resolve(__dirname, 'node_modules');
 
 const TARGET                = process.env.npm_lifecycle_event || 'a short trip to DEV town.';
@@ -29,7 +29,7 @@ const common = {
     vendor: [
       'tether',
       'bootstrap',
-      'react-bootstrap', 
+      'react-bootstrap',
       'react',
       'react-router',
       'jquery',
@@ -61,28 +61,28 @@ const common = {
       test: /\.scss$/,
       loader: ExtractTextPlugin.extract('css!sass')
     },
-    { 
-      test: /\.png$/, 
-      loader: "url-loader?limit=100000" 
-    },
-    { 
-      test: /\.jpg$|\.jpeg$/, 
-      loader: "file-loader" 
+    {
+      test: /\.png$/,
+      loader: "url-loader?limit=100000"
     },
     {
-      test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, 
+      test: /\.jpg$|\.jpeg$/,
+      loader: "file-loader"
+    },
+    {
+      test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
       loader: 'url?limit=10000&mimetype=application/font-woff&name=[path][name].[ext]"'
     },
     {
-      test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, 
+      test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
       loader: 'url?limit=10000&mimetype=application/octet-stream'
     },
     {
-      test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 
+      test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
       loader: 'file'
     },
     {
-      test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
+      test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
       loader: 'url?limit=10000&mimetype=image/svg+xml'
     }]
   },

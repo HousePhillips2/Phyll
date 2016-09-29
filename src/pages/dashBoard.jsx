@@ -81,7 +81,7 @@ export default class MyDashboard extends React.Component {
                 ]
               ]}
             />
-              <PieChart 
+              <PieChart
                 size = {150}
                 data = {
                         [
@@ -91,8 +91,8 @@ export default class MyDashboard extends React.Component {
                         ]
                 }
               />
-              <Legend 
-                dataId={'key'} 
+              <Legend
+                dataId={'key'}
                 horizontal
                 data={
                       [
@@ -100,7 +100,7 @@ export default class MyDashboard extends React.Component {
                           {key: 'Dogs', value: 200},
                           {key: 'Other', value: 50}
                       ]
-                }  
+                }
               />
        </div>
       );
