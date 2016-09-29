@@ -86,8 +86,9 @@ app.use('/static', express.static('node_modules'));
 app.use('/images', express.static('src/images'));
 app.use('/glyphs', express.static('src/glyphs'));
 
-app.set('port', process.env.PORT || 8080);
-app.listen(app.get('port'), () => console.log('Up and running on ' + app.get('port')));
-// http.listen(8080, function(){
-//   console.log('listening on *:3000');
-// });
+//app.set('port', process.env.PORT || 8080);
+//app.listen(app.get('port'), () => console.log('Up and running on ' + app.get('port')));
+let port = process.env.PORT || 8080;
+http.listen(port, function(){
+  console.log('Up and running on ' + port);
+});
