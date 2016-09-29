@@ -96,5 +96,4 @@ router.get('/loggedin', (req,res) => {
 });
 
 
-
 module.exports = router;
