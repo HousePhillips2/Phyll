@@ -10,6 +10,8 @@ import jQuery from 'jquery';
 import Ajax from 'jquery';
 import Autosuggest from 'react-autosuggest';
 import d3 from 'd3';
+import leaflet from 'leaflet';
+import mapboxGl from 'mapbox-gl';
 // INTERNALS
 import Layout from './layout/layout.jsx';
 import Garden from './pages/garden.jsx';
