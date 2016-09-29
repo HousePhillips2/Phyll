@@ -5,6 +5,7 @@ import Users from '../components/users.jsx';
 import Search from '../components/searchBar.jsx';
 import PlantFacts from '../components/plantFacts.jsx';
 import UserInfo from '../components/userInfo.jsx';
+import Map from '../components/map/index.jsx';
 require('../stylesheets/main.scss');
 export default class Home extends React.Component {
   constructor() {
@@ -58,8 +59,9 @@ export default class Home extends React.Component {
             <Users users={ this.state.admin }/>
           </div>
           <div className="content-2 col-md-6">
-            <h1>More content</h1>
-            <p>Lorem ipsum</p>
+            <div>
+              <Map/>
+            </div>
           </div>
         </div>
         <div className="row footer">
