@@ -2,6 +2,7 @@
                   require('dotenv').config();
 const express     = require('express');
 const app         = express();
+const http = require('http').Server(app);
 const bodyParser  = require('body-parser');
 const Auth0Strategy = require('passport-auth0');
 const passport = require('passport');
@@ -87,3 +88,6 @@ app.use('/glyphs', express.static('src/glyphs'));
 
 app.set('port', process.env.PORT || 8080);
 app.listen(app.get('port'), () => console.log('Up and running on ' + app.get('port')));
+// http.listen(8080, function(){
+//   console.log('listening on *:3000');
+// });
