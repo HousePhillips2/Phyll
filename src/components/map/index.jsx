@@ -1,4 +1,4 @@
 import Map from './map.jsx';
 
 
-export default LineChart;
+export default Map;
