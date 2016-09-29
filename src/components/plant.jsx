@@ -1,5 +1,4 @@
 import React from 'react';
-import View from './plantModal.jsx';
 
 export default class Plant extends React.Component {
 
@@ -14,24 +13,22 @@ export default class Plant extends React.Component {
   }
 
   render(){
-    // let plant = this.props.plant;
-
-    return <div className='plant-clickable' onClick={this.handleClick} style={{display:'inline-block', width: '230px', transform:'scale(.7)', margin:'-2em'}} >
+    let plant = this.props.plant;
+    return (
             <div>
-              <label className='title'>{this.props.plant.plant_name}</label>
-            <img style={{width: '200px', height: '200px'}} className='img-circle' src={this.props.plant.img}/>
+              <label>{plant.plant_name}</label>
+              <div>
+                  <img style={{width: '200px', height: '200px'}} className='img-circle' src={plant.img} />
+              </div>
               <br/>
-              <label>{this.props.plant.plant_family}</label>
+              <label>light: {plant.light_s}</label>
                <br/>
-              <label>{this.props.plant.water_s}</label>
+              <label>water: {plant.water_s}</label>
                <br/>
-              <label>{this.props.plant.soil_s}</label>
+              <label>poisonous: {plant.poisonous_s}</label>
                <br/>
-              <label>{this.props.plant.fertilizer_s}</label>
-              <br/>
-              <View />
             </div>
-          </div>;
+            );
   }
 
 };
