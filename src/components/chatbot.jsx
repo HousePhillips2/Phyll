@@ -17,8 +17,8 @@ export default class Chatbot extends React.Component {
       return (
         <div className='chatContainer' style={{border:'1px solid green'}}>
           <ul id='messages'>
-            <li style={{'list-style-type': 'none'}}> { 'Hello ' + this.props.userName + ', What a wonderful day, is it?'} </li>
-            {messages.map((msg,index) => <li style={{'list-style-type': 'none'}} key={index}>{msg}</li>)}
+            <li style={{listStyleType: 'none'}}> { 'Hello ' + this.props.userName + ', What a wonderful day, is it?'} </li>
+            {messages.map((msg,index) => <li style={{listStyleType: 'none'}} key={index}>{msg}</li>)}
             {/*<div>{keys.map(key=> <li>{`${key}: ${plantFacts[key]}`}</li>)}</div>*/}
           </ul>
           <div className="update">
@@ -30,7 +30,7 @@ export default class Chatbot extends React.Component {
         </div>
       );
     } else {
-      return <div >Login to chat with your plant!</div>
+      return <div >Login to chat with your plant!</div>;
     }
   }
   _notifyServer(e){
