@@ -8,6 +8,6 @@ export default class Login extends React.Component {
       <li className="nav-item">
         <a className="nav-link active graff" href="api/auth/login">Login</a>
       </li>
-    )
+    );
   }
 }

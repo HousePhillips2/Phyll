@@ -2,25 +2,32 @@
                   require('dotenv').config();
 const express     = require('express');
 const app         = express();
-const http = require('http').Server(app);
+const http        = require('http').Server(app);
+const io          = require('socket.io')(http);
 const bodyParser  = require('body-parser');
 const Auth0Strategy = require('passport-auth0');
 const passport = require('passport');
 const session = require ('express-session');
-const strategy = new Auth0Strategy({
-   domain:       process.env.AUTH_DOMAIN,
-   clientID:     process.env.AUTH_CLIENT_ID,
-   clientSecret: process.env.AUTH_CLIENTSECRET,
-   callbackURL:  '/callback'
-  },
-  function(accessToken, refreshToken, extraParams, profile, done) {
-    // accessToken is the token to call Auth0 API (not needed in the most cases)
-    // extraParams.id_token has the JSON Web Token
-    // profile has all the information from the user
-    return done(null, profile);
-  }
-);
 
+//will refactor into subApp later
+io.on('connection', function(socket){
+  io.emit('login','Hello');
+  socket.on('client', function(msg){
+    console.log(msg);
+    if (msg ==='hello') {
+      io.emit('plant', 'What a wonderful day!');
+    } else if (msg ==='who are you?') {
+      io.emit('plant', 'I\'m your plant Meow-Meow!');
+    } else if (msg === 'how are you?') {
+      io.emit('plant', 'I am a little bit thirsty, could you water me?');
+    } else if (msg === 'are you a robot?') {
+      io.emit('plant', 'No, I am not!');
+    } else {
+      io.emit('plant', 'I don\'t understand you');
+    }
+    
+  });
+});
 
 // MOUNT middleware
 app.use(express.static('dist'));
@@ -33,15 +40,6 @@ app.use(session({
   cookie: {maxAge: 30000000},
   saveUninitialized: true
 }));
-
-passport.use(strategy);
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -86,8 +84,9 @@ app.use('/static', express.static('node_modules'));
 app.use('/images', express.static('src/images'));
 app.use('/glyphs', express.static('src/glyphs'));
 
-app.set('port', process.env.PORT || 8080);
-app.listen(app.get('port'), () => console.log('Up and running on ' + app.get('port')));
-// http.listen(8080, function(){
-//   console.log('listening on *:3000');
-// });
+//app.set('port', process.env.PORT || 8080);
+//app.listen(app.get('port'), () => console.log('Up and running on ' + app.get('port')));
+let port = process.env.PORT || 8080;
+http.listen(port, function(){
+  console.log('Up and running on ' + port);
+});

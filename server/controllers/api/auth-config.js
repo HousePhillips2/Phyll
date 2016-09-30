@@ -4,7 +4,27 @@ const router  = express.Router();
 const Auth0Strategy = require('passport-auth0');
 const passport = require('passport');
 const session = require ('express-session');
+const strategy = new Auth0Strategy({
+   domain:       process.env.AUTH_DOMAIN,
+   clientID:     process.env.AUTH_CLIENT_ID,
+   clientSecret: process.env.AUTH_CLIENTSECRET,
+   callbackURL:  '/callback'
+  },
+  function(accessToken, refreshToken, extraParams, profile, done) {
+    // accessToken is the token to call Auth0 API (not needed in the most cases)
+    // extraParams.id_token has the JSON Web Token
+    // profile has all the information from the user
+    return done(null, profile);
+  }
+);
+passport.use(strategy);
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
 
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
 
 // const strategy = new Auth0Strategy({
 //    domain:       'phyllio.auth0.com',
@@ -74,7 +94,6 @@ router.get('/loggedin', (req,res) => {
   }
   
 });
-
 
 
 module.exports = router;

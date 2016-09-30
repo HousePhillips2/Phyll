@@ -8,6 +8,6 @@ export default class Logout extends React.Component {
       <li className="nav-item">
         <a className="nav-link active graff" href="#" onClick={this.props.logout}>Logout</a>
       </li>
-    )
+    );
   }
 }

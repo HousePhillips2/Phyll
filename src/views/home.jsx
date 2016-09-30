@@ -8,6 +8,8 @@ import UserInfo from '../components/userInfo.jsx';
 import Login from '../components/login.jsx';
 import Logout from '../components/logout.jsx';
 import Map from '../components/map/index.jsx';
+import Chatbot from '../components/chatbot.jsx';
+
 require('../stylesheets/main.scss');
 export default class Home extends React.Component {
   constructor() {
@@ -40,9 +42,6 @@ export default class Home extends React.Component {
                   </li>
                   <Login />
                   <Logout logout={this._logout.bind(this)}/>
-                  {/*<li className="nav-item">
-                    <a className="nav-link active graff" href="api/auth/logout">Logout</a>
-                  </li>*/}
                 </ul>
                 <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
 
@@ -62,6 +61,9 @@ export default class Home extends React.Component {
             <div>
               <Map/>
             </div>
+            <h1>More content</h1>
+            <p>Lorem ipsum</p>
+            <Chatbot userName={this.state.userName}/>
           </div>
         </div>
         <div className="row footer">
