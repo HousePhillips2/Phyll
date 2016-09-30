@@ -21,12 +21,7 @@ const deviceSchema = mongoose.Schema({
   // noise       : []
 });
 
-<<<<<<< f58f4ea9ce8c605e4cc9903a22f985365a7b2073
 // Update environmental data for device or add new device with data
-=======
-deviceSchema.set('autoIndex', false);
-
->>>>>>> [feature] Add routes for device pings
 deviceSchema.statics.record = (req, res) => { // req should be {status: {DEVICE STATUS OBJECT}}
   Device.findOneAndUpdate({deviceId: req.deviceId}, {
     $set: {
@@ -51,7 +46,6 @@ deviceSchema.statics.record = (req, res) => { // req should be {status: {DEVICE 
     }
   }, {upsert: true}, (err) => {
     if (err) res.status(500).send(err);
-<<<<<<< f58f4ea9ce8c605e4cc9903a22f985365a7b2073
     else res.status(200).send('Conditions for ' + req.deviceId + ' recorded!');
   });
 };
@@ -131,71 +125,6 @@ deviceSchema.statics.discard = (req, res) => { // query with {deviceId: "id to b
     Device.findOneAndRemove({deviceId: req.deviceId}, (err) => {
       if (err) res.status(500).send(err);
       else res.status(200).send('Device ' + req.deviceId + ' has been removed from phyll.IO');
-=======
-    res.status(200).send('Conditions for ' + req.deviceId + ' recorded!');
-  });
-};
-
-deviceSchema.statics.retrieve = (req, res) => {
-  Device.findOne({deviceId: req}).exec((err, device) => { // query with {deviceId: "id to be found"}
-    if (err) res.status(500).send(err);
-    res.status(200).send(device);
-  });
-};
-
-deviceSchema.statics.list = (req, res) => { // no arguments - returns all devices
-  Device.find((err, devices)=> {
-    if (err) res.status(500).send(err);
-    res.status(200).send(devices);
-  });
-};
-
-// deviceSchema.statics.prune = (req, res) => { // req should be a device id string
-//   Device.findOneAndUpdate({deviceId: req},
-//     {
-//       date        : {$slice:[]}, // Unsolved
-//       moisture    : [],
-//       ph          : [],
-//       light       : [],
-//       humidity    : [],
-//       temperature : [],
-//       pressure    : [],
-//       noise       : []
-//     }, 
-//     {upsert: false}, (err) => {
-//       if (err) res.status(500).send(err);
-//       res.status(200).send('Conditions for ', req, ' recorded!');
-//   });
-// };
-
-deviceSchema.statics.purge = (req, res) => { // query with {deviceId: "id to be found", confirm: "yes" or "no"}
-  if (req.confirm === "yes") {
-    Device.findOneAndUpdate({deviceId: req.deviceId}, {
-      $set: {
-        date        : [],
-        moisture    : [],
-        ph          : [],
-        light       : [],
-        humidity    : [],
-        temperature : [],
-        pressure    : [],
-        noise       : []
-      }
-    }, {upsert: false}, (err) => {
-      if (err) res.status(500).send(err);
-      res.status(200).send('Conditions for ' + req + ' recorded!');
-    });
-  } else {
-    res.status(300).send('You don\'t seem certain');
-  }
-};
-
-deviceSchema.statics.discard = (req, res) => { // query with {deviceId: "id to be found", confirm: "yes" or "no"}
-  if (req.confirm === 'yes') {
-    Device.findOneAndRemove({deviceId: req}, (err) => {
-      if (err) res.status(500).send(err);
-      res.status(200).send('Device ' + req + ' has been removed from phyll.IO');
->>>>>>> [feature] Add routes for device pings
     })
   } else {
     res.status(300).send('No take backs if you go through with this.');
