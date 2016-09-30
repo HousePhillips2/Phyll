@@ -5,9 +5,9 @@ const CronJob = require('cron').CronJob;
 
 // DEFINE recurring Cron Job
 
-const daily = new CronJob('1-60/5 * * * * 1-7',
+const daily = new CronJob('*/3 * * * * 1-7',
   function() {
-  console.log('Every 5 seconds, a bunny is murdered');
+  console.log('Every 3 seconds, a bunny is murdered');
 }, null, true, 'America/Los_Angeles');
 
 
