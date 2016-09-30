@@ -52,26 +52,49 @@ export default class Home extends React.Component {
           </div>
         </div>
         <div className="row content">
-          <div className="content-1 col-md-6 col-lg-5 col-xl-4">
-            <Users users={ this.state.admin }/>
-          </div>
-          <div className="content-2 col-md-6 col-lg-7 col-xl-8">
-            <div className="row container">
-              <div className="column">
+          <div className="content-2 col-lg-7 push-lg-5 container">
+            <div className="card-wrapper">
+              <div className="card">
+                <div className="card-header">
+                  Talk to a houseplant
+                </div>
+                <div className="card-block">
+                  <Chatbot userName={this.state.userName}/>
+                </div>
+              </div>
+              <div className="card hidden-xs hidden-sm">
+                <div className="card-header">
+                  Active Bots
+                </div>
                 <Map/>
               </div>
-              <div className="col-sm-6">
-                <p className="graff">Conservatory</p>
-              </div>
-              <div className="col-sm-6">
-                <p className="graff">BUILD YOUR OWN PHYLLBOT</p>
+              <div className="card">
+                <div className="card-header">
+                  Conservatory
+                </div>
+                <div className="card-block">
+                  <p className="card-text">There are so many wonderful plants for your home. Discover the perfect one.</p>
+                </div>
+              </div>  
+              <div className="card">
+                <div className="card-header">
+                  Build Your Own Phyllbot
+                </div>
+                <div className="card-block">
+                  <p className="card-text">Don't take our word for it. PhyllOS is yours to make perfect.</p>
+                </div>
               </div>
             </div>
           </div>
+          <div className="content-1 col-lg-5 pull-lg-7 container">
+            <div className="card-wrapper">
+            <Users users={ this.state.admin }/>
+            </div>
+          </div>
         </div>
-        <div className="row footer">
-          <div className="column">
-            <Chatbot userName={this.state.userName}/>
+        <div className="footer row">
+          <div className="container">
+            Footer
           </div>
         </div>
       </div>
