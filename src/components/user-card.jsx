@@ -11,18 +11,14 @@ export default class userCard extends React.Component {
   render() {
     const user = this.props.user;
     return(
-      <div className="container card-outline-success">
-        <div className="row">
-          <div className="col-xs-4">
-            <img className="img-rounded media-center" style={ {width: '100px', height: '100px'} } src={ user.img }/>
-            <h5 className="graff text-success">{`${ user.user_name }`}</h5>
-          </div>
-          <div className="col-xs-4">
-          </div>
-          <div className="col-xs-4">
-            <img className="img-rounded media-center" style={ {width: '100px', height: '100px'} } src={ user.plants[0].img }/>
-            <h5 className="graff text-success">{`${ user.plants[0].name }`}</h5>
-          </div>
+      <div className="card card-outline-success">
+        <div className="card-text">
+          <div className="card-block graff text-success text-xs-left col-xs-6">{`${ user.user_name }`}</div>
+          <div className="card-block graff text-success text-xs-right col-xs-6">{`${ user.plants[0].name }`}</div>
+        </div>
+        <div className="card-block">
+          <img className="img-rounded pull-left" style={ {width: '125px', height: '125px'} } src={ user.img }/>
+          <img className="img-rounded pull-right" style={ {width: '125px', height: '125px'} } src={ user.plants[0].img }/>
         </div>
       </div>
     );

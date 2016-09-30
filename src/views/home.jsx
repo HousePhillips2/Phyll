@@ -30,21 +30,19 @@ export default class Home extends React.Component {
   }
   render() {
     return(
-      <div className="container">
+      <div className="container-fluid">
         <div className="row header">
           <div className="col-xs-12">
             <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
             <div className="pull-sm-right">
-
-                <ul className="nav nav-inline text-sm-right"style={{padding: .2 + 'em'}}>
-                  <li className="nav-item">
-                    <a className="nav-link graff" href="#">About</a>
-                  </li>
-                  <Login />
-                  <Logout logout={this._logout.bind(this)}/>
-                </ul>
-                <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
-
+              <ul className="nav nav-inline text-sm-right"style={{padding: .2 + 'em'}}>
+                <li className="nav-item">
+                  <a className="nav-link graff" href="#">About</a>
+                </li>
+                <Login />
+                <Logout logout={this._logout.bind(this)}/>
+              </ul>
+              <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
             </div>
           </div>
         </div>
@@ -54,26 +52,55 @@ export default class Home extends React.Component {
           </div>
         </div>
         <div className="row content">
-          <div className="content-1 col-md-6">
-            <Users users={ this.state.admin }/>
-          </div>
-          <div className="content-2 col-md-6">
-            <div>
-              <Map/>
+          <div className="content-2 col-lg-7 push-lg-5 container">
+            <div className="card-wrapper">
+              <div className="card">
+                <div className="card-header">
+                  Talk to a houseplant
+                </div>
+                <div className="card-block">
+                  <Chatbot userName={this.state.userName}/>
+                </div>
+              </div>
+              <div className="card hidden-xs hidden-sm">
+                <div className="card-header">
+                  Active Bots
+                </div>
+                <Map/>
+              </div>
+              <div className="card">
+                <div className="card-header">
+                  Conservatory
+                </div>
+                <div className="card-block">
+                  <p className="card-text">There are so many wonderful plants for your home. Discover the perfect one.</p>
+                </div>
+              </div>  
+              <div className="card">
+                <div className="card-header">
+                  Build Your Own Phyllbot
+                </div>
+                <div className="card-block">
+                  <p className="card-text">Don't take our word for it. PhyllOS is yours to make perfect.</p>
+                </div>
+              </div>
             </div>
-            <h1>More content</h1>
-            <p>Lorem ipsum</p>
-            <Chatbot userName={this.state.userName}/>
+          </div>
+          <div className="content-1 col-lg-5 pull-lg-7 container">
+            <div className="card-wrapper">
+            <Users users={ this.state.admin }/>
+            </div>
           </div>
         </div>
-        <div className="row footer">
-          <div className="col-xs-12">
-            <h1>Footer</h1>
+        <div className="footer row">
+          <div className="container">
+            Footer
           </div>
         </div>
       </div>
     );
   }
+
   _getPlants() {
     $.ajax({
       method: 'GET',
