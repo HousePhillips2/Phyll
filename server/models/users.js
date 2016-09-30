@@ -24,4 +24,3 @@ db.none("insert into api.users (user_name) values ('Marvin Maio')")
     oauth_key:
     img:
   */
-  
