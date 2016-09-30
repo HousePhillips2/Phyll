@@ -57,6 +57,7 @@ export default class Home extends React.Component {
           <div className="content-1 col-md-6 col-lg-5 col-xl-4">
             <Users users={ this.state.admin }/>
           </div>
+<<<<<<< cb99f7f902b0158461c40da8cf5647db10d0922d
 <<<<<<< 28376cf017ece1cbf036a394253fa3a2787d6de8
 <<<<<<< d60583fa159e54331b473686823e8c6ebc5e8c14
           <div className="content-2 col-md-6">
@@ -76,11 +77,25 @@ export default class Home extends React.Component {
             <p>Lorem ipsum</p>
 >>>>>>> [style] Tighten grid behavior
 >>>>>>> [style] Tighten grid behavior
+=======
+          <div className="content-2 col-md-6 col-lg-7 col-xl-8">
+            <div className="row container">
+              <div className="column">
+                <Map/>
+              </div>
+              <div className="col-sm-6">
+                <p className="graff">Conservatory</p>
+              </div>
+              <div className="col-sm-6">
+                <p className="graff">BUILD YOUR OWN PHYLLBOT</p>
+              </div>
+            </div>
+>>>>>>> [style] Update grid post-map
           </div>
         </div>
         <div className="row footer">
           <div className="col-xs-12">
-            <h1>Footer</h1>
+            <p className="graff">Footer</p>
           </div>
         </div>
       </div>
