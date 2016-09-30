@@ -58,15 +58,12 @@ export default class Home extends React.Component {
             <Users users={ this.state.admin }/>
           </div>
           <div className="content-2 col-md-6">
-<<<<<<< 0153dfdc573c70fe662639dfa5ae3e27b92c7e16
             <div>
               <Map/>
             </div>
-=======
             <h1>More content</h1>
             <p>Lorem ipsum</p>
             <Chatbot userName={this.state.userName}/>
->>>>>>> [feature] Add chatbot component in home view
           </div>
         </div>
         <div className="row footer">
