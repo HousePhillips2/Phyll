@@ -35,16 +35,14 @@ export default class Home extends React.Component {
           <div className="col-xs-12">
             <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
             <div className="pull-sm-right">
-
-                <ul className="nav nav-inline text-sm-right"style={{padding: .2 + 'em'}}>
-                  <li className="nav-item">
-                    <a className="nav-link graff" href="#">About</a>
-                  </li>
-                  <Login />
-                  <Logout logout={this._logout.bind(this)}/>
-                </ul>
-                <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
-
+              <ul className="nav nav-inline text-sm-right"style={{padding: .2 + 'em'}}>
+                <li className="nav-item">
+                  <a className="nav-link graff" href="#">About</a>
+                </li>
+                <Login />
+                <Logout logout={this._logout.bind(this)}/>
+              </ul>
+              <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
             </div>
           </div>
         </div>
@@ -57,27 +55,6 @@ export default class Home extends React.Component {
           <div className="content-1 col-md-6 col-lg-5 col-xl-4">
             <Users users={ this.state.admin }/>
           </div>
-<<<<<<< cb99f7f902b0158461c40da8cf5647db10d0922d
-<<<<<<< 28376cf017ece1cbf036a394253fa3a2787d6de8
-<<<<<<< d60583fa159e54331b473686823e8c6ebc5e8c14
-          <div className="content-2 col-md-6">
-            <div>
-              <Map/>
-            </div>
-<<<<<<< d48f9229a4c0a4ebac7ee3ce0844a3dea5c6ac30
-            <h1>More content</h1>
-            <p>Lorem ipsum</p>
-            <Chatbot userName={this.state.userName}/>
-=======
-=======
-=======
->>>>>>> [style] Tighten grid behavior
-          <div className="content-2 col-md-6 col-lg-7 col-xl-8">
-            <h1>More content</h1>
-            <p>Lorem ipsum</p>
->>>>>>> [style] Tighten grid behavior
->>>>>>> [style] Tighten grid behavior
-=======
           <div className="content-2 col-md-6 col-lg-7 col-xl-8">
             <div className="row container">
               <div className="column">
@@ -90,17 +67,17 @@ export default class Home extends React.Component {
                 <p className="graff">BUILD YOUR OWN PHYLLBOT</p>
               </div>
             </div>
->>>>>>> [style] Update grid post-map
           </div>
         </div>
         <div className="row footer">
-          <div className="col-xs-12">
-            <p className="graff">Footer</p>
+          <div className="column">
+            <Chatbot userName={this.state.userName}/>
           </div>
         </div>
       </div>
     );
   }
+
   _getPlants() {
     $.ajax({
       method: 'GET',
