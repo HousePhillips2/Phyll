@@ -5,12 +5,12 @@ import $ from 'jquery';
 const socket = io();
 export default class Chatbot extends React.Component {
   constructor(props) {
-    super(props);``
+    super(props);
     this.state = {
       counter: 0,
       messages: [['Hello ' + this.props.userName + ', What a wonderful day, is it?', 0, 'list-group-item list-group-item-success']],
       lastMessage: null
-    }
+    };
   }
   render() {
     if(this.props.userName!==''){
