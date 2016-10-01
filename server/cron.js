@@ -3,12 +3,16 @@
 const request = require('request');
 const CronJob = require('cron').CronJob;
 
-// DEFINE recurring Cron Job:
+// ---------------------- DEFINE RECURRING DAILY CRON-JOB: --------------------------------
+// At 8:30PM daily, retrieve the last 14 hours' (i.e. from 6:30 AM) worth of plant-monitoring data
+  // convert data into daily summary (daily low, average, and high readings)
+    //send summary to server in order to save in Postgres DB
 
 const daily = new CronJob('*/3 * * * * 1-7',
   function() {
+    // query our MongoDB
     request('http://localhost:8080/io/dailyData', function(error, response, body){
-      // pull out the two devices
+      // extract all existing Phyll devices (currently 2)
       if (body){
         const bod = JSON.parse(body),
               one = bod[0],
@@ -74,6 +78,20 @@ const daily = new CronJob('*/3 * * * * 1-7',
         device2.moisture = filler(two.moisture);
 
         console.log('deviceID', device1.deviceId, 'l1', device1.light, 'm1', device1.moisture);
+
+
+        var httpRequestOptions = {
+          //******* GO BACK & UPDATE URL to official website http://phyll-dev.herokuapp.com/postgres/daily
+          url: 'http://localhost:8888/postgres/daily',
+          form: {
+            device1: device1,
+            device2: device2
+          }
+        };
+
+        request.post(httpRequestOptions, function(error, response, body){
+        });
+
       }
     });
   }, null, true, 'America/Los_Angeles');
@@ -81,7 +99,7 @@ const daily = new CronJob('*/3 * * * * 1-7',
 
 //TEST if cron job pattern is valid -- (copy/paste your cron below)
 try {
-//     new CronJob('1-60/5 * * * * 1-7', function() {
+//     new CronJob('*/5 * * * * 1-7', function() {
 //   console.log('Every 5 seconds, a bunny is murdered');
 // }, null, true, 'America/Los_Angeles');
 } catch(ex) {

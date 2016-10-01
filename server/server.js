@@ -29,7 +29,11 @@ app.use(passport.session());
 
 const apiApp      = require('./controllers/api/api');
 const ioApp       = require('./controllers/io/io');
+<<<<<<< 601525fe0509f9e2dac32fded54b78a9ce992b6e
 const vendorApp   = require('./controllers/vendor/vendor');
+=======
+const postgresApp = require('./controllers/postgres/postgres');
+>>>>>>> [UPDATE] Added new postgres route to server & postgres controller folder
 
 // **********************************    MOVE ME! **********************************
 // const plantsLibrary = require('./controllers/api/plants-library');
@@ -37,7 +41,9 @@ const vendorApp   = require('./controllers/vendor/vendor');
 // MOUNT middleware
 app.use(express.static('dist'));
 app.use(bodyParser.json());
-
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 // API sub-app
 app.use('/api', apiApp);
@@ -45,8 +51,13 @@ app.use('/api', apiApp);
 // PHYLLOS sub-app
 app.use('/io', ioApp);
 
+
 // VENDOR sub-app
 app.use('/vendor', vendorApp);
+
+// POSTGRES sub-app
+app.use('/postgres', postgresApp);
+
 
 //auth0 call back route
 app.get('/callback',
