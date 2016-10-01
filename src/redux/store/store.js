@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import promiseMiddleware from 'redux-promise-middleware';
 
 import reducer from '../reducers/reducers';
 
@@ -30,6 +31,6 @@ export default function makeStore() {
   return createStore(
     reducer,
     // COMMENT applyMiddleware to prevent logging actions to console
-    applyMiddleware(logger, crashReporter, thunk)
+    applyMiddleware(logger, crashReporter, promiseMiddleware())
   );
 }
