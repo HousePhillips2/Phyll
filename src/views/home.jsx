@@ -52,27 +52,22 @@ export default class Home extends React.Component {
             <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
           </div>
         </div>
-        <div className="row content" id="plantModal" tabIndex="-1" role="dialog" aria-hidden="true">
+        <div className="row content">
           <div className="content-top column container-fluid" role="document">
-            <div className="card">
-              <div className="card-header">
-                  Stuff about selected plant (TODO: Hide this)
-                </div>
-                <div className="card-block">
-                  <div className="modal-content" id="plantFact"></div>
-                </div>
-              </div>
+            <div id="plantModal" tabIndex="-1" role="dialog" aria-hidden="true">
+              <div id="plantFact"></div>
             </div>
           </div>
+        </div>  
         <div className="row content">
           <div className="content-top column container-fluid">
             <div className="card">
               <div className="card-header">
-                  Add a new plant to your collection (TODO: Hide this and fix the thing)
-                </div>
-                <div className="card-block">
-                  <AddPlant />
-                </div>
+                Add a new plant to your collection (TODO: Hide this and fix the thing)
+              </div>
+              <div className="card-block">
+                <AddPlant />
+              </div>
             </div>
           </div>
           <div className="content-2 col-lg-7 push-lg-5 container">
