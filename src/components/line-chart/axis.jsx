@@ -56,6 +56,7 @@ export default class Axis extends React.Component {
     let node = ReactDOM.findDOMNode(this);
 
     d3.select(node).call(this.axis);
+
   }
 
   render() {
