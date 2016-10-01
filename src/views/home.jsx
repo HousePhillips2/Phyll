@@ -10,6 +10,7 @@ import Logout     from '../components/logout.jsx';
 import Map        from '../components/map/index.jsx';
 import Chatbot    from '../components/chatbot.jsx';
 import AddPlant   from '../components/addplant.jsx';
+import DashBar    from '../components/dashboardBar.jsx';
 
 require('../stylesheets/main.scss');
 export default class Home extends React.Component {
@@ -41,6 +42,18 @@ export default class Home extends React.Component {
           <div className="content-top column container-fluid" role="document">
             <div id="plantModal" tabIndex="-1" role="dialog" aria-hidden="true">
               <div id="plantFact"></div>
+            </div>
+          </div>
+        </div>
+        <div className="row content">
+          <div className="content-top column container-fluid">
+            <div className="card">
+              <div className="card-header">
+                User Dash Widget (TODO: Hide this and make it work)
+              </div>
+              <div className="card-block">
+                <DashBar />
+              </div>
             </div>
           </div>
         </div>
