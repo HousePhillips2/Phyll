@@ -10,14 +10,21 @@ export default class DashBar extends React.Component {
   }
 
   render() {
-    const user = this.props.user;
+    const user = this.props.loggedInUser;
     return(
-      <div className="card">
-        <div className="card-block">
-          <div className="media">
-            {/*<a className="media-left"><img className="img-rounded" style={ {width: '125px', height: '125px'} } src={ user.img }/></a>*/}
-            <div className="media-body">
-              <Charts />
+      <div id="dashBar" className="row content">
+        <div className="content-top column container-fluid">
+          <div className="card">
+            <div className="card-header">
+              { user.name }
+            </div>
+            <div className="card-block">
+              <div className="media">
+                <a className="media-left"><img className="img-rounded" style={ {width: '125px', height: '125px'} } src={ user.img }/></a>
+                <div className="media-body">
+                  <Charts />
+                </div>
+              </div>
             </div>
           </div>
         </div>
