@@ -10,7 +10,6 @@ import Login      from '../components/login.jsx';
 import Logout     from '../components/logout.jsx';
 import Map        from '../components/map/index.jsx';
 import Chatbot    from '../components/chatbot.jsx';
-import AddPlant   from '../components/addPlant.jsx';
 import DashBar    from '../components/dashboardBar.jsx';
 
 require('../stylesheets/main.scss');
@@ -21,7 +20,6 @@ export default class Home extends React.Component {
       admin: [],
       plants: [],
       _fetchPlant: this._fetchPlant,
-      newPlant: false,
       isLoggedIn: false,
       loggedInUser: '',
       userName:'',
@@ -37,7 +35,6 @@ export default class Home extends React.Component {
 
     let dashboard = this.state.isLoggedIn ? <DashBar loggedInUser={ this.state.loggedInUser }/> : <div id="dashBar"></div>;
     let loginToggle = this.state.isLoggedIn ? <Logout logout={this._logout.bind(this)}/> : <Login />;
-    let newPlant = this.state.newPlant ? <AddPlant plantFacts={this.state._fetchPlant } /> : <div id="newPlant"></div>
 
     return(
       <div className="container-fluid">
@@ -51,7 +48,6 @@ export default class Home extends React.Component {
                   </button>
                   <div className="dropdown-menu dropdown-menu-right">
                     { loginToggle }
-                    <button className="dropdown-item" type="button">Add Plant</button>
                     <div className="dropdown-divider"></div>
                     <button className="dropdown-item" type="button">About phyll.IO</button>
                     <button className="dropdown-item" type="button">Developer Journal</button>
@@ -74,7 +70,6 @@ export default class Home extends React.Component {
           </div>
         </div>
         { dashboard }
-        { newPlant }
         <div className="row content">
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">
             <div className="card-wrapper">
