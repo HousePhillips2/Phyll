@@ -42,6 +42,7 @@ export default class Home extends React.Component {
       <div className="container-fluid">
         <div className="row search">
           <div className="column jumbotron jumbo-bg">
+          <div className="col-xs-12 jumbotron jumbo-bg">
             <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
           </div>
         </div>
@@ -77,7 +78,7 @@ export default class Home extends React.Component {
                 </div>
             </div>
           </div>
-          <div className="content-2 col-lg-7 push-lg-5 container">
+          <div className="content-2 col-lg-7 push-lg-5 container-fluid">
             <div className="card-wrapper">
               <Chatbot userName={this.state.userName} loggedIn={this.state.isLoggedIn}/>
               <div className="card hidden-xs hidden-sm">

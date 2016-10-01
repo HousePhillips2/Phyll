@@ -19,6 +19,7 @@ export default class userCard extends React.Component {
     // TODO: The water and light quick glance will be derived from most recent data at page load
     const moisture = Math.floor(Math.random() * (100 - 1)) + 1;
     const light = Math.floor(Math.random() * (100 - 1)) + 1;
+    const firstName = user.user_name.split(' ')[0] + '\'s';
     return(
       <div className="card">
         <div className="card-block">
