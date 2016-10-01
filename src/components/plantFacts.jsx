@@ -16,7 +16,7 @@ export default class PlantFacts extends React.Component {
         <div className="card-block graff">
           <div className="media">
             <a className="media-left" href="#">
-              <img style={{width: 150 + 'px'}} src={plantFacts.img}/>
+              <img style={{width: 175 + 'px'}} className="img-rounded" src={plantFacts.img}/>
             </a>
             <div className="media-body">
               <div className="list-group">
