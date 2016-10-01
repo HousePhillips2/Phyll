@@ -32,13 +32,13 @@ export default class userCard extends React.Component {
                   { health }
                   <div className="media-body">
                     <div className="media">
-                      <a className="media-left"><i className="fa fa-fw fa-tint"></i></a>
+                      <a className="media-left"><i className="fa fa-fw fa-tint text-info"></i></a>
                       <div className="media-body">
                         <progress className="progress progress-info" value={`${ moisture }`} max="100"></progress>
                       </div>
                     </div>
                     <div className="media">
-                      <a className="media-left"><i className="fa fa-fw fa-sun-o"></i></a>
+                      <a className="media-left"><i className="fa fa-fw fa-sun-o text-warning"></i></a>
                       <div className="media-body">
                         <progress className="progress progress-warning" value={`${ light }`} max="100"></progress>
                       </div>
