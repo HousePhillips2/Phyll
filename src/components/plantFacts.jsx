@@ -15,20 +15,20 @@ export default class PlantFacts extends React.Component {
         </div>
         <div className="card-block graff">
           <div className="media">
-            <a className="media-left" href="#">
+            <span className="media-left">
               <img style={{width: 175 + 'px'}} className="img-rounded" src={plantFacts.img}/>
-            </a>
+            </span>
             <div className="media-body">
               <div className="list-group">
-                <a href="#" className="list-group-item list-group-item-action list-group-item-info">
+                <span className="list-group-item list-group-item-action list-group-item-info">
                   <i className="fa fa-tint"></i> {plantFacts.water_l}
-                </a>
-                <a href="#" className="list-group-item list-group-item-action list-group-item-warning">
+                </span>
+                <span className="list-group-item list-group-item-action list-group-item-warning">
                   <i className="fa fa-sun-o"></i> {plantFacts.light_l}
-                </a>
-                <a href="#" className="list-group-item list-group-item-action list-group-item-danger">
+                </span>
+                <span className="list-group-item list-group-item-action list-group-item-danger">
                   <i className="fa fa-medkit"></i> {plantFacts.poisonous_l}
-                </a>
+                </span>
               </div>
             </div>
           </div>

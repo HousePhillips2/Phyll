@@ -21,7 +21,7 @@ export default class LineChart extends React.Component {
     let dates = props.data.map(d => d.date);
     let light = props.data.map(d => d.light);
 
-    console.log('props.data:', props.data);
+    // console.log('props.data:', props.data);
 
     let x = d3.time.scale()
               .range([ props.fullWidth - props.axisMargin, props.axisMargin ])
