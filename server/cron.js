@@ -14,24 +14,32 @@ const daily = new CronJob('*/3 * * * * 1-7',
               one = bod[0],
               two = bod[1],
               device1 = {
-                light: ['somethn'],
+                deviceId: '',
+                light: [],
                 moisture: []
               },
               device2 = {
+                deviceId: '',
                 light: [],
                 moisture: []
               };
 
         // identify lowest number from array of numbers
         const lowest = (arr) => {
-          return arr.reduce((accumulator, next) => {
+          const arrToNumbers = arr.map((element)=>{
+            return Number(element);
+          });
+          return arrToNumbers.reduce((accumulator, next) => {
             return next < accumulator ? next : accumulator;
           })
         };
 
         // identify lowest number from array of numbers
         const highest = (arr) => {
-          return arr.reduce((accumulator, next) => {
+          const arrToNumbers = arr.map((element)=>{
+            return Number(element);
+          });
+          return arrToNumbers.reduce((accumulator, next) => {
             return next > accumulator ? next : accumulator;
           })
         };
@@ -49,7 +57,7 @@ const daily = new CronJob('*/3 * * * * 1-7',
           return data[0] / data[1];
         };
 
-        // reduce an array into the following three numbers within it: (1) lowest (2) average (3) highest
+        // reduce an array into the following three measurements within it: (1) lowest (2) average (3) highest
         const filler = (arr) => {
           let result = [];
           result.push(lowest(arr));
@@ -58,13 +66,14 @@ const daily = new CronJob('*/3 * * * * 1-7',
           return result;
         };
 
-        //
+        // populate device data for transmission
+        device1.deviceId = one.deviceId;
         device1.light = filler(one.light);
         device1.moisture = filler(one.moisture);
         device2.light = filler(two.light);
         device2.moisture = filler(two.moisture);
 
-        console.log('l1', device1.light, 'm1', device1.moisture, 'l2', device2.light, 'm2', device2.moisture);
+        console.log('deviceID', device1.deviceId, 'l1', device1.light, 'm1', device1.moisture);
       }
     });
   }, null, true, 'America/Los_Angeles');
