@@ -13,6 +13,7 @@ import Map        from '../components/map/index.jsx';
 import Chatbot    from '../components/chatbot.jsx';
 import DashBar    from '../components/dashboardBar.jsx';
 import AddPlant   from '../components/addplant.jsx';
+import DashBar    from '../components/dashboardBar.jsx';
 
 require('../stylesheets/main.scss');
 export default class Home extends React.Component {
@@ -71,11 +72,31 @@ export default class Home extends React.Component {
           <div className="content-top column container-fluid">
             <div className="card">
               <div className="card-header">
+<<<<<<< da7c099bb5eaf5ccdc2a6f3b7b62cb8fd88fd58b
                   Add a new plant to your collection (TODO: Hide this and fix the thing)
                 </div>
                 <div className="card-block">
                   <AddPlant />
                 </div>
+=======
+                User Dash Widget (TODO: Hide this and make it work)
+              </div>
+              <div className="card-block">
+                <DashBar />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row content">
+          <div className="content-top column container-fluid">
+            <div className="card">
+              <div className="card-header">
+                Add a new plant to your collection (TODO: Hide this and fix the thing)
+              </div>
+              <div className="card-block">
+                <AddPlant />
+              </div>
+>>>>>>> [feature] Prep home for dashboard content
             </div>
           </div>
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">
