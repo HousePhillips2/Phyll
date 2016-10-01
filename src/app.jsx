@@ -34,10 +34,6 @@ class MyApp extends React.Component {
         <Router history={ browserHistory }>
           <Route path='/' component={ App }>
             <IndexRoute component={ Home }/>
-            {/* <Route path='addPlant' component={AddPlant} />
-            <Route path='myDashboard' component={MyDashboard} />
-            <Route path='plantsLibrary' component={PlantsLibrary} plantStyle = {{transform:'scale(.5)', margin:'-2em'}}/>
-            <Route path='garden' component={Garden}/> */}
           </Route>
         </Router>
       </Provider>
