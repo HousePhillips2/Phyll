@@ -43,7 +43,7 @@ export default class Home extends React.Component {
               <div id="plantFact"></div>
             </div>
           </div>
-        </div>  
+        </div>
         <div className="row content">
           <div className="content-top column container-fluid">
             <div className="card">
