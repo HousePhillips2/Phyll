@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/HousePhillips2/Phyll#readme",
   "dependencies": {
+    "apiai": "^2.0.7",
     "app": "^0.1.0",
     "autoprefixer": "^6.4.1",
     "babel": "^6.5.2",
