@@ -6,28 +6,22 @@ const http        = require('http').Server(app);
 const io          = require('socket.io')(http);
 const bodyParser  = require('body-parser');
 const Auth0Strategy = require('passport-auth0');
-const passport = require('passport');
-const session = require ('express-session');
+const passport    = require('passport');
+const session     = require ('express-session');
+const apiai       = require('apiai');
+const botsFamily  = {
+  happy : apiai('8fe112573eca466893d8ff19b6d7c771')
+/*thirsty: apiai('.....') to be implemented
+  drowning: ...
+  dark: ...
+  burnt: ...
+*/
+};
 
-//will refactor into subApp later
-io.on('connection', function(socket){
-  io.emit('login','Hello');
-  socket.on('client', function(msg){
-    console.log(msg);
-    if (msg ==='hello') {
-      io.emit('plant', 'What a wonderful day!');
-    } else if (msg ==='who are you?') {
-      io.emit('plant', 'I\'m your plant Meow-Meow!');
-    } else if (msg === 'how are you?') {
-      io.emit('plant', 'I am a little bit thirsty, could you water me?');
-    } else if (msg === 'are you a robot?') {
-      io.emit('plant', 'No, I am not!');
-    } else {
-      io.emit('plant', 'I don\'t understand you');
-    }
-    
-  });
-});
+ 
+  
+
+
 
 // MOUNT middleware
 app.use(express.static('dist'));
