@@ -42,7 +42,7 @@ router.get('/logout', (req, res) => {
 router.get('/loggedin', (req,res) => {
   if(req.session.passport!==undefined){
     if(req.session.passport.user !==undefined){
-      console.log(req.session.passport.user)
+      //console.log(req.session.passport.user)
       let user_obj={name: req.user._json.name, img: req.user._json.picture_large};
       res.send(user_obj);
     } else {
