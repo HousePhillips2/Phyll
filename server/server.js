@@ -10,12 +10,11 @@ const passport    = require('passport');
 const session     = require ('express-session');
 const apiai       = require('apiai');
 const botsFamily  = {
-  happy : apiai('8fe112573eca466893d8ff19b6d7c771')
-/*thirsty: apiai('.....') to be implemented
-  drowning: ...
-  dark: ...
-  burnt: ...
-*/
+  happy : apiai(process.env.HAPPY_BOT),
+  thirsty: apiai(process.env.THIRSTY_BOT),
+  drowning: apiai(process.env.DROWN_BOT),
+  dark: apiai(process.env.DARK_BOT),
+  burnt: apiai(process.env.BURNT_BOT)
 };
 
 //will refactor into subApp later
