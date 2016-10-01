@@ -145,7 +145,7 @@ export default class Home extends React.Component {
       error: (err) => {
         throw new Error(err);
       }
-    });
+    })
   }
   _getAdmin() {
     $.ajax({
@@ -157,7 +157,7 @@ export default class Home extends React.Component {
       error: (err) => {
         throw new Error(err);
       }
-    });
+    })
   }
   _fetchPlant(plant){
     $.ajax({
@@ -170,11 +170,11 @@ export default class Home extends React.Component {
         if(plantFacts.length!==0){
           render(
             <PlantFacts plantFacts={plantFacts[0]} user={ this.state.loggedInUser }/>,
-            document.getElementById('plantFact'),
-          );
+            document.getElementById('plantFact')
+          )
         }
       }
-    });
+    })
   }
   _getUser() {
     $.ajax({
@@ -191,7 +191,7 @@ export default class Home extends React.Component {
       error: (err) => {
         throw new Error(err);
       }
-    });
+    })
   }
   _logout() {
     $.ajax({
@@ -203,6 +203,6 @@ export default class Home extends React.Component {
       error: (err) => {
         throw new Error(err);
       }
-    });
+    })
   }
 }
