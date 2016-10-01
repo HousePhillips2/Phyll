@@ -11,12 +11,7 @@ import Login      from '../components/login.jsx';
 import Logout     from '../components/logout.jsx';
 import Map        from '../components/map/index.jsx';
 import Chatbot    from '../components/chatbot.jsx';
-<<<<<<< a9671ad0ffd8e36de79c424f6526dd07e78305f6
-import DashBar    from '../components/dashboardBar.jsx';
-import AddPlant   from '../components/addplant.jsx';
-=======
 import AddPlant   from '../components/addPlant.jsx';
->>>>>>> [style] Add health feedback
 import DashBar    from '../components/dashboardBar.jsx';
 
 require('../stylesheets/main.scss');
@@ -43,6 +38,7 @@ export default class Home extends React.Component {
     let dashboard = this.state.isLoggedIn ? <DashBar loggedInUser={ this.state.loggedInUser }/> : <div id="dashBar"></div>;
     let loginToggle = this.state.isLoggedIn ? <Logout logout={this._logout.bind(this)}/> : <Login />;
 
+    let dashboard = this.state.isLoggedIn ? <DashBar loggedInUser={ this.state.loggedInUser }/> : <div id="dashBar"></div>;
     return(
       <div className="container-fluid">
         <div className="row header">
@@ -60,7 +56,7 @@ export default class Home extends React.Component {
                     <div className="dropdown-divider"></div>
                     <button className="dropdown-item" type="button">About phyll.IO</button>
                     <button className="dropdown-item" type="button">Developer Journal</button>
-                    <button className="dropdown-item" type="button">Check Out the Source</button>
+                    <a href="https://github.com/cachilders/Phyll"><button className="dropdown-item" type="button">Check Out the Source</button></a>
                   </div>
                 </div>
             </div>
@@ -95,6 +91,7 @@ export default class Home extends React.Component {
           </div>
         </div>
         { dashboard }
+<<<<<<< 68bcbd9aba000ed60154d46a384b2dde416fa25a
         <div className="row content">
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">
           <div className="content-top column container-fluid">
@@ -115,6 +112,8 @@ export default class Home extends React.Component {
             </div>
           </div>
         </div>
+=======
+>>>>>>> [feature] Reveal user dashboard on login
         <div className="row content">
           <div className="content-top column container-fluid">
             <div className="card">
@@ -138,11 +137,14 @@ export default class Home extends React.Component {
               </div>
               <div className="card">
                 <div className="card-header">
+<<<<<<< 68bcbd9aba000ed60154d46a384b2dde416fa25a
 <<<<<<< a9671ad0ffd8e36de79c424f6526dd07e78305f6
                   TODO: How to make a phyll.bot
 =======
 <<<<<<< 13fca98878b10015a03d6799e117d1660841abda
 >>>>>>> [style] Add health feedback
+=======
+>>>>>>> [feature] Reveal user dashboard on login
                   Conservatory
                 </div>
                 <div className="card-block">
@@ -151,16 +153,19 @@ export default class Home extends React.Component {
               </div>
               <div className="card">
                 <div className="card-header">
-=======
->>>>>>> [style] Add health feedback
                   Build Your Own Phyllbot
+                  TODO: How to make a phyll.bot
                 </div>
                 <div className="card-block">
+<<<<<<< 68bcbd9aba000ed60154d46a384b2dde416fa25a
 <<<<<<< a9671ad0ffd8e36de79c424f6526dd07e78305f6
                   <p className="card-text">Get on the map with your very own bot. <a href="https://github.com/cachilders/PhyllOS">PhyllOS is yours</a> to perfect.</p>
 =======
                   <p className="card-text">Get on the map with your very own bot. PhyllOS is yours to perfect.</p>
 >>>>>>> [style] Add health feedback
+=======
+                  <p className="card-text">Get on the map with your very own bot. <a href="https://github.com/cachilders/PhyllOS">PhyllOS is yours</a> to perfect.</p>
+>>>>>>> [feature] Reveal user dashboard on login
                 </div>
               </div>
             </div>
