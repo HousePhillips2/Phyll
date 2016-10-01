@@ -44,6 +44,10 @@ export default class Home extends React.Component {
                     <Login />
                     <Logout logout={this._logout.bind(this)}/>
                     <button className="dropdown-item" type="button">Add Plant</button>
+                    <div className="dropdown-divider"></div>
+                    <button className="dropdown-item" type="button">About phyll.IO</button>
+                    <button className="dropdown-item" type="button">Developer Journal</button>
+                    <button className="dropdown-item" type="button">Check Out the Source</button>
                   </div>
                 </div>
             </div>
