@@ -2,7 +2,7 @@ import { Map, List, fromJS } from 'immutable';
 import { expect } from 'chai';
 
 import makeStore   from '../../src/redux/store/store';
-import { setUser } from '../../src/redux/actions/actions';
+import { setUser, removeUser } from '../../src/redux/actions/actions';
 
 describe('authentication', () => {
 
@@ -17,7 +17,7 @@ describe('authentication', () => {
     // DEFINE user
     const user = {
       firstName: 'Eric',
-      lastName: 'Churchill',
+      lastName: 'Churchill'
     };
 
     // DISPATCH Action to store
@@ -29,7 +29,8 @@ describe('authentication', () => {
         firstName: 'Eric',
         lastName: 'Churchill',
         facebookId: undefined,
-        email: undefined
+        email: undefined,
+        image: undefined
       })
     }));
   });
@@ -49,8 +50,15 @@ describe('authentication', () => {
         firstName: 'Eric',
         lastName: 'Churchill',
         facebookId: undefined,
-        email: undefined
+        email: undefined,
+        image: undefined
       })
     }));
+  });
+
+  it('logs user out when logout action is triggered', () => {
+    store.dispatch(removeUser());
+
+    expect(store.getState()).to.equal(Map({ loggedIn: false }));
   });
 });
