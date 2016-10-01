@@ -11,8 +11,12 @@ import Login      from '../components/login.jsx';
 import Logout     from '../components/logout.jsx';
 import Map        from '../components/map/index.jsx';
 import Chatbot    from '../components/chatbot.jsx';
+<<<<<<< a9671ad0ffd8e36de79c424f6526dd07e78305f6
 import DashBar    from '../components/dashboardBar.jsx';
 import AddPlant   from '../components/addplant.jsx';
+=======
+import AddPlant   from '../components/addPlant.jsx';
+>>>>>>> [style] Add health feedback
 import DashBar    from '../components/dashboardBar.jsx';
 
 require('../stylesheets/main.scss');
@@ -41,9 +45,33 @@ export default class Home extends React.Component {
 
     return(
       <div className="container-fluid">
+        <div className="row header">
+          <div className="column">
+            <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
+            <div className="pull-sm-right" style={{marginTop: 1 + 'rem'}}>
+                <div className="btn-group graff">
+                  <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{border: 'none'}}>
+                    <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
+                  </button>
+                  <div className="dropdown-menu dropdown-menu-right">
+                    <Login />
+                    <Logout logout={this._logout.bind(this)}/>
+                    <button className="dropdown-item" type="button">Add Plant</button>
+                    <div className="dropdown-divider"></div>
+                    <button className="dropdown-item" type="button">About phyll.IO</button>
+                    <button className="dropdown-item" type="button">Developer Journal</button>
+                    <button className="dropdown-item" type="button">Check Out the Source</button>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
         <div className="row search">
           <div className="column jumbotron jumbo-bg">
+<<<<<<< a9671ad0ffd8e36de79c424f6526dd07e78305f6
           <div className="col-xs-12 jumbotron jumbo-bg">
+=======
+>>>>>>> [style] Add health feedback
             <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
           </div>
         </div>
@@ -110,7 +138,11 @@ export default class Home extends React.Component {
               </div>
               <div className="card">
                 <div className="card-header">
+<<<<<<< a9671ad0ffd8e36de79c424f6526dd07e78305f6
                   TODO: How to make a phyll.bot
+=======
+<<<<<<< 13fca98878b10015a03d6799e117d1660841abda
+>>>>>>> [style] Add health feedback
                   Conservatory
                 </div>
                 <div className="card-block">
@@ -119,10 +151,16 @@ export default class Home extends React.Component {
               </div>
               <div className="card">
                 <div className="card-header">
+=======
+>>>>>>> [style] Add health feedback
                   Build Your Own Phyllbot
                 </div>
                 <div className="card-block">
+<<<<<<< a9671ad0ffd8e36de79c424f6526dd07e78305f6
                   <p className="card-text">Get on the map with your very own bot. <a href="https://github.com/cachilders/PhyllOS">PhyllOS is yours</a> to perfect.</p>
+=======
+                  <p className="card-text">Get on the map with your very own bot. PhyllOS is yours to perfect.</p>
+>>>>>>> [style] Add health feedback
                 </div>
               </div>
             </div>
