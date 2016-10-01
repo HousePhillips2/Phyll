@@ -54,7 +54,7 @@ export default class Home extends React.Component {
           </div>
         </div>
         <div className="row search">
-          <div className="col-xs-12 jumbotron">
+          <div className="col-xs-12 jumbotron jumbo-bg">
             <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
           </div>
         </div>
@@ -76,7 +76,7 @@ export default class Home extends React.Component {
               </div>
             </div>
           </div>
-          <div className="content-2 col-lg-7 push-lg-5 container">
+          <div className="content-2 col-lg-7 push-lg-5 container-fluid">
             <div className="card-wrapper">
               <div className="card">
                 <div className="card-header">
@@ -110,7 +110,7 @@ export default class Home extends React.Component {
               </div>
             </div>
           </div>
-          <div className="content-1 col-lg-5 pull-lg-7 container">
+          <div className="content-1 col-lg-5 pull-lg-7 container-fluid">
             <div className="card-wrapper">
             <Users users={ this.state.admin }/>
             </div>
