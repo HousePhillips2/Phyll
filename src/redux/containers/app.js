@@ -5,7 +5,7 @@ export const INITIAL_STATE = Map({
   loggedIn: false
 });
 
-export const setUser = (state, user) => {
+export function setUser(state, user) {
 
   // IF user already loggedIn
   if( state.get('loggedIn', true)){
@@ -18,6 +18,12 @@ export const setUser = (state, user) => {
                 firstName: user.firstName,
                 lastName: user.lastName,
                 facebookId: user.facebookId,
-                email: user.email
+                email: user.email,
+                image: user.image
               }));
 };
+
+export function removeUser(state) {
+  return state.set('loggedIn', false)
+              .remove('user');
+}
