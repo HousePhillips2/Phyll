@@ -10,13 +10,10 @@ export default class UserInfo extends React.Component {
   render() {
     if(this.props.isLoggedIn){
       return(
-        <div>
-          <span>{this.props.userName}</span>
-          <img src={this.props.userImg} style={{height:'50px', width:'50px'}} className="img-rounded img-outline-success"/>
-        </div>
+        <img src={this.props.userImg} style={{height:'50px', width:'50px'}} className="img-rounded img-outline-success"/>
       );
     } else {
-      return (<div></div>);
+      return (<img src="images/logo.png" style={{height:'50px', width:'50px'}} className="img-rounded img-outline-success"/>);
     }
   }
 }

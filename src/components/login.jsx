@@ -5,9 +5,7 @@ export default class Login extends React.Component {
   }
   render() {
     return (
-      <li className="nav-item">
-        <a className="nav-link active graff" href="api/auth/login">Login</a>
-      </li>
+      <a href="api/auth/login"><button className="dropdown-item" type="button">Login</button></a>
     );
   }
 }

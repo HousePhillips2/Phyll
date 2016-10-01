@@ -35,15 +35,17 @@ export default class Home extends React.Component {
         <div className="row header">
           <div className="col-xs-12">
             <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
-            <div className="pull-sm-right">
-              <ul className="nav nav-inline text-sm-right"style={{padding: .2 + 'em'}}>
-                <li className="nav-item">
-                  <a className="nav-link graff" href="#">Add Plant</a>
-                </li>
-                <Login />
-                <Logout logout={this._logout.bind(this)}/>
-              </ul>
-              <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
+            <div className="pull-sm-right" style={{marginTop: 1 + 'rem'}}>
+                <div className="btn-group graff">
+                  <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{border: 'none'}}>
+                    <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
+                  </button>
+                  <div className="dropdown-menu dropdown-menu-right">
+                    <Login />
+                    <Logout logout={this._logout.bind(this)}/>
+                    <button className="dropdown-item" type="button">Add Plant</button>
+                  </div>
+                </div>
             </div>
           </div>
         </div>
