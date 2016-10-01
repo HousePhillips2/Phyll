@@ -31,21 +31,6 @@ export default class Home extends React.Component {
   render() {
     return(
       <div className="container-fluid">
-        <div className="row header">
-          <div className="col-xs-12">
-            <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
-            <div className="pull-sm-right">
-              <ul className="nav nav-inline text-sm-right"style={{padding: .2 + 'em'}}>
-                <li className="nav-item">
-                  <a className="nav-link graff" href="#">About</a>
-                </li>
-                <Login />
-                <Logout logout={this._logout.bind(this)}/>
-              </ul>
-              <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
-            </div>
-          </div>
-        </div>
         <div className="row search">
           <div className="col-xs-12 jumbotron">
             <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
@@ -75,7 +60,7 @@ export default class Home extends React.Component {
                 <div className="card-block">
                   <p className="card-text">There are so many wonderful plants for your home. Discover the perfect one.</p>
                 </div>
-              </div>  
+              </div>
               <div className="card">
                 <div className="card-header">
                   Build Your Own Phyllbot
