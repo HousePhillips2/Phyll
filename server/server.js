@@ -18,10 +18,25 @@ const botsFamily  = {
 */
 };
 
- 
-  
-
-
+//will refactor into subApp later
+//api call to fetch plant status
+let plantbot = botsFamily.happy;//diverse plantbot endpoint based on plant status (i.e. happy, thirsty, drowning, burnt, dark)
+io.on('connection', function(socket){
+  io.emit('login','Hello');
+  //**********response back to front-end
+  socket.on('client', function(msg){
+    const request = plantbot.textRequest(msg);
+    request.on('response', function(response) {
+      //console.log(response.result.fulfillment.speech,'response from happybot');
+      io.emit('plant',response.result.fulfillment.speech);
+    });
+    request.on('error', function(error) {
+        console.log(error);
+    });
+    request.end();
+      
+  });
+});
 
 // MOUNT middleware
 app.use(express.static('dist'));
