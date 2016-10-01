@@ -11,7 +11,7 @@ export default class UserInfo extends React.Component {
     return(
       <div>
         <span>{ this.props.username }</span>
-        <img src={ this.props.image } style={{height:'50px', width:'50px'}}/>
+        <img src={ this.props.image } style={{height:'50px', width:'50px'}} className="img-rounded img-outline-success"/>
       </div>
     );
   }

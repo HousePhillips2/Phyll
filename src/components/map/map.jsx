@@ -11,8 +11,8 @@ export default class Map extends React.Component {
   componentDidMount() {
     var map = L.map('mapid', {
       // lat, long coordinates
-      center: [ 37.762, -122.417 ],
-      zoom: 14
+      center: [37.7758, -122.4128],
+      zoom: 15
     });
 
     L.tileLayer('https://api.mapbox.com/styles/v1/echurchill/citnqe70i005j2ioep3anqchd/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
