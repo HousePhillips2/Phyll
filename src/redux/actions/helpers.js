@@ -5,14 +5,12 @@ import { setUser } from '../../src/redux/actions/actions';
 
 
 export function _getUser() {
-  $.ajax({
-    method: 'GET',
-    url: 'api/auth/loggedin',
-    success: user => {
+  return (store) => {
+    $.ajax({
+      method: 'GET',
+      url: 'api/auth/loggedin',
+    }).then(({user}) => {
       store.dispatch(setUser(user));
-    },
-    error: error => {
-      throw new Error(error);
-    }
-  });
+    });
+  };
 }
