@@ -1,6 +1,7 @@
 import $          from 'jquery';
 import React      from 'react';
 import { render } from 'react-dom';
+import {Link}     from 'react-router';
 import Users      from '../components/users.jsx';
 import Search     from '../components/searchBar.jsx';
 import PlantFacts from '../components/plantFacts.jsx';
@@ -9,7 +10,6 @@ import Login      from '../components/login.jsx';
 import Logout     from '../components/logout.jsx';
 import Map        from '../components/map/index.jsx';
 import Chatbot    from '../components/chatbot.jsx';
-import AddPlant   from '../components/addPlant.jsx';
 import DashBar    from '../components/dashboardBar.jsx';
 
 require('../stylesheets/main.scss');
@@ -21,6 +21,7 @@ export default class Home extends React.Component {
       plants: [],
       _fetchPlant: this._fetchPlant,
       isLoggedIn: false,
+      loggedInUser: '',
       userName:'',
       userImg:''
     };
@@ -31,6 +32,10 @@ export default class Home extends React.Component {
     this._getUser();
   }
   render() {
+
+    let dashboard = this.state.isLoggedIn ? <DashBar loggedInUser={ this.state.loggedInUser }/> : <div id="dashBar"></div>;
+    let loginToggle = this.state.isLoggedIn ? <Logout logout={this._logout.bind(this)}/> : <Login />;
+
     return(
       <div className="container-fluid">
         <div className="row header">
@@ -42,13 +47,11 @@ export default class Home extends React.Component {
                     <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
                   </button>
                   <div className="dropdown-menu dropdown-menu-right">
-                    <Login />
-                    <Logout logout={this._logout.bind(this)}/>
-                    <button className="dropdown-item" type="button">Add Plant</button>
+                    { loginToggle }
                     <div className="dropdown-divider"></div>
                     <button className="dropdown-item" type="button">About phyll.IO</button>
                     <button className="dropdown-item" type="button">Developer Journal</button>
-                    <button className="dropdown-item" type="button">Check Out the Source</button>
+                    <a href="https://github.com/cachilders/Phyll"><button className="dropdown-item" type="button">Check Out the Source</button></a>
                   </div>
                 </div>
             </div>
@@ -59,36 +62,15 @@ export default class Home extends React.Component {
             <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
           </div>
         </div>
-        <div className="row content">
+        <div className="row content"> 
           <div className="content-top column container-fluid" role="document">
             <div id="plantModal" tabIndex="-1" role="dialog" aria-hidden="true">
               <div id="plantFact"></div>
             </div>
           </div>
         </div>
+        { dashboard }
         <div className="row content">
-          <div className="content-top column container-fluid">
-            <div className="card">
-              <div className="card-header">
-                User Dash Widget (TODO: Hide this and make it work)
-              </div>
-              <div className="card-block">
-                <DashBar />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="row content">
-          <div className="content-top column container-fluid">
-            <div className="card">
-              <div className="card-header">
-                Add a new plant to your collection (TODO: Hide this and fix the thing)
-              </div>
-              <div className="card-block">
-                <AddPlant />
-              </div>
-            </div>
-          </div>
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">
             <div className="card-wrapper">
               <div className="card">
@@ -107,10 +89,10 @@ export default class Home extends React.Component {
               </div>
               <div className="card">
                 <div className="card-header">
-                  Build Your Own Phyllbot
+                  TODO: How to make a phyll.bot
                 </div>
                 <div className="card-block">
-                  <p className="card-text">Get on the map with your very own bot. PhyllOS is yours to perfect.</p>
+                  <p className="card-text">Get on the map with your very own bot. <a href="https://github.com/cachilders/PhyllOS">PhyllOS is yours</a> to perfect.</p>
                 </div>
               </div>
             </div>
@@ -193,6 +175,7 @@ export default class Home extends React.Component {
       url: 'api/auth/loggedin',
       success: (userInfo) => {
         if(userInfo){
+          this.setState({loggedInUser: userInfo});
           this.setState({userName: userInfo.name});
           this.setState({userImg: userInfo.img});
           this.setState({isLoggedIn:!this.state.isLoggedIn});
