@@ -16,5 +16,4 @@ router.post('/discard', (req, res) => {Device.discard(req.body, res);});
 router.post('/purge', (req, res) => {Device.purge(req.body, res);});
 router.get('/dailyData', (req, res) => {Device.dailyData(req, res);});
 
-
 module.exports = router;
