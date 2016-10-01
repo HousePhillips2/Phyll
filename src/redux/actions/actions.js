@@ -1,9 +1,10 @@
 import { Map, List, fromJS } from 'immutable';
 
-export function setUsers(users){
+export function setUser(user) {
+
   return {
-    type:  'SET_USERS',
-    users: users
+    type: 'SET_USER',
+    user
   };
 }
 
