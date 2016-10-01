@@ -9,7 +9,7 @@ import Login      from '../components/login.jsx';
 import Logout     from '../components/logout.jsx';
 import Map        from '../components/map/index.jsx';
 import Chatbot    from '../components/chatbot.jsx';
-import AddPlant   from '../components/addplant.jsx';
+import AddPlant   from '../components/addPlant.jsx';
 import DashBar    from '../components/dashboardBar.jsx';
 
 require('../stylesheets/main.scss');
@@ -33,8 +33,29 @@ export default class Home extends React.Component {
   render() {
     return(
       <div className="container-fluid">
+        <div className="row header">
+          <div className="column">
+            <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
+            <div className="pull-sm-right" style={{marginTop: 1 + 'rem'}}>
+                <div className="btn-group graff">
+                  <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{border: 'none'}}>
+                    <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
+                  </button>
+                  <div className="dropdown-menu dropdown-menu-right">
+                    <Login />
+                    <Logout logout={this._logout.bind(this)}/>
+                    <button className="dropdown-item" type="button">Add Plant</button>
+                    <div className="dropdown-divider"></div>
+                    <button className="dropdown-item" type="button">About phyll.IO</button>
+                    <button className="dropdown-item" type="button">Developer Journal</button>
+                    <button className="dropdown-item" type="button">Check Out the Source</button>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
         <div className="row search">
-          <div className="col-xs-12 jumbotron jumbo-bg">
+          <div className="column jumbotron jumbo-bg">
             <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
           </div>
         </div>
@@ -86,6 +107,7 @@ export default class Home extends React.Component {
               </div>
               <div className="card">
                 <div className="card-header">
+<<<<<<< 13fca98878b10015a03d6799e117d1660841abda
                   Conservatory
                 </div>
                 <div className="card-block">
@@ -94,10 +116,12 @@ export default class Home extends React.Component {
               </div>
               <div className="card">
                 <div className="card-header">
+=======
+>>>>>>> [style] Add health feedback
                   Build Your Own Phyllbot
                 </div>
                 <div className="card-block">
-                  <p className="card-text">Don't take our word for it. PhyllOS is yours to make perfect.</p>
+                  <p className="card-text">Get on the map with your very own bot. PhyllOS is yours to perfect.</p>
                 </div>
               </div>
             </div>
@@ -105,12 +129,27 @@ export default class Home extends React.Component {
           <div className="content-1 col-lg-5 pull-lg-7 container-fluid">
             <div className="card-wrapper">
             <Users users={ this.state.admin }/>
+            <div className="card">
+                <div className="card-header">
+                  Conservatory
+                </div>
+                <div className="card-block">
+                  <p className="card-text">There are so many wonderful plants for your home. Discover the perfect one.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div className="footer row">
-          <div className="container">
-            Footer
+          <div className="content-top column container-fluid">
+            <div className="card">
+              <div className="card-header">
+                Footer Widget (TODO: whatevs)
+              </div>
+              <div className="card-block">
+                Content
+              </div>
+            </div>
           </div>
         </div>
       </div>
