@@ -21,6 +21,7 @@ export default class Home extends React.Component {
       admin: [],
       plants: [],
       _fetchPlant: this._fetchPlant,
+      newPlant: false,
       isLoggedIn: false,
       loggedInUser: '',
       userName:'',
@@ -33,7 +34,11 @@ export default class Home extends React.Component {
     this._getUser();
   }
   render() {
+
     let dashboard = this.state.isLoggedIn ? <DashBar loggedInUser={ this.state.loggedInUser }/> : <div id="dashBar"></div>;
+    let loginToggle = this.state.isLoggedIn ? <Logout logout={this._logout.bind(this)}/> : <Login />;
+    let newPlant = this.state.newPlant ? <AddPlant plantFacts={this.state._fetchPlant } /> : <div id="newPlant"></div>
+
     return(
       <div className="container-fluid">
         <div className="row header">
@@ -45,8 +50,7 @@ export default class Home extends React.Component {
                     <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
                   </button>
                   <div className="dropdown-menu dropdown-menu-right">
-                    <Login />
-                    <Logout logout={this._logout.bind(this)}/>
+                    { loginToggle }
                     <button className="dropdown-item" type="button">Add Plant</button>
                     <div className="dropdown-divider"></div>
                     <button className="dropdown-item" type="button">About phyll.IO</button>
@@ -62,7 +66,7 @@ export default class Home extends React.Component {
             <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
           </div>
         </div>
-        <div className="row content">
+        <div className="row content"> 
           <div className="content-top column container-fluid" role="document">
             <div id="plantModal" tabIndex="-1" role="dialog" aria-hidden="true">
               <div id="plantFact"></div>
@@ -70,17 +74,8 @@ export default class Home extends React.Component {
           </div>
         </div>
         { dashboard }
+        { newPlant }
         <div className="row content">
-          <div className="content-top column container-fluid">
-            <div className="card">
-              <div className="card-header">
-                Add a new plant to your collection (TODO: Hide this and fix the thing)
-              </div>
-              <div className="card-block">
-                <AddPlant />
-              </div>
-            </div>
-          </div>
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">
             <div className="card-wrapper">
               <div className="card">

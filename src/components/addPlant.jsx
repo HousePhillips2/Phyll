@@ -10,22 +10,34 @@ import PlantForm from '../components/plantForm.jsx';
 export default class AddPlant extends React.Component {
   constructor() {
     super();
-    this.state={plantFacts:[]};//initate state
   }
 
   render() {
-    if (this.state.plantFacts.length!==0){
+    let plantFacts = this.props.plantFacts;
+
+    if (this.props.plantFacts){
+
       return (
-        <div>
-          <PlantForm plantName={this.state.plantFacts.plant_name} plantId={this.state.plantFacts.id}/>
-          <PlantFacts plantFacts = {this.state.plantFacts}/>
+        
+        <div className="row content">
+          <div className="content-top column container-fluid">
+            <div className="card">
+              <div className="card-header">
+                Add a { this.props.plantFacts.plant_name } your collection (TODO: Hide this and fix the thing)
+              </div>
+              <div className="card-block">
+                <PlantForm plantName={this.props.plantFacts.plant_name} plantId={this.props.plantFacts.id}/>
+              </div>
+            </div>
+          </div>
         </div>
+
       );
-    }else{
+    } else {
       return (
-        <div>
-          <SearchBar fetchPlant={this._fetchPlant.bind(this)}/>
-        </div>
+
+        <div></div>
+
       );
     }
   }
