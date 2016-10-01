@@ -19,7 +19,7 @@ function renderSuggestion(suggestion) {
   );
 }
 
-let counter=0;
+let count=0;
 
 export default class SearchBar extends React.Component {
   constructor(props) {
@@ -40,9 +40,11 @@ export default class SearchBar extends React.Component {
   }
 
   counter() {
-    counter = counter>100? 0: counter+1;
-    let name = this.props.plants[counter].plant_name;
-    this.setState({placeholder:`Find out your plant: ${name}`});
+    count = count > 100? 0: count + 1;
+    if (this.props.plants) {
+      let name = this.props.plants[count].plant_name;
+      this.setState({placeholder:`Learn about your ${name}`});
+    }
   }
   
   getSuggestions(value) {

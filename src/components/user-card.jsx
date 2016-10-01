@@ -1,5 +1,6 @@
 import { ajax } from 'jquery';
 import React from 'react';
+import Charts from './charts.jsx';
 
 
 export default class userCard extends React.Component {
@@ -10,15 +11,21 @@ export default class userCard extends React.Component {
 
   render() {
     const user = this.props.user;
+    const firstName = user.user_name.split(' ')[0] + '\'s'
     return(
-      <div className="card card-outline-success">
-        <div className="card-text">
-          <div className="card-block graff text-success text-xs-left col-xs-6">{`${ user.user_name }`}</div>
-          <div className="card-block graff text-success text-xs-right col-xs-6">{`${ user.plants[0].name }`}</div>
-        </div>
+      <div className="card">
         <div className="card-block">
-          <img className="img-rounded pull-left" style={ {width: '125px', height: '125px'} } src={ user.img }/>
-          <img className="img-rounded pull-right" style={ {width: '125px', height: '125px'} } src={ user.plants[0].img }/>
+          <div className="media">
+            <a className="media-left"><img className="img-rounded" style={ {width: '125px', height: '125px'} } src={ user.img }/></a>
+            <div className="media-body">
+              <div className="media">
+                <div className="media-body graff">
+                  <h4 className="media-heading header">{`${ firstName }`} <span className="text-success">{`${ user.plants[0].name }`}</span></h4>
+                </div>
+                <a className="media-right"><img className="img-rounded" style={ {width: '75px', height: '75px'} } src={ user.plants[0].img }/></a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

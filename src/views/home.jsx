@@ -1,14 +1,16 @@
-import $ from 'jquery';
-import React from 'react';
+import $          from 'jquery';
+import React      from 'react';
 import { render } from 'react-dom';
-import Users from '../components/users.jsx';
-import Search from '../components/searchBar.jsx';
+import Users      from '../components/users.jsx';
+import Search     from '../components/searchBar.jsx';
 import PlantFacts from '../components/plantFacts.jsx';
-import UserInfo from '../components/userInfo.jsx';
-import Login from '../components/login.jsx';
-import Logout from '../components/logout.jsx';
-import Map from '../components/map/index.jsx';
-import Chatbot from '../components/chatbot.jsx';
+import UserInfo   from '../components/userInfo.jsx';
+import Login      from '../components/login.jsx';
+import Logout     from '../components/logout.jsx';
+import Map        from '../components/map/index.jsx';
+import Chatbot    from '../components/chatbot.jsx';
+import AddPlant   from '../components/addplant.jsx';
+import DashBar    from '../components/dashboardBar.jsx';
 
 require('../stylesheets/main.scss');
 export default class Home extends React.Component {
@@ -34,25 +36,60 @@ export default class Home extends React.Component {
         <div className="row header">
           <div className="col-xs-12">
             <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
-            <div className="pull-sm-right">
-              <ul className="nav nav-inline text-sm-right"style={{padding: .2 + 'em'}}>
-                <li className="nav-item">
-                  <a className="nav-link graff" href="#">About</a>
-                </li>
-                <Login />
-                <Logout logout={this._logout.bind(this)}/>
-              </ul>
-              <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
+            <div className="pull-sm-right" style={{marginTop: 1 + 'rem'}}>
+                <div className="btn-group graff">
+                  <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{border: 'none'}}>
+                    <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
+                  </button>
+                  <div className="dropdown-menu dropdown-menu-right">
+                    <Login />
+                    <Logout logout={this._logout.bind(this)}/>
+                    <button className="dropdown-item" type="button">Add Plant</button>
+                    <div className="dropdown-divider"></div>
+                    <button className="dropdown-item" type="button">About phyll.IO</button>
+                    <button className="dropdown-item" type="button">Developer Journal</button>
+                    <button className="dropdown-item" type="button">Check Out the Source</button>
+                  </div>
+                </div>
             </div>
           </div>
         </div>
         <div className="row search">
-          <div className="col-xs-12 jumbotron">
+          <div className="col-xs-12 jumbotron jumbo-bg">
             <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
           </div>
         </div>
         <div className="row content">
-          <div className="content-2 col-lg-7 push-lg-5 container">
+          <div className="content-top column container-fluid" role="document">
+            <div id="plantModal" tabIndex="-1" role="dialog" aria-hidden="true">
+              <div id="plantFact"></div>
+            </div>
+          </div>
+        </div>
+        <div className="row content">
+          <div className="content-top column container-fluid">
+            <div className="card">
+              <div className="card-header">
+                User Dash Widget (TODO: Hide this and make it work)
+              </div>
+              <div className="card-block">
+                <DashBar />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row content">
+          <div className="content-top column container-fluid">
+            <div className="card">
+              <div className="card-header">
+                Add a new plant to your collection (TODO: Hide this and fix the thing)
+              </div>
+              <div className="card-block">
+                <AddPlant />
+              </div>
+            </div>
+          </div>
+          <div className="content-2 col-lg-7 push-lg-5 container-fluid">
             <div className="card-wrapper">
               <div className="card">
                 <div className="card-header">
@@ -86,7 +123,7 @@ export default class Home extends React.Component {
               </div>
             </div>
           </div>
-          <div className="content-1 col-lg-5 pull-lg-7 container">
+          <div className="content-1 col-lg-5 pull-lg-7 container-fluid">
             <div className="card-wrapper">
             <Users users={ this.state.admin }/>
             </div>
@@ -136,7 +173,8 @@ export default class Home extends React.Component {
         if(plantFacts.length!==0){
           render(
             <PlantFacts plantFacts={plantFacts[0]} />,
-            document.getElementById('plantFact')
+            document.getElementById('plantFact'),
+            console.log(plantFacts)
           );
         }
       }

@@ -5,9 +5,7 @@ export default class Logout extends React.Component {
   }
   render() {
     return (
-      <li className="nav-item">
-        <a className="nav-link active graff" href="#" onClick={this.props.logout}>Logout</a>
-      </li>
+      <button className="dropdown-item" type="button" onClick={this.props.logout}>Logout</button>
     );
   }
 }
