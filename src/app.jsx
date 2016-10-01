@@ -1,10 +1,5 @@
 import * as Tether from 'tether';
 import React from 'react';
-<<<<<<< 22af987bb435206c8a23eed47f0fffa097818aec
-import { render } from 'react-dom';
-import {Router, Route, Redirect, browserHistory} from 'react-router';
-import Home from './views/home.jsx';
-=======
 import d3 from 'd3';
 import makeStore from './redux/store/store';
 import { Provider } from 'react-redux';
