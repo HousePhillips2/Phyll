@@ -6,31 +6,81 @@ export default class PlantForm extends React.Component {
     super(props);
   }
   render() {
-    //console.log(this.props.plantName,"plant name inside PlantForm");
+    const user = this.props.user;
+    let submitButton;
+
+    // TODO: add login handling to link when navbar has been refactored
+
+    if (user) {
+      submitButton = <button className="btn btn-success" type="submit" id="addImage" style={{marginTop: .25 + 'rem'}}>Add Me!</button>
+    } else {
+      submitButton = <div className="alert alert-danger" role="alert"><strong>Yikes!</strong> Looks like you need to <a href="#" className="alert-link">log in</a>.</div>
+    }
+
     return (
-      <div style={{margin:'50px', border: '2px'}}>
-        <form id="searchform" onSubmit={this._handleSubmit.bind(this)}>
-          <div className="form-incline">
-            <label for="common_name">Common Name:</label>
-            <input type="text" className="form-control" id="common_name" value={this.props.plantName} ref={input => this._plantName = input}/>
+
+      <div style={{margin:10 + 'px'}}>
+
+        <form id="newPlant" onSubmit={this._handleSubmit.bind(this)}>
+
+          <div className="form-group row">
+            <div className="column">
+              <div className="input-group">
+                <span className="input-group-addon">Species</span>
+                <input type="text" className="form-control" id="common_name" value={this.props.plantName} ref={input => this._plantName = input} readOnly/>
+              </div>
+            </div>
           </div>
-          <div className="form-incline">
-            <label for="nickname">Nickname:</label>
-            <input type="text" className="form-control" id="nickname" ref={input => this._plantNickName = input}/>
+
+          <div className="form-group row">
+            <div className="column">
+              <div className="input-group">
+                <span className="input-group-addon">Nickname</span>
+                <input type="text" className="form-control" id="nickname" ref={input => this._plantNickName = input}/>
+              </div>
+            </div>
           </div>
-          <div className="form-incline">
-            <label for="deviceId">Phyll No.:</label>
-            <input type="text" className="form-control" id="deviceId" ref={input => this._deviceId = input}/>
+
+          <div className="form-group row">
+            <div className="column">
+                <div className="input-group">
+                <span className="input-group-addon">Device ID</span>
+                <input type="text" className="form-control" id="deviceId" ref={input => this._deviceId = input}/>
+              </div>
+            </div>
           </div>
-          <div className="form-incline">
-            <label for="image">Image:</label>
-            <input type="file" className="form-control" id="image" />
+
+          <div className="form-group row">
+
+            {/* This image upload feature is going to take more handling to make work than an html file input field.
+              It's presently beyond scope in terms of things we need to make the site work. */}
+
+            {/*<div className="column">
+              <label className="btn btn-secondary">
+                Upload an Image <input type="file"  style={{display: 'none'}} id="image" />
+              </label>
+            </div>*/}
+
+            <div className="column">
+              { submitButton }
+            </div>
           </div>
-            <button className="btn btn-default" style={{color:'green'}} type="submit" id="search" >Add Me!</button>
         </form>
       </div>
+
+
     );
   }
+
+  /*
+  Table: api.users
+    id:
+    user_name:
+    email:
+    oauth_key:
+    img:
+  */
+
   _handleSubmit(e){
     e.preventDefault();
     let user_name = 'Casey';
@@ -58,6 +108,6 @@ export default class PlantForm extends React.Component {
   }
 }
 
-PlantForm.contextTypes = {
-  router: React.PropTypes.func.isRequired
-};
+// PlantForm.contextTypes = {
+//   router: React.PropTypes.func.isRequired
+// };

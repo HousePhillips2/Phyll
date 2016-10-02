@@ -12,8 +12,8 @@ export default class userCard extends React.Component {
   render() {
     const user = this.props.user;
     const firstName = user.user_name.split(' ')[0] + '\'s';
-    const heartFull = <i className="fa fa-heart"></i>;
-    const heartEmpty =  <i className="fa fa-heart-o"></i>;
+    const heartFull = <i className="fa fw fa-heart"></i>;
+    const heartEmpty =  <i className="fa fw fa-heart-o"></i>;
     // TODO: This score will be dynamically populated using n full hearts with the remainder of five hollow
     const health = <span className="text-danger"> {heartFull} {heartFull} {heartFull} {heartEmpty} {heartEmpty} </span>;
     // TODO: The water and light quick glance will be derived from most recent data at page load

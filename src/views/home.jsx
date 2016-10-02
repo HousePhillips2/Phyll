@@ -19,7 +19,7 @@ export default class Home extends React.Component {
     this.state = {
       admin: [],
       plants: [],
-      _fetchPlant: this._fetchPlant,
+      _fetchPlant: this._fetchPlant.bind(this),
       isLoggedIn: false,
       loggedInUser: '',
       userName:'',
@@ -41,11 +41,11 @@ export default class Home extends React.Component {
         <div className="row header">
           <div className="column">
             <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
-            <div className="pull-sm-right" style={{marginTop: 1 + 'rem'}}>
+            <div className="pull-xs-right" style={{marginTop: 1 + 'rem'}}>
                 <div className="btn-group graff">
-                  <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{border: 'none'}}>
+                  <span className="btn btn-secondary dropdown-toggle dropdown-menu-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{border: 'none'}}>
                     <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
-                  </button>
+                  </span>
                   <div className="dropdown-menu dropdown-menu-right">
                     { loginToggle }
                     <div className="dropdown-divider"></div>
@@ -73,14 +73,7 @@ export default class Home extends React.Component {
         <div className="row content">
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">
             <div className="card-wrapper">
-              <div className="card">
-                <div className="card-header">
-                  Talk to a houseplant
-                </div>
-                <div className="card-block">
-                  <Chatbot userName={this.state.userName}/>
-                </div>
-              </div>
+              <Chatbot userName={this.state.userName} loggedIn={this.state.isLoggedIn}/>
               <div className="card hidden-xs hidden-sm">
                 <div className="card-header">
                   Active Bots
@@ -161,9 +154,8 @@ export default class Home extends React.Component {
       success: (plantFacts) => {
         if(plantFacts.length!==0){
           render(
-            <PlantFacts plantFacts={plantFacts[0]} />,
+            <PlantFacts plantFacts={plantFacts[0]} user={ this.state.loggedInUser }/>,
             document.getElementById('plantFact'),
-            console.log(plantFacts)
           );
         }
       }
