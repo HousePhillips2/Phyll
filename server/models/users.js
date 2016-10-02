@@ -16,12 +16,5 @@ db.none("insert into api.users (user_name) values ('Marvin Maio')")
     console.log(error);
   });
 
-  /*
-  Table: api.users
-    id:
-    user_name:
-    email:
-    oauth_key:
-    img:
-  */
+  
   
