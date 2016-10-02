@@ -25,7 +25,7 @@ export default class AddPlant extends React.Component {
               <div className="card-header">
                 Add { this.props.plantFacts.plant_name } to your collection
               </div>
-              <div className="card-block">
+              <div className="card-block container-fluid">
                 <PlantForm plantName={this.props.plantFacts.plant_name} plantId={this.props.plantFacts.id}/>
               </div>
             </div>
