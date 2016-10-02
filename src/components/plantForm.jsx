@@ -9,11 +9,11 @@ export default class PlantForm extends React.Component {
     
     return (
 
-      <div style={{margin:'50px', border: '2px'}}>
+      <div style={{margin:10 + 'px'}}>
         <form id="newPlant" onSubmit={this._handleSubmit.bind(this)}>
 
           <div className="form-group row">
-            <div className="col-sm-12">
+            <div className="column">
               <div className="input-group">
                 <span className="input-group-addon">Species</span>
                 <input type="text" className="form-control" id="common_name" value={this.props.plantName} ref={input => this._plantName = input} readOnly/>
@@ -22,7 +22,7 @@ export default class PlantForm extends React.Component {
           </div>
 
           <div className="form-group row">
-            <div className="col-sm-12">
+            <div className="column">
               <div className="input-group">
                 <span className="input-group-addon">Nickname</span>
                 <input type="text" className="form-control" id="nickname" ref={input => this._plantNickName = input}/>
@@ -31,7 +31,7 @@ export default class PlantForm extends React.Component {
           </div>
 
           <div className="form-group row">
-            <div className="col-sm-12">
+            <div className="column">
                 <div className="input-group">
                 <span className="input-group-addon">Device ID</span>
                 <input type="text" className="form-control" id="deviceId" ref={input => this._deviceId = input}/>
@@ -40,15 +40,17 @@ export default class PlantForm extends React.Component {
           </div>
 
           <div className="form-group row">
-            <label for="" className="btn btn-secondary">
-              Upload an Image <input type="file"  style={{display: 'none'}} id="image" />
-            </label>
+            <div className="column">
+              <label className="btn btn-secondary">
+                Upload an Image <input type="file"  style={{display: 'none'}} id="image" />
+              </label>
+            </div>
+            <div className="column">
+              <button className="btn btn-success" type="submit" id="addImage" style={{marginTop: .25 + 'rem'}}>
+                Add Me!
+              </button>
+            </div>
           </div>
-
-          <button className="btn btn-success" type="submit" id="search">
-            Add Me!
-          </button>
-
         </form>
       </div>
 
