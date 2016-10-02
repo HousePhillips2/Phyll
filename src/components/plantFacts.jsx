@@ -35,7 +35,7 @@ export default class PlantFacts extends React.Component {
               <span className="media-left">
                 <img style={{width: 175 + 'px'}} className="img-rounded" src={plantFacts.img}/>
                 <p>
-                  <button type="button" onClick={this.clickHandler} className="btn btn-success media-left media-bottom" style={{marginTop: .5 + 'rem'}}>Add Plant</button>
+                  <button type="button" onClick={this.clickHandler} className="btn btn-block btn-success media-left media-bottom" style={{marginTop: .5 + 'rem'}}>Add Plant</button>
                 </p>
               </span>
               <div className="media-body">

@@ -43,9 +43,9 @@ export default class Home extends React.Component {
             <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
             <div className="pull-sm-right" style={{marginTop: 1 + 'rem'}}>
                 <div className="btn-group graff">
-                  <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{border: 'none'}}>
+                  <span className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{border: 'none'}}>
                     <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
-                  </button>
+                  </span>
                   <div className="dropdown-menu dropdown-menu-right">
                     { loginToggle }
                     <div className="dropdown-divider"></div>
