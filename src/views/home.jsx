@@ -41,9 +41,9 @@ export default class Home extends React.Component {
         <div className="row header">
           <div className="column">
             <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
-            <div className="pull-sm-right" style={{marginTop: 1 + 'rem'}}>
+            <div className="pull-xs-right" style={{marginTop: 1 + 'rem'}}>
                 <div className="btn-group graff">
-                  <span className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{border: 'none'}}>
+                  <span className="btn btn-secondary dropdown-toggle dropdown-menu-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{border: 'none'}}>
                     <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
                   </span>
                   <div className="dropdown-menu dropdown-menu-right">
