@@ -6,10 +6,21 @@ export default class PlantForm extends React.Component {
     super(props);
   }
   render() {
-    
+    const user = this.props.user;
+    let submitButton;
+
+    // TODO: add login handling to link when navbar has been refactored
+
+    if (user) {
+      submitButton = <button className="btn btn-success" type="submit" id="addImage" style={{marginTop: .25 + 'rem'}}>Add Me!</button>
+    } else {
+      submitButton = <div className="alert alert-danger" role="alert"><strong>Yikes!</strong>Looks like you need to <a href="#" className="alert-link">log in</a>.</div>
+    }
+
     return (
 
       <div style={{margin:10 + 'px'}}>
+
         <form id="newPlant" onSubmit={this._handleSubmit.bind(this)}>
 
           <div className="form-group row">
@@ -40,15 +51,18 @@ export default class PlantForm extends React.Component {
           </div>
 
           <div className="form-group row">
-            <div className="column">
+
+            {/* This image upload feature is going to take more handling to make work than an html file input field.
+              It's presently beyond scope in terms of things we need to make the site work. */}
+
+            {/*<div className="column">
               <label className="btn btn-secondary">
                 Upload an Image <input type="file"  style={{display: 'none'}} id="image" />
               </label>
-            </div>
+            </div>*/}
+
             <div className="column">
-              <button className="btn btn-success" type="submit" id="addImage" style={{marginTop: .25 + 'rem'}}>
-                Add Me!
-              </button>
+              { submitButton }
             </div>
           </div>
         </form>
