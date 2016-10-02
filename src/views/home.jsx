@@ -41,6 +41,7 @@ export default class Home extends React.Component {
     let dashboard = this.state.isLoggedIn ? <DashBar loggedInUser={ this.state.loggedInUser }/> : <div id="dashBar"></div>;
     return(
       <div className="container-fluid">
+<<<<<<< 4f6a5794c7248e65aa24d962c84cd739c0bcf162
         <div className="row header">
           <div className="column">
             <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
@@ -62,11 +63,14 @@ export default class Home extends React.Component {
             </div>
           </div>
         </div>
+=======
+>>>>>>> [style] Tweak buttons
         <div className="row search">
           <div className="column jumbotron jumbo-bg">
             <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
           </div>
         </div>
+<<<<<<< 4f6a5794c7248e65aa24d962c84cd739c0bcf162
         <div className="row content" id="plantModal" tabIndex="-1" role="dialog" aria-hidden="true">
           <div className="content-top column container-fluid" role="document">
             <div className="card">
@@ -79,6 +83,8 @@ export default class Home extends React.Component {
               </div>
             </div>
           </div>
+=======
+>>>>>>> [style] Tweak buttons
         <div className="row content">
           <div className="content-top column container-fluid" role="document">
             <div id="plantModal" tabIndex="-1" role="dialog" aria-hidden="true">
@@ -210,7 +216,7 @@ export default class Home extends React.Component {
         if(plantFacts.length!==0){
           render(
             <PlantFacts plantFacts={plantFacts[0]} user={ this.state.loggedInUser }/>,
-            document.getElementById('plantFact'),
+            document.getElementById('plantFact')
           );
         }
       }
