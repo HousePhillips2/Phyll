@@ -38,31 +38,12 @@ export default class Home extends React.Component {
 
     return(
       <div className="container-fluid">
-        <div className="row header">
-          <div className="column">
-            <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
-            <div className="pull-xs-right" style={{marginTop: 1 + 'rem'}}>
-                <div className="btn-group graff">
-                  <span className="btn btn-secondary dropdown-toggle dropdown-menu-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{border: 'none'}}>
-                    <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
-                  </span>
-                  <div className="dropdown-menu dropdown-menu-right">
-                    { loginToggle }
-                    <div className="dropdown-divider"></div>
-                    <button className="dropdown-item" type="button">About phyll.IO</button>
-                    <button className="dropdown-item" type="button">Developer Journal</button>
-                    <a href="https://github.com/cachilders/Phyll"><button className="dropdown-item" type="button">Check Out the Source</button></a>
-                  </div>
-                </div>
-            </div>
-          </div>
-        </div>
         <div className="row search">
           <div className="column jumbotron jumbo-bg">
             <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
           </div>
         </div>
-        <div className="row content"> 
+        <div className="row content">
           <div className="content-top column container-fluid" role="document">
             <div id="plantModal" tabIndex="-1" role="dialog" aria-hidden="true">
               <div id="plantFact"></div>
@@ -164,7 +145,7 @@ export default class Home extends React.Component {
         if(plantFacts.length!==0){
           render(
             <PlantFacts plantFacts={plantFacts[0]} user={ this.state.loggedInUser }/>,
-            document.getElementById('plantFact'),
+            document.getElementById('plantFact')
           );
         }
       }
