@@ -12,7 +12,6 @@ export default class Navigation extends Component {
 
   render() {
     return(
-      <div className="container-fluid">
         <div className="row header">
           <div className="column">
             <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
@@ -35,7 +34,6 @@ export default class Navigation extends Component {
               </div>
           </div>
         </div>
-      </div>
     );
   }
 
