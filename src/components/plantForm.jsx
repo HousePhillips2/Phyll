@@ -28,6 +28,7 @@ export default class PlantForm extends React.Component {
     return (
 
       <div style={{margin:10 + 'px'}}>
+
         <form id="newPlant" onSubmit={this._handleSubmit.bind(this)}>
 
           <div className="form-group row">
@@ -65,6 +66,7 @@ export default class PlantForm extends React.Component {
               It's presently beyond scope in terms of things we need to make the site work. */}
 
             {/*<div className="column">
+<<<<<<< ab4364ceff4ae1204dffbb7559fa37ca43c1abc3
               <label className="btn btn-secondary">
                 Upload an Image <input type="file"  style={{display: 'none'}} id="image" />
               </label>
@@ -75,11 +77,10 @@ export default class PlantForm extends React.Component {
               <label className="btn btn-secondary">
                 Upload an Image <input type="file"  style={{display: 'none'}} id="image" />
               </label>
-            </div>
+            </div>*/}
+
             <div className="column">
-              <button className="btn btn-success" type="submit" id="addImage" style={{marginTop: .25 + 'rem'}}>
-                Add Me!
-              </button>
+              { submitButton }
             </div>
           </div>
         </form>

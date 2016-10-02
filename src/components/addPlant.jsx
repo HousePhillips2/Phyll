@@ -15,7 +15,7 @@ export default class AddPlant extends React.Component {
   render() {
     let plantFacts = this.props.plantFacts;
     let user = this.props.user;
-
+    
     if (this.props.plantFacts){
 
       return (
