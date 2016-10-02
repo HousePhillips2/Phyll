@@ -15,11 +15,11 @@ export default class AddPlant extends React.Component {
   render() {
     let plantFacts = this.props.plantFacts;
     let user = this.props.user;
-    
+
     if (this.props.plantFacts){
 
       return (
-        
+
         <div className="row content">
           <div className="content-top column container-fluid">
             <div className="card">
