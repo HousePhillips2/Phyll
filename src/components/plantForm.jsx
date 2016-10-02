@@ -12,31 +12,26 @@ export default class PlantForm extends React.Component {
     // TODO: add login handling to link when navbar has been refactored
 
     if (user) {
-      submitButton = <button className="btn btn-success" type="submit" id="addImage" style={{marginTop: .25 + 'rem'}}>Add Me!</button>
+      submitButton = <button className="btn btn-success" type="submit" id="addImage" style={{marginTop: .25 + 'rem'}}>Add Me!</button>;
     } else {
+<<<<<<< a32e5485976b000b9b8aa37011560071ac0402c4
 <<<<<<< e7370f180a18b06a63015ad1a55f15dbf1bd5e2f
       submitButton = <div className="alert alert-danger" role="alert"><strong>Yikes!</strong> Looks like you need to <a href="#" className="alert-link">log in</a>.</div>
 =======
       submitButton = <div className="alert alert-danger" role="alert"><strong>Yikes!</strong>Looks like you need to <a href="#" className="alert-link">log in</a>.</div>
 >>>>>>> [feature] Add conditional logic to add plant form
+=======
+      submitButton = <div className="alert alert-danger" role="alert"><strong>Yikes!</strong>Looks like you need to <a href="#" className="alert-link">log in</a>.</div>;
+>>>>>>> [style] Tighten form design
     }
 
     return (
 
       <div style={{margin:10 + 'px'}}>
-
         <form id="newPlant" onSubmit={this._handleSubmit.bind(this)}>
 
           <div className="form-group row">
             <div className="column">
-
-    return (
-
-      <div style={{margin:'50px', border: '2px'}}>
-        <form id="newPlant" onSubmit={this._handleSubmit.bind(this)}>
-
-          <div className="form-group row">
-            <div className="col-sm-12">
               <div className="input-group">
                 <span className="input-group-addon">Species</span>
                 <input type="text" className="form-control" id="common_name" value={this.props.plantName} ref={input => this._plantName = input} readOnly/>
@@ -53,10 +48,10 @@ export default class PlantForm extends React.Component {
               </div>
             </div>
           </div>
+          </div>
 
           <div className="form-group row">
             <div className="column">
-            <div className="col-sm-12">
                 <div className="input-group">
                 <span className="input-group-addon">Device ID</span>
                 <input type="text" className="form-control" id="deviceId" ref={input => this._deviceId = input}/>
@@ -75,22 +70,20 @@ export default class PlantForm extends React.Component {
               </label>
             </div>*/}
 
+
             <div className="column">
-              { submitButton }
+              <label className="btn btn-secondary">
+                Upload an Image <input type="file"  style={{display: 'none'}} id="image" />
+              </label>
+            </div>
+            <div className="column">
+              <button className="btn btn-success" type="submit" id="addImage" style={{marginTop: .25 + 'rem'}}>
+                Add Me!
+              </button>
             </div>
           </div>
-            <label for="" className="btn btn-secondary">
-              Upload an Image <input type="file"  style={{display: 'none'}} id="image" />
-            </label>
-          </div>
-        </div>
-
-        <button className="btn btn-success" type="submit" id="search">
-          Add Me!
-        </button>
-
-      </form>
-    </div>
+        </form>
+      </div>
 
 
     );
