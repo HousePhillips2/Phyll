@@ -14,7 +14,7 @@ export default class PlantForm extends React.Component {
     if (user) {
       submitButton = <button className="btn btn-success" type="submit" id="addImage" style={{marginTop: .25 + 'rem'}}>Add Me!</button>
     } else {
-      submitButton = <div className="alert alert-danger" role="alert"><strong>Yikes!</strong>Looks like you need to <a href="#" className="alert-link">log in</a>.</div>
+      submitButton = <div className="alert alert-danger" role="alert"><strong>Yikes!</strong> Looks like you need to <a href="#" className="alert-link">log in</a>.</div>
     }
 
     return (
@@ -108,6 +108,6 @@ export default class PlantForm extends React.Component {
   }
 }
 
-PlantForm.contextTypes = {
-  router: React.PropTypes.func.isRequired
-};
+// PlantForm.contextTypes = {
+//   router: React.PropTypes.func.isRequired
+// };
