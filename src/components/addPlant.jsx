@@ -14,7 +14,8 @@ export default class AddPlant extends React.Component {
 
   render() {
     let plantFacts = this.props.plantFacts;
-
+    let user = this.props.user;
+    
     if (this.props.plantFacts){
 
       return (
@@ -26,7 +27,7 @@ export default class AddPlant extends React.Component {
                 Add { this.props.plantFacts.plant_name } to your collection
               </div>
               <div className="card-block container-fluid">
-                <PlantForm plantName={this.props.plantFacts.plant_name} plantId={this.props.plantFacts.id}/>
+                <PlantForm plantName={this.props.plantFacts.plant_name} plantId={this.props.plantFacts.id} user={user}/>
               </div>
             </div>
           </div>

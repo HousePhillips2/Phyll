@@ -19,7 +19,7 @@ export default class Home extends React.Component {
     this.state = {
       admin: [],
       plants: [],
-      _fetchPlant: this._fetchPlant,
+      _fetchPlant: this._fetchPlant.bind(this),
       isLoggedIn: false,
       loggedInUser: '',
       userName:'',
@@ -163,9 +163,8 @@ export default class Home extends React.Component {
       success: (plantFacts) => {
         if(plantFacts.length!==0){
           render(
-            <PlantFacts plantFacts={plantFacts[0]} />,
+            <PlantFacts plantFacts={plantFacts[0]} user={ this.state.loggedInUser }/>,
             document.getElementById('plantFact'),
-            console.log(plantFacts)
           );
         }
       }
