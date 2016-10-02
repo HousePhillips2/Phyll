@@ -64,10 +64,6 @@ export default class Home extends React.Component {
         </div>
         <div className="row search">
           <div className="column jumbotron jumbo-bg">
-<<<<<<< a9671ad0ffd8e36de79c424f6526dd07e78305f6
-          <div className="col-xs-12 jumbotron jumbo-bg">
-=======
->>>>>>> [style] Add health feedback
             <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
           </div>
         </div>
@@ -91,19 +87,16 @@ export default class Home extends React.Component {
           </div>
         </div>
         { dashboard }
-<<<<<<< 68bcbd9aba000ed60154d46a384b2dde416fa25a
         <div className="row content">
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">
           <div className="content-top column container-fluid">
             <div className="card">
               <div className="card-header">
-<<<<<<< da7c099bb5eaf5ccdc2a6f3b7b62cb8fd88fd58b
                   Add a new plant to your collection (TODO: Hide this and fix the thing)
                 </div>
                 <div className="card-block">
                   <AddPlant />
                 </div>
-=======
                 User Dash Widget (TODO: Hide this and make it work)
               </div>
               <div className="card-block">
@@ -112,8 +105,6 @@ export default class Home extends React.Component {
             </div>
           </div>
         </div>
-=======
->>>>>>> [feature] Reveal user dashboard on login
         <div className="row content">
           <div className="content-top column container-fluid">
             <div className="card">
@@ -123,7 +114,6 @@ export default class Home extends React.Component {
               <div className="card-block">
                 <AddPlant />
               </div>
->>>>>>> [feature] Prep home for dashboard content
             </div>
           </div>
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">
@@ -137,14 +127,7 @@ export default class Home extends React.Component {
               </div>
               <div className="card">
                 <div className="card-header">
-<<<<<<< 68bcbd9aba000ed60154d46a384b2dde416fa25a
-<<<<<<< a9671ad0ffd8e36de79c424f6526dd07e78305f6
                   TODO: How to make a phyll.bot
-=======
-<<<<<<< 13fca98878b10015a03d6799e117d1660841abda
->>>>>>> [style] Add health feedback
-=======
->>>>>>> [feature] Reveal user dashboard on login
                   Conservatory
                 </div>
                 <div className="card-block">
@@ -157,15 +140,7 @@ export default class Home extends React.Component {
                   TODO: How to make a phyll.bot
                 </div>
                 <div className="card-block">
-<<<<<<< 68bcbd9aba000ed60154d46a384b2dde416fa25a
-<<<<<<< a9671ad0ffd8e36de79c424f6526dd07e78305f6
                   <p className="card-text">Get on the map with your very own bot. <a href="https://github.com/cachilders/PhyllOS">PhyllOS is yours</a> to perfect.</p>
-=======
-                  <p className="card-text">Get on the map with your very own bot. PhyllOS is yours to perfect.</p>
->>>>>>> [style] Add health feedback
-=======
-                  <p className="card-text">Get on the map with your very own bot. <a href="https://github.com/cachilders/PhyllOS">PhyllOS is yours</a> to perfect.</p>
->>>>>>> [feature] Reveal user dashboard on login
                 </div>
               </div>
             </div>
@@ -235,8 +210,8 @@ export default class Home extends React.Component {
         if(plantFacts.length!==0){
           render(
             <PlantFacts plantFacts={plantFacts[0]} user={ this.state.loggedInUser }/>,
-            document.getElementById('plantFact')
-          )
+            document.getElementById('plantFact'),
+          );
         }
       }
     })

@@ -14,7 +14,11 @@ export default class PlantForm extends React.Component {
     if (user) {
       submitButton = <button className="btn btn-success" type="submit" id="addImage" style={{marginTop: .25 + 'rem'}}>Add Me!</button>
     } else {
+<<<<<<< e7370f180a18b06a63015ad1a55f15dbf1bd5e2f
       submitButton = <div className="alert alert-danger" role="alert"><strong>Yikes!</strong> Looks like you need to <a href="#" className="alert-link">log in</a>.</div>
+=======
+      submitButton = <div className="alert alert-danger" role="alert"><strong>Yikes!</strong>Looks like you need to <a href="#" className="alert-link">log in</a>.</div>
+>>>>>>> [feature] Add conditional logic to add plant form
     }
 
     return (
