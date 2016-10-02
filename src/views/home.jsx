@@ -73,14 +73,7 @@ export default class Home extends React.Component {
         <div className="row content">
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">
             <div className="card-wrapper">
-              <div className="card">
-                <div className="card-header">
-                  Talk to a houseplant
-                </div>
-                <div className="card-block">
-                  <Chatbot userName={this.state.userName}/>
-                </div>
-              </div>
+              <Chatbot userName={this.state.userName} loggedIn={this.state.isLoggedIn}/>
               <div className="card hidden-xs hidden-sm">
                 <div className="card-header">
                   Active Bots
