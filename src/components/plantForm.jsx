@@ -6,31 +6,65 @@ export default class PlantForm extends React.Component {
     super(props);
   }
   render() {
-    //console.log(this.props.plantName,"plant name inside PlantForm");
+    
     return (
+
       <div style={{margin:'50px', border: '2px'}}>
-        <form id="searchform" onSubmit={this._handleSubmit.bind(this)}>
-          <div className="form-incline">
-            <label for="common_name">Common Name:</label>
-            <input type="text" className="form-control" id="common_name" value={this.props.plantName} ref={input => this._plantName = input}/>
+        <form id="newPlant" onSubmit={this._handleSubmit.bind(this)}>
+
+          <div className="form-group row">
+            <div className="col-sm-12">
+              <div className="input-group">
+                <span className="input-group-addon">Species</span>
+                <input type="text" className="form-control" id="common_name" value={this.props.plantName} ref={input => this._plantName = input} readOnly/>
+              </div>
+            </div>
           </div>
-          <div className="form-incline">
-            <label for="nickname">Nickname:</label>
-            <input type="text" className="form-control" id="nickname" ref={input => this._plantNickName = input}/>
+
+          <div className="form-group row">
+            <div className="col-sm-12">
+              <div className="input-group">
+                <span className="input-group-addon">Nickname</span>
+                <input type="text" className="form-control" id="nickname" ref={input => this._plantNickName = input}/>
+              </div>
+            </div>
           </div>
-          <div className="form-incline">
-            <label for="deviceId">Phyll No.:</label>
-            <input type="text" className="form-control" id="deviceId" ref={input => this._deviceId = input}/>
+
+          <div className="form-group row">
+            <div className="col-sm-12">
+                <div className="input-group">
+                <span className="input-group-addon">Device ID</span>
+                <input type="text" className="form-control" id="deviceId" ref={input => this._deviceId = input}/>
+              </div>
+            </div>
           </div>
-          <div className="form-incline">
-            <label for="image">Image:</label>
-            <input type="file" className="form-control" id="image" />
+
+          <div className="form-group row">
+            <label for="" className="btn btn-secondary">
+              Upload an Image <input type="file"  style={{display: 'none'}} id="image" />
+            </label>
           </div>
-            <button className="btn btn-default" style={{color:'green'}} type="submit" id="search" >Add Me!</button>
+
+          <button className="btn btn-success" type="submit" id="search">
+            Add Me!
+          </button>
+
         </form>
       </div>
+
+
     );
   }
+
+  /*
+  Table: api.users
+    id:
+    user_name:
+    email:
+    oauth_key:
+    img:
+  */
+
   _handleSubmit(e){
     e.preventDefault();
     let user_name = 'Casey';
