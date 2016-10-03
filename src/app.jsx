@@ -23,13 +23,8 @@ import { setUser } from './redux/actions/actions';
 // INSTANTIATE new Redux Store
 export const store = makeStore();
 
-store.dispatch(setUser({
-  firstName: 'Eric',
-  lastName: 'Churchill',
-  image: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p50x50/13935040_10155130272904676_339285263140732657_n.jpg?oh=6e6e05729e1b01c4172dfb8d3a42744e&oe=5865DC0E'
-}));
-
 require('./stylesheets/main.scss');
+
 
 // ES6 CLASS SYNTAX TO CREATE A REACT COMPONENT
 class MyApp extends React.Component {
