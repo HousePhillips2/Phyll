@@ -52,7 +52,7 @@ class Home extends React.Component {
             <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
           </div>
         </div>
-        <div className="row content">
+        <div className="row content"> 
           <div className="content-top column container-fluid" role="document">
             <div id="plantModal" tabIndex="-1" role="dialog" aria-hidden="true">
               <div id="plantFact"></div>
@@ -78,11 +78,6 @@ class Home extends React.Component {
                   <p className="card-text">Get on the map with your very own bot. <a href="https://github.com/cachilders/PhyllOS">PhyllOS is yours</a> to perfect.</p>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="content-1 col-lg-5 pull-lg-7 container-fluid">
-            <Users users={ this.props.admin }/>
-            <div className="card-wrapper">
               <div className="card">
                 <div className="card-header">
                   Conservatory
@@ -90,7 +85,12 @@ class Home extends React.Component {
                 <div className="card-block">
                   <p className="card-text">There are so many wonderful plants for your home. Discover the perfect one.</p>
                 </div>
-              </div>
+              </div>  
+            </div>
+          </div>
+          <div className="content-1 col-lg-5 pull-lg-7 container-fluid">
+            <div className="card-wrapper">
+              <Users users={ this.state.admin }/>
             </div>
           </div>
         </div>
