@@ -16,7 +16,7 @@ const TARGET                = process.env.npm_lifecycle_event || 'a short trip t
 console.log("Packing for: " + TARGET);
 
 const buildPath             = path.resolve(__dirname, 'dist');
-const mainPath              = path.resolve(__dirname, 'src', 'app.jsx');
+const mainPath              = path.resolve(__dirname, 'src', 'index.jsx');
 
 var appName = 'app';
 var outputFile = appName + '.js';

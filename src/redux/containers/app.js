@@ -1,7 +1,58 @@
-import { List, Map } from 'immutable';
+import { List, Map, fromJS } from 'immutable';
 
-export const INITIAL_STATE = Map();
 
-export const setUsers = (state = INITIAL_STATE, users) => {
-  return state.set('users', List(users));
+export const INITIAL_STATE = Map({
+  loggedIn: false,
+});
+
+export function setUser(state, user) {
+
+  // IF user already loggedIn
+  if( state.get('loggedIn', true) ){
+    // RETURN state
+    return state;
+  }
+  // UPDATE state
+  return state.set('loggedIn', true)
+              .set('user', Map({
+                firstName: user.given_name,
+                lastName: user.family_name,
+                name: user.name,
+                facebookId: user.facebookId,
+                email: user.email,
+                image: user.picture_large
+              }));
 };
+
+export function removeUser(state) {
+  return state.set('loggedIn', false)
+              .remove('user');
+};
+
+export function setPlants(state, plants) {
+  console.log('look ma!');
+  console.log(!state.getIn([ 'plants', 'fetched' ]));
+  if( !state.getIn([ 'plants', 'fetched' ]) ){
+    return state.set('plants',
+      Map({
+        fetched: true,
+        plants: List(plants)
+      })
+    );
+  } else {
+    return state;
+  }
+}
+
+export function setAdmin(state, admin){
+  if( !state.getIn([ 'admin', 'fetched' ]) ){
+    return state.set('admin',
+      Map({
+        fetched: true,
+        plants: List(admin)
+      })
+    );
+  } else {
+    return state;
+  }
+}
