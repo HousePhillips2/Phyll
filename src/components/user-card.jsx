@@ -19,7 +19,9 @@ export default class userCard extends React.Component {
     // TODO: The water and light quick glance will be derived from most recent data at page load
     const moisture = Math.floor(Math.random() * (100 - 1)) + 1;
     const light = Math.floor(Math.random() * (100 - 1)) + 1;
+
     return(
+
       <div className="card">
         <div className="card-block">
           <div className="media">
@@ -50,6 +52,7 @@ export default class userCard extends React.Component {
           </div>
         </div>
       </div>
+      
     );
   }
 }
