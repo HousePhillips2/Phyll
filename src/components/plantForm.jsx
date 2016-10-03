@@ -14,6 +14,7 @@ export default class PlantForm extends React.Component {
     if (user) {
       submitButton = <button className="btn btn-success" type="submit" id="addImage" style={{marginTop: .25 + 'rem'}}>Add Me!</button>;
     } else {
+<<<<<<< 87af3ddbcec4dbd77400bfd0812036b70fab82f8
 <<<<<<< f02611288dbad2fc17e250857ef0ad4609a3e70b
 <<<<<<< a32e5485976b000b9b8aa37011560071ac0402c4
 <<<<<<< e7370f180a18b06a63015ad1a55f15dbf1bd5e2f
@@ -27,6 +28,9 @@ export default class PlantForm extends React.Component {
 =======
        submitButton = <div className="alert alert-danger" role="alert"><strong>Yikes!</strong> Looks like you need to <a href="#" className="alert-link">log in</a>.</div>;
 >>>>>>> [text] Minor alert text edit
+=======
+      submitButton = <div className="alert alert-danger" role="alert"><strong>Yikes!</strong> Looks like you need to <a href="#" className="alert-link">log in</a>.</div>;
+>>>>>>> [style] Add semicolons to components
     }
 
     return (
