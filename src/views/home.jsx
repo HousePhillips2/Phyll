@@ -2,6 +2,10 @@ import $          from 'jquery';
 import React      from 'react';
 import { render } from 'react-dom';
 import {Link}     from 'react-router';
+<<<<<<< 943fd4a1f7914fe2a89c1afd17a5462c03d0f724
+=======
+import { connect } from 'react-redux';
+>>>>>>> [feature] Wire up Redux store to React Home component
 
 import Users      from '../components/users.jsx';
 import Search     from '../components/searchBar.jsx';
@@ -13,32 +17,29 @@ import Map        from '../components/map/index.jsx';
 import Chatbot    from '../components/chatbot.jsx';
 import AddPlant   from '../components/addPlant.jsx';
 import DashBar    from '../components/dashboardBar.jsx';
+import { _getAdmin, _getPlants } from '../redux/actions/helpers';
 
 require('../stylesheets/main.scss');
-export default class Home extends React.Component {
-  constructor() {
-    super();
+
+
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      admin: [],
-      plants: [],
-      _fetchPlant: this._fetchPlant.bind(this),
-      isLoggedIn: false,
-      loggedInUser: '',
-      userName:'',
-      userImg:''
+      _fetchPlant: this._fetchPlant.bind(this)
     };
   }
+
   componentWillMount() {
-    this._getPlants();
-    this._getAdmin();
-    this._getUser();
+    this.props.fetchAdmin();
+    this.props.fetchPlants();
   }
+
+<<<<<<< 943fd4a1f7914fe2a89c1afd17a5462c03d0f724
+    let dashboard = this.state.isLoggedIn ? <DashBar loggedInUser={ this.state.loggedInUser }/> : <div id="dashBar"></div>;
+=======
   render() {
-
-    let dashboard = this.state.isLoggedIn ? <DashBar loggedInUser={ this.state.loggedInUser }/> : <div id="dashBar"></div>;
-    let loginToggle = this.state.isLoggedIn ? <Logout logout={this._logout.bind(this)}/> : <Login />;
-
-    let dashboard = this.state.isLoggedIn ? <DashBar loggedInUser={ this.state.loggedInUser }/> : <div id="dashBar"></div>;
+>>>>>>> [feature] Wire up Redux store to React Home component
     return(
       <div className="container-fluid">
 <<<<<<< 4f6a5794c7248e65aa24d962c84cd739c0bcf162
@@ -92,7 +93,7 @@ export default class Home extends React.Component {
             </div>
           </div>
         </div>
-        { dashboard }
+        { dashbar }
         <div className="row content">
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">
           <div className="content-top column container-fluid">
@@ -180,6 +181,7 @@ export default class Home extends React.Component {
       </div>
     );
   }
+<<<<<<< 943fd4a1f7914fe2a89c1afd17a5462c03d0f724
 
   _getPlants() {
     $.ajax({
@@ -205,6 +207,8 @@ export default class Home extends React.Component {
       }
     })
   }
+=======
+>>>>>>> [feature] Wire up Redux store to React Home component
   _fetchPlant(plant){
     $.ajax({
       method: 'POST',
@@ -222,6 +226,7 @@ export default class Home extends React.Component {
       }
     })
   }
+<<<<<<< 943fd4a1f7914fe2a89c1afd17a5462c03d0f724
   _getUser() {
     $.ajax({
       method: 'GET',
@@ -251,4 +256,22 @@ export default class Home extends React.Component {
       }
     })
   }
+=======
+>>>>>>> [feature] Wire up Redux store to React Home component
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchAdmin  : () => dispatch(_getAdmin()),
+    fetchPlants : () => dispatch(_getPlants())
+  };
+}
+
+function mapStateToProps(state) {
+  return {
+    plants: state.getIn([ 'plants', 'plants' ]),
+    admin: state.getIn([ 'admin', 'admin' ])
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
