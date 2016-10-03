@@ -31,6 +31,6 @@ export default function makeStore() {
   return createStore(
     reducer,
     // COMMENT applyMiddleware to prevent logging actions to console
-    applyMiddleware(logger, crashReporter, promiseMiddleware())
+    applyMiddleware(logger, crashReporter, thunk)
   );
 }
