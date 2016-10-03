@@ -58,6 +58,7 @@
     "express-session": "^1.14.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "favicons-webpack-plugin": "0.0.7",
+    "fetch": "^1.1.0",
     "file-loader": "^0.9.0",
     "font-awesome": "^4.6.3",
     "foreman": "^2.0.0",
