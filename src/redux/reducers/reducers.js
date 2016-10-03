@@ -1,4 +1,7 @@
+import { combineReducers } from 'redux';
+
 import { INITIAL_STATE, setUser, setUserData, removeUser } from '../containers/app';
+
 
 export default function reducer(state = INITIAL_STATE, action){
 
