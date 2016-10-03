@@ -44,14 +44,14 @@ router.get('/loggedin', (req,res) => {
     if(req.session.passport.user !==undefined){
       //console.log(req.session.passport.user)
       let user_obj={name: req.user._json.name, img: req.user._json.picture_large};
-      res.send(user_obj);
+      res.send(req.user._json);
     } else {
       res.send(false);
     }
   } else {
     res.send(false);
   }
-  
+
 });
 
 
