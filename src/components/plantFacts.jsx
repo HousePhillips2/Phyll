@@ -26,32 +26,35 @@ export default class PlantFacts extends React.Component {
         <AddPlant plantFacts={plantFacts} user={user}/>
       );
     } else {
-    return (
-      <div className="card">
-        <div className="card-header">
-          {plantFacts.plant_name}
-        </div>
-        <div className="card-block graff">
-          <div className="media">
-            <a className="media-left" href="#">
-              <img style={{width: 175 + 'px'}} className="img-rounded" src={plantFacts.img}/>
-            </a>
-            <div className="media-body">
-              <div className="list-group">
-                <a href="#" className="list-group-item list-group-item-action list-group-item-info">
-                  <i className="fa fa-tint"></i> {plantFacts.water_l}
-                </a>
-                <a href="#" className="list-group-item list-group-item-action list-group-item-warning">
-                  <i className="fa fa-sun-o"></i> {plantFacts.light_l}
-                </a>
-                <a href="#" className="list-group-item list-group-item-action list-group-item-danger">
-                  <i className="fa fa-medkit"></i> {plantFacts.poisonous_l}
-                </a>
+      return (
+        <div className="card">
+          <div className="card-header">
+            {plantFacts.plant_name}
+          </div>
+          <div className="card-block graff">
+            <div className="media">
+              <span className="media-left">
+                <img style={{width: 175 + 'px'}} className="img-rounded" src={plantFacts.img}/>
+                <p>
+                  <button type="button" onClick={this.clickHandler} className="btn btn-block btn-success media-left media-bottom" style={{marginTop: .5 + 'rem'}}>Add Plant</button>
+                </p>
+              </span>
+              <div className="media-body">
+                <div className="list-group">
+                  <span className="list-group-item list-group-item-action list-group-item-info">
+                    <i className="fa fa-tint"></i> {plantFacts.water_l}
+                  </span>
+                  <span className="list-group-item list-group-item-action list-group-item-warning">
+                    <i className="fa fa-sun-o"></i> {plantFacts.light_l}
+                  </span>
+                  <span className="list-group-item list-group-item-action list-group-item-danger">
+                    <i className="fa fa-medkit"></i> {plantFacts.poisonous_l}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
       );
     }
   }

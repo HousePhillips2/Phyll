@@ -2,10 +2,7 @@ import $          from 'jquery';
 import React      from 'react';
 import { render } from 'react-dom';
 import {Link}     from 'react-router';
-<<<<<<< 943fd4a1f7914fe2a89c1afd17a5462c03d0f724
-=======
 import { connect } from 'react-redux';
->>>>>>> [feature] Wire up Redux store to React Home component
 
 import Users      from '../components/users.jsx';
 import Search     from '../components/searchBar.jsx';
@@ -35,14 +32,10 @@ class Home extends React.Component {
     this.props.fetchPlants();
   }
 
-<<<<<<< 943fd4a1f7914fe2a89c1afd17a5462c03d0f724
-    let dashboard = this.state.isLoggedIn ? <DashBar loggedInUser={ this.state.loggedInUser }/> : <div id="dashBar"></div>;
-=======
   render() {
->>>>>>> [feature] Wire up Redux store to React Home component
+    let dashboard = this.state.isLoggedIn ? <DashBar loggedInUser={ this.state.loggedInUser }/> : <div id="dashBar"></div>;
     return(
       <div className="container-fluid">
-<<<<<<< 4f6a5794c7248e65aa24d962c84cd739c0bcf162
         <div className="row header">
           <div className="column">
             <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
@@ -64,14 +57,11 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
-=======
->>>>>>> [style] Tweak buttons
         <div className="row search">
           <div className="column jumbotron jumbo-bg">
             <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
           </div>
         </div>
-<<<<<<< 4f6a5794c7248e65aa24d962c84cd739c0bcf162
         <div className="row content" id="plantModal" tabIndex="-1" role="dialog" aria-hidden="true">
           <div className="content-top column container-fluid" role="document">
             <div className="card">
@@ -84,8 +74,6 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
-=======
->>>>>>> [style] Tweak buttons
         <div className="row content">
           <div className="content-top column container-fluid" role="document">
             <div id="plantModal" tabIndex="-1" role="dialog" aria-hidden="true">
@@ -181,34 +169,6 @@ class Home extends React.Component {
       </div>
     );
   }
-<<<<<<< 943fd4a1f7914fe2a89c1afd17a5462c03d0f724
-
-  _getPlants() {
-    $.ajax({
-      method: 'GET',
-      url: 'api/plantFacts',
-      success: (plants) => {
-        this.setState({ plants });
-      },
-      error: (err) => {
-        throw new Error(err);
-      }
-    })
-  }
-  _getAdmin() {
-    $.ajax({
-      method: 'GET',
-      url: 'api/admin',
-      success: (admin) => {
-        this.setState({ admin });
-      },
-      error: (err) => {
-        throw new Error(err);
-      }
-    })
-  }
-=======
->>>>>>> [feature] Wire up Redux store to React Home component
   _fetchPlant(plant){
     $.ajax({
       method: 'POST',
@@ -224,40 +184,8 @@ class Home extends React.Component {
           );
         }
       }
-    })
+    });
   }
-<<<<<<< 943fd4a1f7914fe2a89c1afd17a5462c03d0f724
-  _getUser() {
-    $.ajax({
-      method: 'GET',
-      url: 'api/auth/loggedin',
-      success: (userInfo) => {
-        if(userInfo){
-          this.setState({loggedInUser: userInfo});
-          this.setState({userName: userInfo.name});
-          this.setState({userImg: userInfo.img});
-          this.setState({isLoggedIn:!this.state.isLoggedIn});
-        }
-      },
-      error: (err) => {
-        throw new Error(err);
-      }
-    })
-  }
-  _logout() {
-    $.ajax({
-      method: 'GET',
-      url: 'api/auth/logout',
-      success: (data) => {
-        this.setState({isLoggedIn:!this.state.isLoggedIn});
-      },
-      error: (err) => {
-        throw new Error(err);
-      }
-    })
-  }
-=======
->>>>>>> [feature] Wire up Redux store to React Home component
 }
 
 function mapDispatchToProps(dispatch) {

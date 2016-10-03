@@ -22,6 +22,7 @@ export default class userCard extends React.Component {
     const firstName = user.user_name.split(' ')[0] + '\'s';
     // TODO: This score will be dynamically populated using n full hearts with the remainder of five hollow
     const score = <span className="text-danger"><i className="fa fa-heart"></i> <i className="fa fa-heart"></i> <i className="fa fa-heart-o"></i> <i className="fa fa-heart-o"></i> <i className="fa fa-heart-o"></i></span>;
+    
     return(
       <div className="card">
         <div className="card-block">
