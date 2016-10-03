@@ -70,6 +70,7 @@ passport.deserializeUser(function(user, done) {
 
 router.get('/login',
   passport.authenticate('auth0', {}), (req, res) => {
+  console.log('redirected!');
   res.redirect("/");
 });
 
@@ -80,19 +81,19 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/loggedin', (req,res) => {
-  //console.log(req.session.passport,'passport')
+  // console.log(req.session.passport,'passport');
   if(req.session.passport!==undefined){
     if(req.session.passport.user !==undefined){
-      //console.log(req.user._json,'user info');
+      // console.log(req.user._json,'user info');
       let user_obj={name: req.user._json.name, img: req.user._json.picture_large};
-      res.send(user_obj);
+      res.send(req.user._json);
     } else {
       res.send(false);
     }
   } else {
     res.send(false);
   }
-  
+
 });
 
 
