@@ -1,7 +1,7 @@
 import $            from 'jquery';
 import React        from 'react';
 import { render }   from 'react-dom';
-import {Link}       from 'react-router';
+import { Link }     from 'react-router';
 import { connect }  from 'react-redux';
 
 import Users        from '../components/users.jsx';
@@ -32,12 +32,18 @@ class Home extends React.Component {
     this.props.fetchPlants();
   }
 
+  componentWillUpdate() {
+    this.props.admin;
+    this.props.plants;
+  }
+
   // TODO: The initial div needs to go in refactor as it is duplicated in nav
 
   render() {
 
-    let dashboard = this.state.isLoggedIn ? <DashBar loggedInUser={ this.state.loggedInUser }/> : <div id="dashBar"></div>;
-
+    let dashboard = this.props.user ? <DashBar loggedInUser={ this.state.loggedInUser }/> : <div id="dashBar"></div>;
+    console.log('this.props.admin:', this.props.admin);
+    console.log('this.props.plants:', this.props.plants);
     return(
 
       <div className="container-fluid">
@@ -75,9 +81,9 @@ class Home extends React.Component {
             </div>
           </div>
           <div className="content-1 col-lg-5 pull-lg-7 container-fluid">
+            <Users users={ this.props.admin }/>
             <div className="card-wrapper">
-            <Users users={ this.state.admin }/>
-            <div className="card">
+              <div className="card">
                 <div className="card-header">
                   Conservatory
                 </div>

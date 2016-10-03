@@ -8,14 +8,19 @@ export default class Users extends React.Component {
 
   render() {
     const users = this.props.users;
-    return(
-      <div className={ 'user-cards' }>
-        { users.map( user => {
-          return (
-            <UserCard key={user.id} user= { user }/>
-          );
-        }) }
-      </div>
-    );
+
+    if (users) {
+      return(
+        <div className={ 'user-cards' }>
+          { users.map( user => {
+            return (
+              <UserCard key={user.id} user= { user }/>
+            );
+          }) }
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
 }

@@ -30,7 +30,6 @@ export function removeUser(state) {
 };
 
 export function setPlants(state, plants) {
-  console.log('look ma!');
   console.log(!state.getIn([ 'plants', 'fetched' ]));
   if( !state.getIn([ 'plants', 'fetched' ]) ){
     return state.set('plants',
@@ -45,14 +44,11 @@ export function setPlants(state, plants) {
 }
 
 export function setAdmin(state, admin){
-  if( !state.getIn([ 'admin', 'fetched' ]) ){
-    return state.set('admin',
-      Map({
-        fetched: true,
-        plants: List(admin)
-      })
-    );
-  } else {
-    return state;
-  }
+  console.log('APP.js: setAdmin:', List.of(admin))
+  return state.set('admin',
+    Map({
+      fetched: true,
+      admin: List.of(admin)
+    })
+  )
 }
