@@ -17,6 +17,7 @@ export function setUser(state, user) {
               .set('user', Map({
                 firstName: user.given_name,
                 lastName: user.family_name,
+                name: user.name,
                 facebookId: user.facebookId,
                 email: user.email,
                 image: user.picture_large
@@ -27,3 +28,31 @@ export function removeUser(state) {
   return state.set('loggedIn', false)
               .remove('user');
 };
+
+export function setPlants(state, plants) {
+  console.log('look ma!');
+  console.log(!state.getIn([ 'plants', 'fetched' ]));
+  if( !state.getIn([ 'plants', 'fetched' ]) ){
+    return state.set('plants',
+      Map({
+        fetched: true,
+        plants: List(plants)
+      })
+    );
+  } else {
+    return state;
+  }
+}
+
+export function setAdmin(state, admin){
+  if( !state.getIn([ 'admin', 'fetched' ]) ){
+    return state.set('admin',
+      Map({
+        fetched: true,
+        plants: List(admin)
+      })
+    );
+  } else {
+    return state;
+  }
+}
