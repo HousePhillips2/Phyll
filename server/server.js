@@ -57,6 +57,7 @@ app.use(passport.session());
 
 const apiApp      = require('./controllers/api/api');
 const ioApp       = require('./controllers/io/io');
+const vendorApp   = require('./controllers/vendor/vendor');
 
 // **********************************    MOVE ME! **********************************
 // const plantsLibrary = require('./controllers/api/plants-library');
@@ -71,6 +72,9 @@ app.use('/api', apiApp);
 
 // PHYLLOS sub-app
 app.use('/io', ioApp);
+
+// VENDOR sub-app
+app.use('/vendor', vendorApp);
 
 //auth0 call back route
 app.get('/callback',
@@ -93,8 +97,7 @@ app.use('/static', express.static('node_modules'));
 app.use('/images', express.static('src/images'));
 app.use('/glyphs', express.static('src/glyphs'));
 
-//app.set('port', process.env.PORT || 8080);
-//app.listen(app.get('port'), () => console.log('Up and running on ' + app.get('port')));
+
 let port = process.env.PORT || 8080;
 http.listen(port, function(){
   console.log('Up and running on ' + port);
