@@ -1,5 +1,3 @@
-import { Map, List, fromJS } from 'immutable';
-
 export function setUser(user) {
   return {
     type: 'SET_USER',
@@ -18,4 +16,4 @@ export function addPlant(plant){
     type: 'ADD_PLANT',
     plant
   };
-};
+}
