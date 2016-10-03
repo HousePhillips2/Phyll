@@ -12,9 +12,9 @@ export default class PlantForm extends React.Component {
     // TODO: add login handling to link when navbar has been refactored
 
     if (user) {
-      submitButton = <button className="btn btn-success" type="submit" id="addImage" style={{marginTop: .25 + 'rem'}}>Add Me!</button>
+      submitButton = <button className="btn btn-success" type="submit" id="addImage" style={{marginTop: .25 + 'rem'}}>Add Me!</button>;
     } else {
-      submitButton = <div className="alert alert-danger" role="alert"><strong>Yikes!</strong> Looks like you need to <a href="#" className="alert-link">log in</a>.</div>
+      submitButton = <div className="alert alert-danger" role="alert"><strong>Yikes!</strong>Looks like you need to <a href="#" className="alert-link">log in</a>.</div>;
     }
 
     return (
@@ -34,11 +34,13 @@ export default class PlantForm extends React.Component {
 
           <div className="form-group row">
             <div className="column">
+            <div className="col-sm-12">
               <div className="input-group">
                 <span className="input-group-addon">Nickname</span>
                 <input type="text" className="form-control" id="nickname" ref={input => this._plantNickName = input}/>
               </div>
             </div>
+          </div>
           </div>
 
           <div className="form-group row">
@@ -56,6 +58,14 @@ export default class PlantForm extends React.Component {
               It's presently beyond scope in terms of things we need to make the site work. */}
 
             {/*<div className="column">
+<<<<<<< ab4364ceff4ae1204dffbb7559fa37ca43c1abc3
+              <label className="btn btn-secondary">
+                Upload an Image <input type="file"  style={{display: 'none'}} id="image" />
+              </label>
+            </div>*/}
+
+
+            <div className="column">
               <label className="btn btn-secondary">
                 Upload an Image <input type="file"  style={{display: 'none'}} id="image" />
               </label>

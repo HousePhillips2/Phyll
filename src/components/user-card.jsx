@@ -19,6 +19,10 @@ export default class userCard extends React.Component {
     // TODO: The water and light quick glance will be derived from most recent data at page load
     const moisture = Math.floor(Math.random() * (100 - 1)) + 1;
     const light = Math.floor(Math.random() * (100 - 1)) + 1;
+    const firstName = user.user_name.split(' ')[0] + '\'s';
+    // TODO: This score will be dynamically populated using n full hearts with the remainder of five hollow
+    const score = <span className="text-danger"><i className="fa fa-heart"></i> <i className="fa fa-heart"></i> <i className="fa fa-heart-o"></i> <i className="fa fa-heart-o"></i> <i className="fa fa-heart-o"></i></span>;
+    
     return(
       <div className="card">
         <div className="card-block">

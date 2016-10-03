@@ -34,7 +34,6 @@ io.on('connection', function(socket){
         console.log(error);
     });
     request.end();
-      
   });
 });
 

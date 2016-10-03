@@ -55,7 +55,7 @@ export default class PlantFacts extends React.Component {
             </div>
           </div>
         </div>
-      );      
+      );
     }
   }
 }
