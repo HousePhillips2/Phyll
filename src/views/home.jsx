@@ -2,6 +2,8 @@ import $          from 'jquery';
 import React      from 'react';
 import { render } from 'react-dom';
 import {Link}     from 'react-router';
+import { connect } from 'react-redux';
+
 import Users      from '../components/users.jsx';
 import Search     from '../components/searchBar.jsx';
 import PlantFacts from '../components/plantFacts.jsx';
@@ -11,31 +13,25 @@ import Logout     from '../components/logout.jsx';
 import Map        from '../components/map/index.jsx';
 import Chatbot    from '../components/chatbot.jsx';
 import DashBar    from '../components/dashboardBar.jsx';
+import { _getAdmin, _getPlants } from '../redux/actions/helpers';
 
 require('../stylesheets/main.scss');
-export default class Home extends React.Component {
-  constructor() {
-    super();
+
+
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      admin: [],
-      plants: [],
-      _fetchPlant: this._fetchPlant.bind(this),
-      isLoggedIn: false,
-      loggedInUser: '',
-      userName:'',
-      userImg:''
+      _fetchPlant: this._fetchPlant.bind(this)
     };
   }
+
   componentWillMount() {
-    this._getPlants();
-    this._getAdmin();
-    this._getUser();
+    this.props.fetchAdmin();
+    this.props.fetchPlants();
   }
+
   render() {
-
-    let dashboard = this.state.isLoggedIn ? <DashBar loggedInUser={ this.state.loggedInUser }/> : <div id="dashBar"></div>;
-    let loginToggle = this.state.isLoggedIn ? <Logout logout={this._logout.bind(this)}/> : <Login />;
-
     return(
       <div className="container-fluid">
         <div className="row search">
@@ -50,7 +46,7 @@ export default class Home extends React.Component {
             </div>
           </div>
         </div>
-        { dashboard }
+        { dashbar }
         <div className="row content">
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">
             <div className="card-wrapper">
@@ -109,31 +105,6 @@ export default class Home extends React.Component {
       </div>
     );
   }
-
-  _getPlants() {
-    $.ajax({
-      method: 'GET',
-      url: 'api/plantFacts',
-      success: (plants) => {
-        this.setState({ plants });
-      },
-      error: (err) => {
-        throw new Error(err);
-      }
-    });
-  }
-  _getAdmin() {
-    $.ajax({
-      method: 'GET',
-      url: 'api/admin',
-      success: (admin) => {
-        this.setState({ admin });
-      },
-      error: (err) => {
-        throw new Error(err);
-      }
-    });
-  }
   _fetchPlant(plant){
     $.ajax({
       method: 'POST',
@@ -151,33 +122,20 @@ export default class Home extends React.Component {
       }
     });
   }
-  _getUser() {
-    $.ajax({
-      method: 'GET',
-      url: 'api/auth/loggedin',
-      success: (userInfo) => {
-        if(userInfo){
-          this.setState({loggedInUser: userInfo});
-          this.setState({userName: userInfo.name});
-          this.setState({userImg: userInfo.img});
-          this.setState({isLoggedIn:!this.state.isLoggedIn});
-        }
-      },
-      error: (err) => {
-        throw new Error(err);
-      }
-    });
-  }
-  _logout() {
-    $.ajax({
-      method: 'GET',
-      url: 'api/auth/logout',
-      success: (data) => {
-        this.setState({isLoggedIn:!this.state.isLoggedIn});
-      },
-      error: (err) => {
-        throw new Error(err);
-      }
-    });
-  }
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchAdmin  : () => dispatch(_getAdmin()),
+    fetchPlants : () => dispatch(_getPlants())
+  };
+}
+
+function mapStateToProps(state) {
+  return {
+    plants: state.getIn([ 'plants', 'plants' ]),
+    admin: state.getIn([ 'admin', 'admin' ])
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
