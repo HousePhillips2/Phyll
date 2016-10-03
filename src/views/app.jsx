@@ -29,20 +29,21 @@ class App extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    logout: () => dispatch(removeUser()),
-    login : () => dispatch(_getUser())
+    login : () => dispatch(_getUser()),
+    logout: () => dispatch(removeUser())
   };
 }
 
 function mapStateToProps(state) {
   if( state.get('loggedIn') ){
     let user = state.get('user');
-    let username = user.get('firstName') + " " + user.get('lastName');
 
     return {
       loggedIn: state.get('loggedIn'),
-      username,
-      image: user.get('image')
+      username: user.name,
+      image: user.get('image'),
+      firstName: user.firstName,
+      lastName: user.lastName
     };
   }
 
