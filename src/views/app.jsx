@@ -4,14 +4,19 @@ import { connect } from 'react-redux';
 import Home from './home.jsx';
 import Navigation from './navigation.jsx';
 
-
 import { removeUser } from '../redux/actions/actions';
+import { _getUser } from '../redux/actions/helpers';
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  componentWillMount() {
+    this.props.login();
+  }
+
   render() {
     return(
       <div>
@@ -24,7 +29,8 @@ class App extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    logout: () => dispatch(removeUser())
+    logout: () => dispatch(removeUser()),
+    login : () => dispatch(_getUser())
   };
 }
 
