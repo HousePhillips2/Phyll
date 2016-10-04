@@ -10,8 +10,6 @@ const session     = require ('express-session');
 const io          = require('socket.io').listen(http);
                     require('./controllers/api/chatbot.js')(io);
 
-
-
 // MOUNT middleware
 app.use(express.static('dist'));
 app.use(bodyParser.json());

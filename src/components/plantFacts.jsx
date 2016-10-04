@@ -55,14 +55,7 @@ export default class PlantFacts extends React.Component {
             </div>
           </div>
         </div>
-      );      
+      );
     }
   }
 }
-
-      //  <div className='row' style={{margin:'50px'}}>
-      //       <div className='col-xs-10'>
-      //         <img style={{width: '50%', height:'50%'}} src={plantFacts.img}/>
-      //         <div>{keys.map(key=> <li>{`${key}: ${plantFacts[key]}`}</li>)}</div>
-      //       </div>
-      //  </div>
