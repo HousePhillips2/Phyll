@@ -51,3 +51,12 @@ export function setAdmin(state, admin){
     })
   )
 }
+
+export function getPlantFacts(state, admin){
+  return state.set('admin',
+    Map({
+      fetched: true,
+      admin: List(admin)
+    })
+  )
+}

@@ -11,7 +11,6 @@ export default class userCard extends React.Component {
 
   render() {
     const user = this.props.user;
-    const key = this.props.key;
     const firstName = user.user_name.split(' ')[0] + '\'s';
     const heartFull = <i className="fa fw fa-heart"></i>;
     const heartEmpty =  <i className="fa fw fa-heart-o"></i>;
@@ -23,7 +22,7 @@ export default class userCard extends React.Component {
 
     return(
 
-      <div className="card" key={key}>
+      <div className="card">
         <div className="card-block">
           <div className="media">
             <a className="media-left"><img className="img-rounded" style={ {width: '120px', height: '120px'} } src={user.plants[0].img}/></a>
