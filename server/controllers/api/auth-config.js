@@ -4,8 +4,8 @@ const router  = express.Router();
 const Auth0Strategy = require('passport-auth0');
 const passport = require('passport');
 const session = require ('express-session');
-const db = require('../../models/pg-config.js');
-const insertUser = require('../../models/users.js');
+const query_user = require('../../models/users.js');
+const {query_plant} = require('../../models/plants.js');
 const strategy = new Auth0Strategy({
    domain:       process.env.AUTH_DOMAIN,
    clientID:     process.env.AUTH_CLIENT_ID,
@@ -52,9 +52,15 @@ router.get('/loggedin', (req,res) => {
       img: req.user._json.picture_large, 
       timezone:req.user._json.timezone
     };
-    insertUser(user_obj, (updated_user_obj) => {
-      res.send(updated_user_obj); // update user_obj with user id from users table, which will be used for add plant
-    }); 
+    query_user(user_obj, (updated_user_obj) => {
+      let userId = updated_user_obj.id; //user id from users table
+      query_plant(userId, (plant) => { 
+        updated_user_obj.plant = plant; //if plant exist, plant would be plant info stored in db; if not, plant is equal to false;
+        //console.log(updated_user_obj);
+        res.send(updated_user_obj); // update user_obj with user id from users table, which will be used for add plant
+      });
+    });
+     
   } else {
     res.send(false);
   }
