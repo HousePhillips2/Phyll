@@ -29,14 +29,10 @@ app.use(passport.session());
 
 const apiApp      = require('./controllers/api/api');
 const ioApp       = require('./controllers/io/io');
-<<<<<<< 601525fe0509f9e2dac32fded54b78a9ce992b6e
-const vendorApp   = require('./controllers/vendor/vendor');
-=======
-const postgresApp = require('./controllers/postgres/postgres');
->>>>>>> [UPDATE] Added new postgres route to server & postgres controller folder
 
-// **********************************    MOVE ME! **********************************
-// const plantsLibrary = require('./controllers/api/plants-library');
+const vendorApp   = require('./controllers/vendor/vendor');
+const postgresApp = require('./controllers/postgres/postgres');
+
 
 // MOUNT middleware
 app.use(express.static('dist'));
@@ -69,9 +65,6 @@ app.get('/callback',
     res.redirect("/");
   }
 );
-
-// **********************************    MOVE ME! **********************************
-// app.use('/plantsLibrary', plantsLibrary);
 
 
 // static files route

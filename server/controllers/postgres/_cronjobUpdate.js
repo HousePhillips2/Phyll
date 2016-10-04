@@ -125,12 +125,6 @@ const cronUpdate = (req, res) => {
 
 
         // ------------------- DEFINE PLANT CATEGORIES ----------------- //
-        // syntax: lowL = low Light, highM = high Moisture, etc.
-
-
-        // function(plant){
-        //     if plant.
-
         // const lowL = function(number){
         //     >160 < 185 ???
         // },
