@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { setUser, setPlants, setAdmin } from './actions';
+import { setUser, setPlants, setAdmin, setPlantFacts } from './actions';
 import React from 'react';
 import PlantFacts from '../../components/plantFacts.jsx';
 
@@ -37,15 +37,8 @@ export function _fetchPlant(plant){
       json: true,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({ plant: plant }),
-      success: (plantFacts) => {
-        // console.log(plant, plantFacts)
-        if(plantFacts.length!==0){
-          return (
-            <PlantFacts plantFacts={plantFacts[0]} user={ this.props.user }/>,
-            document.getElementById('plantFact')
-          );
-        }
-      }
+    }).then(plantFacts => {
+      dispatch(setPlantFacts(plantFacts));
     });
   };
 }

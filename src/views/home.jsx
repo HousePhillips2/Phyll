@@ -34,6 +34,8 @@ class Home extends React.Component {
   render() {
 
     let dashboard = this.props.loggedIn ? <DashBar { ...this.props }/> : null;
+    let plantDetail = this.props.plantFacts ? <PlantFacts { ...this.props }/> : null;
+    console.log(this.props.plantFacts);
 
     return(
 
@@ -41,18 +43,12 @@ class Home extends React.Component {
         <div className="row search">
           <div className="column jumbotron jumbo-bg">
           { this.props.plants ?
-            <Search className="form-control form-control-lg" { ...this.props } dataToggle="modal" dataTarget="#plantModal"/> :
+            <Search className="form-control form-control-lg" { ...this.props } /> :
             null
           }
           </div>
-        </div>
-        <div className="row content">
-          <div className="content-top column container-fluid" role="document">
-            <div id="plantModal" tabIndex="-1" role="dialog" aria-hidden="true">
-              <div id="plantFact"></div>
-            </div>
-          </div>
-        </div>
+        </div>  
+        { plantDetail }
         { dashboard }
         <div className="row content">
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">
@@ -110,7 +106,7 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchAdmin  : () => dispatch(_getAdmin()),
     fetchPlants : () => dispatch(_getPlants()),
-    fetchPlant  : (plant) => dispatch(_fetchPlant(this, plant))
+    fetchPlant  : (plant) => dispatch(_fetchPlant(plant))
   };
 }
 

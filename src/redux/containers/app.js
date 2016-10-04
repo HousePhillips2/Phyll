@@ -48,3 +48,12 @@ export function setAdmin(state, admin){
     })
   );
 }
+
+export function setPlantFacts(state, plantFacts) {
+  return state.set('plantFacts',
+    Map({
+      fetched: true,
+      plantFacts: List(plantFacts)
+    })
+  );
+}
