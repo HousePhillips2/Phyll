@@ -1,5 +1,15 @@
-export function fetchUser() {
+export function setAdminData(adminData) {
+  return {
+    type: 'SET_ADMIN_DATA',
+    adminData
+  };
+}
 
+export function setUserData(userData) {
+  return {
+    type: 'SET_USER_DATA',
+    userData
+  };
 }
 
 export function setUser(user) {
