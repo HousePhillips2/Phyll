@@ -19,7 +19,7 @@ export default class AddPlant extends React.Component {
     if (this.props.plantFacts){
 
       return (
-        
+
         <div className="row content">
           <div className="content-top column container-fluid">
             <div className="card">

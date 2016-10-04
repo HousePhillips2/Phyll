@@ -29,10 +29,8 @@ passport.deserializeUser(function(user, done) {
 });
 
 router.get('/login',
-  passport.authenticate('auth0', {
-    socialButtonStyle: 'big',
-    icon: 'https://phyll-dev.herokuapp.com/images/logo.png'
-  }), (req, res) => {
+  passport.authenticate('auth0', {}), (req, res) => {
+  // console.log('redirected!');
   res.redirect("/");
 });
 
@@ -50,21 +48,21 @@ router.get('/loggedin', (req,res) => {
       last_name: req.user._json.family_name,
       nickname: req.user._json.nickname, 
       img: req.user._json.picture_large, 
-      timezone:req.user._json.timezone
+      timezone:req.user._json.timezone,
+      user: req.user._json
     };
     query_user(user_obj, (updated_user_obj) => {
       let userId = updated_user_obj.id; //user id from users table
       query_plant(userId, (plant) => { 
         updated_user_obj.plant = plant; //if plant exist, plant would be plant info stored in db; if not, plant is equal to false;
-        //console.log(updated_user_obj);
+        // console.log(updated_user_obj);
         res.send(updated_user_obj); // update user_obj with user id from users table, which will be used for add plant
       });
     });
-     
   } else {
     res.send(false);
   }
-  
+
 });
 
 

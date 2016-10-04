@@ -10,17 +10,17 @@ export default class DashBar extends React.Component {
   }
 
   render() {
-    const user = this.props.loggedInUser;
+
     return(
       <div id="dashBar" className="row content">
         <div className="content-top column container-fluid">
           <div className="card">
             <div className="card-header">
-              { user.name }
+              { this.props.username }
             </div>
             <div className="card-block">
               <div className="media">
-                <a className="media-left"><img className="img-rounded" style={ {width: '125px', height: '125px'} } src={ user.img }/></a>
+                <a className="media-left"><img className="img-rounded" style={ {width: '125px', height: '125px'} } src={ this.props.image }/></a>
                 <div className="media-body">
                   <Charts />
                 </div>
@@ -29,6 +29,7 @@ export default class DashBar extends React.Component {
           </div>
         </div>
       </div>
+
     );
   }
 }
