@@ -8,9 +8,9 @@ const CronJob = require('cron').CronJob;
   // convert data into daily summary (daily low, average, and high readings)
     //send summary to server in order to save in Postgres DB
 
-const daily = new CronJob('*/3 * * * * 1-7',
+const daily = new CronJob('*/10 * * * * 1-7',
   function() {
-    // query our MongoDB
+    // query MongoDB
     request('http://localhost:8080/io/dailyData', function(error, response, body){
       // extract all existing Phyll devices (currently 2)
       if (body){
@@ -74,6 +74,7 @@ const daily = new CronJob('*/3 * * * * 1-7',
         device1.deviceId = one.deviceId;
         device1.light = filler(one.light);
         device1.moisture = filler(one.moisture);
+        device2.deviceId = two.deviceId;
         device2.light = filler(two.light);
         device2.moisture = filler(two.moisture);
 

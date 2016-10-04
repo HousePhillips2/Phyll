@@ -1,6 +1,5 @@
 const db = require('./pg-config');
 
-
 function query_plant(userId, callback){
   db.any(`select * from api.user_plant where user_id = ${userId}`)
   .then((data) => {
@@ -13,7 +12,7 @@ function query_plant(userId, callback){
 }
 
 function store_plant(plant_obj){
-  db.none('insert into api.user_plant (user_id, plant_id, device_id, plant_nickname, plant_img) values($1, $2, $3, $4, $5)', 
+  db.none('insert into api.user_plant (user_id, plant_id, device_id, plant_nickname, plant_img) values($1, $2, $3, $4, $5)',
     [plant_obj.user_id, plant_obj.plant_id, plant_obj.device_id, plant_obj.plant_nickname, plant_obj.plant_img])
   .catch((error) => {
     console.log(error,'insert plant form data error');
@@ -22,8 +21,7 @@ function store_plant(plant_obj){
 
 module.exports = {query_plant, store_plant};
 
-
-//                    ***************  checking that all plants have a valid 'img' property ************
+//  ---------------------------  checking that all plants have a valid 'img' property --------------------
   // db.any("select plant_name, img from api.plants", [true])// see below for field names in plants table
   // .then(function (data) {
   //   console.log(data);//print out the first plant name in the plants table
@@ -31,6 +29,7 @@ module.exports = {query_plant, store_plant};
   // .catch(function (error) {
   //     console.log(error);
   // });
+
 
 /*
 Table: plants

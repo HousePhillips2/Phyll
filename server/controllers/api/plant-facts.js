@@ -4,7 +4,7 @@ const router  = express.Router();
 const db      =require('../../models/pg-config.js');
 
 router.post('/', (req, res) => {
-  
+
   let name = req.body.plant;
   // console.log(req.body)
   db.any("select * from api.plants where plant_name = $1",[name])// see below for field names in plants table
@@ -31,21 +31,21 @@ module.exports = router;
   /*
   Table; plants
     plant_name:
-    plant_family: 
-    water_L: 
-    soil_pH: 
-    light_L: 
-    img: 
-    light_S: 
-    water_S: 
-    soil_S: 
-    soil_L: 
-    fertilizer_S: 
-    fertilizer_L: 
-    repotting: 
-    humidity_S: 
-    humidity_L: 
-    poisonous_S: 
-    poisonous_L: 
-    type: null 
+    plant_family:
+    water_L:
+    soil_pH:
+    light_L:
+    img:
+    light_S:
+    water_S:
+    soil_S:
+    soil_L:
+    fertilizer_S:
+    fertilizer_L:
+    repotting:
+    humidity_S:
+    humidity_L:
+    poisonous_S:
+    poisonous_L:
+    type: null
   */
