@@ -38,11 +38,11 @@ router.post('/', (req, res) => {
           res.send('Success!');
         }).
         catch((error)=>{
-          console.log("PLANT DATA INSERT ERROR:", error.message || error);
+          console.log("PLANT DATA INSERT ERROR:", error);
         });
     })
     .catch((error)=>{
-        console.log("USER DATA INSERT ERROR:", error.message || error); 
+        console.log("USER DATA INSERT ERROR:", error); 
   });
 
 });
