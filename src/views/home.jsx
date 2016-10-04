@@ -34,8 +34,6 @@ class Home extends React.Component {
   render() {
 
     let dashboard = this.props.loggedIn ? <DashBar { ...this.props }/> : null;
-    let plantDetail = this.props.plantFacts ? <PlantFacts { ...this.props }/> : null;
-    console.log(this.props.plantFacts);
 
     return(
 
@@ -48,7 +46,7 @@ class Home extends React.Component {
           }
           </div>
         </div>  
-        { plantDetail }
+        { this.props.plantFacts ? <PlantFacts { ...this.props }/> : null }
         { dashboard }
         <div className="row content">
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">
@@ -123,10 +121,20 @@ function mapStateToProps(state) {
       lastName: user.get('lastName')
     };
   }
+
+  if (state.get('plantFacts') ) {
+    return {
+      plantFacts: state.getIn(['plantFacts', 'plantFacts']),
+      plants: state.getIn([ 'plants', 'plants' ]),
+      admin: state.getIn([ 'admin', 'admin' ]),
+      loggedIn: state.get('loggedIn'),
+    }
+  }
+
   return {
     plants: state.getIn([ 'plants', 'plants' ]),
     admin: state.getIn([ 'admin', 'admin' ]),
-    loggedIn: state.get('loggedIn')
+    loggedIn: state.get('loggedIn'),
   };
 }
 

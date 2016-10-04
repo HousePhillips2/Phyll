@@ -20,6 +20,7 @@ function renderSuggestion(suggestion) {
 }
 
 let count=0;
+let currentSelected = 'swag';
 
 export default class SearchBar extends React.Component {
   constructor(props) {
@@ -81,7 +82,13 @@ export default class SearchBar extends React.Component {
     if (autosuggest !== null) {
       this.input = autosuggest.input;
       let selected = autosuggest.input.value;
-      this.props.fetchPlant(selected);
+      if (selected.length > 4 && selected !== currentSelected) {
+        currentSelected = selected;
+        this.props.fetchPlant(selected);
+        // this.setState({
+        //   value: ''
+        // });
+      }
     }
   }
 

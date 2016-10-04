@@ -23,7 +23,6 @@ export function addPlant(plant){
 }
 
 export function setPlantFacts(plantFacts) {
-  console.log(plantFacts, ' in ACTIONS')
   return {
     type: 'FETCH_PLANT',
     plantFacts
