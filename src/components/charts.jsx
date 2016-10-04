@@ -37,51 +37,14 @@ export default class Charts extends React.Component {
         <h2>Loading data into application...</h2>
       );
     } else {
+      const props = Object.assign({}, this.props, params);
       return(
         <div>
           <svg width={ params.fullWidth } height={ params.height }>
-            <LineChart { ...params } data={ this.state.rawData } />
+            <LineChart { ...props } />
           </svg>
         </div>
       );
     }
-  }
-
-  _loadRawData(url, id) {
-
-    $.ajax({
-      method: 'POST',
-      url: '/io/retrieve',
-      json: true,
-      contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify({"deviceId": id}),
-      success: data => {
-
-        this.setState({ date: data.date.slice(-288) });
-        this.setState({ light: data.light.slice(-288) });
-        this.setState({ moisture: data.moisture.slice(-288) });
-
-        let rawData = data.date.slice(-288).map( (val, i) => {
-          try {
-            return {
-              date     : new Date(this.state.date[i]),
-              moisture : +(+this.state.moisture[i]).toFixed(2) || null,
-              light    : +(+this.state.light[i]).toFixed(2) || null
-            };
-          } catch(err) {
-            console.error('Data point undefined and set to null.');
-            return null;
-          }
-        });
-
-        this.setState({ rawData: rawData.slice(-288) });
-      },
-
-      error: error => {
-        console.error(error);
-        console.error(error.stack);
-      }
-    });
-
   }
 }
