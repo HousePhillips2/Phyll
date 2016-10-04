@@ -8,13 +8,13 @@ const garden        = require('./garden');
 const plantData     = require('./plant-data');
 const plantFacts    = require('./plant-facts');
 const plantsLibrary = require('./plants-library');
-const auth          = require('./auth-config');
+//const auth          = require('./auth-config');
 
 // ROUTE requests
 router.use('/admin', admin);
 router.use('/garden', garden);
 router.use('/plantsLibrary', plantsLibrary);
-router.use('/auth', auth);
+//router.use('/auth', auth);
 
 // TODO: SPLIT INTO SUB ROUTES?
 router.use('/plantData', plantData);
