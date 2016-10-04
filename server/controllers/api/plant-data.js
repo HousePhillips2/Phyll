@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
     plant_id: req.plant_id,
     device_id: req.device_id,
     plant_nickname: req.plant_nickname,
-    plant_img: req.plant_img
+    phone: req.phone
   };
 
   store_plant(plant_obj); //insert plant data into db
