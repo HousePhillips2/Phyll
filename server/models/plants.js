@@ -4,16 +4,20 @@ const db = require('./pg-config');
 function query_plant(userId, callback){
   db.any(`select * from api.user_plant where user_id = ${userId}`)
   .then((data) => {
-    callback(data); //return user's plant data
+    callback(data); //return user's plant data to front-end
   })
   .catch((error) => {
-    console.log('user plant does not exist');
-    callback(false);
+    //console.log('user plant does not exist');
+    callback(false); // user's plant doest not exist, return false to front-end
   });
 }
 
 function store_plant(plant_obj){
-
+  db.none('insert into api.user_plant (user_id, plant_id, device_id, plant_nickname, plant_img) values($1, $2, $3, $4, $5)', 
+    [plant_obj.user_id, plant_obj.plant_id, plant_obj.device_id, plant_obj.plant_nickname, plant_obj.plant_img])
+  .catch((error) => {
+    console.log(error,'insert plant form data error');
+  });
 }
 
 module.exports = {query_plant, store_plant};
