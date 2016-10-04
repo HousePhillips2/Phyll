@@ -9,7 +9,7 @@ const cronUpdate = require('./_cronjobUpdate');
 // const db = require('../../models/pg-config');
 
 router.post('/daily', (req, res) => {
-
+  console.log('reached');
   cronUpdate(req, res);
 
 });

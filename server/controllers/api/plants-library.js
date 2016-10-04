@@ -5,7 +5,7 @@ const db      = require('../../models/pg-config.js');
 
 router.get('/', function(req, res) {
 
-db.any("select * from api.plants")// select all plants in database
+db.any("select * from api.users_plants")// select all plants in database
   .then(function (plants) {
     res.send(plants);
   })

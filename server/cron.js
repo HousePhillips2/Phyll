@@ -11,7 +11,7 @@ const CronJob = require('cron').CronJob;
 const daily = new CronJob('*/10 * * * * 1-7',
   function() {
     // query MongoDB
-    request('http://localhost:8080/io/dailyData', function(error, response, body){
+    request('http://localhost:8889/io/dailyData', function(error, response, body){
       // extract all existing Phyll devices (currently 2)
       if (body){
         const bod = JSON.parse(body),
@@ -83,7 +83,7 @@ const daily = new CronJob('*/10 * * * * 1-7',
 
         var httpRequestOptions = {
           //******* GO BACK & UPDATE URL to official website http://phyll-dev.herokuapp.com/postgres/daily
-          url: 'http://localhost:8888/postgres/daily',
+          url: 'http://localhost:8080/postgres/daily',
           form: {
             device1: device1,
             device2: device2
