@@ -8,7 +8,7 @@ const Auth0Strategy = require('passport-auth0');
 const passport    = require('passport');
 const session     = require ('express-session');
 const io          = require('socket.io').listen(http);
-                    require('./controllers/api/chatbot.js')(io);
+                    require('./controllers/vendor/chatbot.js')(io);
 
 // MOUNT middleware
 app.use(express.static('dist'));
