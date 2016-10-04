@@ -1,7 +1,7 @@
 const db = require('./pg-config');
 
 
-function insertUser(user_obj, callback){
+function query_user(user_obj, callback){
 
   db.one(`select id from api.users where fb_id = ${user_obj.fb_id}`)
   .then((data) => { //if user exists in db, return user id from users table and update user_obj
@@ -22,7 +22,7 @@ function insertUser(user_obj, callback){
 
 
   
-module.exports = insertUser;
+module.exports = query_user;
 
 
 /*
