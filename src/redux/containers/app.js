@@ -6,7 +6,7 @@ export const INITIAL_STATE = Map({
   newPlant: false
 });
 
-export const setUser = (state, user) => {
+export function setUser(state, user) {
 
   // IF user already loggedIn
   if( state.get('loggedIn', true)){
@@ -42,7 +42,7 @@ export function setPlants(state, plants) {
   );
 }
 
-export function setAdmin(state, admin){
+export function setAdmin(state, admin) {
   return state.set('admin',
     Map({
       fetched: true,
@@ -63,3 +63,7 @@ export function setPlantFacts(state, plantFacts) {
 export function toggleNewPlant(state) {
   return state.set('newPlant', !state.get('newPlant'));
 }
+
+export function setAdminData(state, adminData) {
+  return state.setIn(['admin', 'data'], adminData);
+};
