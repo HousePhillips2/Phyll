@@ -88,15 +88,13 @@ export default class SearchBar extends React.Component {
 
   render() {
 
-    console.log('this.props inside search:', this.props);
     const { value, suggestions, placeholder} = this.state;
     const inputProps = {
       placeholder,
       value,
       onChange: this.onChange.bind(this)
     };
-
-
+    
     return (
       <Autosuggest
         suggestions={suggestions}
@@ -106,6 +104,7 @@ export default class SearchBar extends React.Component {
         renderSuggestion={renderSuggestion}
         inputProps={inputProps}
         ref={this.storeInputReference.bind(this)} />
+        
     );
   }
 }

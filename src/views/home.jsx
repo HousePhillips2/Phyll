@@ -22,7 +22,6 @@ require('../stylesheets/main.scss');
 class Home extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   componentWillMount() {
@@ -105,30 +104,13 @@ class Home extends React.Component {
 
     );
   }
-  _fetchPlant(plant){
-    $.ajax({
-      method: 'POST',
-      url: 'api/plantFacts',
-      json: true,
-      contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify({ plant:plant }),
-      success: (plantFacts) => {
-        if(plantFacts.length!==0){
-          render(
-            <PlantFacts plantFacts={plantFacts[0]} user={ this.state.loggedInUser }/>,
-            document.getElementById('plantFact')
-          );
-        }
-      }
-    });
-  }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     fetchAdmin  : () => dispatch(_getAdmin()),
     fetchPlants : () => dispatch(_getPlants()),
-    fetchPlant  : (plant) => dispatch(_fetchPlant(plant))
+    fetchPlant  : (plant) => dispatch(_fetchPlant(this, plant))
   };
 }
 

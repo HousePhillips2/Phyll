@@ -1,5 +1,7 @@
 import $ from 'jquery';
 import { setUser, setPlants, setAdmin } from './actions';
+import React from 'react';
+import PlantFacts from '../../components/plantFacts.jsx';
 
 
 export function _getUser() {
@@ -29,16 +31,18 @@ export function _getPlants() {
 
 export function _fetchPlant(plant){
   return dispatch => {
+    console.log(plant)
     $.ajax({
       method: 'POST',
       url: 'api/plantFacts',
       json: true,
       contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify({ plant:plant }),
+      data: JSON.stringify({ plant: plant }),
       success: (plantFacts) => {
+        console.log(plant, plantFacts)
         if(plantFacts.length!==0){
-          render(
-            <PlantFacts plantFacts={plantFacts[0]} user={ this.state.loggedInUser }/>,
+          return (
+            <PlantFacts plantFacts={plantFacts[0]} user={ this.props.user }/>,
             document.getElementById('plantFact')
           );
         }

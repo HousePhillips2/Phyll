@@ -22,8 +22,11 @@ export function addPlant(plant){
   };
 }
 
-export function fetchPlants() {
-
+export function fetchPlant(plant) {
+  return {
+    type: 'FETCH_PLANT',
+    plantFacts
+  };
 }
 
 export function setPlants(plants) {
@@ -39,4 +42,3 @@ export function setAdmin(admin) {
     admin
   };
 }
-

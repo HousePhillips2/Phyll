@@ -6,6 +6,7 @@ const db      =require('../../models/pg-config.js');
 router.post('/', (req, res) => {
   
   let name = req.body.plant;
+  console.log(req.body)
   db.any("select * from api.plants where plant_name = $1",[name])// see below for field names in plants table
   .then((data) => {
     //console.log(data);
