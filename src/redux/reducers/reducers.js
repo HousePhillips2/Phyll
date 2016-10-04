@@ -1,13 +1,14 @@
 import { combineReducers } from 'redux';
-import { 
-  INITIAL_STATE, 
-  setUser, 
-  setUserData, 
-  removeUser, 
-  setPlants, 
-  setAdmin, 
-  setPlantFacts, 
-  toggleNewPlant 
+import {
+  INITIAL_STATE,
+  setUser,
+  setUserData,
+  removeUser,
+  setPlants,
+  setAdmin,
+  setAdminData,
+  setPlantFacts,
+  toggleNewPlant
 } from '../containers/app';
 
 
@@ -28,6 +29,8 @@ export default function reducer(state = INITIAL_STATE, action){
       return setPlantFacts(state, action.plantFacts);
     case 'TOGGLE_NEW_PLANT':
       return toggleNewPlant(state);
+    case 'SET_ADMIN_DATA':
+      return setAdminData(state, action.adminData);
     default:
       return state;
   }
