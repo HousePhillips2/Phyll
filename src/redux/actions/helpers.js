@@ -31,7 +31,6 @@ export function _getPlants() {
 
 export function _fetchPlant(plant){
   return dispatch => {
-    console.log(plant)
     $.ajax({
       method: 'POST',
       url: 'api/plantFacts',
