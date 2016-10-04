@@ -38,7 +38,7 @@ export function _fetchPlant(plant){
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({ plant: plant }),
       success: (plantFacts) => {
-        console.log(plant, plantFacts)
+        // console.log(plant, plantFacts)
         if(plantFacts.length!==0){
           return (
             <PlantFacts plantFacts={plantFacts[0]} user={ this.props.user }/>,

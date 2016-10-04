@@ -55,7 +55,7 @@ router.get('/loggedin', (req,res) => {
       let userId = updated_user_obj.id; //user id from users table
       query_plant(userId, (plant) => { 
         updated_user_obj.plant = plant; //if plant exist, plant would be plant info stored in db; if not, plant is equal to false;
-        console.log(updated_user_obj);
+        // console.log(updated_user_obj);
         res.send(updated_user_obj); // update user_obj with user id from users table, which will be used for add plant
       });
     });

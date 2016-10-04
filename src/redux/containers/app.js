@@ -15,13 +15,14 @@ export const setUser = (state, user) => {
   // UPDATE state
   return state.set('loggedIn', true)
               .set('user', Map({
-                firstName: user.given_name,
-                lastName: user.family_name,
-                name: user.name,
+                firstName: user.first_name,
+                lastName: user.last_name,
+                name: user.nickname,
                 id: user.fb_id,
                 email: user.email,
-                image: user.picture_large,
-                timezone: user.timezone
+                image: user.img,
+                timezone: user.timezone,
+                plant: user.plant
               }));
 };
 
