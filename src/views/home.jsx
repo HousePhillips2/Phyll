@@ -33,7 +33,8 @@ class Home extends React.Component {
 
   render() {
 
-    let dashboard = this.props.loggedIn ? <DashBar { ...this.props }/> : null;
+    let dashboard = this.props.loggedIn ? <DashBar id="dashBar" { ...this.props }/> : <div id="dashBar"></div>;
+    let plantFacts = this.props.plantFacts ? <PlantFacts id="dashBar" { ...this.props }/> : <div id="plantFacts"></div>;
 
     return(
 
@@ -41,18 +42,12 @@ class Home extends React.Component {
         <div className="row search">
           <div className="column jumbotron jumbo-bg">
           { this.props.plants ?
-            <Search className="form-control form-control-lg" { ...this.props } dataToggle="modal" dataTarget="#plantModal"/> :
+            <Search className="form-control form-control-lg" { ...this.props } /> :
             null
           }
           </div>
-        </div>
-        <div className="row content">
-          <div className="content-top column container-fluid" role="document">
-            <div id="plantModal" tabIndex="-1" role="dialog" aria-hidden="true">
-              <div id="plantFact"></div>
-            </div>
-          </div>
-        </div>
+        </div>  
+        { plantFacts }
         { dashboard }
         <div className="row content">
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">
@@ -110,7 +105,7 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchAdmin  : () => dispatch(_getAdmin()),
     fetchPlants : () => dispatch(_getPlants()),
-    fetchPlant  : (plant) => dispatch(_fetchPlant(this, plant))
+    fetchPlant  : (plant) => dispatch(_fetchPlant(plant))
   };
 }
 
@@ -127,10 +122,20 @@ function mapStateToProps(state) {
       lastName: user.get('lastName')
     };
   }
+
+  if (state.get('plantFacts') ) {
+    return {
+      plantFacts: state.getIn(['plantFacts', 'plantFacts']),
+      plants: state.getIn([ 'plants', 'plants' ]),
+      admin: state.getIn([ 'admin', 'admin' ]),
+      loggedIn: state.get('loggedIn'),
+    }
+  }
+
   return {
     plants: state.getIn([ 'plants', 'plants' ]),
     admin: state.getIn([ 'admin', 'admin' ]),
-    loggedIn: state.get('loggedIn')
+    loggedIn: state.get('loggedIn'),
   };
 }
 

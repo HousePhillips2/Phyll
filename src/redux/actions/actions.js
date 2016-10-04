@@ -22,7 +22,7 @@ export function addPlant(plant){
   };
 }
 
-export function fetchPlant(plant) {
+export function setPlantFacts(plantFacts) {
   return {
     type: 'FETCH_PLANT',
     plantFacts

@@ -13,10 +13,9 @@ export default class AddPlant extends React.Component {
   }
 
   render() {
-    let plantFacts = this.props.plantFacts;
-    let user = this.props.user;
+    let plantFacts = this.props.plantFacts[0];
     
-    if (this.props.plantFacts){
+    if (plantFacts){
 
       return (
 
@@ -24,10 +23,10 @@ export default class AddPlant extends React.Component {
           <div className="content-top column container-fluid">
             <div className="card">
               <div className="card-header">
-                Add { this.props.plantFacts.plant_name } to your collection
+                Add { plantFacts.plant_name } to your collection
               </div>
               <div className="card-block container-fluid">
-                <PlantForm plantName={this.props.plantFacts.plant_name} plantId={this.props.plantFacts.id} user={user}/>
+                <PlantForm { ...this.props } />
               </div>
             </div>
           </div>
@@ -43,19 +42,19 @@ export default class AddPlant extends React.Component {
     }
   }
 
-  _fetchPlant(plant){
-    //console.log(plant, "inside addMyPlant");
-    $.ajax({
-      method: 'POST',
-      url: '/api/plantFacts',
-      json: true,
-      contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify({plant:plant}),
-      success: (plantFacts) => {
-        if(plantFacts.length!==0){
-          this.setState({plantFacts:plantFacts[0]});
-        }
-      }
-    });
-  }
+  // _fetchPlant(plant){
+  //   //console.log(plant, "inside addMyPlant");
+  //   $.ajax({
+  //     method: 'POST',
+  //     url: '/api/plantFacts',
+  //     json: true,
+  //     contentType: 'application/json; charset=utf-8',
+  //     data: JSON.stringify({plant:plant}),
+  //     success: (plantFacts) => {
+  //       if(plantFacts.length!==0){
+  //         this.setState({plantFacts:plantFacts[0]});
+  //       }
+  //     }
+  //   });
+  // }
 }
