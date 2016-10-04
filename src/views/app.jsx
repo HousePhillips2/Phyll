@@ -43,7 +43,12 @@ function mapStateToProps(state) {
       username: user.name,
       image: user.get('image'),
       firstName: user.firstName,
-      lastName: user.lastName
+      lastName: user.lastName,
+      nickname: user.nickname,
+      id: user.fb_id,
+      email: user.email,
+      timezone: user.timezone,
+      plant: user.plant
     };
   }
 

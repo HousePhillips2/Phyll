@@ -33,7 +33,7 @@ class Home extends React.Component {
 
   render() {
 
-    let dashboard = this.props.user ? <DashBar loggedInUser={ this.state.loggedInUser }/> : <div id="dashBar"></div>;
+    let dashboard = this.props.loggedIn ? <DashBar { ...this.props }/> : null;
 
     return(
 
