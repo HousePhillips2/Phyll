@@ -1,5 +1,4 @@
 import $ from 'jquery';
-
 import { setUser, setPlants, setAdmin } from './actions';
 
 
@@ -11,7 +10,6 @@ export function _getUser() {
     }).then(user => {
       if( user ){
         dispatch(setUser(user));
-        console.log(user)
       }
       // TODO: WRITE failed login action creator
     });
@@ -29,17 +27,6 @@ export function _getPlants() {
   };
 }
 
-export function _getAdmin() {
-  return dispatch => {
-    $.ajax({
-      method: 'GET',
-      url: 'api/admin'
-    }).then(admin => {
-      dispatch(setAdmin(admin));
-    });
-  };
-}
-
 export function _fetchPlant(plant){
   return dispatch => {
     $.ajax({
@@ -47,12 +34,26 @@ export function _fetchPlant(plant){
       url: 'api/plantFacts',
       json: true,
       contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify({ plant: plant }),
+      data: JSON.stringify({ plant:plant }),
       success: (plantFacts) => {
         if(plantFacts.length!==0){
-          dispatch(getPlantFacts(plantFacts))
+          render(
+            <PlantFacts plantFacts={plantFacts[0]} user={ this.state.loggedInUser }/>,
+            document.getElementById('plantFact')
+          );
         }
       }
+    });
+  };
+}
+
+export function _getAdmin() {
+  return dispatch => {
+    $.ajax({
+      method: 'GET',
+      url: 'api/admin'
+    }).then(admin => {
+      dispatch(setAdmin(admin));
     });
   };
 }

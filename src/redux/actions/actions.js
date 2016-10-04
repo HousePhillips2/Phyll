@@ -40,9 +40,3 @@ export function setAdmin(admin) {
   };
 }
 
-export function getPlantFacts(admin) {
-  return {
-    type: 'GET_PLANTFACT',
-    admin
-  };
-}

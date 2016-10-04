@@ -4,6 +4,7 @@ import $ from 'jquery';
 import Autosuggest from 'react-autosuggest';//Reference:  https://github.com/moroshko/react-autosuggest
 // import './theme.css'; Moved to SCSS include at src/stylesheets/components/search-bar.scss
 
+
 function escapeRegexCharacters(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
@@ -27,32 +28,32 @@ export default class SearchBar extends React.Component {
       placeholder: '',
       value: '',
       suggestions: [],
-      plants: this.props.plants
     };
   }
+
   componentDidMount() {
     this._timer = setInterval(() => this.counter(), 800);
   }
- 
+
   componentWillUnmount() {
     clearInterval(this._timer);
   }
 
   counter() {
     count = count > 100? 0: count + 1;
-    if (this.props.plants) {
-      let name = this.props.plants[count].plant_name;
+    if (this.props.plants.toArray) {
+      let name = this.props.plants.toArray()[count].plant_name;
       this.setState({placeholder:`Learn about your ${name}`});
     }
   }
-  
+
   getSuggestions(value) {
     const escapedValue = escapeRegexCharacters(value.trim().toLowerCase());
     if (escapedValue === '') {
       return [];
     }
     const regex = new RegExp(escapedValue);
-    const plants = this.props.plants;
+    const plants = this.props.plants.toArray();
 
     let filteredPlants = plants.filter(plant => regex.test(plant.plant_name.toLowerCase()));
     return filteredPlants.slice(0, 8);
@@ -86,6 +87,8 @@ export default class SearchBar extends React.Component {
 
 
   render() {
+
+    console.log('this.props inside search:', this.props);
     const { value, suggestions, placeholder} = this.state;
     const inputProps = {
       placeholder,
@@ -106,3 +109,4 @@ export default class SearchBar extends React.Component {
     );
   }
 }
+

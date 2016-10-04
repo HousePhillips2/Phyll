@@ -2,13 +2,13 @@ import { List, Map, fromJS } from 'immutable';
 
 
 export const INITIAL_STATE = Map({
-  loggedIn: false,
+  loggedIn: false
 });
 
-export function setUser(state, user) {
+export const setUser = (state, user) => {
 
   // IF user already loggedIn
-  if( state.get('loggedIn', true) ){
+  if( state.get('loggedIn', true)){
     // RETURN state
     return state;
   }
@@ -18,9 +18,10 @@ export function setUser(state, user) {
                 firstName: user.given_name,
                 lastName: user.family_name,
                 name: user.name,
-                facebookId: user.facebookId,
+                id: user.fb_id,
                 email: user.email,
-                image: user.picture_large
+                image: user.picture_large,
+                timezone: user.timezone
               }));
 };
 
@@ -30,17 +31,12 @@ export function removeUser(state) {
 };
 
 export function setPlants(state, plants) {
-  console.log(!state.getIn([ 'plants', 'fetched' ]));
-  if( !state.getIn([ 'plants', 'fetched' ]) ){
-    return state.set('plants',
-      Map({
-        fetched: true,
-        plants: List(plants)
-      })
-    );
-  } else {
-    return state;
-  }
+  return state.set('plants',
+    Map({
+      fetched: true,
+      plants: List(plants)
+    })
+  );
 }
 
 export function setAdmin(state, admin){
@@ -49,14 +45,6 @@ export function setAdmin(state, admin){
       fetched: true,
       admin: List(admin)
     })
-  )
+  );
 }
 
-export function getPlantFacts(state, admin){
-  return state.set('admin',
-    Map({
-      fetched: true,
-      admin: List(admin)
-    })
-  )
-}
