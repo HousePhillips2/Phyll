@@ -40,7 +40,6 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/loggedin', (req,res) => {
-<<<<<<< HEAD
   if(req.user !==undefined){
     //console.log(req.session.passport.user)
     let user_obj={
@@ -49,7 +48,8 @@ router.get('/loggedin', (req,res) => {
       last_name: req.user._json.family_name,
       nickname: req.user._json.nickname, 
       img: req.user._json.picture_large, 
-      timezone:req.user._json.timezone
+      timezone:req.user._json.timezone,
+      user: req.user._json
     };
     query_user(user_obj, (updated_user_obj) => {
       let userId = updated_user_obj.id; //user id from users table
@@ -59,16 +59,6 @@ router.get('/loggedin', (req,res) => {
         res.send(updated_user_obj); // update user_obj with user id from users table, which will be used for add plant
       });
     });
-     
-=======
-  if(req.session.passport!==undefined){
-    if(req.session.passport.user !==undefined){
-      let user_obj={name: req.user._json.name, img: req.user._json.picture_large};
-      res.send(req.user._json);
-    } else {
-      res.send(false);
-    }
->>>>>>> feature-merge
   } else {
     res.send(false);
   }
