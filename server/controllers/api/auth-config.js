@@ -53,7 +53,7 @@ router.get('/loggedin', (req,res) => {
       timezone:req.user._json.timezone
     };
     insertUser(user_obj, (updated_user_obj) => {
-      console.log(updated_user_obj); // update user_obj with user id from users table, which will be used for add plant
+      res.send(updated_user_obj); // update user_obj with user id from users table, which will be used for add plant
     }); 
   } else {
     res.send(false);
