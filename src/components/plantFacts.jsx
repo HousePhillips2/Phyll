@@ -17,7 +17,6 @@ export default class PlantFacts extends React.Component {
   render() {
 
     const plantFacts = this.props.plantFacts[0];
-    console.log(plantFacts)
     
     if (this.props.plantFacts.length > 0) {
 

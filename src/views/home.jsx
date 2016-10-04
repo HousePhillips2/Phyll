@@ -33,7 +33,8 @@ class Home extends React.Component {
 
   render() {
 
-    let dashboard = this.props.loggedIn ? <DashBar { ...this.props }/> : null;
+    let dashboard = this.props.loggedIn ? <DashBar id="dashBar" { ...this.props }/> : <div id="dashBar"></div>;
+    let plantFacts = this.props.plantFacts ? <PlantFacts id="dashBar" { ...this.props }/> : <div id="plantFacts"></div>;
 
     return(
 
@@ -46,7 +47,7 @@ class Home extends React.Component {
           }
           </div>
         </div>  
-        { this.props.plantFacts ? <PlantFacts { ...this.props }/> : null }
+        { plantFacts }
         { dashboard }
         <div className="row content">
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">

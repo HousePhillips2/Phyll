@@ -7,7 +7,10 @@ export default class PlantForm extends React.Component {
   }
   render() {
     const user = this.props.user;
+    const plant = this.props.plantFacts[0];
     let submitButton;
+
+    console.log(this.props)
 
     // TODO: add login handling to link when navbar has been refactored
 
@@ -27,7 +30,7 @@ export default class PlantForm extends React.Component {
             <div className="column">
               <div className="input-group">
                 <span className="input-group-addon">Species</span>
-                <input type="text" className="form-control" id="common_name" value={this.props.plantName} ref={input => this._plantName = input} readOnly/>
+                <input type="text" className="form-control" id="common_name" value={plant.plant_name} ref={input => this._plantName = input} readOnly/>
               </div>
             </div>
           </div>
@@ -46,6 +49,15 @@ export default class PlantForm extends React.Component {
                 <div className="input-group">
                 <span className="input-group-addon">Device ID</span>
                 <input type="text" className="form-control" id="deviceId" ref={input => this._deviceId = input}/>
+              </div>
+            </div>
+          </div>
+
+          <div className="form-group row">
+            <div className="column">
+                <div className="input-group">
+                <span className="input-group-addon">Telephone</span>
+                <input type="text" className="form-control" id="deviceId" placeholder="If you'd like watering notifications." ref={input => this._telephone = input}/>
               </div>
             </div>
           </div>
