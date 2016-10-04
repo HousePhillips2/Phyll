@@ -32,18 +32,12 @@ class Home extends React.Component {
     this.props.fetchPlants();
   }
 
-  componentWillUpdate() {
-    this.props.admin;
-    this.props.plants;
-  }
-
   // TODO: The initial div needs to go in refactor as it is duplicated in nav
 
   render() {
 
     let dashboard = this.props.user ? <DashBar loggedInUser={ this.state.loggedInUser }/> : <div id="dashBar"></div>;
-    console.log('this.props.admin:', this.props.admin);
-    console.log('this.props.plants:', this.props.plants);
+
     return(
 
       <div className="container-fluid">
@@ -90,7 +84,7 @@ class Home extends React.Component {
           </div>
           <div className="content-1 col-lg-5 pull-lg-7 container-fluid">
             <div className="card-wrapper">
-              <Users users={ this.state.admin }/>
+              <Users { ...this.props }/>
             </div>
           </div>
         </div>

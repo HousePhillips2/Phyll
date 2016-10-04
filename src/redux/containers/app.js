@@ -44,11 +44,10 @@ export function setPlants(state, plants) {
 }
 
 export function setAdmin(state, admin){
-  console.log('APP.js: setAdmin:', List.of(admin))
   return state.set('admin',
     Map({
       fetched: true,
-      admin: List.of(admin)
+      admin: List(admin)
     })
   )
 }

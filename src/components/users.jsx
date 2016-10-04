@@ -7,10 +7,13 @@ export default class Users extends React.Component {
   }
 
   render() {
-    const users = this.props.users;
 
-    if (users) {
+    if (this.props.admin) {
+
+      const users = this.props.admin.toArray();
+
       return(
+
         <div className={ 'user-cards' }>
           { users.map( user => {
             return (
@@ -18,7 +21,9 @@ export default class Users extends React.Component {
             );
           }) }
         </div>
+
       );
+      
     } else {
       return null;
     }
