@@ -4,6 +4,8 @@ const router  = express.Router();
 const Auth0Strategy = require('passport-auth0');
 const passport = require('passport');
 const session = require ('express-session');
+const db = require('../../models/pg-config.js');
+const insertUser = require('../../models/users.js');
 const strategy = new Auth0Strategy({
    domain:       process.env.AUTH_DOMAIN,
    clientID:     process.env.AUTH_CLIENT_ID,
@@ -40,11 +42,19 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/loggedin', (req,res) => {
-  console.log(req.user,"loggedin req.user");
   if(req.user !==undefined){
     //console.log(req.session.passport.user)
-    let user_obj={name: req.user._json.name, img: req.user._json.picture_large};
-    res.send(user_obj);
+    let user_obj={
+      fb_id: req.user.id.slice(9), 
+      first_name: req.user._json.given_name, 
+      last_name: req.user._json.family_name,
+      nickname: req.user._json.nickname, 
+      img: req.user._json.picture_large, 
+      timezone:req.user._json.timezone
+    };
+    insertUser(user_obj, (updated_user_obj) => {
+      console.log(updated_user_obj); // update user_obj with user id from users table, which will be used for add plant
+    }); 
   } else {
     res.send(false);
   }
