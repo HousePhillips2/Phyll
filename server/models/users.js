@@ -1,20 +1,28 @@
 const db = require('./pg-config');
 
-db.any("select user_name from api.users")
-  .then(function (data) {
-    console.log(data[1].user_name);//print out user name 'Phoebe Maio'
-  })
-  .catch(function (error) {
-      console.log(error);
-  });
 
-db.none("insert into api.users (user_name) values ('Marvin Maio')")
-  .then( () => {
-    console.log('success');
-  })
-  .catch( (error) => {
-    console.log(error);
+function insertUser(user_obj, callback){
+
+  db.one(`select id from api.users where fb_id = ${user_obj.fb_id}`)
+  .then((data) => { //if user exists in db, return user id from users table and update user_obj
+    user_obj.id=data.id;
+    callback(user_obj); //send back updated user_obj
+  }).catch((error) => { //if user does not exist in db; store user info into db
+    console.log(error, 'user does not exist in db');
   });
+}
+
 
   
-  
+module.exports = insertUser;
+
+
+/*
+Table: api.users
+  id:
+  user_name:
+  email:
+  oauth_key:
+  img:
+*/
+
