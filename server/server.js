@@ -3,40 +3,14 @@
 const express     = require('express');
 const app         = express();
 const http        = require('http').Server(app);
-const io          = require('socket.io')(http);
 const bodyParser  = require('body-parser');
 const Auth0Strategy = require('passport-auth0');
 const passport    = require('passport');
 const session     = require ('express-session');
-const apiai       = require('apiai');
-const botsFamily  = {
-  happy : apiai('8fe112573eca466893d8ff19b6d7c771')
-/*thirsty: apiai('.....') to be implemented
-  drowning: ...
-  dark: ...
-  burnt: ...
-*/
-};
+const io          = require('socket.io').listen(http);
+                    require('./controllers/api/chatbot.js')(io);
 
-//will refactor into subApp later
-//api call to fetch plant status
-let plantbot = botsFamily.happy;//diverse plantbot endpoint based on plant status (i.e. happy, thirsty, drowning, burnt, dark)
-io.on('connection', function(socket){
-  io.emit('login','Hello');
-  //**********response back to front-end
-  socket.on('client', function(msg){
-    const request = plantbot.textRequest(msg);
-    request.on('response', function(response) {
-      //console.log(response.result.fulfillment.speech,'response from happybot');
-      io.emit('plant',response.result.fulfillment.speech);
-    });
-    request.on('error', function(error) {
-        console.log(error);
-    });
-    request.end();
-      
-  });
-});
+
 
 // MOUNT middleware
 app.use(express.static('dist'));
