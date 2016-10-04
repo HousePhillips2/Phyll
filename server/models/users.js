@@ -8,7 +8,15 @@ function insertUser(user_obj, callback){
     user_obj.id=data.id;
     callback(user_obj); //send back updated user_obj
   }).catch((error) => { //if user does not exist in db; store user info into db
-    console.log(error, 'user does not exist in db');
+    db.one('insert into api.users (fb_id, first_name, last_name, nickname, img, time_zone) values($1, $2, $3, $4, $5, $6) returning id', 
+      [user_obj.fb_id, user_obj.first_name, user_obj.last_name, user_obj.nickname, user_obj.img, user_obj.timezone])
+    .then((data) => { // return user id from users table and update user_obj
+      user_obj.id=data.id;
+      callback(user_obj); //send back updated user_obj;
+    })
+    .catch((error) => {
+      console.log(error,'insert user error');
+    });
   });
 }
 
