@@ -6,9 +6,6 @@ import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 import { Router, Route, Redirect, browserHistory, IndexRoute } from 'react-router';
 
-import Garden from './pages/garden.jsx';
-import MyDashboard from './pages/dashBoard.jsx';
-import PlantsLibrary from './pages/plantsLibrary.jsx';
 import Home from './views/home.jsx';
 import App from './views/app.jsx';
 import { setUser } from './redux/actions/actions';
