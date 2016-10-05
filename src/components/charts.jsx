@@ -24,7 +24,6 @@ class Charts extends React.Component {
       axisMargin: 83,
       topMargin: 50,
       bottomMargin: 50,
-      value: (d) => d.base_salary,
       // ADJUST this value to change size of SVG element
       fullWidth: 500
     };
