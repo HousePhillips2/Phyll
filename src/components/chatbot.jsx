@@ -15,16 +15,17 @@ export default class Chatbot extends React.Component {
   render() {
     if(this.props.loggedIn){
       let messages = this.state.messages;
-      messages.push(['Hello ' + this.props.firstName + ', What a wonderful day, is it?', 0, 'list-group-item list-group-item-success']);
+      messages.push(['Hello ' + this.props.firstName + '. What a wonderful day it is.', 0, 'list-group-item list-group-item-success']);
       //console.log(messages,'update this.state.');
       // TODO: Add login handler on "login to talk to plant" field. Might be better as "add device to..."
       // TODO: Add "you don't have any plants" prompt state after login with no plants
+      // TODO: "Talk to [plant name]"
 
       return (
 
         <div className="card">
           <div className="card-header">
-            Talk to a houseplant
+            Talk to your plant
           </div>
           <div className="card-block">
             <div className='container-fluid graff'>
