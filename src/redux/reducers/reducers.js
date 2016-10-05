@@ -12,8 +12,6 @@ export default function reducer(state = INITIAL_STATE, action){
       return setUserData(state, action.userData);
     case 'REMOVE_USER':
       return removeUser(state);
-    case 'SET_USER_DATA':
-      return setUserData(state, action.userData);
     case 'SET_PLANTS':
       return setPlants(state, action.plants);
     case 'SET_ADMIN':

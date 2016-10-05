@@ -20,8 +20,6 @@ export default class PlantFacts extends React.Component {
     
     if (this.props.plantFacts.length > 0) {
 
-      const user = this.props.user;
-
       if (this.state.newPlant) {
 
         return (

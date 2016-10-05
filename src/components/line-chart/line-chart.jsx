@@ -14,7 +14,7 @@ export default class LineChart extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    this.update_d3(newProps);
+    this.update_d3.bind(this, newProps);
   }
 
   update_d3(props) {
