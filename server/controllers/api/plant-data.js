@@ -17,17 +17,10 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  
-  let plant_obj = {
-    user_id: req.user_id,
-    plant_id: req.plant_id,
-    device_id: req.device_id,
-    plant_nickname: req.plant_nickname,
-    phone: req.phone
-  };
-
+  let plant_obj = req.body;
+  //console.log(plant_obj, 'plant_obj');
   store_plant(plant_obj); //insert plant data into db
-
+  res.send('success');
 });
 
 module.exports = router;
