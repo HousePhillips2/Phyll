@@ -1,7 +1,7 @@
 const db = require('./pg-config');
 
 function query_plant(userId, callback){
-  db.any(`select * from api.user_plant where user_id = ${userId}`)
+  db.any('select * from api.user_plant where user_id = $1', [userId])
   .then((data) => {
     callback(data); //return user's plant data to front-end
   })
@@ -22,6 +22,7 @@ function store_plant(plant_obj){
     console.log(error, 'insert user phone number error');
   });
 }
+
 
 module.exports = {query_plant, store_plant};
 
