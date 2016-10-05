@@ -26,7 +26,7 @@ export default class Navigation extends Component {
                   <Login /> }
                 <div className="dropdown-divider"></div>
                 <button className="dropdown-item" type="button">About phyll.IO</button>
-                <button className="dropdown-item" type="button">Developer Journal</button>
+                <a href="https://medium.com/team-phyll"><button className="dropdown-item" type="button">Developer Journal</button></a>
                 <a href="https://github.com/cachilders/Phyll"><button className="dropdown-item" type="button">Check Out the Source</button></a>
               </div>
             </div>
