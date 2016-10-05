@@ -83,7 +83,7 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
-        <div className="footer row">
+        {/*<div className="footer row">
           <div className="content-top column container-fluid">
             <div className="card">
               <div className="card-header">
@@ -94,7 +94,7 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
-        </div>
+        </div>*/}
       </div>
 
     );
