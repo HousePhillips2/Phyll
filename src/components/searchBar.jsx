@@ -33,7 +33,7 @@ export default class SearchBar extends React.Component {
   }
 
   componentDidMount() {
-    this._timer = setInterval(() => this.counter(), 800);
+    this._timer = setInterval(() => this.counter(), 1200);
   }
 
   componentWillUnmount() {
