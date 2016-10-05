@@ -137,7 +137,7 @@ function mapStateToProps(state) {
       loggedIn: state.get('loggedIn'),
       id: state.get('id'),
       newPlant: state.get('newPlant')
-    }
+    };
   }
 
   return {
