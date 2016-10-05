@@ -1,6 +1,7 @@
 import React from 'react';
 import d3 from 'd3';
 import $ from 'jquery';
+import { connect } from 'react-redux';
 
 import LineChart from './line-chart/index.jsx';
 import _loadRawData from '../redux/actions/helpers';
