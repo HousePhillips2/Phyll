@@ -16,18 +16,16 @@ module.exports=function (io) {
     //once socket.io is connected 
     //make an api call to fetch plant status
     plantbot = botsFamily.plantbot;//
-
     socket.on('userId', function(id){
       userId = id;
-      console.log(userId,'id');
     });
-    io.emit('login','Hello');
     socket.on('client', function(msg){
       const request = plantbot.textRequest(msg);
       request.on('response', function(response) {
         //diverse plantbot to handle client's questions based on plant status (i.e. fine, thirsty, drowning, burnt, dark)
         //if client's plant is fine, use api.ai response
         //if not, use our own response (i.e. I dont get enough water or sun ....)
+         console.log(userId,'user id in response');
         if(response.result.action!=='getStatus'){
           io.emit('plant',response.result.fulfillment.speech);
         } else {

@@ -14,6 +14,7 @@ export default class Chatbot extends React.Component {
   }
   render() {
     if(this.props.loggedIn){
+      this._getUserId();//send user id to chatbot in server before initial the conversation
       let messages = this.state.messages;
       messages.push(['Hello ' + this.props.firstName + '. What a wonderful day it is.', 0, 'list-group-item list-group-item-success']);
       //console.log(messages,'update this.state.');
@@ -69,11 +70,14 @@ export default class Chatbot extends React.Component {
       );
     }
   }
+  _getUserId(){
+    socket.emit('userId', this.props.id);
+  }
+
   _notifyServer(e){
     e.preventDefault();
     //console.log(this._msg.value,'type in value');
     //console.log(this.props.id, 'this.props id in chat bot');
-    socket.emit('userId', this.props.id);
     socket.emit('client', this._msg.value.toLowerCase());
     this._onUpdate(this._msg.value);
     $('#input').val('');
