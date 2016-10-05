@@ -4,7 +4,6 @@ const db = require('../../models/pg-config');
 
 //-----------------------------------THIS FILE IS FOR UPDATING DAILY PHYL/DEVICE DATA -----------------------
 
-
 const retrieveMood = (input) => {
 
         // modify the 'something' below
