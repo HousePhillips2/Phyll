@@ -18,6 +18,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.props.id, 'this.props in App');
     return(
       <div className="container-fluid">
         <Navigation { ...this.props }/>
@@ -45,7 +46,7 @@ function mapStateToProps(state) {
       firstName: user.firstName,
       lastName: user.lastName,
       nickname: user.nickname,
-      id: user.fb_id,
+      id: user.get('id'),
       email: user.email,
       timezone: user.timezone,
       plant: user.plant
