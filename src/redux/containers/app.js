@@ -2,7 +2,8 @@ import { List, Map, fromJS } from 'immutable';
 
 
 export const INITIAL_STATE = Map({
-  loggedIn: false
+  loggedIn: false,
+  newPlant: false
 });
 
 export const setUser = (state, user) => {
@@ -57,4 +58,8 @@ export function setPlantFacts(state, plantFacts) {
       plantFacts: plantFacts
     })
   );
+}
+
+export function toggleNewPlant(state, newPlant) {
+  return state.set('newPlant', !newPlant);
 }
