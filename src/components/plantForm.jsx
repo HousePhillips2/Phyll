@@ -13,7 +13,7 @@ export default class PlantForm extends React.Component {
     console.log(this.props)
     // TODO: add login handling to link when navbar has been refactored
 
-    if (user) {
+    if(this.props.loggedIn){
       submitButton = <button className="btn btn-success" type="submit" id="addImage" style={{marginTop: .25 + 'rem'}}>Add Me!</button>;
     } else {
       submitButton = <div className="alert alert-danger" role="alert"><strong>Yikes!</strong> Looks like you need to <a href="#" className="alert-link">log in</a>.</div>;
