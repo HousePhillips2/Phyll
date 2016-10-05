@@ -29,12 +29,8 @@ app.use(passport.session());
 
 const apiApp      = require('./controllers/api/api');
 const ioApp       = require('./controllers/io/io');
-<<<<<<< 48d4e8a00f0afcd4d8678dcfe26628fc66986d3c
-
-//const vendorApp   = require('./controllers/vendor/vendor');
-=======
 const vendorApp   = require('./controllers/vendor/vendor');
->>>>>>> [refactor] add auth api into vendor subApp
+
 
 
 // const vendorApp   = require('./controllers/vendor/vendor');
