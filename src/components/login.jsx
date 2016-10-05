@@ -10,7 +10,7 @@ export default class Login extends React.Component {
   render() {
     
     return (
-      <a href="api/auth/login"><button className="dropdown-item" type="button">Login</button></a>
+      <a href="vendor/auth/login"><button className="dropdown-item" type="button">Login</button></a>
     );
   }
 }

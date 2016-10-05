@@ -71,6 +71,8 @@ export default class Chatbot extends React.Component {
   _notifyServer(e){
     e.preventDefault();
     //console.log(this._msg.value,'type in value');
+    //console.log(this.props.id, 'this.props id in chat bot');
+    socket.emit('userId', this.props.id);
     socket.emit('client', this._msg.value.toLowerCase());
     this._onUpdate(this._msg.value);
     $('#input').val('');

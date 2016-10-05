@@ -121,7 +121,7 @@ function mapStateToProps(state) {
       firstName: user.get('firstName'),
       lastName: user.get('lastName'),
       plantFacts: state.getIn(['plantFacts', 'plantFacts']),
-
+      id: user.get('id')
     };
   }
 
@@ -131,6 +131,7 @@ function mapStateToProps(state) {
       plants: state.getIn([ 'plants', 'plants' ]),
       admin: state.getIn([ 'admin', 'admin' ]),
       loggedIn: state.get('loggedIn'),
+      id: state.get('id')
     }
   }
 
@@ -138,6 +139,7 @@ function mapStateToProps(state) {
     plants: state.getIn([ 'plants', 'plants' ]),
     admin: state.getIn([ 'admin', 'admin' ]),
     loggedIn: state.get('loggedIn'),
+    id: state.get('id')
   };
 }
 

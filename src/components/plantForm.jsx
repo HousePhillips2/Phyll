@@ -8,13 +8,13 @@ export default class PlantForm extends React.Component {
   render() {
     const user = this.props.user;
     const plant = this.props.plantFacts[0];
+    //console.log(plant.id,'plant');
     let submitButton;
 
-    console.log(this.props)
-
+    //console.log(this.props)
     // TODO: add login handling to link when navbar has been refactored
 
-    if (user) {
+    if(this.props.loggedIn){
       submitButton = <button className="btn btn-success" type="submit" id="addImage" style={{marginTop: .25 + 'rem'}}>Add Me!</button>;
     } else {
       submitButton = <div className="alert alert-danger" role="alert"><strong>Yikes!</strong> Looks like you need to <a href="#" className="alert-link">log in</a>.</div>;
@@ -95,26 +95,19 @@ export default class PlantForm extends React.Component {
 
   _handleSubmit(e){
     e.preventDefault();
-    let user_name = 'Casey';
-    let oauth_key = 1;
-    let email = 'aaaaaaaa@gmail.com';
-    let user_img = 'https://figuya.com/uploads/product/profile_picture/6189/profile_Pop-Animation-79-Soul-Vorschau.jpg';
-    let plant_img ='http://cdn1.bigcommerce.com/server4100/6ys4nr/product_images/uploaded_images/money-tree-bonsai-tree.jpg';
-    //later on, use Oauth id to get user info (i.e. user_name, oauth_key, email, img) and send it along with the ajax request below;
-    this._addPlant(this._plantName.value, this._plantNickName.value, this.props.plantId,this._deviceId.value, user_name,oauth_key,email,user_img,plant_img);
-    //console.log(this._plantName.value, this._plantNickName.value, this.props.plantId,this._deviceId,'inside add plant input submit');
-
-    this.context.router.push('/myDashboard');
+    //console.log(this.props.id, this.props.plantFacts[0].id, this._deviceId.value, this._plantNickName.value, this._telephone.value)
+    this._addPlant(this.props.id, this.props.plantFacts[0].id, this._deviceId.value, this._plantNickName.value, this._telephone.value)
+    //here to redirect user
   }
-  _addPlant(plantName,plantNickName,plantId, deviceId,user_name, oauth_key,email, user_img, plant_img){
+  _addPlant(user_id, plant_id, device_id, plant_nickname, phone){
     $.ajax({
       method: 'POST',
       url: '/api/plantData',
       json: true,
       contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify({plantName, plantNickName,plantId,deviceId,user_name, oauth_key,email, user_img, plant_img}),
+      data: JSON.stringify({user_id, plant_id, device_id, plant_nickname, phone}),
       success: (data) => {
-        //console.log('redirect me to dashboard');
+        //need to redirect!
       }
     });
   }

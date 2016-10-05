@@ -12,10 +12,14 @@ function query_plant(userId, callback){
 }
 
 function store_plant(plant_obj){
-  db.none('insert into api.user_plant (user_id, plant_id, device_id, plant_nickname, plant_img) values($1, $2, $3, $4, $5)',
-    [plant_obj.user_id, plant_obj.plant_id, plant_obj.device_id, plant_obj.plant_nickname, plant_obj.plant_img])
+  db.none('insert into api.user_plant (user_id, plant_id, device_id, plant_nickname) values($1, $2, $3, $4)', 
+    [plant_obj.user_id, plant_obj.plant_id, plant_obj.device_id, plant_obj.plant_nickname])
   .catch((error) => {
     console.log(error,'insert plant form data error');
+  });
+  db.none('update api.users set phone_number = $1 where id = $2', [plant_obj.phone, plant_obj.user_id])
+  .catch((error) => {
+    console.log(error, 'insert user phone number error');
   });
 }
 
