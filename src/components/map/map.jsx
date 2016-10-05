@@ -11,13 +11,17 @@ export default class Map extends React.Component {
   componentDidMount() {
     var map = L.map('mapid', {
       // lat, long coordinates
-      center: [ 37.762, -122.417 ],
-      zoom: 14
+      center: [37.7758, -122.4128],
+      zoom: 15,
+      scrollWheelZoom: false,
+      dragging: true,
+      touchZoom: false
     });
 
     L.tileLayer('https://api.mapbox.com/styles/v1/echurchill/citnqe70i005j2ioep3anqchd/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
       attribution: 'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-      maxZoom: 18,
+      maxZoom: 16,
+      minZoom: 12,
       id: 'echurchill/citnqe70i005j2ioep3anqchd/tiles/256',
       accessToken: 'pk.eyJ1IjoiZWNodXJjaGlsbCIsImEiOiJjaXRuaWZ0aTAwNGJ3Mm9sNHE1aW1pd2liIn0.aiR47_bvY8qQtfQLVNDxvQ'
     }).addTo(map);
@@ -36,7 +40,7 @@ export default class Map extends React.Component {
   render() {
 
     return(
-      <div id="mapid" style={{ height: "570px" }}>
+      <div id="mapid" style={{ height: "550px" }}>
       </div>
     );
   }

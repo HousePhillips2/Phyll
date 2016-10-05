@@ -1,67 +1,58 @@
-import $ from 'jquery';
-import React from 'react';
-import { render } from 'react-dom';
-import Users from '../components/users.jsx';
-import Search from '../components/searchBar.jsx';
-import PlantFacts from '../components/plantFacts.jsx';
-import UserInfo from '../components/userInfo.jsx';
-import Login from '../components/login.jsx';
-import Logout from '../components/logout.jsx';
-import Map from '../components/map/index.jsx';
-import Chatbot from '../components/chatbot.jsx';
+import $            from 'jquery';
+import React        from 'react';
+import { render }   from 'react-dom';
+import { Link }     from 'react-router';
+import { connect }  from 'react-redux';
+
+import Users        from '../components/users.jsx';
+import Search       from '../components/searchBar.jsx';
+import PlantFacts   from '../components/plantFacts.jsx';
+import UserInfo     from '../components/userInfo.jsx';
+import Login        from '../components/login.jsx';
+import Logout       from '../components/logout.jsx';
+import Map          from '../components/map/index.jsx';
+import Chatbot      from '../components/chatbot.jsx';
+import AddPlant     from '../components/addPlant.jsx';
+import DashBar      from '../components/dashboardBar.jsx';
+import { _getAdmin, _getPlants, _fetchPlant } from '../redux/actions/helpers';
 
 require('../stylesheets/main.scss');
-export default class Home extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      admin: [],
-      plants: [],
-      _fetchPlant: this._fetchPlant,
-      isLoggedIn: false,
-      userName:'',
-      userImg:''
-    };
+
+
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
   }
+
   componentWillMount() {
-    this._getPlants();
-    this._getAdmin();
-    this._getUser();
+    this.props.fetchPlants();
+    this.props.fetchAdmin();
   }
+
+  // TODO: The initial div needs to go in refactor as it is duplicated in nav
+
   render() {
+
+    let dashboard = this.props.loggedIn ? <DashBar id="dashBar" { ...this.props }/> : <div id="dashBar"></div>;
+    let plantFacts = this.props.plantFacts ? <PlantFacts id="dashBar" { ...this.props }/> : <div id="plantFacts"></div>;
+
     return(
+
       <div className="container-fluid">
-        <div className="row header">
-          <div className="col-xs-12">
-            <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
-            <div className="pull-sm-right">
-              <ul className="nav nav-inline text-sm-right"style={{padding: .2 + 'em'}}>
-                <li className="nav-item">
-                  <a className="nav-link graff" href="#">About</a>
-                </li>
-                <Login />
-                <Logout logout={this._logout.bind(this)}/>
-              </ul>
-              <UserInfo userName={this.state.userName} userImg={this.state.userImg} isLoggedIn={this.state.isLoggedIn}/>
-            </div>
-          </div>
-        </div>
         <div className="row search">
-          <div className="col-xs-12 jumbotron">
-            <Search className="form-control form-control-lg" plants={ this.state.plants } fetchPlant={ this.state._fetchPlant } dataToggle="modal" dataTarget="#plantModal"/>
+          <div className="column jumbotron jumbo-bg">
+          { this.props.plants ?
+            <Search className="form-control form-control-lg" { ...this.props } /> :
+            null
+          }
           </div>
         </div>
+        { plantFacts }
+        { dashboard }
         <div className="row content">
-          <div className="content-2 col-lg-7 push-lg-5 container">
+          <div className="content-2 col-lg-7 push-lg-5 container-fluid">
             <div className="card-wrapper">
-              <div className="card">
-                <div className="card-header">
-                  Talk to a houseplant
-                </div>
-                <div className="card-block">
-                  <Chatbot userName={this.state.userName}/>
-                </div>
-              </div>
+              <Chatbot { ...this.props }/>
               <div className="card hidden-xs hidden-sm">
                 <div className="card-header">
                   Active Bots
@@ -70,104 +61,86 @@ export default class Home extends React.Component {
               </div>
               <div className="card">
                 <div className="card-header">
+                  TODO: How to make a phyll.bot
+                </div>
+                <div className="card-block">
+                  <p className="card-text">Get on the map with your very own bot. <a href="https://github.com/cachilders/PhyllOS">PhyllOS is yours</a> to perfect.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="content-1 col-lg-5 pull-lg-7 container-fluid">
+            <Users { ...this.props }/>
+            <div className="card-wrapper">
+              <div className="card">
+                <div className="card-header">
                   Conservatory
                 </div>
                 <div className="card-block">
                   <p className="card-text">There are so many wonderful plants for your home. Discover the perfect one.</p>
                 </div>
-              </div>  
-              <div className="card">
-                <div className="card-header">
-                  Build Your Own Phyllbot
-                </div>
-                <div className="card-block">
-                  <p className="card-text">Don't take our word for it. PhyllOS is yours to make perfect.</p>
-                </div>
               </div>
             </div>
           </div>
-          <div className="content-1 col-lg-5 pull-lg-7 container">
-            <div className="card-wrapper">
-            <Users users={ this.state.admin }/>
+        </div>
+        {/*<div className="footer row">
+          <div className="content-top column container-fluid">
+            <div className="card">
+              <div className="card-header">
+                Footer Widget (TODO: whatevs)
+              </div>
+              <div className="card-block">
+                Content
+              </div>
             </div>
           </div>
-        </div>
-        <div className="footer row">
-          <div className="container">
-            Footer
-          </div>
-        </div>
+        </div>*/}
       </div>
+
     );
   }
-
-  _getPlants() {
-    $.ajax({
-      method: 'GET',
-      url: 'api/plantFacts',
-      success: (plants) => {
-        this.setState({ plants });
-      },
-      error: (err) => {
-        throw new Error(err);
-      }
-    });
-  }
-  _getAdmin() {
-    $.ajax({
-      method: 'GET',
-      url: 'api/admin',
-      success: (admin) => {
-        this.setState({ admin });
-      },
-      error: (err) => {
-        throw new Error(err);
-      }
-    });
-  }
-  _fetchPlant(plant){
-    $.ajax({
-      method: 'POST',
-      url: 'api/plantFacts',
-      json: true,
-      contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify({ plant:plant }),
-      success: (plantFacts) => {
-        if(plantFacts.length!==0){
-          render(
-            <PlantFacts plantFacts={plantFacts[0]} />,
-            document.getElementById('plantFact')
-          );
-        }
-      }
-    });
-  }
-  _getUser() {
-    $.ajax({
-      method: 'GET',
-      url: 'api/auth/loggedin',
-      success: (userInfo) => {
-        if(userInfo){
-          this.setState({userName: userInfo.name});
-          this.setState({userImg: userInfo.img});
-          this.setState({isLoggedIn:!this.state.isLoggedIn});
-        }
-      },
-      error: (err) => {
-        throw new Error(err);
-      }
-    });
-  }
-  _logout() {
-    $.ajax({
-      method: 'GET',
-      url: 'api/auth/logout',
-      success: (data) => {
-        this.setState({isLoggedIn:!this.state.isLoggedIn});
-      },
-      error: (err) => {
-        throw new Error(err);
-      }
-    });
-  }
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchAdmin  : () => dispatch(_getAdmin()),
+    fetchPlants : () => dispatch(_getPlants()),
+    fetchPlant  : (plant) => dispatch(_fetchPlant(plant))
+  };
+}
+
+function mapStateToProps(state) {
+  const user = state.get('user');
+  if( state.get('loggedIn') ){
+    return {
+      plants: state.getIn([ 'plants', 'plants' ]),
+      admin: state.getIn([ 'admin', 'admin' ]),
+      loggedIn: state.get('loggedIn'),
+      username: user.get('name'),
+      image: user.get('image'),
+      firstName: user.get('firstName'),
+      lastName: user.get('lastName'),
+      plantFacts: state.getIn(['plantFacts', 'plantFacts']),
+      id: user.get('id')
+    };
+  }
+
+  if (state.get('plantFacts') ) {
+    return {
+      plantFacts: state.getIn(['plantFacts', 'plantFacts']),
+      plants: state.getIn([ 'plants', 'plants' ]),
+      admin: state.getIn([ 'admin', 'admin' ]),
+      loggedIn: state.get('loggedIn'),
+      id: state.get('id')
+    }
+  }
+
+  return {
+    plants: state.getIn([ 'plants', 'plants' ]),
+    admin: state.getIn([ 'admin', 'admin' ]),
+    loggedIn: state.get('loggedIn'),
+    id: state.get('id')
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

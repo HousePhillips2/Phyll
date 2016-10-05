@@ -19,7 +19,8 @@ function renderSuggestion(suggestion) {
   );
 }
 
-let counter=0;
+let count=0;
+let currentSelected = 'swag';
 
 export default class SearchBar extends React.Component {
   constructor(props) {
@@ -28,30 +29,32 @@ export default class SearchBar extends React.Component {
       placeholder: '',
       value: '',
       suggestions: [],
-      plants: this.props.plants
     };
   }
+
   componentDidMount() {
     this._timer = setInterval(() => this.counter(), 800);
   }
- 
+
   componentWillUnmount() {
     clearInterval(this._timer);
   }
 
   counter() {
-    counter = counter>100? 0: counter+1;
-    let name = this.props.plants[counter].plant_name;
-    this.setState({placeholder:`Find out your plant: ${name}`});
+    count = count > 100? 0: count + 1;
+    if (this.props.plants.toArray) {
+      let name = this.props.plants.toArray()[count].plant_name;
+      this.setState({placeholder:`Learn about your ${name}`});
+    }
   }
-  
+
   getSuggestions(value) {
     const escapedValue = escapeRegexCharacters(value.trim().toLowerCase());
     if (escapedValue === '') {
       return [];
     }
     const regex = new RegExp(escapedValue);
-    const plants = this.props.plants;
+    const plants = this.props.plants.toArray();
 
     let filteredPlants = plants.filter(plant => regex.test(plant.plant_name.toLowerCase()));
     return filteredPlants.slice(0, 8);
@@ -79,20 +82,26 @@ export default class SearchBar extends React.Component {
     if (autosuggest !== null) {
       this.input = autosuggest.input;
       let selected = autosuggest.input.value;
-      this.props.fetchPlant(selected);
+      if (selected.length > 4 && selected !== currentSelected) {
+        currentSelected = selected;
+        this.props.fetchPlant(selected);
+        // this.setState({
+        //   value: ''
+        // });
+      }
     }
   }
 
 
   render() {
+
     const { value, suggestions, placeholder} = this.state;
     const inputProps = {
       placeholder,
       value,
       onChange: this.onChange.bind(this)
     };
-
-
+    
     return (
       <Autosuggest
         suggestions={suggestions}
@@ -102,6 +111,8 @@ export default class SearchBar extends React.Component {
         renderSuggestion={renderSuggestion}
         inputProps={inputProps}
         ref={this.storeInputReference.bind(this)} />
+        
     );
   }
 }
+

@@ -33,7 +33,7 @@ deviceSchema.statics.record = (req, res) => { // req should be {status: {DEVICE 
         long: req.location.long,
         zipcode: req.location.zipcode
       },
-    }, 
+    },
     $push: {
       date        : new Date(),
       moisture    : req.moisture,
@@ -129,7 +129,26 @@ deviceSchema.statics.discard = (req, res) => { // query with {deviceId: "id to b
   } else {
     res.status(300).send('No take backs if you go through with this.');
   }
-}
+};
+
+// Return a list of all devices and their data for preceding 14 hours
+deviceSchema.statics.dailyData = (req, res) => { // no arguments
+  Device.find({}, {
+    deviceId    : 1,
+    deviceLoc   : 1,
+    date        : {$slice: -168},
+    moisture    : {$slice: -168},
+    ph          : {$slice: -1},
+    light       : {$slice: -168},
+    humidity    : {$slice: -1},
+    temperature : {$slice: -1},
+    pressure    : {$slice: -1},
+    noise       : {$slice: -1}
+  }, (err, devices)=> {
+    if (err) res.status(500).send(err);
+    else res.status(200).send(devices);
+  });
+};
 
 const Device = mongoose.model('Device', deviceSchema);
 module.exports = Device;

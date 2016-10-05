@@ -1,16 +1,17 @@
-import { Map, List, fromJS } from 'immutable';
+export function fetchUser() {
 
-export function setUsers(users){
+}
+
+export function setUser(user) {
   return {
-    type:  'SET_USERS',
-    users: users
+    type: 'SET_USER',
+    user
   };
 }
 
-export function addUser(user){
+export function removeUser(){
   return {
-    type:  'ADD_USER',
-    users: List(user)
+    type:  'REMOVE_USER'
   };
 }
 
@@ -19,4 +20,25 @@ export function addPlant(plant){
     type: 'ADD_PLANT',
     plant
   };
-};
+}
+
+export function setPlantFacts(plantFacts) {
+  return {
+    type: 'FETCH_PLANT',
+    plantFacts
+  };
+}
+
+export function setPlants(plants) {
+  return {
+    type: 'SET_PLANTS',
+    plants
+  };
+}
+
+export function setAdmin(admin) {
+  return {
+    type: 'SET_ADMIN',
+    admin
+  };
+}

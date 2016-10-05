@@ -12,7 +12,7 @@ export default class Axis extends React.Component {
                    .scale(this.scale)
                    .orient(props.orientation);
 
-    this.update_d3(props);
+    this.update_d3.call(this, props);
   }
 
   update_d3(props) {
@@ -41,7 +41,7 @@ export default class Axis extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    this._update_d3(newProps);
+    this.update_d3(newProps);
   }
 
   componentDidUpdate() {
@@ -56,6 +56,7 @@ export default class Axis extends React.Component {
     let node = ReactDOM.findDOMNode(this);
 
     d3.select(node).call(this.axis);
+
   }
 
   render() {
