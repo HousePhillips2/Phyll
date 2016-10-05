@@ -8,7 +8,8 @@ const CronJob = require('cron').CronJob;
   // convert data into daily summary (daily low, average, and high readings)
     //send summary to deployed server in order to capture data in Postgres DB
 
-const daily = new CronJob('*/10 * * * * 1-7',
+// replace next-line specs with this -- '*/10 * * * * 1-7' -- for test-running every 10 secs
+const daily = new CronJob('30 21 * * 1-7',
   function() {
 
     // --------------------------- query MongoDB --------------------------
