@@ -28,7 +28,8 @@ export default class AddPlant extends React.Component {
           <div className="content-top column container-fluid">
             <div className="card">
               <div className="card-header">
-                <span onClick={this.clickHandler} className="text-danger"><i className="fa fa-times-circle-o" aria-hidden="true"></i></span> Add { plantFacts.plant_name } to your collection
+                <span className="pull-xs-left">Add { plantFacts.plant_name } to your collection</span>
+                <span onClick={this.clickHandler} className="close-pane pull-xs-right"><i className="fa fa-times-circle-o" aria-hidden="true"></i></span>
               </div>
               <div className="card-block container-fluid">
                 <PlantForm { ...this.props } />

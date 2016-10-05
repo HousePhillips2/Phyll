@@ -14,6 +14,7 @@ import Map          from '../components/map/index.jsx';
 import Chatbot      from '../components/chatbot.jsx';
 import AddPlant     from '../components/addPlant.jsx';
 import DashBar      from '../components/dashboardBar.jsx';
+
 import { _getAdmin, _getPlants, _fetchPlant } from '../redux/actions/helpers';
 import { toggleNewPlant } from '../redux/actions/actions';
 
