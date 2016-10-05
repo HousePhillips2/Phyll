@@ -14,7 +14,7 @@ const cronUpdate = (req, res) => {
         let deviceId = incomingData[device].deviceId,
             phyll = incomingData[device];
 
-        db.any('SELECT api.users_plants.id, api.users_plants.health, api.users_plants.health_light, api.users_plants.health_moisture, api.plants.water_s, api.plants.light_s FROM api.users_plants, api.plants WHERE api.users_plants.plant_type = api.plants.id AND api.users_plants.device_id = $1', [deviceId]).then(plant => {
+        db.any('SELECT api.user_plant.id, api.user_plant.health, api.user_plant.health_light, api.user_plant.health_moisture, api.plants.water_s, api.plants.light_s FROM api.user_plant, api.plants WHERE api.user_plant.plant_id = api.plants.id AND api.user_plant.device_id = $1', [deviceId]).then(plant => {
 
             console.log('VOT!', plant[0].health_light, plant[0].health_moisture);
             // PLANT object contains:(1) id (2) health (3) light-health (4) water-health (5) water_s (6)light_s
@@ -110,8 +110,8 @@ const cronUpdate = (req, res) => {
             waterHealthFlag = 0;
         }
 
-        // ------ update state of each plant in users_plants table
-          db.none('UPDATE api.users_plants SET health = health-$5, health_light = health_light-$7, health_moisture = health_moisture-$6, body_api = ARRAY[$2], daily_moisture = ARRAY[$3], daily_light = ARRAY[$4] WHERE device_id=$1',
+        // ------ update state of each plant in user_plant table
+          db.none('UPDATE api.user_plant SET health = health-$5, health_light = health_light-$7, health_moisture = health_moisture-$6, mood_api = ARRAY[$2], daily_moisture = ARRAY[$3], daily_light = ARRAY[$4] WHERE device_id=$1',
             [deviceId, condition, moisture, light, healthFlag, waterHealthFlag, lightHealthFlag])
           .catch((error) => {
             console.log(error,'insert plant form data error');
