@@ -55,13 +55,12 @@ app.use('/api', apiApp);
 app.use('/io', ioApp);
 
 // VENDOR sub-app
-// app.use('/vendor', vendorApp);
+app.use('/vendor', vendorApp);
 
 // POSTGRES sub-app
 app.use('/postgres', postgresApp);
 
 
-app.use('/vendor', vendorApp);
 
 
 //auth0 call back route
