@@ -12,11 +12,8 @@ const retrieveMood = (input, callback) => {
                 //(3) .health         --> INTEGER between 1-5 representing the general plant health (hearts)
                 //(4) .health_light   --> INTEGER between 1-10 representing the sunlight health of the plant
                 //(5) .health_moisture -> INTEGER between 1-10 representing the moisture health of the plant
-
             console.log(healthState);
             callback(healthState[0].mood_api);
-
-        })
     .catch(function (error) {
         console.log(error);
     };

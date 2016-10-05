@@ -12,7 +12,7 @@ const {query_plant} = require ('../../models/plants.js');
 
 module.exports=function (io) {
   io.on('connection', (socket) => { //connect with socket.io
-    let plantbot = botsFamily.plantbot; 
+    let plantbot = botsFamily.plantbot;
     let userId;
     socket.on('userId', (id) => {
       userId = id;
@@ -46,7 +46,7 @@ module.exports=function (io) {
           console.log(error, 'plant bot connection error');
       });
 
-      request.end();        
+      request.end();
     });
   });
 };
