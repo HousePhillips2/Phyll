@@ -35,9 +35,7 @@ class Home extends React.Component {
 
     let dashboard = this.props.loggedIn ? <DashBar id="dashBar" { ...this.props }/> : <div id="dashBar"></div>;
     let plantFacts = this.props.plantFacts ? <PlantFacts id="dashBar" { ...this.props }/> : <div id="plantFacts"></div>;
-    if( this.props.plantFacts ){
-      console.log('look ma!');
-    }
+
     return(
 
       <div className="container-fluid">

@@ -18,7 +18,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.props.id, 'this.props in App');
     return(
       <div className="container-fluid">
         <Navigation { ...this.props }/>
