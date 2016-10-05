@@ -1,6 +1,5 @@
 bower_components
 node_modules
-vendor
 .env
 logs
 *.log
