@@ -42,3 +42,9 @@ export function setAdmin(admin) {
     admin
   };
 }
+
+export function toggleNewPlant() {
+  return {
+    type: 'TOGGLE_NEW_PLANT',
+  };
+}
