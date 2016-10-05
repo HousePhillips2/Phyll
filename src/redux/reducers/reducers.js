@@ -7,7 +7,7 @@ import {
   setPlants, 
   setAdmin, 
   setPlantFacts, 
-  setNewPlant 
+  toggleNewPlant 
 } from '../containers/app';
 
 
@@ -27,7 +27,7 @@ export default function reducer(state = INITIAL_STATE, action){
     case 'FETCH_PLANT':
       return setPlantFacts(state, action.plantFacts)
     case 'TOGGLE_NEW_PLANT':
-      return toggleNewPlant(state, action.newPlant)
+      return toggleNewPlant(state)
     default:
       return state;
   }

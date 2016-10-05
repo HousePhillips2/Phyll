@@ -4,14 +4,11 @@ import AddPlant   from './addPlant.jsx';
 export default class PlantFacts extends React.Component {
   constructor(props) {
     super(props);
-    this.state={
-      newPlant: false
-    };
     this.clickHandler = this.clickHandler.bind(this);
   }
 
   clickHandler() {
-    this.setState({newPlant: true});
+    this.props.toggleNewPlant();
   }
 
   render() {
@@ -20,7 +17,7 @@ export default class PlantFacts extends React.Component {
     
     if (this.props.plantFacts.length > 0) {
 
-      if (this.state.newPlant) {
+      if (this.props.newPlant) {
 
         return (
 

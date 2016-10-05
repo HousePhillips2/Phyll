@@ -15,7 +15,7 @@ export default class PlantForm extends React.Component {
     // TODO: add login handling to link when navbar has been refactored
 
     if(this.props.loggedIn){
-      submitButton = <button className="btn btn-success" type="submit" id="addImage" style={{marginTop: .25 + 'rem'}}>Add Me!</button>;
+      submitButton = <button className="btn btn-success" type="submit" style={{marginTop: .25 + 'rem'}}>Add Me!</button>;
     } else {
       submitButton = <div className="alert alert-danger" role="alert"><strong>Yikes!</strong> Looks like you need to <a href="#" className="alert-link">log in</a>.</div>;
     }
@@ -96,8 +96,9 @@ export default class PlantForm extends React.Component {
   _handleSubmit(e){
     e.preventDefault();
     //console.log(this.props.id, this.props.plantFacts[0].id, this._deviceId.value, this._plantNickName.value, this._telephone.value)
-    this._addPlant(this.props.id, this.props.plantFacts[0].id, this._deviceId.value, this._plantNickName.value, this._telephone.value)
+    this._addPlant(this.props.id, this.props.plantFacts[0].id, this._deviceId.value, this._plantNickName.value, this._telephone.value);
     //here to redirect user
+    this.props.toggleNewPlant(); // Closes new plant form
   }
   _addPlant(user_id, plant_id, device_id, plant_nickname, phone){
     $.ajax({

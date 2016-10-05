@@ -10,6 +10,11 @@ import PlantForm from '../components/plantForm.jsx';
 export default class AddPlant extends React.Component {
   constructor() {
     super();
+    this.clickHandler = this.clickHandler.bind(this);
+  }
+
+  clickHandler() {
+    this.props.toggleNewPlant();
   }
 
   render() {
@@ -23,7 +28,7 @@ export default class AddPlant extends React.Component {
           <div className="content-top column container-fluid">
             <div className="card">
               <div className="card-header">
-                Add { plantFacts.plant_name } to your collection
+                <span onClick={this.clickHandler} className="text-danger"><i className="fa fa-times-circle-o" aria-hidden="true"></i></span> Add { plantFacts.plant_name } to your collection
               </div>
               <div className="card-block container-fluid">
                 <PlantForm { ...this.props } />

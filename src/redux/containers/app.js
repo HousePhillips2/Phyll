@@ -60,6 +60,6 @@ export function setPlantFacts(state, plantFacts) {
   );
 }
 
-export function toggleNewPlant(state, newPlant) {
-  return state.set('newPlant', !newPlant);
+export function toggleNewPlant(state) {
+  return state.set('newPlant', !state.get('newPlant'));
 }
