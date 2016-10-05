@@ -4,23 +4,27 @@ const db = require('../../models/pg-config');
 
 //-----------------------------------THIS FILE IS FOR UPDATING DAILY PHYL/DEVICE DATA -----------------------
 
-<<<<<<< 4b9c2e7f4a70f059630027e80e7f445b1c04886d
-const retrieveMood = (input) => {
-=======
 const retrieveMood = (input, callback) => {
->>>>>>> [UPDATE] added retrieve_mood helper function
+        // input param should be or include the user.id
+        const loggedInUser = input;
 
-        // modify the 'something' below
-        const loggedInUser = "b9d56128-8a35-4822-b744-2f57372fe44a";
+        db.any('SELECT api.user_plant.plant_nickname, api.user_plant.mood_api, api.user_plant.health, api.user_plant.health_light, api.user_plant.health_moisture FROM api.user_plant, api.users WHERE api.user_plant.user_id = api.users.id AND api.user_plant.user_id = $1', [loggedInUser]).then(healthState => {
 
-        db.any('SELECT api.user_plant.plant_nickname, api.user_plant.mood_api FROM api.user_plant, api.users WHERE api.user_plant.user_id = api.users.id AND api.user_plant.user_id = $1', [loggedInUser]).then(healthState => {
-                console.log(healthState);
+            // gives you access to 'healthstate' -> an array, which contains at index [0] an object with the following properties:
+                //(1) .plant_nickname --> STRING nickname of plant
+                //(2) .mood_api       --> ARRAY containing a string representing the current condition of the plant
+                //(3) .health         --> INTEGER between 1-5 representing the general plant health (hearts)
+                //(4) .health_light   --> INTEGER between 1-10 representing the sunlight health of the plant
+                //(5) .health_moisture -> INTEGER between 1-10 representing the moisture health of the plant
+
+            console.log(healthState);
+            callback(healthState[0].mood_api);
         })
     .catch(function (error) {
         console.log(error);
-    })
-    }
+    });
+  };
 
-retrieveMood();
+
 
 module.exports = retrieveMood;
