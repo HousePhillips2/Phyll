@@ -8,9 +8,10 @@ export default class PlantForm extends React.Component {
   render() {
     const user = this.props.user;
     const plant = this.props.plantFacts[0];
+    //console.log(plant.id,'plant');
     let submitButton;
 
-    console.log(this.props)
+    //console.log(this.props)
     // TODO: add login handling to link when navbar has been refactored
 
     if(this.props.loggedIn){
@@ -94,7 +95,8 @@ export default class PlantForm extends React.Component {
 
   _handleSubmit(e){
     e.preventDefault();
-    this._addPlant(this.props.user.id, this.props.plantId, this._deviceId.value, this._plantNickName.value, this._telephone.value)
+    //console.log(this.props.id, this.props.plantFacts[0].id, this._deviceId.value, this._plantNickName.value, this._telephone.value)
+    this._addPlant(this.props.id, this.props.plantFacts[0].id, this._deviceId.value, this._plantNickName.value, this._telephone.value)
     //here to redirect user
   }
   _addPlant(user_id, plant_id, device_id, plant_nickname, phone){
@@ -105,7 +107,7 @@ export default class PlantForm extends React.Component {
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({user_id, plant_id, device_id, plant_nickname, phone}),
       success: (data) => {
-        //console.log('success')
+        //need to redirect!
       }
     });
   }
