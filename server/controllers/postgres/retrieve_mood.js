@@ -14,10 +14,11 @@ const retrieveMood = (input, callback) => {
 
             console.log(healthState);
             callback(healthState[0].mood_api);
+
         })
     .catch(function (error) {
         console.log(error);
-    });
+    };
   };
 
 
