@@ -23,15 +23,15 @@ module.exports=function (io) {
       const request = plantbot.textRequest(msg);
       request.on('response', function(response) {
         //diverse plantbot to handle client's questions based on plant status (i.e. fine, thirsty, drowning, burnt, dark)
-        //if client's plant is fine, use api.ai response
-        //if not, use our own response (i.e. I dont get enough water or sun ....)
-        //console.log(healthstatus,'healthstatus')
         if(response.result.action!=='getStatus'){
           io.emit('plant',response.result.fulfillment.speech);
         } else {
           retrieveMood(userId, (healthstatus) =>{
-            console.log(healthstatus,'inside mood');
-            io.emit('plant', healthstatus[0]);
+            if(healthstatus){
+              io.emit('plant', healthstatus[0]);
+            } else {
+              io.emit('plant', 'My friend Phyll is missing... Do you want to have one?');
+            }
           });   
         }
       });
