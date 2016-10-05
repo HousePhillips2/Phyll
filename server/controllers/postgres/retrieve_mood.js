@@ -4,6 +4,7 @@ const db = require('../../models/pg-config');
 
 //-----------------------------------THIS FILE IS FOR UPDATING DAILY PHYL/DEVICE DATA -----------------------
 
+
 const retrieveMood = (input, callback) => {
         // input param should be or include the user.id
         const loggedInUser = input;
