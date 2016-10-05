@@ -29,15 +29,17 @@ app.use(passport.session());
 
 const apiApp      = require('./controllers/api/api');
 const ioApp       = require('./controllers/io/io');
-const vendorApp   = require('./controllers/vendor/vendor');
 
-// **********************************    MOVE ME! **********************************
-// const plantsLibrary = require('./controllers/api/plants-library');
+// const vendorApp   = require('./controllers/vendor/vendor');
+const postgresApp = require('./controllers/postgres/postgres');
+
 
 // MOUNT middleware
 app.use(express.static('dist'));
 app.use(bodyParser.json());
-
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 // API sub-app
 app.use('/api', apiApp);
@@ -46,7 +48,10 @@ app.use('/api', apiApp);
 app.use('/io', ioApp);
 
 // VENDOR sub-app
-app.use('/vendor', vendorApp);
+// app.use('/vendor', vendorApp);
+
+// POSTGRES sub-app
+app.use('/postgres', postgresApp);
 
 //auth0 call back route
 app.get('/callback',
@@ -58,10 +63,6 @@ app.get('/callback',
     res.redirect("/");
   }
 );
-
-// **********************************    MOVE ME! **********************************
-// app.use('/plantsLibrary', plantsLibrary);
-
 
 // static files route
 app.get('/', (req, res) => res.redirect('/index.html'));

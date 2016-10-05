@@ -9,6 +9,7 @@
   "scripts": {
     "postinstall": "gulp webpack",
     "start": "node server/server.js",
+    "cron": "node server/cron.js",
     "test": "gulp mochaSuite",
     "mocha": "mocha --compilers js:babel-core/register --require ./test/mocha/test-helper.js  --recursive",
     "wp-dev": "webpack-dev-server --progress --inline"
@@ -44,6 +45,7 @@
     "char-rnn": "^1.0.1",
     "classnames": "^2.2.5",
     "clean-webpack-plugin": "^0.1.10",
+    "cron": "^1.1.0",
     "css-loader": "^0.25.0",
     "d3": "^3.5.17",
     "d3-array": "^0.8.1",
@@ -112,6 +114,7 @@
     "redux": "^3.6.0",
     "redux-promise-middleware": "^4.0.0",
     "redux-thunk": "^2.1.0",
+    "request": "^2.75.0",
     "sass-loader": "^4.0.2",
     "should": "^11.1.0",
     "sinon": "^1.17.5",
