@@ -9,6 +9,7 @@
   "scripts": {
     "postinstall": "gulp webpack",
     "start": "node server/server.js",
+    "cron": "node server/cron.js",
     "test": "gulp mochaSuite",
     "mocha": "mocha --compilers js:babel-core/register --require ./test/mocha/test-helper.js  --recursive",
     "wp-dev": "webpack-dev-server --progress --inline"
