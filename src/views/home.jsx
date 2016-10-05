@@ -46,7 +46,7 @@ class Home extends React.Component {
             null
           }
           </div>
-        </div>  
+        </div>
         { plantFacts }
         { dashboard }
         <div className="row content">
@@ -119,7 +119,9 @@ function mapStateToProps(state) {
       username: user.get('name'),
       image: user.get('image'),
       firstName: user.get('firstName'),
-      lastName: user.get('lastName')
+      lastName: user.get('lastName'),
+      plantFacts: state.getIn(['plantFacts', 'plantFacts']),
+
     };
   }
 

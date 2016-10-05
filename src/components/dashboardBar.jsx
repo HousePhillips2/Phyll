@@ -22,7 +22,7 @@ export default class DashBar extends React.Component {
               <div className="media">
                 <a className="media-left"><img className="img-rounded" style={ {width: '125px', height: '125px'} } src={ this.props.image }/></a>
                 <div className="media-body">
-                  <Charts />
+                  <Charts { ...this.props } />
                 </div>
               </div>
             </div>
@@ -33,3 +33,4 @@ export default class DashBar extends React.Component {
     );
   }
 }
+
