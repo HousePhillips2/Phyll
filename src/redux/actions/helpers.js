@@ -54,7 +54,7 @@ export function _getAdmin() {
   };
 }
 
-export function _loadRawData(url, id) {
+export function _loadRawData(id) {
   return dispatch => {
     $.ajax({
       method: 'POST',
@@ -63,10 +63,6 @@ export function _loadRawData(url, id) {
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({"deviceId": id}),
       success: data => {
-
-        this.setState({ date: data.date.slice(-288) });
-        this.setState({ light: data.light.slice(-288) });
-        this.setState({ moisture: data.moisture.slice(-288) });
 
         let rawData = data.date.slice(-288).map( (val, i) => {
           try {

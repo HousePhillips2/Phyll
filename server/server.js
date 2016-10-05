@@ -28,7 +28,7 @@ app.use(passport.session());
 //////////////    SERVER MODULES    //////////////
 const apiApp      = require('./controllers/api/api');
 const ioApp       = require('./controllers/io/io');
-const vendorApp   = require('./controllers/vendor/vendor');
+// const vendorApp   = require('./controllers/vendor/vendor');
 
 
 
@@ -50,7 +50,7 @@ app.use('/api', apiApp);
 app.use('/io', ioApp);
 
 // VENDOR sub-app
-app.use('/vendor', vendorApp);
+// app.use('/vendor', vendorApp);
 
 // POSTGRES sub-app
 app.use('/postgres', postgresApp);

@@ -1,22 +1,18 @@
 import React from 'react';
 import d3 from 'd3';
 import $ from 'jquery';
+
 import LineChart from './line-chart/index.jsx';
+import _loadRawData from '../redux/actions/helpers';
 
 
-export default class Charts extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      moisture: [ ],
-      rawData:  [ ],
-      dates:    [ ],
-      light:    [ ]
-    };
+class Charts extends React.Component {
+  constructor(props) {
+    super(props);
   }
 
   componentWillMount() {
-    this._loadRawData('http://localhost:8888/io/retrieve', '02:a3:a4:2a:1f:95');
+    this._loadRawData('02:a3:a4:2a:1f:95');
   }
 
   render() {
@@ -48,3 +44,17 @@ export default class Charts extends React.Component {
     }
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    plantData: state.getIn()
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    rawData: () => dispatch(_loadRawData())
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Charts);
