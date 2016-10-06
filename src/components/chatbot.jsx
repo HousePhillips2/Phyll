@@ -13,13 +13,15 @@ export default class Chatbot extends React.Component {
     };
   }
   render() {
-
+    console.log(this.state.messages, 'messages in render');
     if(this.props.loggedIn && this.props.user_plants.length > 0){
 
       this._getUserId();//send user id to chatbot in server before initial the conversation
       let messages = this.state.messages;
-      messages.push(['Hello ' + this.props.firstName + '. What a wonderful day it is.', 0, 'list-group-item list-group-item-success']);
-      //console.log(messages,'update this.state.');
+      let welcome = ['Hello ' + this.props.firstName + '. What a wonderful day it is.', 0, 'list-group-item list-group-item-success'];
+      if(this.state.lastMessage===null){
+        messages.push(welcome);
+      }
       // TODO: Add login handler on "login to talk to plant" field. Might be better as "add device to..."
       // TODO: Add "you don't have any plants" prompt state after login with no plants
       // TODO: "Talk to [plant name]"
@@ -95,8 +97,6 @@ export default class Chatbot extends React.Component {
 
   _notifyServer(e){
     e.preventDefault();
-    //console.log(this._msg.value,'type in value');
-    //console.log(this.props.id, 'this.props id in chat bot');
     socket.emit('client', this._msg.value.toLowerCase());
     this._onUpdate(this._msg.value);
     $('#input').val('');
@@ -106,6 +106,7 @@ export default class Chatbot extends React.Component {
       }
     });
   }
+
   _onUpdate (msg) {
     let newMessages = this.state.messages;
     let counter = this.state.counter + 1;
