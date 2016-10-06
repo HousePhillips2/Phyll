@@ -1,15 +1,15 @@
 ///////////////    NODE MODULES    ///////////////
-                      require('dotenv').config();
-const express       = require('express');
-const app           = express();
-const http          = require('http').Server(app);
-const bodyParser    = require('body-parser');
-const Auth0Strategy = require('passport-auth0');
-const passport      = require('passport');
-const session       = require ('express-session');
-const io            = require('socket.io').listen(http);
-                      require('./controllers/vendor/chatbot.js')(io);
-const XMLHttpRequest= require("xmlhttprequest").XMLHttpRequest;
+                        require('dotenv').config();
+const express         = require('express');
+const app             = express();
+const http            = require('http').Server(app);
+const bodyParser      = require('body-parser');
+const Auth0Strategy   = require('passport-auth0');
+const passport        = require('passport');
+const session         = require ('express-session');
+const io              = require('socket.io').listen(http);
+const XMLHttpRequest  = require("xmlhttprequest").XMLHttpRequest;
+                        require('./controllers/vendor/chatbot.js')(io);
 
 // MOUNT middleware
 app.use(express.static('dist'));

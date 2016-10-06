@@ -11,14 +11,13 @@ export default class Users extends React.Component {
     if (this.props.garden) {
 
       const users = this.props.garden.toArray();
-      console.log(users)
 
       return(
 
         <div className={ 'user-cards' }>
           { users.map( user => {
             return (
-              <UserCard key={user.id} user= { user }/>
+              <UserCard key={user.id} user= { user }/> 
             );
           }) }
         </div>
