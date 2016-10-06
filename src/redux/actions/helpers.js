@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { setUser, setPlants, setAdmin, setPlantFacts, setUserPlantData } from './actions';
+import { setUser, setPlants, setGarden, setPlantFacts, setUserPlantData } from './actions';
 import React from 'react';
 import PlantFacts from '../../components/plantFacts.jsx';
 
@@ -43,13 +43,13 @@ export function _fetchPlant(plant){
   };
 }
 
-export function _getAdmin() {
+export function _getGarden() {
   return dispatch => {
     $.ajax({
       method: 'GET',
-      url: 'api/admin'
-    }).then(admin => {
-      dispatch(setAdmin(admin));
+      url: 'api/garden'
+    }).then(garden => {
+      dispatch(setGarden(garden));
     });
   };
 }

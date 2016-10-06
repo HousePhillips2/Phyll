@@ -8,9 +8,10 @@ export default class Users extends React.Component {
 
   render() {
 
-    if (this.props.admin) {
+    if (this.props.garden) {
 
-      const users = this.props.admin.toArray();
+      const users = this.props.garden.toArray();
+      console.log(users)
 
       return(
 
