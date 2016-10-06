@@ -4,7 +4,7 @@ import d3 from 'd3';
 
 export default class Axis extends React.Component {
   constructor(props) {
-    super();
+    super(props);
 
     this.scale = d3.scale.linear();
 
@@ -17,8 +17,8 @@ export default class Axis extends React.Component {
 
   update_d3(props) {
 
-    let dates = props.data.map(d => d.date);
-    let light = props.data.map(d => d.light);
+    // let dates = props.data.map(d => d.date);
+    // let light = props.data.map(d => d.light);
 
     if( !props.date ){
       this.scale

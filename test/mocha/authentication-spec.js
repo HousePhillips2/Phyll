@@ -16,8 +16,8 @@ describe('authentication', () => {
 
     // DEFINE user
     const user = {
-      firstName: 'Eric',
-      lastName: 'Churchill'
+      first_name: 'Eric',
+      last_name: 'Churchill'
     };
 
     // DISPATCH Action to store
@@ -26,11 +26,14 @@ describe('authentication', () => {
     expect(store.getState()).to.equal(Map({
       loggedIn: true,
       user: Map({
-        firstName: 'Eric',
-        lastName: 'Churchill',
-        facebookId: undefined,
-        email: undefined,
-        image: undefined
+        firstName:    'Eric',
+        lastName:     'Churchill',
+        name:         undefined,
+        id:           undefined,
+        timezone:     undefined,
+        email:        undefined,
+        image:        undefined,
+        plant:        undefined
       })
     }));
   });
@@ -38,8 +41,8 @@ describe('authentication', () => {
   it('forbids user login when one is already signed in', () => {
 
     const user = {
-      firstName: 'Phoebe',
-      lastName: 'Maio'
+      first_name: 'Phoebe',
+      last_name: 'Maio'
     };
 
     store.dispatch(setUser(user));
@@ -47,11 +50,14 @@ describe('authentication', () => {
     expect(store.getState()).to.equal(Map({
       loggedIn: true,
       user: Map({
-        firstName: 'Eric',
-        lastName: 'Churchill',
-        facebookId: undefined,
-        email: undefined,
-        image: undefined
+        firstName:    'Eric',
+        lastName:     'Churchill',
+        name:         undefined,
+        id:           undefined,
+        timezone:     undefined,
+        email:        undefined,
+        image:        undefined,
+        plant:        undefined
       })
     }));
   });

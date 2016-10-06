@@ -6,7 +6,7 @@ export const INITIAL_STATE = Map({
   newPlant: false
 });
 
-export const setUser = (state, user) => {
+export function setUser(state, user) {
 
   // IF user already loggedIn
   if( state.get('loggedIn', true)){
@@ -24,7 +24,9 @@ export const setUser = (state, user) => {
                 email: user.email,
                 image: user.img,
                 timezone: user.timezone,
-                plant: user.plant
+                plant: Map({
+                  data: undefined
+                })
               }));
 };
 
@@ -42,7 +44,7 @@ export function setPlants(state, plants) {
   );
 }
 
-export function setAdmin(state, admin){
+export function setAdmin(state, admin) {
   return state.set('admin',
     Map({
       fetched: true,
@@ -63,3 +65,7 @@ export function setPlantFacts(state, plantFacts) {
 export function toggleNewPlant(state) {
   return state.set('newPlant', !state.get('newPlant'));
 }
+
+export function setUserPlantData(state, userPlantData) {
+  return state.setIn(['user', 'plant', 'data'], userPlantData);
+};
