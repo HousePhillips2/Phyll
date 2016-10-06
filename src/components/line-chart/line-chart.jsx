@@ -6,11 +6,12 @@ import Axis from './axis.jsx';
 
 export default class LineChart extends React.Component {
   constructor(props) {
-    super();
+    super(props);
 
     this.lineChart = d3.svg.line;
-
-    this.update_d3(props);
+    if( props.plantData ){
+      this.update_d3(props);
+    }
   }
 
   componentWillReceiveProps(newProps) {
@@ -18,10 +19,11 @@ export default class LineChart extends React.Component {
   }
 
   update_d3(props) {
-    let dates = props.data.map(d => d.date);
-    let light = props.data.map(d => d.light);
 
-    // console.log('props.data:', props.data);
+    let dates = props.plantData.map(d => d.date);
+    let data  = props.plantData.map(d => d[props.dataType]);
+
+    console.log('data:', data);
 
     let x = d3.time.scale()
               .range([ props.fullWidth - props.axisMargin, props.axisMargin ])
@@ -29,24 +31,28 @@ export default class LineChart extends React.Component {
 
     let y = d3.scale.linear()
               .range([ props.height - props.bottomMargin, props.topMargin ])
-              .domain([ d3.min(light) - 10, d3.max(light) + 10 ]);
+              .domain([ d3.min(data) - 10, d3.max(data) + 10 ]);
 
     let line = this.lineChart()
                    .x(d => x(d.date))
-                   .y(d => y(d.light));
+                   .y(d => y(d[props.dataType]));
 
-    this.lineChart = line(props.data);
+    this.lineChart = line(props.plantData);
   }
 
   render() {
-    let translate = `translate(0, ${ this.props.topMargin })`;
 
-    return(
-      <g className="line-chart">
+    let translate = `translate(0, ${ this.props.topMargin })`;
+    if( this.props.plantData ){
+      return(
+        <g className="line-chart">
         <path stroke="blue" fill="none" strokeWidth="2" d={ this.lineChart }></path>
-        <Axis orientation="left" { ...this.props } />
+        {/* <Axis orientation="left" { ...this.props } /> */}
         <Axis orientation="bottom" date={ true } { ...this.props } />
-      </g>
-    );
+        </g>
+      );
+    } else {
+      return null;
+    }
   }
 }

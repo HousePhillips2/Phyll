@@ -4,7 +4,7 @@ import $ from 'jquery';
 import { connect } from 'react-redux';
 
 import LineChart from './line-chart/index.jsx';
-import _loadRawData from '../redux/actions/helpers';
+import { _loadRawData } from '../redux/actions/helpers';
 
 
 class Charts extends React.Component {
@@ -13,7 +13,7 @@ class Charts extends React.Component {
   }
 
   componentWillMount() {
-    this._loadRawData('02:a3:a4:2a:1f:95');
+    this.props.rawData('02:a3:a4:2a:1f:95');
   }
 
   render() {
@@ -28,16 +28,20 @@ class Charts extends React.Component {
       fullWidth: 500
     };
 
-    if( !this.state.rawData.length ){
+    const props = Object.assign({}, this.props, params);
+
+    if( !this.props.plantData ){
       return(
         <h2>Loading data into application...</h2>
       );
     } else {
-      const props = Object.assign({}, this.props, params);
       return(
         <div>
           <svg width={ params.fullWidth } height={ params.height }>
-            <LineChart { ...props } />
+            <LineChart dataType="moisture" { ...props }/>
+          </svg>
+          <svg width={ params.fullWidth } height={ params.height }>
+            <LineChart dataType="light" { ...props }/>
           </svg>
         </div>
       );
@@ -47,13 +51,13 @@ class Charts extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    plantData: state.getIn()
+    plantData: state.getIn([ 'user', 'plant', 'data' ])
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    rawData: () => dispatch(_loadRawData())
+    rawData: (deviceId) => dispatch(_loadRawData(deviceId))
   };
 }
 
