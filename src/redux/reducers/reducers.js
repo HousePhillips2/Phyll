@@ -25,9 +25,9 @@ export default function reducer(state = INITIAL_STATE, action){
     case 'SET_ADMIN':
       return setAdmin(state, action.admin);
     case 'FETCH_PLANT':
-      return setPlantFacts(state, action.plantFacts)
+      return setPlantFacts(state, action.plantFacts);
     case 'TOGGLE_NEW_PLANT':
-      return toggleNewPlant(state)
+      return toggleNewPlant(state);
     default:
       return state;
   }
