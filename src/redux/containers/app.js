@@ -24,7 +24,9 @@ export function setUser(state, user) {
                 email: user.email,
                 image: user.img,
                 timezone: user.timezone,
-                plant: user.plant
+                plant: Map({
+                  data: undefined
+                })
               }));
 };
 
@@ -64,6 +66,6 @@ export function toggleNewPlant(state) {
   return state.set('newPlant', !state.get('newPlant'));
 }
 
-export function setAdminData(state, adminData) {
-  return state.setIn(['admin', 'data'], adminData);
+export function setUserPlantData(state, userPlantData) {
+  return state.setIn(['user', 'plant', 'data'], userPlantData);
 };

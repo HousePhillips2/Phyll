@@ -8,7 +8,8 @@ import {
   setAdmin,
   setAdminData,
   setPlantFacts,
-  toggleNewPlant
+  toggleNewPlant,
+  setUserPlantData
 } from '../containers/app';
 
 
@@ -17,8 +18,8 @@ export default function reducer(state = INITIAL_STATE, action){
   switch( action.type ){
     case 'SET_USER':
       return setUser(state, action.user);
-    case 'SET_USER_DATA':
-      return setUserData(state, action.userData);
+    case 'SET_USER_PLANT_DATA':
+      return setUserPlantData(state, action.userPlantData);
     case 'REMOVE_USER':
       return removeUser(state);
     case 'SET_PLANTS':

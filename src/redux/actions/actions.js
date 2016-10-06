@@ -5,10 +5,10 @@ export function setAdminData(adminData) {
   };
 }
 
-export function setUserData(userData) {
+export function setUserPlantData(userPlantData) {
   return {
-    type: 'SET_USER_DATA',
-    userData
+    type: 'SET_USER_PLANT_DATA',
+    userPlantData
   };
 }
 
