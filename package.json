@@ -134,7 +134,8 @@
     "webpack-merge": "^0.14.1",
     "webpack-stream": "^3.2.0",
     "webpack-validator": "^2.2.7",
-    "xml2js": "^0.4.17"
+    "xml2js": "^0.4.17",
+    "xmlhttprequest": "^1.8.0"
   },
   "eslintConfig": {
     "parserOptions": {

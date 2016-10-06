@@ -9,6 +9,7 @@ const passport      = require('passport');
 const session       = require ('express-session');
 const io            = require('socket.io').listen(http);
                       require('./controllers/vendor/chatbot.js')(io);
+const XMLHttpRequest= require("xmlhttprequest").XMLHttpRequest;
 
 // MOUNT middleware
 app.use(express.static('dist'));
@@ -61,6 +62,17 @@ app.get('/callback',
     res.redirect("/");
   }
 );
+
+//json XML url
+// const x = new XMLHttpRequest();
+// x.open("GET", "https://medium.com/feed/team-phyll", true);
+// x.onreadystatechange = function () {
+//   if (x.readyState == 4 && x.status == 200) {
+//     const doc = x.responseText;
+//     console.log(doc,'xml doc');
+//   }
+// };
+// x.send(null);
 
 // static files route
 app.get('/', (req, res) => res.redirect('/index.html'));
