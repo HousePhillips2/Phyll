@@ -9,42 +9,40 @@ const botsFamily  = {
 const retrieveMood = require('../postgres/retrieve_mood.js');
 const {query_plant} = require ('../../models/plants.js');
 
-let plantbot;
-let userId;
+
 module.exports=function (io) {
-  io.on('connection', function(socket){
-    //once socket.io is connected 
-    plantbot = botsFamily.plantbot;
-    socket.on('userId', function(id){
+  io.on('connection', (socket) => { //connect with socket.io
+    let plantbot = botsFamily.plantbot; 
+    let userId;
+    socket.on('userId', (id) => {
       userId = id;
     });
-    socket.on('client', function(msg){
-      const request = plantbot.textRequest(msg);
-      request.on('response', function(response) {
-        //diverse plantbot to handle client's questions based on question types (i.e. small talks, plant health, plant name)
-        if(response.result.action === 'getStatus'){
-          retrieveMood(userId, (healthstatus) =>{
+    socket.on('client', (msg) => {
+      const request = plantbot.textRequest(msg);//connect with api.ai server: natural language process tool
+      request.on('response', (response) => {
+        //diverse plantbot to handle client's questions based on question types (i.e. small talks, plant health, plant identity)
+        if(response.result.action === 'getStatus'){ //when client asks about plant's health
+          retrieveMood(userId, (healthstatus) =>{ //query database to retrieve plant health info
             if(healthstatus){
               io.emit('plant', healthstatus[0]);
             } else {
-              io.emit('plant', 'My friend Phyll is missing... Do you want to have one?');
+              io.emit('plant', 'My friend Phyll is missing... It helps keep track of my health. Do you want to have one?');
             }
           });
-        } else if (response.result.action === 'getName'){
-          query_plant(userId, (plant) => {
-            //console.log(plant, 'plant');
+        } else if (response.result.action === 'getName'){ //when client asks about plant's identity
+          query_plant(userId, (plant) => { //query database to retrieve plant identity
             if(plant){
               io.emit('plant',`I am your ${plant[0].plant_nickname}`);
             } else {
               io.emit('plant', 'I will be your plantbot. But It seems like you haven\'t add your plant in our site. Could you like to add one?');
             }
           });
-        } else {
-          io.emit('plant',response.result.fulfillment.speech);
+        } else { //when client is in small talk with plant
+          io.emit('plant',response.result.fulfillment.speech); //defalt response from pre-build smalltalk domain
         }
       });
 
-      request.on('error', function(error) {
+      request.on('error', (error) => {
           console.log(error, 'plant bot connection error');
       });
 
