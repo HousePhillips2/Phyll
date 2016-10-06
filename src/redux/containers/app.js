@@ -44,11 +44,11 @@ export function setPlants(state, plants) {
   );
 }
 
-export function setAdmin(state, admin) {
-  return state.set('admin',
+export function setGarden(state, garden) {
+  return state.set('garden',
     Map({
       fetched: true,
-      admin: List(admin)
+      garden: List(garden)
     })
   );
 }

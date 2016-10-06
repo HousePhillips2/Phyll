@@ -15,7 +15,7 @@ import Chatbot      from '../components/chatbot.jsx';
 import AddPlant     from '../components/addPlant.jsx';
 import DashBar      from '../components/dashboardBar.jsx';
 
-import { _getAdmin, _getPlants, _fetchPlant } from '../redux/actions/helpers';
+import { _getGarden, _getPlants, _fetchPlant } from '../redux/actions/helpers';
 import { toggleNewPlant } from '../redux/actions/actions';
 
 require('../stylesheets/main.scss');
@@ -28,7 +28,7 @@ class Home extends React.Component {
 
   componentWillMount() {
     this.props.fetchPlants();
-    this.props.fetchAdmin();
+    this.props.fetchGarden();
   }
 
   // TODO: The initial div needs to go in refactor as it is duplicated in nav
@@ -105,7 +105,7 @@ class Home extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchAdmin    : () => dispatch(_getAdmin()),
+    fetchGarden    : () => dispatch(_getGarden()),
     fetchPlants   : () => dispatch(_getPlants()),
     toggleNewPlant: () => dispatch(toggleNewPlant()),
     fetchPlant    : (plant) => dispatch(_fetchPlant(plant))
@@ -117,7 +117,7 @@ function mapStateToProps(state) {
   if( state.get('loggedIn') ){
     return {
       plants: state.getIn([ 'plants', 'plants' ]),
-      admin: state.getIn([ 'admin', 'admin' ]),
+      admin: state.getIn([ 'garden', 'garden' ]),
       loggedIn: state.get('loggedIn'),
       username: user.get('name'),
       image: user.get('image'),
@@ -133,7 +133,7 @@ function mapStateToProps(state) {
     return {
       plantFacts: state.getIn(['plantFacts', 'plantFacts']),
       plants: state.getIn([ 'plants', 'plants' ]),
-      admin: state.getIn([ 'admin', 'admin' ]),
+      garden: state.getIn([ 'garden', 'garden' ]),
       loggedIn: state.get('loggedIn'),
       id: state.get('id'),
       newPlant: state.get('newPlant')
@@ -142,7 +142,7 @@ function mapStateToProps(state) {
 
   return {
     plants: state.getIn([ 'plants', 'plants' ]),
-    admin: state.getIn([ 'admin', 'admin' ]),
+    garden: state.getIn([ 'garden', 'garden' ]),
     loggedIn: state.get('loggedIn'),
     id: state.get('id'),
     newPlant: state.get('newPlant')
