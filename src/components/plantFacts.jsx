@@ -44,7 +44,7 @@ export default class PlantFacts extends React.Component {
                 <div className="card-block graff">
                   <div className="media">
                     <span className="media-left">
-                      <img style={{width: 175 + 'px'}} className="img-rounded" src={plantFacts.img}/>
+                      <img style={{width: 175 + 'px'}} className="img-rounded" src={plantFacts.plant_img}/>
                       <p>
                         <button type="button" onClick={this.clickHandler} className="btn btn-block btn-success media-left media-bottom" style={{marginTop: .5 + 'rem'}}>Add Plant</button>
                       </p>

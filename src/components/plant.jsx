@@ -18,7 +18,7 @@ export default class Plant extends React.Component {
             <div>
               <label>{plant.plant_name}</label>
               <div>
-                  <img style={{width: '200px', height: '200px'}} className='img-circle' src={plant.img} />
+                  <img style={{width: '200px', height: '200px'}} className='img-circle' src={plant.plant_img} />
               </div>
               <br/>
               <label>light: {plant.light_s}</label>

@@ -36,7 +36,7 @@ export default class View extends React.Component {
         <ModalContainer onClose={this.handleClose.bind(this)}>
           <ModalDialog onClose={this.handleClose.bind(this)}>
             <h1>{this.props.plant.plant_name}</h1>
-            <img style={{width: '300px', height: '300px'}} className='img-circle' src={this.props.plant.img}/>
+            <img style={{width: '300px', height: '300px'}} className='img-circle' src={this.props.plant.plant_img}/>
             <p>family: {this.props.plant.plant_family}</p>
             <p>watering: {this.props.plant.water_s}</p>
             <p class="bg-primary">soil: {this.props.plant.soil_s}</p>

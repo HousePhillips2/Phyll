@@ -5,7 +5,7 @@ const db      = require('../../models/pg-config.js');
 
 router.get('/', function(req, res) {
 
-  db.any("select * from api.user_plant, api.users where api.users.id = api.user_plant.user_id")
+  db.any("SELECT p.user_id, p.plant_id, p.device_id, p.plant_nickname, p.health, p.health_light, p.health_moisture, u.nickname, u.img, u.first_name, u.last_name, s.plant_img, s.plant_name FROM api.user_plant p INNER JOIN api.users u on p.user_id = u.id INNER JOIN api.plants s on p.plant_id = s.id")
   .then(function (data) {
     res.send(data); //return user info with user's plant info
   })
