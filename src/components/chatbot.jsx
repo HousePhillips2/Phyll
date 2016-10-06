@@ -13,7 +13,9 @@ export default class Chatbot extends React.Component {
     };
   }
   render() {
-    if(this.props.loggedIn){
+
+    if(this.props.loggedIn && this.props.user_plants.length > 0){
+
       this._getUserId();//send user id to chatbot in server before initial the conversation
       let messages = this.state.messages;
       messages.push(['Hello ' + this.props.firstName + '. What a wonderful day it is.', 0, 'list-group-item list-group-item-success']);
@@ -52,6 +54,23 @@ export default class Chatbot extends React.Component {
         </div>
 
       );
+    } else if (this.props.loggedIn) {
+
+      return (
+
+        <div className="card">
+          <div className="card-header">
+            Talk to a houseplant
+          </div>
+          <div className="card-body">
+            <div id='messages' className="list-group list-group-flush">
+              <span className="list-group-item list-group-item-action list-group-item-danger">Oh no! You don't have any plants yet.</span>
+            </div>
+          </div>
+        </div>
+
+      );
+
     } else {
 
       return (

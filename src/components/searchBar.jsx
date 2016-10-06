@@ -124,7 +124,7 @@ export default class SearchBar extends React.Component {
         getSuggestionValue={getSuggestionValue}
         renderSuggestion={renderSuggestion}
         inputProps={inputProps}
-        focusInputOnSuggestionClick={true}
+        focusInputOnSuggestionClick={false}
         ref={this.storeInputReference.bind(this)} />
         
     );

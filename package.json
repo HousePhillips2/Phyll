@@ -147,7 +147,12 @@
     },
     "rules": {
       "semi": 2
-    }
+    },
+    "plugins": [
+      "react"
+    ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint-plugin-react": "^6.3.0"
+  }
 }

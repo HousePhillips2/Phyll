@@ -14,11 +14,12 @@ export function setUser(state, user) {
     return state;
   }
   // UPDATE state
-  return state.set('loggedIn', true)
+  return state.set('loggedIn', true) // Can we move this device data into the actual plant array, plant by plant, and not call it plant?
               .set('user', Map({
                 firstName: user.first_name,
                 lastName: user.last_name,
                 name: user.nickname,
+                user_plants: user.plant,
                 id: user.id,
                 fb_id: user.fb_id,
                 email: user.email,
@@ -44,11 +45,11 @@ export function setPlants(state, plants) {
   );
 }
 
-export function setAdmin(state, admin) {
-  return state.set('admin',
+export function setGarden(state, garden) {
+  return state.set('garden',
     Map({
       fetched: true,
-      admin: List(admin)
+      garden: List(garden)
     })
   );
 }

@@ -46,10 +46,10 @@ export function setPlants(plants) {
   };
 }
 
-export function setAdmin(admin) {
+export function setGarden(garden) {
   return {
-    type: 'SET_ADMIN',
-    admin
+    type: 'SET_GARDEN',
+    garden
   };
 }
 
