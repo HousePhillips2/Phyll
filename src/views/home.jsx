@@ -118,6 +118,7 @@ function mapStateToProps(state) {
     return {
       plants: state.getIn([ 'plants', 'plants' ]),
       garden: state.getIn([ 'garden', 'garden' ]),
+      user_plants: user.get('user_plants'),
       loggedIn: state.get('loggedIn'),
       username: user.get('name'),
       image: user.get('image'),
