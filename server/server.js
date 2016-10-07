@@ -8,9 +8,16 @@ const Auth0Strategy   = require('passport-auth0');
 const passport        = require('passport');
 const session         = require('express-session');
 const io              = require('socket.io').listen(http);
-const XMLHttpRequest  = require('xmlhttprequest').XMLHttpRequest;
+// const XMLHttpRequest  = require('xmlhttprequest').XMLHttpRequest;
 const path            = require('path');
                         require('./controllers/vendor/chatbot.js')(io);
+
+//////////////    SERVER MODULES    //////////////
+const apiApp      = require('./controllers/api/api');
+const ioApp       = require('./controllers/io/io');
+const vendorApp   = require('./controllers/vendor/vendor');
+const postgresApp = require('./controllers/postgres/postgres');
+
 
 // MOUNT middleware
 app.use(express.static('dist'));
@@ -25,14 +32,6 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-//////////////    SERVER MODULES    //////////////
-const apiApp      = require('./controllers/api/api');
-const ioApp       = require('./controllers/io/io');
-const vendorApp   = require('./controllers/vendor/vendor');
-const postgresApp = require('./controllers/postgres/postgres');
-
 
 // MOUNT middleware
 app.use(express.static('dist'));
@@ -61,19 +60,7 @@ app.get('/callback',
       throw new Error('user null');
     }
     res.redirect("/");
-  }
-);
-
-//json XML url
-// const x = new XMLHttpRequest();
-// x.open("GET", "https://medium.com/feed/team-phyll", true);
-// x.onreadystatechange = function () {
-//   if (x.readyState == 4 && x.status == 200) {
-//     const doc = x.responseText;
-//     console.log(doc,'xml doc');
-//   }
-// };
-// x.send(null);
+  });
 
 // static files route
 app.get('/', (req, res) => res.redirect('/index.html'));
