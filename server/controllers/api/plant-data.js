@@ -2,7 +2,7 @@
 const express = require('express');
 const router  = express.Router();
 //const db      = require('../../models/pg-config.js');
-const {store_plant, update_plant} = require('../../models/plants.js');
+const {store_plant, update_plant, delete_plant} = require('../../models/plants.js');
 
 router.get('/', (req, res) => {
 
@@ -25,15 +25,15 @@ router.post('/', (req, res) => {
 
 router.post('/update', (req, res) => {
   let plant_obj = req.body;
-  console.log(plant_obj, 'plant_obj in update route');
+  //console.log(plant_obj, 'plant_obj in update route');
   update_plant(plant_obj); //update plant data into db
   res.send('success');
 });
 
 router.post('/delete', (req, res) => {
   let plant_obj = req.body;
-  console.log(plant_obj, 'plant_obj in delete route');
-  //update_plant(plant_obj); //delete seleted plant in db
+  //console.log(plant_obj, 'plant_obj in delete route');
+  delete_plant(plant_obj); //delete seleted plant in db
   res.send('success');
 });
 
