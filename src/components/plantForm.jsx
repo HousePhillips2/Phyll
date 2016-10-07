@@ -8,7 +8,7 @@ export default class PlantForm extends React.Component {
   render() {
     const user = this.props.user;
     const plant = this.props.plantFacts[0];
-    //console.log(plant.id,'plant');
+    console.log(plant,'selected plant in form');
     let submitButton;
 
     //console.log(this.props)
@@ -88,17 +88,17 @@ export default class PlantForm extends React.Component {
   _handleSubmit(e){
     e.preventDefault();
     //console.log(this.props.id, this.props.plantFacts[0].id, this._deviceId.value, this._plantNickName.value, this._telephone.value)
-    this._addPlant(this.props.id, this.props.plantFacts[0].id, this._deviceId.value, this._plantNickName.value, this._telephone.value);
+    this._addPlant(this.props.id, this.props.plantFacts[0].id, this.props.plantFacts[0].plant_img, this._deviceId.value, this._plantNickName.value, this._telephone.value);
     //here to redirect user
     this.props.toggleNewPlant(); // Closes new plant form
   }
-  _addPlant(user_id, plant_id, device_id, plant_nickname, phone){
+  _addPlant(user_id, plant_id, plant_img, device_id, plant_nickname, phone){
     $.ajax({
       method: 'POST',
       url: '/api/plantData',
       json: true,
       contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify({user_id, plant_id, device_id, plant_nickname, phone}),
+      data: JSON.stringify({user_id, plant_id, plant_img, device_id, plant_nickname, phone}),
       success: (data) => {
         this.props.fetchPlants();
       }
