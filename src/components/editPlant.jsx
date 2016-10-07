@@ -6,16 +6,10 @@ export default class EditPlant extends React.Component {
     super(props);
   }
   render() {
-    //const user = this.props.user;
-    //const plant = this.props.plantFacts[0];
-    //console.log(plant.id,'plant');
-    let submitButton;
-    console.log(this.props.id, 'this.props.userId inside EditPlant');
-    console.log(this.props.garden.toArray(), 'this.props.garden inside EditPlant');
+
     let user_id = this.props.id;
     let garden  = this.props.garden.toArray();
     let user_plant = garden.filter((obj) => {return obj.user_id === user_id })[0];
-    console.log(user_plant, 'find the user_plant');
 
     return (
 
@@ -67,7 +61,7 @@ export default class EditPlant extends React.Component {
         </form>
         <div className="form-group row">
             <div className="column">
-              <button className="btn btn-success" onClick='delete' style={{marginTop: .25 + 'rem'}}>Delete</button>
+              <button className="btn btn-success" onClick={this._handleDelete.bind(this)} style={{marginTop: .25 + 'rem'}}>Delete</button>
             </div>
         </div>
       </div>
@@ -83,16 +77,13 @@ export default class EditPlant extends React.Component {
     this._updatePlant(this.props.id, this._deviceId.value, this._plantNickName.value, this._telephone.value);
     // //here to redirect user
     this.props.toggleNewPlant(); // Closes new plant form
-    console.log(this._deviceId.value, this._plantNickName.value, this._telephone.value," in update")
+    //console.log(this._deviceId.value, this._plantNickName.value, this._telephone.value," in update")
   }
 
-  // _handleOnChang(e){
-  //   e.preventDefault();
-  //   console.log(e.target.value);
-  //   // console.log(this._plantNickName,'nickname')
-
-
-  // }
+  _handleDelete(e){
+    e.preventDefault();
+    console.log(this.props.id, this._deviceId.value, this._plantNickName.value, this._telephone.value)
+  }
 
   _updatePlant(user_id, device_id, plant_nickname, phone){
     $.ajax({
