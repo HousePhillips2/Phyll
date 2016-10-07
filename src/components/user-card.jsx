@@ -10,6 +10,7 @@ export default class userCard extends React.Component {
   }
 
   render() {
+
     const user = this.props.user;
     const health = user.health || 3;
     const heartFull = <i className="fa fw fa-heart"></i>;

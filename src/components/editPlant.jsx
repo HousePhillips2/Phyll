@@ -13,8 +13,6 @@ export default class EditPlant extends React.Component {
     if(!user_plant){
       return (<div></div>)
     } else {
-
-      console.log(this.props,'garden');
       return (
 
         <div style={{margin:10 + 'px'}}>
