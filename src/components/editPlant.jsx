@@ -82,7 +82,7 @@ export default class EditPlant extends React.Component {
 
   _handleDelete(e){
     e.preventDefault();
-    console.log(this.props.id, this._deviceId.value, this._plantNickName.value, this._telephone.value)
+    this._deletePlant(this._device_id.value);
   }
 
   _updatePlant(user_id, device_id, plant_nickname, phone){
@@ -92,6 +92,19 @@ export default class EditPlant extends React.Component {
       json: true,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({user_id, device_id, plant_nickname, phone}),
+      success: (data) => {
+        //need to redirect!
+      }
+    });
+  }
+
+    _deletePlant(device_id){
+    $.ajax({
+      method: 'POST',
+      url: '/api/plantData/delete',
+      json: true,
+      contentType: 'application/json; charset=utf-8',
+      data: JSON.stringify({device_id}),
       success: (data) => {
         //need to redirect!
       }
