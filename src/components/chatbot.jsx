@@ -13,9 +13,8 @@ export default class Chatbot extends React.Component {
     };
   }
   render() {
-    //console.log(this.state.messages, 'messages in render');
-    //console.log(this.props.user_plants.length,'plants length');
-    if(this.props.loggedIn && (this.props.user_plants.length>0)){
+
+    if(this.props.loggedIn){
 
       this._getUserId();//send user id to chatbot in server before initial the conversation
       let messages = this.state.messages;
@@ -57,23 +56,7 @@ export default class Chatbot extends React.Component {
         </div>
 
       );
-    } else if (this.props.loggedIn) {
-
-      return (
-
-        <div className="card">
-          <div className="card-header">
-            Talk to a houseplant
-          </div>
-          <div className="card-body">
-            <div id='messages' className="list-group list-group-flush">
-              <span className="list-group-item list-group-item-action list-group-item-danger">Oh no! You don't have any plants yet.</span>
-            </div>
-          </div>
-        </div>
-
-      );
-
+  
     } else {
 
       return (
@@ -115,3 +98,21 @@ export default class Chatbot extends React.Component {
     this.setState({messages: newMessages.slice(0,7), counter: counter, lastMessage: msg[0]});
   }
 }
+
+
+// } else if (this.props.loggedIn) {
+
+//       return (
+
+//         <div className="card">
+//           <div className="card-header">
+//             Talk to a houseplant
+//           </div>
+//           <div className="card-body">
+//             <div id='messages' className="list-group list-group-flush">
+//               <span className="list-group-item list-group-item-action list-group-item-danger">Oh no! You don't have any plants yet.</span>
+//             </div>
+//           </div>
+//         </div>
+
+//       );

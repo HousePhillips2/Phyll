@@ -14,6 +14,7 @@ import Map          from '../components/map/index.jsx';
 import Chatbot      from '../components/chatbot.jsx';
 import AddPlant     from '../components/addPlant.jsx';
 import DashBar      from '../components/dashboardBar.jsx';
+import Footer       from '../components/footer.jsx';
 
 import { _getGarden, _getPlants, _fetchPlant } from '../redux/actions/helpers';
 import { toggleNewPlant } from '../redux/actions/actions';
@@ -85,18 +86,7 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
-        {/*<div className="footer row">
-          <div className="content-top column container-fluid">
-            <div className="card">
-              <div className="card-header">
-                Footer Widget (TODO: whatevs)
-              </div>
-              <div className="card-block">
-                Content
-              </div>
-            </div>
-          </div>
-        </div>*/}
+        <Footer { ...this.props} />
       </div>
 
     );
