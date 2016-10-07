@@ -8,7 +8,7 @@ export default class PlantForm extends React.Component {
   render() {
     const user = this.props.user;
     const plant = this.props.plantFacts[0];
-    console.log(plant,'selected plant in form');
+    //console.log(plant,'selected plant in form');
     let submitButton;
 
     //console.log(this.props)
