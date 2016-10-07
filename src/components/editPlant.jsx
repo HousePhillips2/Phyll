@@ -10,64 +10,68 @@ export default class EditPlant extends React.Component {
     let user_id = this.props.id;
     let garden  = this.props.garden.toArray();
     let user_plant = garden.filter((obj) => {return obj.user_id === user_id })[0];
+    if(!user_plant){
+      return (<div></div>)
+    } else {
 
-    return (
+      console.log(this.props,'garden');
+      return (
 
-      <div style={{margin:10 + 'px'}}>
+        <div style={{margin:10 + 'px'}}>
 
-        <form id="editPlant" onSubmit={this._handleUpdate.bind(this)}>
+          <form id="editPlant" onSubmit={this._handleUpdate.bind(this)}>
 
-          <div className="form-group row">
-            <div className="column">
-              <div className="input-group">
-                <span className="input-group-addon">Species</span>
-                <input type="text" className="form-control" id="common_name" value ={user_plant.plant_name} ref={input => this._plantName = input} readOnly/>
-              </div>
-            </div>
-          </div>
-
-          <div className="form-group row">
-            <div className="column">
-              <div className="input-group">
-                <span className="input-group-addon">Nickname</span>
-                <input type="text" className="form-control" id="nickname" defaultValue={user_plant.plant_nickname} ref={input => this._plantNickName = input}/>
-              </div>
-            </div>
-          </div>
-
-          <div className="form-group row">
-            <div className="column">
+            <div className="form-group row">
+              <div className="column">
                 <div className="input-group">
-                <span className="input-group-addon">Device ID</span>
-                <input type="text" className="form-control" id="deviceId" defaultValue={user_plant.device_id} ref={input => this._deviceId = input}/>
+                  <span className="input-group-addon">Species</span>
+                  <input type="text" className="form-control" id="common_name" ref={input => this._plantName = input} readOnly/>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="form-group row">
-            <div className="column">
+            <div className="form-group row">
+              <div className="column">
                 <div className="input-group">
-                <span className="input-group-addon">Telephone</span>
-                <input type="text" className="form-control" id="deviceId" defaultValue={user_plant.phone_number} ref={input => this._telephone = input}/>
+                  <span className="input-group-addon">Nickname</span>
+                  <input type="text" className="form-control" id="nickname" defaultValue={user_plant.plant_nickname} ref={input => this._plantNickName = input}/>
+                </div>
               </div>
             </div>
-          </div>
 
+            <div className="form-group row">
+              <div className="column">
+                  <div className="input-group">
+                  <span className="input-group-addon">Device ID</span>
+                  <input type="text" className="form-control" id="deviceId" defaultValue={user_plant.device_id} ref={input => this._deviceId = input}/>
+                </div>
+              </div>
+            </div>
+
+            <div className="form-group row">
+              <div className="column">
+                  <div className="input-group">
+                  <span className="input-group-addon">Telephone</span>
+                  <input type="text" className="form-control" id="deviceId" defaultValue={user_plant.phone_number} ref={input => this._telephone = input}/>
+                </div>
+              </div>
+            </div>
+
+            <div className="form-group row">
+              <div className="column">
+                <button className="btn btn-success" type="submit" style={{marginTop: .25 + 'rem'}}>Update</button>
+              </div>
+            </div>
+          </form>
           <div className="form-group row">
-            <div className="column">
-              <button className="btn btn-success" type="submit" style={{marginTop: .25 + 'rem'}}>Update</button>
-            </div>
+              <div className="column">
+                <button className="btn btn-success" onClick={this._handleDelete.bind(this)} style={{marginTop: .25 + 'rem'}}>Delete</button>
+              </div>
           </div>
-        </form>
-        <div className="form-group row">
-            <div className="column">
-              <button className="btn btn-success" onClick={this._handleDelete.bind(this)} style={{marginTop: .25 + 'rem'}}>Delete</button>
-            </div>
         </div>
-      </div>
-
-
-    );
+      );
+    }
+      
   }
 
 
