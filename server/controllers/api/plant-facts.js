@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
 });
 
 router.get('/', (req,res) => {
-  db.any('select plant_name from api.plants')
+  db.any('select plant_name, plant_img from api.plants')
   .then((data) =>{
     res.send(data);
   })
