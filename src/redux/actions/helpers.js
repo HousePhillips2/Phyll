@@ -82,3 +82,17 @@ export function _loadRawData(id) {
     });
   };
 };
+
+export function _fetch_User_Plants(user){
+  return dispatch => {
+    $.ajax({
+      method: 'POST',
+      url: 'postgres/defineNewUrl',
+      json: true,
+      contentType: 'application/json; charset=utf-8',
+      data: JSON.stringify({ user: user }),
+    }).then(plantFacts => {
+      dispatch(setPlantFacts(plantFacts));
+    });
+  };
+}

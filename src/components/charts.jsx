@@ -11,9 +11,12 @@ class Charts extends React.Component {
   constructor(props) {
     super(props);
   }
+// '02:a3:a4:2a:1f:95' < -- Eric's device ID for testing.
+// '02:a3:a0:f4:dd:34' < -- Sergey's device ID for testing
 
   componentWillMount() {
-    this.props.rawData('02:a3:a4:2a:1f:95');
+    console.log('vottt', this.props);
+    this.props.rawData('02:a3:a0:f4:dd:34');
   }
 
   render() {
@@ -51,7 +54,9 @@ class Charts extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    plantData: state.getIn([ 'user', 'plant', 'data' ])
+    plantData: state.getIn([ 'user', 'plant', 'data' ]),
+    userID   : state.getIn([ 'user', 'id'])
+    // device: state.
   };
 }
 

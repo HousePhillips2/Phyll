@@ -14,4 +14,5 @@ router.post('/daily', (req, res) => {
 
 });
 
+
 module.exports = router;

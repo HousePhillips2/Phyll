@@ -18,7 +18,7 @@ const retrieveMood = (input, callback) => {
         })
     .catch(function (error) {
         console.log(error);
-    };
+    });
   };
 
 

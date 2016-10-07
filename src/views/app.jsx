@@ -1,4 +1,4 @@
-import React, { Component }  rom 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Home from './home.jsx';
