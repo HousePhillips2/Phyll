@@ -1,8 +1,7 @@
 import React from 'react';
 
 export default class Plant extends React.Component {
-
-    constructor() {
+  constructor() {
     super();
   }
 
@@ -18,14 +17,14 @@ export default class Plant extends React.Component {
       <div>
         {/*<label>{plant.plant_name}</label>*/}
         <div>
-            <a href="#">
-              <img 
-                style={{width: '150px', height: '150px'}} 
-                className='img-rounded' src={plant.plant_img} 
-                data-toggle="tooltip" data-placement="top" 
-                title={plant.plant_name}
-              />
-            </a>
+          <a href="#">
+            <img 
+              style={{width: '150px', height: '150px'}} 
+              className='img-rounded' src={plant.plant_img} 
+              data-toggle="tooltip" data-placement="top" 
+              title={plant.plant_name}
+            />
+          </a>
         </div>
       </div>
     );

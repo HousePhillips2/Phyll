@@ -5,8 +5,6 @@ import SearchBar from '../components/searchBar.jsx';
 import PlantFacts from '../components/plantFacts.jsx';
 import PlantForm from '../components/plantForm.jsx';
 
-
-
 export default class AddPlant extends React.Component {
   constructor() {
     super();
