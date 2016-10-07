@@ -84,14 +84,6 @@ export default class PlantForm extends React.Component {
     );
   }
 
-  /*
-  Table: api.users
-    id:
-    user_name:
-    email:
-    oauth_key:
-    img:
-  */
 
   _handleSubmit(e){
     e.preventDefault();
