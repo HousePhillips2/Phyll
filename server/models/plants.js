@@ -12,8 +12,8 @@ function query_plant(userId, callback){
 }
 
 function store_plant(plant_obj){
-  db.none('insert into api.user_plant (user_id, plant_id, device_id, plant_nickname) values($1, $2, $3, $4)', 
-    [plant_obj.user_id, plant_obj.plant_id, plant_obj.device_id, plant_obj.plant_nickname])
+  db.none('insert into api.user_plant (user_id, plant_id, plant_img, device_id, plant_nickname) values($1, $2, $3, $4, $5)', 
+    [plant_obj.user_id, plant_obj.plant_id, plant_obj.plant_img, plant_obj.device_id, plant_obj.plant_nickname])
   .catch((error) => {
     console.log(error,'insert plant form data error');
   });
