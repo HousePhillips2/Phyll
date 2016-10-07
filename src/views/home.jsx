@@ -35,7 +35,7 @@ class Home extends React.Component {
 
   render() {
 
-    let dashboard = this.props.loggedIn ? <DashBar id="dashBar" { ...this.props }/> : <div id="dashBar"></div>;
+    let dashboard = this.props.loggedIn ? <DashBar id="plantFacts" { ...this.props }/> : <div id="dashBar"></div>;
     let plantFacts = this.props.plantFacts ? <PlantFacts id="dashBar" { ...this.props }/> : <div id="plantFacts"></div>;
 
     return(
@@ -79,7 +79,7 @@ class Home extends React.Component {
                   Conservatory
                 </div>
                 <div className="card-block">
-                  <p className="card-text">There are so many wonderful plants for your home. Discover the perfect one.</p>
+                  <p className="card-text">There are so many wonderful plants for your home. <Link to="/conservatory">Discover the perfect one</Link>.</p>
                 </div>
               </div>
             </div>

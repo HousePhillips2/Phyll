@@ -6,9 +6,10 @@ const http            = require('http').Server(app);
 const bodyParser      = require('body-parser');
 const Auth0Strategy   = require('passport-auth0');
 const passport        = require('passport');
-const session         = require ('express-session');
+const session         = require('express-session');
 const io              = require('socket.io').listen(http);
-const XMLHttpRequest  = require("xmlhttprequest").XMLHttpRequest;
+const XMLHttpRequest  = require('xmlhttprequest').XMLHttpRequest;
+const path            = require('path');
                         require('./controllers/vendor/chatbot.js')(io);
 
 // MOUNT middleware
@@ -79,6 +80,9 @@ app.get('/', (req, res) => res.redirect('/index.html'));
 app.use('/static', express.static('node_modules'));
 app.use('/images', express.static('src/images'));
 app.use('/glyphs', express.static('src/glyphs'));
+
+// wildcard route for dynamic react routing
+app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../dist/index.html')));
 
 
 let port = process.env.PORT || 8080;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 
 import Login from '../components/login.jsx';
 import Logout from '../components/logout.jsx';
@@ -8,13 +9,18 @@ import UserInfo from '../components/userInfo.jsx';
 export default class Navigation extends Component {
   constructor(props) {
     super(props);
+    this.clickHandler = this.clickHandler.bind(this);
+  }
+
+  clickHandler() {
+    browserHistory.push('/');
   }
 
   render() {
     return(
       <div className="row header">
         <div className="column">
-          <span className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
+          <span onClick={this.clickHandler} className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
           <div className="pull-xs-right" style={{marginTop: 1 + 'rem'}}>
             <div className="btn-group graff">
               <span className="btn btn-secondary dropdown-toggle dropdown-menu-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{border: 'none'}}>
