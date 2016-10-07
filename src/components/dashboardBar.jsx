@@ -13,6 +13,7 @@ export default class DashBar extends React.Component {
   render() {
 
     return(
+      
       <div id="dashBar" className="row content">
         <div className="content-top column container-fluid">
           <div className="card">

@@ -14,15 +14,8 @@ import Plant        from '../components/plant.jsx';
 import Modal        from '../components/plantModal.jsx';
 import Footer       from '../components/footer.jsx';
 
-// import AddPlant     from '../components/addPlant.jsx';
-// import Map          from '../components/map/index.jsx';
-// import Chatbot      from '../components/chatbot.jsx';
-// import DashBar      from '../components/dashboardBar.jsx';
-
 import { _getGarden, _getPlants, _fetchPlant } from '../redux/actions/helpers';
 import { toggleNewPlant } from '../redux/actions/actions';
-
-require('../stylesheets/main.scss');
 
 $(() => $('[data-toggle="tooltip"]').tooltip());
 
@@ -34,8 +27,6 @@ class Conservatory extends React.Component {
   componentWillMount() {
     this.props.fetchPlants();
   }
-
-  // TODO: The initial div needs to go in refactor as it is duplicated in nav
 
   render() {
     let plantFacts = this.props.plantFacts ? <PlantFacts id="plantFacts" { ...this.props }/> : <div id="plantFacts"></div>;

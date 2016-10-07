@@ -10,74 +10,79 @@ import PlantFacts   from '../components/plantFacts.jsx';
 import UserInfo     from '../components/userInfo.jsx';
 import Login        from '../components/login.jsx';
 import Logout       from '../components/logout.jsx';
-import Map          from '../components/map/index.jsx';
-import Chatbot      from '../components/chatbot.jsx';
-import AddPlant     from '../components/addPlant.jsx';
-import DashBar      from '../components/dashboardBar.jsx';
+import Plant        from '../components/plant.jsx';
+import Modal        from '../components/plantModal.jsx';
 import Footer       from '../components/footer.jsx';
 
-import { _getGarden, _getPlants, _fetchPlant } from '../redux/actions/helpers';
+import { _getPlants, _fetchPlant } from '../redux/actions/helpers';
 import { toggleNewPlant } from '../redux/actions/actions';
 
-class Home extends React.Component {
+class Conservatory extends React.Component {
   constructor(props) {
     super(props);
   }
 
   componentWillMount() {
     this.props.fetchPlants();
-    this.props.fetchGarden();
   }
 
   // TODO: The initial div needs to go in refactor as it is duplicated in nav
 
   render() {
-
-    let dashboard = this.props.loggedIn ? <DashBar id="plantFacts" { ...this.props }/> : <div id="dashBar"></div>;
-    let plantFacts = this.props.plantFacts ? <PlantFacts id="dashBar" { ...this.props }/> : <div id="plantFacts"></div>;
+    let plantFacts = this.props.plantFacts ? <PlantFacts id="plantFacts" { ...this.props }/> : <div id="plantFacts"></div>;
+    let plants;
+    if (this.props.plants) {
+      plants = this.props.plants.toArray();
+    }
 
     return(
 
       <div className="container-fluid">
         <div className="row search">
           <div className="column jumbotron jumbo-bg">
-          { this.props.plants ?
-            <Search className="form-control form-control-lg" { ...this.props } /> :
-            null
-          }
+            { this.props.plants ?
+              <Search className="form-control form-control-lg" { ...this.props } /> : null
+            }
           </div>
         </div>
         { plantFacts }
-        { dashboard }
         <div className="row content">
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">
             <div className="card-wrapper">
-              <Chatbot { ...this.props }/>
-              <div className="card hidden-xs hidden-sm">
+              <div className="card">
                 <div className="card-header">
-                  Active Bots
+                  How we got here
                 </div>
-                <Map/>
+                <div className="card-block">
+                  <p className="card-text">Dev blog</p>
+                </div>
               </div>
               <div className="card">
                 <div className="card-header">
-                  Make a phyll.bot of your own
+                  What you can do
                 </div>
                 <div className="card-block">
-                  <p className="card-text">Get on the map with your very own bot. <a href="https://github.com/housephillips2/PhyllOS">PhyllOS is yours</a> to perfect.</p>
+                  <p className="card-text">Call to action for contributors</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="content-1 col-lg-5 pull-lg-7 container-fluid">
-            <Users { ...this.props }/>
             <div className="card-wrapper">
               <div className="card">
                 <div className="card-header">
-                  Conservatory
+                  Who we are
                 </div>
                 <div className="card-block">
-                  <p className="card-text">There are so many wonderful plants for your home. <Link to="/conservatory">Discover the perfect one</Link>.</p>
+                  <p className="card-text">Mission statement/dev bios/pics</p>
+                </div>
+              </div>
+              <div className="card">
+                <div className="card-header">
+                  What we used
+                </div>
+                <div className="card-block">
+                  <p className="card-text">Stack details</p>
                 </div>
               </div>
             </div>
@@ -88,11 +93,11 @@ class Home extends React.Component {
 
     );
   }
+  
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchGarden    : () => dispatch(_getGarden()),
     fetchPlants   : () => dispatch(_getPlants()),
     toggleNewPlant: () => dispatch(toggleNewPlant()),
     fetchPlant    : (plant) => dispatch(_fetchPlant(plant))
@@ -137,4 +142,5 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Conservatory);
+

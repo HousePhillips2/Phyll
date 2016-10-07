@@ -5,13 +5,16 @@ export default class EditPlant extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
 
     let user_id = this.props.id;
     let garden  = this.props.garden.toArray();
     let user_plant = garden.filter((obj) => {return obj.user_id === user_id })[0];
     if(!user_plant){
-      return (<div></div>)
+
+      return null;
+
     } else {
       return (
 
@@ -67,6 +70,7 @@ export default class EditPlant extends React.Component {
               </div>
           </div>
         </div>
+        
       );
     }
       

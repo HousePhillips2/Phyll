@@ -40,21 +40,26 @@ function mapStateToProps(state) {
     let user = state.get('user');
 
     return {
+
+      plants: state.getIn([ 'plants', 'plants' ]),
+      garden: state.getIn([ 'garden', 'garden' ]),
+      user_plants: user.get('user_plants'),
       loggedIn: state.get('loggedIn'),
-      username: user.name,
+      username: user.get('name'),
       image: user.get('image'),
-      firstName: user.firstName,
-      lastName: user.lastName,
-      nickname: user.nickname,
+      firstName: user.get('firstName'),
+      lastName: user.get('lastName'),
+      plantFacts: state.getIn(['plantFacts', 'plantFacts']),
       id: user.get('id'),
-      email: user.email,
-      timezone: user.timezone,
-      plant: user.plant
+      newPlant: state.get('newPlant')
+      
     };
   }
 
   return {
+
     loggedIn: state.get('loggedIn')
+
   };
 }
 
