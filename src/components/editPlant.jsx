@@ -82,7 +82,7 @@ export default class EditPlant extends React.Component {
 
   _handleDelete(e){
     e.preventDefault();
-    this._deletePlant(this._device_id.value);
+    this._deletePlant(this._deviceId.value);
   }
 
   _updatePlant(user_id, device_id, plant_nickname, phone){

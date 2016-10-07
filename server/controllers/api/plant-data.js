@@ -30,6 +30,13 @@ router.post('/update', (req, res) => {
   res.send('success');
 });
 
+router.post('/delete', (req, res) => {
+  let plant_obj = req.body;
+  console.log(plant_obj, 'plant_obj in delete route');
+  //update_plant(plant_obj); //delete seleted plant in db
+  res.send('success');
+});
+
 module.exports = router;
 
 
