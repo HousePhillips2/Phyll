@@ -15,8 +15,7 @@ class Charts extends React.Component {
 // '02:a3:a0:f4:dd:34' < -- Sergey's device ID for testing
 
   componentWillMount() {
-    console.log('vottt', this.props);
-    this.props.rawData('02:a3:a0:f4:dd:34');
+    this.props.rawData(this.props.user_plants[0].device_id);
   }
 
   render() {
