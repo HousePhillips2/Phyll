@@ -14,7 +14,8 @@ export default class Chatbot extends React.Component {
   }
   render() {
     //console.log(this.state.messages, 'messages in render');
-    if(this.props.loggedIn && this.props.user_plants.length > 0){
+    //console.log(this.props.user_plants.length,'plants length');
+    if(this.props.loggedIn && (this.props.user_plants.length>0)){
 
       this._getUserId();//send user id to chatbot in server before initial the conversation
       let messages = this.state.messages;
