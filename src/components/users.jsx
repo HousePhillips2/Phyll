@@ -20,7 +20,7 @@ export default class Users extends React.Component {
           { restUsers.map( user => {
             return (
 
-              <UserCard key={user.id} user= { user }/>
+              <UserCard key={ user.plant_id } user={ user }/>
               
             );
           }) }

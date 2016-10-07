@@ -5,13 +5,16 @@ export default class EditPlant extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
 
     let user_id = this.props.id;
     let garden  = this.props.garden.toArray();
     let user_plant = garden.filter((obj) => {return obj.user_id === user_id })[0];
     if(!user_plant){
-      return (<div></div>)
+
+      return null;
+
     } else {
       return (
 
@@ -57,16 +60,13 @@ export default class EditPlant extends React.Component {
 
             <div className="form-group row">
               <div className="column">
-                <button className="btn btn-success" type="submit" style={{marginTop: .25 + 'rem'}}>Update</button>
+                <button className="btn btn-success pull-xs-left" type="submit" style={{marginTop: .25 + 'rem'}}>Update</button> 
+                <button className="btn btn-danger pull-xs-right" onClick={this._handleDelete.bind(this)} style={{marginTop: .25 + 'rem'}}>Delete</button>
               </div>
             </div>
           </form>
-          <div className="form-group row">
-              <div className="column">
-                <button className="btn btn-success" onClick={this._handleDelete.bind(this)} style={{marginTop: .25 + 'rem'}}>Delete</button>
-              </div>
-          </div>
         </div>
+
       );
     }
       

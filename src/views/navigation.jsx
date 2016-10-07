@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
+import { Link } from 'react-router';
 
 import Login from '../components/login.jsx';
 import Logout from '../components/logout.jsx';
@@ -31,7 +32,7 @@ export default class Navigation extends Component {
                   <Logout { ...this.props }/> :
                   <Login /> }
                 <div className="dropdown-divider"></div>
-                <button className="dropdown-item" type="button">About phyll.IO</button>
+                <Link to="/about"><button className="dropdown-item" type="button">About phyll.IO</button></Link>
                 <a href="https://medium.com/team-phyll"><button className="dropdown-item" type="button">Developer Journal</button></a>
                 <a href="https://github.com/cachilders/Phyll"><button className="dropdown-item" type="button">Check Out the Source</button></a>
               </div>

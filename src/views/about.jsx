@@ -14,10 +14,8 @@ import Plant        from '../components/plant.jsx';
 import Modal        from '../components/plantModal.jsx';
 import Footer       from '../components/footer.jsx';
 
-import { _getGarden, _getPlants, _fetchPlant } from '../redux/actions/helpers';
+import { _getPlants, _fetchPlant } from '../redux/actions/helpers';
 import { toggleNewPlant } from '../redux/actions/actions';
-
-$(() => $('[data-toggle="tooltip"]').tooltip());
 
 class Conservatory extends React.Component {
   constructor(props) {
@@ -27,6 +25,8 @@ class Conservatory extends React.Component {
   componentWillMount() {
     this.props.fetchPlants();
   }
+
+  // TODO: The initial div needs to go in refactor as it is duplicated in nav
 
   render() {
     let plantFacts = this.props.plantFacts ? <PlantFacts id="plantFacts" { ...this.props }/> : <div id="plantFacts"></div>;
@@ -46,18 +46,48 @@ class Conservatory extends React.Component {
           </div>
         </div>
         { plantFacts }
-        { plants ? 
-          <div>
-            { plants.map( plant => {
-              return (
-
-                <Modal { ...this.props } handleClick={ this.props.handleClickPlant } plant={ plant } key={ plant.plant_name }/>
-                
-              );
-            }) }
+        <div className="row content">
+          <div className="content-2 col-lg-7 push-lg-5 container-fluid">
+            <div className="card-wrapper">
+              <div className="card">
+                <div className="card-header">
+                  How we got here
+                </div>
+                <div className="card-block">
+                  <p className="card-text">Dev blog</p>
+                </div>
+              </div>
+              <div className="card">
+                <div className="card-header">
+                  What you can do
+                </div>
+                <div className="card-block">
+                  <p className="card-text">Call to action for contributors</p>
+                </div>
+              </div>
+            </div>
           </div>
-          : null
-        }
+          <div className="content-1 col-lg-5 pull-lg-7 container-fluid">
+            <div className="card-wrapper">
+              <div className="card">
+                <div className="card-header">
+                  Who we are
+                </div>
+                <div className="card-block">
+                  <p className="card-text">Mission statement/dev bios/pics</p>
+                </div>
+              </div>
+              <div className="card">
+                <div className="card-header">
+                  What we used
+                </div>
+                <div className="card-block">
+                  <p className="card-text">Stack details</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <Footer { ...this.props} />
       </div>
 
@@ -68,7 +98,6 @@ class Conservatory extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchGarden    : () => dispatch(_getGarden()),
     fetchPlants   : () => dispatch(_getPlants()),
     toggleNewPlant: () => dispatch(toggleNewPlant()),
     fetchPlant    : (plant) => dispatch(_fetchPlant(plant))
