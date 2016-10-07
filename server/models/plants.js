@@ -34,7 +34,17 @@ function update_plant(plant_obj){
   });
 }
 
-module.exports = {query_plant, store_plant, update_plant};
+function delete_plant(plant_obj){
+  db.result("delete from api.user_plant where device_id = $1", [plant_obj.device_id])
+  .then(function (result) {
+    //console.log(result.rowCount, 'in delete function'); // print how many records were deleted;
+  })
+  .catch(function (error) {
+      console.log(error, 'delete user plant error');
+  });
+}
+
+module.exports = {query_plant, store_plant, update_plant, delete_plant};
 
 //  ---------------------------  checking that all plants have a valid 'img' property --------------------
   // db.any("select plant_name, img from api.plants", [true])// see below for field names in plants table
