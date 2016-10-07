@@ -108,7 +108,7 @@ export default class PlantForm extends React.Component {
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({user_id, plant_id, device_id, plant_nickname, phone}),
       success: (data) => {
-        //need to redirect!
+        this.props.fetchPlants();
       }
     });
   }

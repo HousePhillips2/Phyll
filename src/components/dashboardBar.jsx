@@ -1,6 +1,7 @@
 import { ajax } from 'jquery';
 import React from 'react';
 import Charts from './charts.jsx';
+import EditPlant from './editPlant.jsx';
 
 
 export default class DashBar extends React.Component {
@@ -23,6 +24,9 @@ export default class DashBar extends React.Component {
                 <a className="media-left"><img className="img-rounded" style={ {width: '125px', height: '125px'} } src={ this.props.image }/></a>
                 <div className="media-body">
                   <Charts { ...this.props } />
+                </div>
+                <div>
+                  <EditPlant { ...this.props}/>
                 </div>
               </div>
             </div>
