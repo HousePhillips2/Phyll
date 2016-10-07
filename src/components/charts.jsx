@@ -11,8 +11,6 @@ class Charts extends React.Component {
   constructor(props) {
     super(props);
   }
-// '02:a3:a4:2a:1f:95' < -- Eric's device ID for testing.
-// '02:a3:a0:f4:dd:34' < -- Sergey's device ID for testing
 
   componentWillMount() {
     this.props.rawData(this.props.user_plants[0].device_id);
@@ -21,13 +19,14 @@ class Charts extends React.Component {
   render() {
 
     let params = {
-      width: 500,
+      width: 485,
       height: 200,
       axisMargin: 83,
+      leftMargin: 50,
       topMargin: 50,
       bottomMargin: 50,
       // ADJUST this value to change size of SVG element
-      fullWidth: 500
+      fullWidth: 485
     };
 
     const props = Object.assign({}, this.props, params);

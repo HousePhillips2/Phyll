@@ -29,12 +29,12 @@ export default class Axis extends React.Component {
 
       this.scale
           .range([ props.axisMargin, props.fullWidth - props.axisMargin ])
-          .domain([ 24, 0 ]);
+          .domain([ 48, 0 ]);
 
       this.axis
-          .tickFormat(d => this.scale.tickFormat()(d) + ' hours ago')
+          .tickFormat(d => this.scale.tickFormat()(d) + '..')
           .ticks(4)
-          .tickValues([ 24, 16, 8, 0 ]);
+          .tickValues([ 24, 16, 8, 1 ]);
 
     }
 

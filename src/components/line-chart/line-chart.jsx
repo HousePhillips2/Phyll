@@ -28,6 +28,7 @@ export default class LineChart extends React.Component {
     let lowerBand = 810;
     let upperBand = 824;
 
+
     let dates = props.plantData.map(d => d.date);
     let data  = props.plantData.map(d => d[props.dataType]);
 
@@ -64,6 +65,7 @@ export default class LineChart extends React.Component {
     if( this.props.plantData ){
       return(
         <g className="line-chart">
+
           {/* <path stroke="red" strokeWidth="2" d={ this.areaLower }></path>
           <path stroke="red" strokeWidth="2" d={ this.areaUpper }></path> */}
           <path stroke="blue" fill="none" strokeWidth="2" d={ this.lineChart }></path>
