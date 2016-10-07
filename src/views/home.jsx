@@ -13,7 +13,7 @@ import Logout       from '../components/logout.jsx';
 import Map          from '../components/map/index.jsx';
 import Chatbot      from '../components/chatbot.jsx';
 import AddPlant     from '../components/addPlant.jsx';
-import DashBar      from '../components/dashboardBar.jsx';
+import Dashboard    from '../components/dashboard/dashboardMain.jsx';
 import Footer       from '../components/footer.jsx';
 
 import { _getGarden, _getPlants, _fetchPlant } from '../redux/actions/helpers';
@@ -33,8 +33,8 @@ class Home extends React.Component {
 
   render() {
 
-    let dashboard = this.props.loggedIn ? <DashBar id="plantFacts" { ...this.props }/> : <div id="dashBar"></div>;
-    let plantFacts = this.props.plantFacts ? <PlantFacts id="dashBar" { ...this.props }/> : <div id="plantFacts"></div>;
+    let dashboard = this.props.loggedIn ? <Dashboard id="dashboard" { ...this.props }/> : <div id="dashboard"></div>;
+    let plantFacts = this.props.plantFacts ? <PlantFacts id="plantFacts" { ...this.props }/> : <div id="plantFacts"></div>;
 
     return(
 

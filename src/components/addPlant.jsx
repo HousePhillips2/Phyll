@@ -13,6 +13,7 @@ export default class AddPlant extends React.Component {
 
   clickHandler() {
     this.props.toggleNewPlant();
+    this.props.toggleEditPlant();
   }
 
   render() {
@@ -45,20 +46,5 @@ export default class AddPlant extends React.Component {
       );
     }
   }
-
-  // _fetchPlant(plant){
-  //   //console.log(plant, "inside addMyPlant");
-  //   $.ajax({
-  //     method: 'POST',
-  //     url: '/api/plantFacts',
-  //     json: true,
-  //     contentType: 'application/json; charset=utf-8',
-  //     data: JSON.stringify({plant:plant}),
-  //     success: (plantFacts) => {
-  //       if(plantFacts.length!==0){
-  //         this.setState({plantFacts:plantFacts[0]});
-  //       }
-  //     }
-  //   });
-  // }
 }
+
