@@ -12,6 +12,7 @@ import Login        from '../components/login.jsx';
 import Logout       from '../components/logout.jsx';
 import Plant        from '../components/plant.jsx';
 import Modal        from '../components/plantModal.jsx';
+import Footer       from '../components/footer.jsx';
 
 // import AddPlant     from '../components/addPlant.jsx';
 // import Map          from '../components/map/index.jsx';
@@ -66,18 +67,7 @@ class Conservatory extends React.Component {
           </div>
           : null
         }
-        {/*<div className="footer row">
-          <div className="content-top column container-fluid">
-            <div className="card">
-              <div className="card-header">
-                Footer Widget (TODO: whatevs)
-              </div>
-              <div className="card-block">
-                Content
-              </div>
-            </div>
-          </div>
-        </div>*/}
+        <Footer { ...this.props} />
       </div>
 
     );
