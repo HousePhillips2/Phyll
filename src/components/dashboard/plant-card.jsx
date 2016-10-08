@@ -36,8 +36,10 @@ export default class PlantCard extends React.Component {
           <div className="media">
             <a className="media-left"><img className="img-rounded" style={ {width: '85px', height: '85px'} } src={plant.plant_img}/></a>
             <div className="media-body">
-              <h4 className="media-heading">{`${ plant.plant_nickname }`}, your {`${plant.plant_name}`}</h4>
-              <div className="media-body">
+              <div>
+                <EditPlant { ...this.props}/>
+              </div>
+              <div className="media-body" style={ { padding: 1 + 'rem' } }>
                 { hearts }
                 <div className="media-body">
                   <div className="media">
@@ -55,9 +57,6 @@ export default class PlantCard extends React.Component {
                 </div>
               </div>
               <Charts { ...this.props } />
-              <div>
-                <EditPlant { ...this.props}/>
-              </div>
             </div>
           </div>
         </div>

@@ -4,6 +4,14 @@ import $ from 'jquery';
 export default class EditPlant extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      edit: false
+    }
+    this.clickHandler = this.clickHandler.bind(this);
+  }
+
+  clickHandler() {
+    this.setState({edit: !this.state.edit});
   }
 
   render() {
@@ -14,62 +22,90 @@ export default class EditPlant extends React.Component {
     if(!user_plant){
 
       return null;
-
+  
     } else {
-      return (
 
-        <div style={{margin:10 + 'px'}}>
+      if (this.state.edit) {
 
-          <form id="editPlant" onSubmit={this._handleUpdate.bind(this)}>
+        return (
 
-            <div className="form-group row">
-              <div className="column">
-                <div className="input-group">
-                  <span className="input-group-addon">Species</span>
-                  <input type="text" className="form-control" id="common_name" ref={input => this._plantName = input} readOnly/>
+          <div className="row content">
+            <div className="content-top column container-fluid">
+              <div className="card">
+                <div className="card-header">
+                  <span className="pull-xs-left">Edit your { user_plant.plant_name }</span>
+                  <span onClick={this.clickHandler} className="close-pane pull-xs-right"><i className="fa fa-times-circle-o" aria-hidden="true"></i></span>
+                </div>
+                <div className="card-block container-fluid">
+                  <div style={{margin:10 + 'px'}}>
+
+                    <form id="editPlant" onSubmit={this._handleUpdate.bind(this)}>
+
+                      <div className="form-group row">
+                        <div className="column">
+                          <div className="input-group">
+                            <span className="input-group-addon">Species</span>
+                            <input type="text" className="form-control" id="common_name" defaultValue={user_plant.plant_name} ref={input => this.plant_name = input} readOnly/>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="form-group row">
+                        <div className="column">
+                          <div className="input-group">
+                            <span className="input-group-addon">Nickname</span>
+                            <input type="text" className="form-control" id="nickname" defaultValue={user_plant.plant_nickname} placeholder="optional" ref={input => this._plantNickName = input}/>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="form-group row">
+                        <div className="column">
+                            <div className="input-group">
+                            <span className="input-group-addon">Device ID</span>
+                            <input type="text" className="form-control" id="deviceId" defaultValue={user_plant.device_id} placeholder="see phyllOS documentation" ref={input => this._deviceId = input}/>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="form-group row">
+                        <div className="column">
+                            <div className="input-group">
+                            <span className="input-group-addon">Telephone</span>
+                            <input type="text" className="form-control" id="deviceId" defaultValue={user_plant.phone_number} placeholder="If you'd like watering notifications." ref={input => this._telephone = input}/>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="form-group row">
+                        <div className="column">
+                          <button className="btn btn-success pull-xs-left" type="submit" style={{marginTop: .25 + 'rem'}}>Save Your Changes</button> 
+                          <button className="btn btn-danger pull-xs-right" onClick={this._handleDelete.bind(this)} style={{marginTop: .25 + 'rem'}}>Delete This Plant</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="form-group row">
-              <div className="column">
-                <div className="input-group">
-                  <span className="input-group-addon">Nickname</span>
-                  <input type="text" className="form-control" id="nickname" defaultValue={user_plant.plant_nickname} ref={input => this._plantNickName = input}/>
-                </div>
-              </div>
+        );
+
+      } else {
+
+        return (
+          <div className="row content">
+            <div className="content-top column container-fluid">
+              <h4 className="media-heading pull-xs-left">{`${ this.props.plant.plant_nickname }`}, your {`${ this.props.plant.plant_name }`}</h4>
+              <span onClick={this.clickHandler} className="edit-pane pull-xs-right"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span>
             </div>
+          </div>
+        );
 
-            <div className="form-group row">
-              <div className="column">
-                  <div className="input-group">
-                  <span className="input-group-addon">Device ID</span>
-                  <input type="text" className="form-control" id="deviceId" defaultValue={user_plant.device_id} ref={input => this._deviceId = input}/>
-                </div>
-              </div>
-            </div>
+      }
 
-            <div className="form-group row">
-              <div className="column">
-                  <div className="input-group">
-                  <span className="input-group-addon">Telephone</span>
-                  <input type="text" className="form-control" id="deviceId" defaultValue={user_plant.phone_number} ref={input => this._telephone = input}/>
-                </div>
-              </div>
-            </div>
-
-            <div className="form-group row">
-              <div className="column">
-                <button className="btn btn-success pull-xs-left" type="submit" style={{marginTop: .25 + 'rem'}}>Update</button> 
-                <button className="btn btn-danger pull-xs-right" onClick={this._handleDelete.bind(this)} style={{marginTop: .25 + 'rem'}}>Delete</button>
-              </div>
-            </div>
-          </form>
-        </div>
-
-      );
-    }
-      
+    } 
   }
 
 

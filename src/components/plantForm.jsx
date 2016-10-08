@@ -39,7 +39,7 @@ export default class PlantForm extends React.Component {
             <div className="column">
               <div className="input-group">
                 <span className="input-group-addon">Nickname</span>
-                <input type="text" className="form-control" id="nickname" ref={input => this._plantNickName = input}/>
+                <input type="text" className="form-control" id="nickname" placeholder="optional" ref={input => this._plantNickName = input}/>
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@ export default class PlantForm extends React.Component {
             <div className="column">
                 <div className="input-group">
                 <span className="input-group-addon">Device ID</span>
-                <input type="text" className="form-control" id="deviceId" ref={input => this._deviceId = input}/>
+                <input type="text" className="form-control" id="deviceId" placeholder="see phyllOS documentation" ref={input => this._deviceId = input}/>
               </div>
             </div>
           </div>
