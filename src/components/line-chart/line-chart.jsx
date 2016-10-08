@@ -32,7 +32,6 @@ export default class LineChart extends React.Component {
     let lowerBand = 810;
     let upperBand = 824;
 
-
     let dates = props.plantData.map(d => d.date);
     let data  = props.plantData.map(d => d[props.dataType]);
 
@@ -64,14 +63,20 @@ export default class LineChart extends React.Component {
   }
 
   render() {
-    // let water = this.props.plant_generic.water_s;
-    // let light = this.props.plant_generic.light_s;
+    let water = this.props.plant_generic.water_s;
+    let light = this.props.plant_generic.light_s;
 
+    //graphical limits = 50 - 440;
     let upperL = 0,
         lowerL = 0,
-        test   = 400,
         upperM = 0,
-        lowerM = 0;
+        lowerM = 0,
+        test =  440,
+        test2 = 50;
+
+        if(datatype = light)
+    upperbound
+    lowerbound
 
     if (water === 'low' || water === 'medium-low'){
       upperM = 950;
@@ -106,9 +111,9 @@ export default class LineChart extends React.Component {
 2  <rect x="20" y="20" width="50" height="50" fill="green" />
 3</svg>
         <path stroke="blue" fill="none" strokeWidth="1" d={`M402, ${test}L83, ${test}`} ></path>
-        <path stroke="red" fill="none" strokeWidth="1" d="M402, 100L83, 100" ></path>
+        <path stroke="red" fill="none" strokeWidth="1" d={`M402, ${test2}L83, ${test2}`} ></path>
         <path stroke="green" fill="none" strokeWidth=".5" d={ this.lineChart }></path>
-        {/* <Axis orientation="left" { ...this.props } /> */}
+        { <Axis orientation="left" { ...this.props } /> }
 
         <Axis orientation="bottom" date={ true } { ...this.props } />
         </g>
