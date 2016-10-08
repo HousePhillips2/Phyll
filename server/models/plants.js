@@ -1,15 +1,16 @@
 const db = require('./pg-config');
 
 function query_plant(userId, callback){
-  db.any('select * from api.user_plant where user_id = $1', [userId])
-  .then((data) => {
-    callback(data); //return user's plant data to front-end
+   db.any("SELECT p.user_id, p.plant_id, p.device_id, p.plant_nickname, p.plant_img, p.id, p.mood_api, p.daily_light, p.daily_moisture, p.health, p.health_light, p.health_moisture, s.plant_name FROM api.user_plant p INNER JOIN api.plants s on p.plant_id = s.id where user_id = $1", [userId])
+  .then(function (data) {
+    callback(data); //return user's plant data to client
   })
-  .catch((error) => {
-    //console.log('user plant does not exist');
-    callback(false); // user's plant doest not exist, return false to front-end
+  .catch(function (error) {
+    callback(false); // user's plant doest not exist, return false to client
+    console.log(error, 'query user plant data error');
   });
 }
+
 
 function store_plant(plant_obj){
   db.none('insert into api.user_plant (user_id, plant_id, plant_img, device_id, plant_nickname) values($1, $2, $3, $4, $5)', 
@@ -59,33 +60,40 @@ module.exports = {query_plant, store_plant, update_plant, delete_plant};
 /*
 Table: plants
 
+  id: auto-generate
   plant_name:
   plant_family:
-  water_L:
-  soil_pH:
-  light_L:
-  img:
-  light_S:
-  water_S:
-  soil_S:
-  soil_L:
-  fertilizer_S:
-  fertilizer_L:
+  plant_img:
+  light_l:
+  light_s:
+  water_l:
+  water_s:
+  soil_s:
+  soil_l:
+  soil_ph:
+  fertilizer_s:
+  fertilizer_l:
   repotting:
-  humidity_S:
-  humidity_L:
-  poisonous_S:
-  poisonous_L:
-  type: null
+  humidity_s:
+  humidity_l:
+  poisonous_s:
+  poisonous_l:
+  type: 
 */
 
 /*
 Table: user_plant
 
+  id: auto-generate
   user_id:
   plant_id:
   device_id:
   plant_nickname:
-  plant_img
-  id:
+  plant_img: would be the same in the plants table
+  mood_api:
+  daily_light:
+  daily_moisture:
+  health:
+  health_light:
+  health_moisture
 */
