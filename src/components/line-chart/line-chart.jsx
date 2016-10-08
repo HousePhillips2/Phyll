@@ -8,7 +8,12 @@ export default class LineChart extends React.Component {
   constructor(props) {
     super(props);
 
+    this.areaUpper = d3.svg.area;
+    this.rangeLineUpper = d3.svg.line;
+    this.areaLower = d3.svg.area;
+    this.rangeLineLower = d3.svg.line;
     this.lineChart = d3.svg.line;
+
     if( props.plantData ){
       this.update_d3(props);
     }
@@ -20,10 +25,11 @@ export default class LineChart extends React.Component {
 
   update_d3(props) {
 
+    let lowerBand = 810;
+    let upperBand = 824;
+
     let dates = props.plantData.map(d => d.date);
     let data  = props.plantData.map(d => d[props.dataType]);
-
-    console.log('data:', data);
 
     let x = d3.time.scale()
               .range([ props.fullWidth - props.axisMargin, props.axisMargin ])
@@ -37,18 +43,32 @@ export default class LineChart extends React.Component {
                    .x(d => x(d.date))
                    .y(d => y(d[props.dataType]));
 
+    let lowerArea = this.areaLower()
+                        .x( d => x(d.date))
+                        .y1(d => y(lowerBand))
+                        .y0(y(d3.min(data) - 10));
+
+    let upperArea = this.areaUpper()
+                        .x( d => x(d.date))
+                        .y1(y(d3.max(data) + 10))
+                        .y0(d => y(upperBand));
+
     this.lineChart = line(props.plantData);
+    this.areaLower = lowerArea(props.plantData);
+    this.areaUpper = upperArea(props.plantData);
   }
 
   render() {
 
-    let translate = `translate(0, ${ this.props.topMargin })`;
+    // let translate = `translate(0, ${ this.props.topMargin })`;
     if( this.props.plantData ){
       return(
         <g className="line-chart">
-        <path stroke="blue" fill="none" strokeWidth="2" d={ this.lineChart }></path>
-        {/* <Axis orientation="left" { ...this.props } /> */}
-        <Axis orientation="bottom" date={ true } { ...this.props } />
+          <path stroke="red" strokeWidth="2" d={ this.areaLower }></path>
+          <path stroke="red" strokeWidth="2" d={ this.areaUpper }></path>
+          <path stroke="blue" fill="none" strokeWidth="2" d={ this.lineChart }></path>
+          <Axis orientation="left" { ...this.props } />
+          <Axis orientation="bottom" date={ true } { ...this.props } />
         </g>
       );
     } else {
