@@ -34,7 +34,7 @@ export default class PlantCard extends React.Component {
       <div className="card">
         <div className="card-block">
           <div className="media">
-            <a className="media-left"><img className="img-rounded" style={ {width: '120px', height: '120px'} } src={plant.plant_img}/></a>
+            <a className="media-left"><img className="img-rounded" style={ {width: '85px', height: '85px'} } src={plant.plant_img}/></a>
             <div className="media-body">
               <h4 className="media-heading">{`${ plant.plant_nickname }`}, your {`${plant.plant_name}`}</h4>
               <div className="media-body">
