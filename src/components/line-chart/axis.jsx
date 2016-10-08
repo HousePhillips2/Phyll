@@ -17,13 +17,13 @@ export default class Axis extends React.Component {
 
   update_d3(props) {
 
-    // let dates = props.data.map(d => d.date);
-    // let light = props.data.map(d => d.light);
+    let dates = props.plantData.map(d => d.date);
+    let data = props.plantData.map(d => d[props.dataType]);
 
     if( !props.date ){
       this.scale
           .range([ props.height - props.bottomMargin, props.topMargin ])
-          .domain([ d3.min(light) - 10, d3.max(light) + 10 ]);
+          .domain([ d3.min(data) - 10, d3.max(data) + 10 ]);
 
     } else {
 
