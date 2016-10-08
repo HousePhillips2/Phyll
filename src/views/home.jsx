@@ -27,6 +27,11 @@ class Home extends React.Component {
   componentWillMount() {
     this.props.fetchPlants();
     this.props.fetchGarden();
+    console.log('condition', this.props.id);
+    if (this.props.id){
+      console.log('condition exists');
+     this.props.fetchUserPlantGeneric(this.props.id);
+    };
   }
 
   // TODO: The initial div needs to go in refactor as it is duplicated in nav
@@ -95,7 +100,8 @@ function mapDispatchToProps(dispatch) {
     fetchGarden    : () => dispatch(_getGarden()),
     fetchPlants   : () => dispatch(_getPlants()),
     toggleNewPlant: () => dispatch(toggleNewPlant()),
-    fetchPlant    : (plant) => dispatch(_fetchPlant(plant))
+    fetchPlant    : (plant) => dispatch(_fetchPlant(plant)),
+    fetchUserPlantGeneric: (userId) => dispatch(_fetch_User_Plants(userId))
   };
 }
 
@@ -109,6 +115,7 @@ function mapStateToProps(state) {
       loggedIn: state.get('loggedIn'),
       username: user.get('name'),
       image: user.get('image'),
+      plant_generic: user.get('generic'),
       firstName: user.get('firstName'),
       lastName: user.get('lastName'),
       plantFacts: state.getIn(['plantFacts', 'plantFacts']),

@@ -13,6 +13,7 @@ class Charts extends React.Component {
   }
 
   componentWillMount() {
+    console.log('vot!', this.props);
     this.props.rawData(this.props.user_plants[0].device_id);
   }
 
@@ -20,7 +21,7 @@ class Charts extends React.Component {
 
     let params = {
       width: 485,
-      height: 200,
+      height: 490,
       axisMargin: 83,
       leftMargin: 50,
       topMargin: 50,

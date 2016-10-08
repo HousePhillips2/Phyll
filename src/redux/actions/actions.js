@@ -58,3 +58,10 @@ export function toggleNewPlant() {
     type: 'TOGGLE_NEW_PLANT',
   };
 }
+
+export function setUserPlantGeneric(userPlantGeneric) {
+  return {
+    type: 'SET_USER_PLANT_GENERIC',
+    userPlantGeneric
+  };
+}
