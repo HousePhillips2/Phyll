@@ -11,9 +11,9 @@ export default class Users extends React.Component {
     if (this.props.garden) {
 
       const users = this.props.garden.toArray();
-      let restUsers = users.filter((user)=>{return user.user_id!==this.props.id });
-      console.log(restUsers, 'restUsers');
-
+      let restUsers = users.filter((user)=>{return user.user_id!==this.props.id; });
+      restUsers.sort((a,b) => { return b.health - a.health; }); // ranking user based on plant's healthness
+      //console.log(restUsers, 'restUsers');
       return(
 
         <div className={ 'user-cards' }>
