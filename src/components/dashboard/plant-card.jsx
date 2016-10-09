@@ -20,7 +20,7 @@ export default class PlantCard extends React.Component {
     const heartFull = <i className="fa fw fa-heart"></i>;
     const heartEmpty = <i className="fa fw fa-heart-o"></i>;
     const heartColor = device ? "text-danger" : "text-muted";
-    const hearts = <span className={ heartColor }> &nbsp;
+    const hearts = <span className={ heartColor }>
                      {plant.health > 0 ? heartFull : heartEmpty}&nbsp;
                      {plant.health > 1 ? heartFull : heartEmpty}&nbsp;
                      {plant.health > 2 ? heartFull : heartEmpty}&nbsp;
@@ -41,16 +41,15 @@ export default class PlantCard extends React.Component {
               <div>
                 <EditPlant { ...this.props}/>
               </div>
-              <div className="container">
+              <div className="container-fluid">
                 { hearts }
-                  { device ? 
-                    <div className="container-fluid">
-                      <Charts { ...this.props }/>
-                    </div>
-                    : <div className="graff text-muted">Add a phyllOS device to track your plant's conditions</div>
-                  }
-                </div>
-
+                { device ? 
+                  <div className="container-fluid">
+                    <Charts { ...this.props }/>
+                  </div>
+                  : <div className="graff text-muted">Add a phyllOS device to track your plant's conditions</div>
+                }
+              </div>
             </div>
           </div>
         </div>
