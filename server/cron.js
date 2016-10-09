@@ -85,8 +85,6 @@ const daily = new CronJob('30 21 * * 1-7',
         device2.light = filler(two.light);
         device2.moisture = filler(two.moisture);
 
-        console.log('deviceID', device1.deviceId, 'l1', device1.light, 'm1', device1.moisture);
-
         var httpRequestOptions = {
           //******* choose which of the subsequent two lines you want to work with (production vs dev)
           // url: 'http://localhost:8080/postgres/daily',

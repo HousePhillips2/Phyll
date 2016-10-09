@@ -1,4 +1,3 @@
-           require('dotenv').config();
 const db = require('../../models/pg-config');
 
 const retrieveMood = (input, callback) => {
@@ -14,7 +13,6 @@ const retrieveMood = (input, callback) => {
                 //(4) .health_light   --> INTEGER between 1-10 representing the sunlight health of the plant
                 //(5) .health_moisture -> INTEGER between 1-10 representing the moisture health of the plant
 
-            console.log(healthState);
             callback(healthState[0].mood_api);
 
         })
