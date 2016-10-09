@@ -10,10 +10,10 @@ export default class Footer extends React.Component {
     return(
 
       <div className="footer row">
-        <div className="content-top column container-fluid">
-          <div className="card">
-            <div className="card-block text-success">
-              Footer content.
+        <div className="content-footer column container-fluid">
+          <div className="">
+            <div className="graff text-xs-right text-success">
+              <a href="https://github.com/cachilders/Phyll"><i className="fa fw fa-github-alt text-success"></i></a>
             </div>
           </div>
         </div>

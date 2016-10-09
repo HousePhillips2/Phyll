@@ -67,7 +67,7 @@ export default class Chatbot extends React.Component {
           </div>
           <div className="card-body">
             <div id='messages' className="list-group list-group-flush">
-              <span className="list-group-item list-group-item-action list-group-item-success">Login to chat with your plant!</span>
+              <a href="vendor/auth/login"><span className="list-group-item list-group-item-action list-group-item-success">Login to chat with your plant!</span></a>
             </div>
           </div>
         </div>

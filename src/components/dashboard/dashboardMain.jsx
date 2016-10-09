@@ -31,7 +31,7 @@ export default class Dashboard extends React.Component {
                   </div>
                 : 
                   <div className="media-body">
-                    <div className="head text-success">You don't have any plants! That's easy to fix. Use the search bar above to add your favorite to your profile.</div>
+                    <div className="head text-success">You don't have any plants! That's easy to fix. Use the search bar above to add one to your profile.</div>
                   </div>
                 }
               </div>
