@@ -12,7 +12,7 @@ const {query_plant} = require ('../../models/plants.js');
 
 module.exports=function (io) {
   io.on('connection', (socket) => { //connect with socket.io
-    let plantbot = botsFamily.plantbot; 
+    let plantbot = botsFamily.plantbot;
     let userId;
     socket.on('userId', (id) => {
       userId = id;
@@ -39,6 +39,7 @@ module.exports=function (io) {
           });
         } else { //when client is in small talk with plant
           io.emit('plant',response.result.fulfillment.speech); //defalt response from pre-build smalltalk domain
+
         }
       });
 
@@ -46,7 +47,7 @@ module.exports=function (io) {
           console.log(error, 'plant bot connection error');
       });
 
-      request.end();        
+      request.end();
     });
   });
 };

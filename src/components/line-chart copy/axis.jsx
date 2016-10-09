@@ -6,6 +6,8 @@ export default class Axis extends React.Component {
   constructor(props) {
     super(props);
 
+    console.log(props.test);
+
     this.scale = d3.scale.linear();
 
     this.axis  = d3.svg.axis()
@@ -17,23 +19,29 @@ export default class Axis extends React.Component {
 
   update_d3(props) {
 
-    let dates = props.plantData.map(d => d.date);
-
-    let data = props.plantData.map(d => d[props.dataType]);
+    // let dates = props.data.map(d => d.date);
+    // let light = props.data.map(d => d.light);
 
     if( !props.date ){
       this.scale
           .range([ props.height - props.bottomMargin, props.topMargin ])
-          .domain([ d3.min(data) - 10, d3.max(data) + 10 ]);
+          .domain([ d3.min(light) - 10, d3.max(light) + 10 ]);
+
+      // ----------------------   DELETE ME  ------------------------
+      this.axis
+          .tickFormat(d => this.scale.tickFormat()(d) + '..')
+          .ticks(4)
+          .tickValues([ 24, 16, 8, 1 ]);
+      // ------------------------  DELETE ME ------------------------
 
     } else {
 
       this.scale
           .range([ props.axisMargin, props.fullWidth - props.axisMargin ])
-          .domain([ 24, 0 ]);
+          .domain([ 48, 0 ]);
 
       this.axis
-          .tickFormat(d => this.scale.tickFormat()(d) + '')
+          .tickFormat(d => this.scale.tickFormat()(d) + '..')
           .ticks(4)
           .tickValues([ 24, 16, 8, 1 ]);
 

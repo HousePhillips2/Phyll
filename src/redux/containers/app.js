@@ -19,8 +19,10 @@ export function setUser(state, user) {
                 firstName: user.first_name,
                 lastName: user.last_name,
                 name: user.nickname,
+                // user_plants_info: user.plants
                 user_plants: user.plant,
                 id: user.id,
+                generic: user.generic,
                 fb_id: user.fb_id,
                 email: user.email,
                 image: user.img,

@@ -9,7 +9,8 @@ import {
   setAdminData,
   setPlantFacts,
   toggleNewPlant,
-  setUserPlantData
+  setUserPlantData,
+  setUserPlantGeneric
 } from '../containers/app';
 
 
@@ -20,6 +21,8 @@ export default function reducer(state = INITIAL_STATE, action){
       return setUser(state, action.user);
     case 'SET_USER_PLANT_DATA':
       return setUserPlantData(state, action.userPlantData);
+    case 'SET_USER_PLANT_GENERIC':
+      return setUserPlantGeneric(state, action.userPlantGeneric)
     case 'REMOVE_USER':
       return removeUser(state);
     case 'SET_PLANTS':

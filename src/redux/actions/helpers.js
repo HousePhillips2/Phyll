@@ -68,7 +68,7 @@ export function _loadRawData(id) {
           return {
             date     : new Date(val),
             moisture : +(+data.moisture.slice(-288)[i]).toFixed(2) || null,
-            light    : +(+data.light[i]).toFixed(2) || null
+            light    : +(+data.light.slice(-288)[i]).toFixed(2) || null
           };
         } catch(err) {
           console.error('Data point undefined and set to null.');
@@ -82,3 +82,17 @@ export function _loadRawData(id) {
     });
   };
 };
+
+export function _fetch_User_Plants(user){
+  return dispatch => {
+    $.ajax({
+      method: 'POST',
+      url: 'postgres/retrieveGeneric',
+      json: true,
+      contentType: 'application/json; charset=utf-8',
+      data: JSON.stringify({ user: user }),
+    }).then(plantFacts => {
+      dispatch(setPlantFacts(plantFacts));
+    });
+  };
+}
