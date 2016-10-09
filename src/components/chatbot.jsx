@@ -56,7 +56,7 @@ export default class Chatbot extends React.Component {
         </div>
 
       );
-  
+
     } else {
 
       return (
@@ -81,11 +81,13 @@ export default class Chatbot extends React.Component {
 
   _notifyServer(e){
     e.preventDefault();
+
     socket.emit('client', this._msg.value.toLowerCase()); //emit client msg to server
     this._onUpdate(this._msg.value); //update messages array with current client msg
     $('#input').val(''); //clean up input field
+
     socket.on('plant', (msg) => {
-      if (msg[0] !== this.state.lastMessage) { 
+      if (msg[0] !== this.state.lastMessage) {
         this._onUpdate(msg); //update messages array with response from server
       }
     });

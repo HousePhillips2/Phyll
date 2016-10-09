@@ -39,6 +39,7 @@ module.exports=function (io) {
           });
         } else { //when client is in small talk with plant
           io.emit('plant',response.result.fulfillment.speech); //defalt response from pre-build smalltalk domain
+
         }
       });
 
