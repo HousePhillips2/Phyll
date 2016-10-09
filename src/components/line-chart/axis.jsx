@@ -27,7 +27,6 @@ export default class Axis extends React.Component {
           .domain([ d3.min(data) - 10, d3.max(data) + 10 ]);
 
     } else {
-
       this.scale
           .range([ props.axisMargin, props.fullWidth - props.axisMargin ])
           .domain([ 24, 0 ]);
