@@ -14,11 +14,13 @@ export default class PlantCard extends React.Component {
   render() {
     console.log(this.props.plant);
     const plant = this.props.plant;
-    const health = plant.health || 3;
+    const device = plant.device_id.match(/^\w{2}:\w{2}:\w{2}:\w{2}:\w{2}:\w{2}$/);
+    const message = device ? '' : 'No Device';
+    const health = plant.health;
     const heartFull = <i className="fa fw fa-heart"></i>;
     const heartEmpty = <i className="fa fw fa-heart-o"></i>;
-    // TODO: Refactor this ugly thing to be more functional
-    const hearts = <span className="text-danger"> 
+    const heartColor = device ? "text-danger" : "text-muted";
+    const hearts = <span className={ heartColor }> &nbsp;
                      {plant.health > 0 ? heartFull : heartEmpty}&nbsp;
                      {plant.health > 1 ? heartFull : heartEmpty}&nbsp;
                      {plant.health > 2 ? heartFull : heartEmpty}&nbsp;
@@ -39,24 +41,16 @@ export default class PlantCard extends React.Component {
               <div>
                 <EditPlant { ...this.props}/>
               </div>
-              <div className="media-body" style={ { padding: 1 + 'rem' } }>
+              <div className="media-body">
                 { hearts }
-                <div className="media-body">
-                  <div className="media">
-                    <a className="media-left"><i className="fa fa-fw fa-tint text-info"></i></a>
+                  { device ? 
                     <div className="media-body">
-                      <progress className="progress progress-info" value={`${ moisture }`} max="10"></progress>
+                      <Charts { ...this.props } />
                     </div>
-                  </div>
-                  <div className="media">
-                    <a className="media-left"><i className="fa fa-fw fa-sun-o text-warning"></i></a>
-                    <div className="media-body">
-                      <progress className="progress progress-warning" value={`${ light }`} max="10"></progress>
-                    </div>
-                  </div>
+                    : <div className="graff text-muted">Add a phyllOS device to track your plant's conditions</div>
+                  }
                 </div>
-              </div>
-              <Charts { ...this.props } />
+
             </div>
           </div>
         </div>

@@ -18,7 +18,7 @@ export default class Chatbot extends React.Component {
 
       this._getUserId();//send user id to chatbot in server before initial the conversation
       let messages = this.state.messages;
-      let welcome = ['Hello ' + this.props.firstName + '. What a wonderful day it is.', 0, 'list-group-item list-group-item-success'];
+      let welcome = ['Hello ' + this.props.firstName + '. What a wonderful day it is.', 0, 'list-group-item list-group-item-success', new Date()];
       if(this.state.lastMessage===null){
         messages.push(welcome);
       }
@@ -47,7 +47,7 @@ export default class Chatbot extends React.Component {
               <div className="card" style={{ marginTop: 2 + 'rem' }}>
                 <div className="card-body">
                   <div id='messages' className="list-group list-group-flush">
-                    {messages.map((msg) => <a href="#" className={msg[2]} key={msg[1]}>{msg[0]}</a>)}
+                    {messages.map((msg) => <a href="#" className={msg[2]} key={msg[3]}>{msg[0]}</a>)}
                   </div>
                 </div>
               </div>
@@ -97,7 +97,7 @@ export default class Chatbot extends React.Component {
     let newMessages = this.state.messages;
     let counter = this.state.counter + 1;
     newMessages.unshift([msg, counter, this.state.counter % 2 === 0 ? 'list-group-item' : 'list-group-item list-group-item-success']);
-    this.setState({messages: newMessages.slice(0,7), counter: counter, lastMessage: msg[0]});
+    this.setState({messages: newMessages.slice(0,7), counter: counter, lastMessage: msg[0], key: new Date()});
   }
 }
 
