@@ -103,8 +103,8 @@ export default class LineChart extends React.Component {
     if( this.props.plantData ){
       return(
         <g className="line-chart">
-          <path strokeWidth="2" d={ this.areaLower } fill="rgba(128, 0, 0, 0.22)"></path>
-          <path strokeWidth="2" d={ this.areaUpper } fill="rgba(128, 0, 0, 0.22)"></path>
+          <path strokeWidth="2" d={ this.areaLower } fill="rgba(217, 83, 79, 0.6)"></path>
+          <path strokeWidth="2" d={ this.areaUpper } fill="rgba(217, 83, 79, 0.6)"></path>
           <path stroke="green" fill="none" strokeWidth=".75" d={ this.lineChart }></path>
           {/* <Axis orientation="left" { ...this.props }/>
           <Axis orientation="bottom" date={ true } { ...this.props } /> */}

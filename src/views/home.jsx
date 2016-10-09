@@ -29,7 +29,6 @@ class Home extends React.Component {
     this.props.fetchGarden();
     console.log('condition', this.props.id);
     if (this.props.id){
-      console.log('condition exists');
      this.props.fetchUserPlantGeneric(this.props.id);
     };
   }
@@ -97,11 +96,11 @@ class Home extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchGarden    : () => dispatch(_getGarden()),
-    fetchPlants   : () => dispatch(_getPlants()),
-    toggleNewPlant: () => dispatch(toggleNewPlant()),
-    fetchPlant    : (plant) => dispatch(_fetchPlant(plant)),
-    fetchUserPlantGeneric: (userId) => dispatch(_fetch_User_Plants(userId))
+    fetchGarden           : () => dispatch(_getGarden()),
+    fetchPlants           : () => dispatch(_getPlants()),
+    toggleNewPlant        : () => dispatch(toggleNewPlant()),
+    fetchPlant            : (plant) => dispatch(_fetchPlant(plant)),
+    fetchUserPlantGeneric : (userId) => dispatch(_fetch_User_Plants(userId))
   };
 }
 

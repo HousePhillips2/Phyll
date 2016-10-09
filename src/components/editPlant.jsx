@@ -141,7 +141,7 @@ export default class EditPlant extends React.Component {
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({user_id, device_id, plant_nickname, phone}),
       success: (data) => {
-        
+
       }
     });
   }
@@ -154,7 +154,7 @@ export default class EditPlant extends React.Component {
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({device_id}),
       success: (data) => {
-        
+
       }
     });
   }

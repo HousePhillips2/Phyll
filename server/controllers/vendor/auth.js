@@ -58,9 +58,7 @@ router.get('/loggedin', (req,res) => {
         updated_user_obj.plant = plant; //if plant exist, plant would be plant info stored in db; if not, plant is equal to false;
 
           retrieve_generic(userId, (generic) => {
-            console.log('HERE', generic);
             updated_user_obj.generic = generic;
-            console.log('HERE2 :', updated_user_obj);
             res.send(updated_user_obj); // update user_obj with user id from users table, which will be used for add plant
           })
       });
