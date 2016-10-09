@@ -12,9 +12,6 @@ export default class LineChart extends React.Component {
       this.update_d3(props);
     }
 
-// Add the limits to the top and bottom of the graph
-    // this.area = d3.svg.area;
-
   }
 
   componentWillUpdate(newProps) {
@@ -23,8 +20,37 @@ export default class LineChart extends React.Component {
 
   update_d3(props) {
 
-    // lowerBand = 785;
-    // upperBand = 824;
+    let water = props.plant_generic.water_s,
+        light = props.plant_generic.light_s;
+
+    let lowerBand = 785;
+    let upperBand = 824;
+
+    if( props.dataType === 'moisture' ){
+      if (water === 'low' || water === 'medium-low'){
+        upperBand = 950;
+        lowerBand = 600;
+      } else if (water === 'medium'){
+        upperBand = 1000;
+        lowerBand = 750;
+      } else if (water === 'medium-high' || water === 'high'){
+        upperBand = 1050;
+        lowerBand = 800;
+      }
+    }
+
+    if( props.dataType === 'light' ){
+      if (light === 'low' || light === 'medium-low'){
+        upperBand = 195;
+        lowerBand = 155;
+      } else if (light === 'medium'){
+        upperBand = 250;
+        lowerBand = 165;
+      } else if (light === 'medium-high' || light === 'high'){
+        upperBand = 275;
+        lowerBand = 195;
+      }
+    }
 
     this.lineChart = d3.svg.line;
     this.areaUpper = d3.svg.area;
@@ -35,13 +61,16 @@ export default class LineChart extends React.Component {
     let dates = this.props.plantData.map(d => d.date);
     let data  = this.props.plantData.map(d => d[props.dataType]);
 
+    this.lowerBound = d3.min(data) < lowerBand ? d3.min(data) : lowerBand;
+    this.upperBound = d3.max(data) > upperBand ? d3.max(data) : upperBand;
+
     let x = d3.time.scale()
               .range([ props.fullWidth - props.axisMargin, props.axisMargin ])
               .domain([ d3.min(dates), d3.max(dates) ]);
 
     let y = d3.scale.linear()
               .range([ props.height - props.bottomMargin, props.topMargin ])
-              .domain([ d3.min(data) - 10, d3.max(data) + 10 ]);
+              .domain([ this.lowerBound - 10, this.upperBound + 10 ]);
 
     let line = this.lineChart()
                    .x(d => x(d.date))
@@ -50,11 +79,11 @@ export default class LineChart extends React.Component {
     let lowerArea = this.areaLower()
                         .x( d => x(d.date))
                         .y1(d => y(lowerBand))
-                        .y0(y(d3.min(data) - 10));
+                        .y0(y(this.lowerBound - 10));
 
     let upperArea = this.areaUpper()
                         .x( d => x(d.date))
-                        .y1(y(d3.max(data) + 10))
+                        .y1(y(this.upperBound + 10))
                         .y0(d => y(upperBand));
 
     this.lineChart = line(props.plantData);
@@ -64,72 +93,21 @@ export default class LineChart extends React.Component {
 
   render() {
 
+    let translate = `translate(0, ${ this.props.topMargin })`;
+    //     <path strokeDasharray="3,3" stroke="red" fill="none" strokeWidth="1" d={`M402, ${test}L83, ${test}`} ></path>
+    //     <path strokeDasharray="3,3" stroke="red" fill="none" strokeWidth="1" d={`M402, ${test2}L83, ${test2}`} ></path>
+    //     <Axis orientation="left" { ...this.props } strokeWidth=".3" />
+    //
+    //     <Axis orientation="bottom" date={ true } { ...this.props } />
 
-    let water = this.props.plant_generic.water_s,
-        light = this.props.plant_generic.light_s;
-
-    //graphical limits = 50 - 440;
-    let upperL = 0,
-        lowerL = 0,
-        upperM = 0,
-        lowerM = 0;
-
-
-    if (water === 'low' || water === 'medium-low'){
-      upperM = 950;
-      lowerM = 600;
-    } else if (water === 'medium'){
-      upperM = 1000;
-      lowerM = 750;
-    } else if (water === 'medium-high' || water === 'high'){
-      upperM = 1050;
-      lowerM = 800;
-    }
-
-    if (light === 'low' || light === 'medium-low'){
-      upperL = 195;
-      lowerL = 155;
-    } else if (light === 'medium'){
-      upperL = 250;
-      lowerL = 165;
-    } else if (light === 'medium-high' || light === 'high'){
-      upperL = 275;
-      lowerL = 195;
-    }
-
-    if(this.props.datatype === 'light'){
-      lower = lowerL;
-      higher = upperL;
-    } else if (this.props.datatype === 'moisture'){
-      lower = lowerM;
-      higher = upperM;
-    }
-
-            let test = 100,
-            test2 = 330;
-
-    // let translate = `translate(0, ${ this.props.topMargin })`;
-    if( this.props.plantData ){
-      return(
-        <g className="line-chart" >
-        <path stroke="green" fill="none" strokeWidth=".5" d={ this.lineChart }></path>
-          {/* <path stroke="red" strokeWidth="2" d={ this.areaLower }></path>
-          <path stroke="red" strokeWidth="2" d={ this.areaUpper }></path> */}
-        <path strokeDasharray="3,3" stroke="red" fill="none" strokeWidth="1" d={`M402, ${test}L83, ${test}`} ></path>
-        <path strokeDasharray="3,3" stroke="red" fill="none" strokeWidth="1" d={`M402, ${test2}L83, ${test2}`} ></path>
-        <Axis orientation="left" { ...this.props } strokeWidth=".3" />
-
-        <Axis orientation="bottom" date={ true } { ...this.props } />
-{/* =======
     if( this.props.plantData ){
       return(
         <g className="line-chart">
-          <path stroke="red" strokeWidth="2" d={ this.areaLower }></path>
-          <path stroke="red" strokeWidth="2" d={ this.areaUpper }></path>
-          <path stroke="blue" fill="none" strokeWidth="2" d={ this.lineChart }></path>
-          <Axis orientation="left" { ...this.props } />
-          <Axis orientation="bottom" date={ true } { ...this.props } />
->>>>>>> [feature] Make graphs responsive */}
+          <path strokeWidth="2" d={ this.areaLower } fill="rgba(128, 0, 0, 0.22)"></path>
+          <path strokeWidth="2" d={ this.areaUpper } fill="rgba(128, 0, 0, 0.22)"></path>
+          <path stroke="green" fill="none" strokeWidth=".75" d={ this.lineChart }></path>
+          {/* <Axis orientation="left" { ...this.props }/>
+          <Axis orientation="bottom" date={ true } { ...this.props } /> */}
         </g>
       );
     } else {
