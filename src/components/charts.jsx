@@ -13,21 +13,21 @@ class Charts extends React.Component {
   }
 
   componentWillMount() {
-    console.log('vot!', this.props);
+    console.log('vot!', this.props.user_plants[0]);
     this.props.rawData(this.props.user_plants[0].device_id);
   }
 
   render() {
 
     let params = {
-      width: 485,
-      height: 490,
+      width: 484,
+      height: 390,
       axisMargin: 83,
       leftMargin: 50,
       topMargin: 50,
       bottomMargin: 50,
       // ADJUST this value to change size of SVG element
-      fullWidth: 485
+      fullWidth: 484
     };
 
     const props = Object.assign({}, this.props, params);
@@ -40,7 +40,7 @@ class Charts extends React.Component {
       return(
         <div>
           <svg width={ params.fullWidth } height={ params.height }>
-            <LineChart dataType="moisture" { ...props }/>
+          <LineChart dataType="moisture" { ...props }/>
           </svg>
           <svg width={ params.fullWidth } height={ params.height }>
             <LineChart dataType="light" { ...props }/>

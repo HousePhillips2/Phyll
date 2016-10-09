@@ -29,8 +29,14 @@ export default class LineChart extends React.Component {
 
   update_d3(props) {
 
-    let lowerBand = 810;
-    let upperBand = 824;
+    let lowerBand = 810,
+        upperBand = 824;
+
+
+
+
+    // lowerBand = 785;
+    // upperBand = 824;
 
     let dates = props.plantData.map(d => d.date);
     let data  = props.plantData.map(d => d[props.dataType]);
@@ -60,23 +66,22 @@ export default class LineChart extends React.Component {
     this.lineChart = line(props.plantData);
     this.areaLower = lowerArea(props.plantData);
     this.areaUpper = upperArea(props.plantData);
+
+    console.log('this.areaUpper:', this.areaUpper);
   }
 
   render() {
-    let water = this.props.plant_generic.water_s;
-    let light = this.props.plant_generic.light_s;
+
+
+    let water = this.props.plant_generic.water_s,
+        light = this.props.plant_generic.light_s;
 
     //graphical limits = 50 - 440;
     let upperL = 0,
         lowerL = 0,
         upperM = 0,
-        lowerM = 0,
-        test =  440,
-        test2 = 50;
+        lowerM = 0;
 
-        if(datatype = light)
-    upperbound
-    lowerbound
 
     if (water === 'low' || water === 'medium-low'){
       upperM = 950;
@@ -90,30 +95,37 @@ export default class LineChart extends React.Component {
     }
 
     if (light === 'low' || light === 'medium-low'){
-      upperL = 950;
+      upperL = 195;
       lowerL = 155;
     } else if (light === 'medium'){
-      upperL = 1000;
+      upperL = 250;
       lowerL = 165;
     } else if (light === 'medium-high' || light === 'high'){
-      upperL = 1050;
+      upperL = 275;
       lowerL = 195;
     }
 
+    if(this.props.datatype === 'light'){
+      lower = lowerL;
+      higher = upperL;
+    } else if (this.props.datatype === 'moisture'){
+      lower = lowerM;
+      higher = upperM;
+    }
+
+            let test = 100,
+            test2 = 330;
 
     // let translate = `translate(0, ${ this.props.topMargin })`;
     if( this.props.plantData ){
       return(
-        <g className="line-chart">
+        <g className="line-chart" >
+        <path stroke="green" fill="none" strokeWidth=".5" d={ this.lineChart }></path>
           {/* <path stroke="red" strokeWidth="2" d={ this.areaLower }></path>
           <path stroke="red" strokeWidth="2" d={ this.areaUpper }></path> */}
-<svg width="50" height="50">
-2  <rect x="20" y="20" width="50" height="50" fill="green" />
-3</svg>
-        <path stroke="blue" fill="none" strokeWidth="1" d={`M402, ${test}L83, ${test}`} ></path>
-        <path stroke="red" fill="none" strokeWidth="1" d={`M402, ${test2}L83, ${test2}`} ></path>
-        <path stroke="green" fill="none" strokeWidth=".5" d={ this.lineChart }></path>
-        { <Axis orientation="left" { ...this.props } /> }
+        <path strokeDasharray="3,3" stroke="red" fill="none" strokeWidth="1" d={`M402, ${test}L83, ${test}`} ></path>
+        <path strokeDasharray="3,3" stroke="red" fill="none" strokeWidth="1" d={`M402, ${test2}L83, ${test2}`} ></path>
+        <Axis orientation="left" { ...this.props } strokeWidth=".3" />
 
         <Axis orientation="bottom" date={ true } { ...this.props } />
         </g>
