@@ -8,12 +8,6 @@ export default class LineChart extends React.Component {
   constructor(props) {
     super(props);
 
-    this.areaUpper = d3.svg.area;
-    this.rangeLineUpper = d3.svg.line;
-    this.areaLower = d3.svg.area;
-    this.rangeLineLower = d3.svg.line;
-    this.lineChart = d3.svg.line;
-
     if( props.plantData ){
       this.update_d3(props);
     }
@@ -23,23 +17,23 @@ export default class LineChart extends React.Component {
 
   }
 
-  componentWillReceiveProps(newProps) {
-    this.update_d3.bind(this, newProps);
+  componentWillUpdate(newProps) {
+    this.update_d3(newProps);
   }
 
   update_d3(props) {
 
-    let lowerBand = 810,
-        upperBand = 824;
-
-
-
-
     // lowerBand = 785;
     // upperBand = 824;
 
-    let dates = props.plantData.map(d => d.date);
-    let data  = props.plantData.map(d => d[props.dataType]);
+    this.lineChart = d3.svg.line;
+    this.areaUpper = d3.svg.area;
+    this.rangeLineUpper = d3.svg.line;
+    this.areaLower = d3.svg.area;
+    this.rangeLineLower = d3.svg.line;
+
+    let dates = this.props.plantData.map(d => d.date);
+    let data  = this.props.plantData.map(d => d[props.dataType]);
 
     let x = d3.time.scale()
               .range([ props.fullWidth - props.axisMargin, props.axisMargin ])
@@ -66,8 +60,6 @@ export default class LineChart extends React.Component {
     this.lineChart = line(props.plantData);
     this.areaLower = lowerArea(props.plantData);
     this.areaUpper = upperArea(props.plantData);
-
-    console.log('this.areaUpper:', this.areaUpper);
   }
 
   render() {
@@ -128,6 +120,16 @@ export default class LineChart extends React.Component {
         <Axis orientation="left" { ...this.props } strokeWidth=".3" />
 
         <Axis orientation="bottom" date={ true } { ...this.props } />
+{/* =======
+    if( this.props.plantData ){
+      return(
+        <g className="line-chart">
+          <path stroke="red" strokeWidth="2" d={ this.areaLower }></path>
+          <path stroke="red" strokeWidth="2" d={ this.areaUpper }></path>
+          <path stroke="blue" fill="none" strokeWidth="2" d={ this.lineChart }></path>
+          <Axis orientation="left" { ...this.props } />
+          <Axis orientation="bottom" date={ true } { ...this.props } />
+>>>>>>> [feature] Make graphs responsive */}
         </g>
       );
     } else {

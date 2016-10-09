@@ -10,6 +10,10 @@ import { _loadRawData } from '../redux/actions/helpers';
 class Charts extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      windowWidth: window.innerWidth
+    };
+
   }
 
   componentWillMount() {
@@ -17,17 +21,24 @@ class Charts extends React.Component {
     this.props.rawData(this.props.user_plants[0].device_id);
   }
 
+  componentDidMount() {
+    $( window ).resize(() => {
+      this.setState({windowWidth: window.innerWidth});
+      this.render();
+    });
+  }
+
   render() {
 
     let params = {
-      width: 484,
+      width: this.state.windowWidth * 0.3465,
       height: 390,
       axisMargin: 83,
       leftMargin: 50,
       topMargin: 50,
       bottomMargin: 50,
       // ADJUST this value to change size of SVG element
-      fullWidth: 484
+      fullWidth: this.state.windowWidth * 0.3465
     };
 
     const props = Object.assign({}, this.props, params);
@@ -39,12 +50,16 @@ class Charts extends React.Component {
     } else {
       return(
         <div>
-          <svg width={ params.fullWidth } height={ params.height }>
-          <LineChart dataType="moisture" { ...props }/>
-          </svg>
-          <svg width={ params.fullWidth } height={ params.height }>
-            <LineChart dataType="light" { ...props }/>
-          </svg>
+          <span id="moisturechart">
+            <svg width={ params.fullWidth } height={ params.height }>
+              <LineChart dataType="moisture" { ...props }/>
+            </svg>
+          </span>
+          <span id="lightchart">
+            <svg width={ params.fullWidth } height={ params.height }>
+              <LineChart dataType="light" { ...props }/>
+            </svg>
+          </span>
         </div>
       );
     }
