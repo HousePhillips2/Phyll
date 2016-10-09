@@ -47,27 +47,7 @@ class Conservatory extends React.Component {
         </div>
         { plantFacts }
         <div className="row content">
-          <div className="content-2 col-lg-7 push-lg-5 container-fluid">
-            <div className="card-wrapper">
-              <div className="card">
-                <div className="card-header">
-                  How we got here
-                </div>
-                <div className="card-block">
-                  <p className="card-text">Dev blog</p>
-                </div>
-              </div>
-              <div className="card">
-                <div className="card-header">
-                  What you can do
-                </div>
-                <div className="card-block">
-                  <p className="card-text">Call to action for contributors</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="content-1 col-lg-5 pull-lg-7 container-fluid">
+          <div className="content xs-12 container-fluid">
             <div className="card-wrapper">
               <div className="card">
                 <div className="card-header">
@@ -83,6 +63,24 @@ class Conservatory extends React.Component {
                 </div>
                 <div className="card-block">
                   <p className="card-text">Stack details</p>
+                </div>
+              </div>
+            </div>
+            <div className="card-wrapper">
+              <div className="card">
+                <div className="card-header">
+                  How we got here
+                </div>
+                <div className="card-block">
+                  <p className="card-text">Dev blog</p>
+                </div>
+              </div>
+              <div className="card">
+                <div className="card-header">
+                  What you can do
+                </div>
+                <div className="card-block">
+                  <p className="card-text">Call to action for contributors</p>
                 </div>
               </div>
             </div>
