@@ -1,14 +1,23 @@
 ///////////////    NODE MODULES    ///////////////
-                  require('dotenv').config();
-const express     = require('express');
-const app         = express();
-const http        = require('http').Server(app);
-const bodyParser  = require('body-parser');
-const Auth0Strategy = require('passport-auth0');
-const passport    = require('passport');
-const session     = require ('express-session');
-const io          = require('socket.io').listen(http);
-                    require('./controllers/vendor/chatbot.js')(io);
+                        require('dotenv').config();
+const express         = require('express');
+const app             = express();
+const http            = require('http').Server(app);
+const bodyParser      = require('body-parser');
+const Auth0Strategy   = require('passport-auth0');
+const passport        = require('passport');
+const session         = require('express-session');
+const io              = require('socket.io').listen(http);
+// const XMLHttpRequest  = require('xmlhttprequest').XMLHttpRequest;
+const path            = require('path');
+                        require('./controllers/vendor/chatbot.js')(io);
+
+//////////////    SERVER MODULES    //////////////
+const apiApp      = require('./controllers/api/api');
+const ioApp       = require('./controllers/io/io');
+const vendorApp   = require('./controllers/vendor/vendor');
+const postgresApp = require('./controllers/postgres/postgres');
+
 
 // MOUNT middleware
 app.use(express.static('dist'));
@@ -23,19 +32,6 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-//////////////    SERVER MODULES    //////////////
-
-const apiApp      = require('./controllers/api/api');
-const ioApp       = require('./controllers/io/io');
-const vendorApp   = require('./controllers/vendor/vendor');
-
-
-
-// const vendorApp   = require('./controllers/vendor/vendor');
-const postgresApp = require('./controllers/postgres/postgres');
-
 
 // MOUNT middleware
 app.use(express.static('dist'));
@@ -56,9 +52,6 @@ app.use('/vendor', vendorApp);
 // POSTGRES sub-app
 app.use('/postgres', postgresApp);
 
-
-
-
 //auth0 call back route
 app.get('/callback',
   passport.authenticate('auth0', { failureRedirect: '/login' }),
@@ -67,8 +60,7 @@ app.get('/callback',
       throw new Error('user null');
     }
     res.redirect("/");
-  }
-);
+  });
 
 // **********************************    MOVE ME! **********************************
 // app.use('/plantsLibrary', plantsLibrary);
@@ -79,6 +71,9 @@ app.get('/', (req, res) => res.redirect('/index.html'));
 app.use('/static', express.static('node_modules'));
 app.use('/images', express.static('src/images'));
 app.use('/glyphs', express.static('src/glyphs'));
+
+// wildcard route for dynamic react routing
+app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../dist/index.html')));
 
 
 let port = process.env.PORT || 8080;

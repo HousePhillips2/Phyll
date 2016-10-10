@@ -47,7 +47,7 @@ gulp.task('browser-sync', ['webpack','server-sync'], () => {
 
 // check all .js and .jsx files in src for common errors
 gulp.task('lint', () => {
-  gulp.src('src/**/*.{js,jsx}')
+  gulp.src('./**/*.{js,jsx}')
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());

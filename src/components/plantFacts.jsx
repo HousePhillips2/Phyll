@@ -4,14 +4,16 @@ import AddPlant   from './addPlant.jsx';
 export default class PlantFacts extends React.Component {
   constructor(props) {
     super(props);
-    this.state={
-      newPlant: false
-    };
     this.clickHandler = this.clickHandler.bind(this);
+    this.closeHandler = this.closeHandler.bind(this);
   }
 
   clickHandler() {
-    this.setState({newPlant: true});
+    this.props.toggleNewPlant();
+  }
+
+  closeHandler() {
+    this.props.fetchPlant('');
   }
 
   render() {
@@ -20,7 +22,7 @@ export default class PlantFacts extends React.Component {
     
     if (this.props.plantFacts.length > 0) {
 
-      if (this.state.newPlant) {
+      if (this.props.newPlant) {
 
         return (
 
@@ -36,12 +38,13 @@ export default class PlantFacts extends React.Component {
             <div className="content-top column container-fluid">
               <div className="card">
                 <div className="card-header">
-                  {plantFacts.plant_name}
+                  <span className="pull-xs-left">{plantFacts.plant_name}</span>
+                  <span onClick={this.closeHandler} className="close-pane pull-xs-right"><i className="fa fa-times-circle-o" aria-hidden="true"></i></span>
                 </div>
                 <div className="card-block graff">
                   <div className="media">
                     <span className="media-left">
-                      <img style={{width: 175 + 'px'}} className="img-rounded" src={plantFacts.img}/>
+                      <img style={{width: 175 + 'px'}} className="img-rounded" src={plantFacts.plant_img}/>
                       <p>
                         <button type="button" onClick={this.clickHandler} className="btn btn-block btn-success media-left media-bottom" style={{marginTop: .5 + 'rem'}}>Add Plant</button>
                       </p>

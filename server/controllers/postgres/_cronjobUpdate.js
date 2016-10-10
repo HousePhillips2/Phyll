@@ -1,4 +1,3 @@
-           require('dotenv').config();
 const db = require('../../models/pg-config');
 
 
@@ -16,7 +15,6 @@ const cronUpdate = (req, res) => {
 
         db.any('SELECT api.user_plant.id, api.user_plant.health, api.user_plant.health_light, api.user_plant.health_moisture, api.plants.water_s, api.plants.light_s FROM api.user_plant, api.plants WHERE api.user_plant.plant_id = api.plants.id AND api.user_plant.device_id = $1', [deviceId]).then(plant => {
 
-            console.log('VOT!', plant[0].health_light, plant[0].health_moisture);
             // PLANT object contains:(1) id (2) health (3) light-health (4) water-health (5) water_s (6)light_s
             // PHYLL object contains: (1) deviceId (2) light array (3) moisture array
 

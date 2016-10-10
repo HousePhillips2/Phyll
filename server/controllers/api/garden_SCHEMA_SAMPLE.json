@@ -1,0 +1,16 @@
+  {
+    "user_id": "f8f9624b-ba71-4753-8313-ecee9bdd8d3f",
+    "plant_id": "0dd38830-8ca4-4cf8-a76d-e350cb71eaa6",
+    "device_id": "99",
+    "plant_nickname": "Snow White",
+    "plant_img": "https://scontent.xx.fbcdn.net/t31.0-1/10511467_564482826990028_4037841510317245576_o.jpg",
+    "id": "f8f9624b-ba71-4753-8313-ecee9bdd8d3f",
+    "health": 5,
+    "health_light": 10,
+    "health_moisture": 10,
+    "nickname": "Phoebe Ye",
+    "img": "https://scontent.xx.fbcdn.net/t31.0-1/10511467_564482826990028_4037841510317245576_o.jpg",
+    "first_name": "Phoebe",
+    "last_name": "Ye",
+    "common_name": "Spider Plant"
+  }
