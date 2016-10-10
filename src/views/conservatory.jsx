@@ -44,9 +44,6 @@ class Conservatory extends React.Component {
               <Search className="form-control form-control-lg" { ...this.props } /> : null
             }
           </div>
-        // <div className="card-block">
-        //   <p className="card-text"><Link to="/">Return Home</Link></p>
-        // </div>
         </div>
         { plantFacts }
         { plants ?
