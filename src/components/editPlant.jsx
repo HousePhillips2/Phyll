@@ -27,7 +27,6 @@ export default class EditPlant extends React.Component {
     } else {
 
       if (this.state.edit) {
-      console.log(this.props.plant)
 
         return (
 
