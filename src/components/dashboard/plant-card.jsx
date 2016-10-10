@@ -1,7 +1,8 @@
 import { ajax } from 'jquery';
 import React from 'react';
 
-import Charts from '../charts.jsx';
+// import Charts from '../charts.jsx'; // Uncomment this line and comment the one below to revert
+import Charts from '../charts-alt.jsx';
 import EditPlant from '../editPlant.jsx';
 
 
