@@ -6,10 +6,10 @@ import makeStore from './redux/store/store';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 import {
-  Router, 
-  Route, 
-  Redirect, 
-  browserHistory, 
+  Router,
+  Route,
+  Redirect,
+  browserHistory,
   IndexRoute,
 } from 'react-router';
 
@@ -31,7 +31,7 @@ require('./stylesheets/main.scss');
 class MyApp extends React.Component {
 
   render() {
-    
+
     return (
 
       <Provider store={ store }>
@@ -41,7 +41,7 @@ class MyApp extends React.Component {
             <Route path='conservatory' component={ Conservatory }/>
             <Route path='about' component={ About }/>
           </Route>
-          <Redirect from="*" to="/" /> 
+          <Redirect from="*" to="/" />
         </Router>
       </Provider>
 
