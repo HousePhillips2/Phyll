@@ -29,14 +29,14 @@ function update_plant(plant_obj){
   .catch((error) => {
     console.log(error, 'update phone number error');
   });
-  db.none('update api.user_plant set device_id = $1, plant_nickname = $2 where user_id = $3', [plant_obj.device_id, plant_obj.plant_nickname, plant_obj.user_id])
+  db.none('update api.user_plant set device_id = $1, plant_nickname = $2 where plant_id = $3', [plant_obj.device_id, plant_obj.plant_nickname, plant_obj.plant_id])
   .catch((error) => {
     console.log(error, 'update user plant data error');
   });
 }
 
 function delete_plant(plant_obj){
-  db.result("delete from api.user_plant where device_id = $1", [plant_obj.device_id])
+  db.result("delete from api.user_plant where plant_id = $1", [plant_obj.plant_id])
   .then(function (result) {
     //console.log(result.rowCount, 'in delete function'); // print how many records were deleted;
   })
