@@ -25,7 +25,7 @@ class Charts extends React.Component {
     if( !this.props.plantData ){
       return(
         <Measure onMeasure={(dimensions) => { this.setState({dimensions}) }} accurate={true} shouldMeasure={true}>
-          <h2>Loading data into application...</h2>
+          <h2 style={{marginLeft: -1 + 'rem'}}>Loading data into application...</h2>
         </Measure>
       );
     } else {
@@ -36,12 +36,8 @@ class Charts extends React.Component {
         labels: labels.filter((v, i) => i % 10 === 0),
         datasets: [{
           label: "Soil moisture readings over past 24 hours",
-          fill: false,
+          fill: true,
           lineTension: 0.1,
-          yHighlightRange : {
-            begin: 500,
-            end: 750
-          },
           data: m_data.filter((v, i) => i % 10 === 0)
         }]
       };
@@ -49,23 +45,22 @@ class Charts extends React.Component {
         labels: labels.filter((v, i) => i % 10 === 0),
         datasets: [{
           label: "Average light readings during past 24 hours",
-          fill: false,
+          fill: true,
           lineTension: 0.1,
-          yHighlightRange : {
-            begin: 100,
-            end: 195
-          },
-          strokeColor: "rgba(220,220,220,1)",
-          pointColor: "rgba(220,220,220,1)",
-          pointHighlightStroke: "rgba(220,220,220,1)",
           data: l_data.filter((v, i) => i % 10 === 0)
         }]
       };
       let optionsM = {
         responsive: true,
+        legend: {
+          display: false,
+        },
         elements: {
           line: {
-            cubicInterpolationMode: 'monotone'
+            cubicInterpolationMode: 'monotone',
+            stepped: false,
+            borderColor: 'rgba(91, 192, 222, 1)',
+            backgroundColor: 'rgba(49, 176, 213, .5)'
           },
         },
         scales: {
@@ -74,18 +69,24 @@ class Charts extends React.Component {
           }],
           yAxes: [{
             ticks: {
-              display: false,
-              beginAtZero: true,
-              max: 1050
+              display: true,
+              // beginAtZero: true,
+              // max: 1050
             }
           }]
         }
       }
       let optionsL = {
         responsive: true,
+        legend: {
+          display: false,
+        },
         elements: {
           line: {
-            cubicInterpolationMode: 'monotone'
+            cubicInterpolationMode: 'monotone',
+            stepped: true,
+            borderColor: 'rgba(240, 173, 78, 1)',
+            backgroundColor: 'rgba(236, 151, 31, .5)'
           },
         },
         scales: {
@@ -94,19 +95,22 @@ class Charts extends React.Component {
           }],
           yAxes: [{
             ticks: {
-              display: false,
-              beginAtZero: true,
-              max: 275
+              display: true,
+              // beginAtZero: true,
+              // max: 275
             }
           }]
         }
       }
-
       return(
-        <div>
-          <Line data={moisture} { ...this.props } options={optionsM} />
-          <Line data={light} { ...this.props } options={optionsL} />
-        </div>
+        <Measure onMeasure={(dimensions) => { this.setState({dimensions}) }} accurate={true} shouldMeasure={true}>
+          <div style={{marginLeft: -1 + 'rem'}} className="graff" className="text-muted">
+            <p style={{marginTop: .25 + 'rem'}}>Average <span className="text-info">soil moisture</span> throughout past day. Range: 0 - 1050.</p>
+            <div><Line data={moisture} { ...this.props } width={width * .9} height={100 + 'px'} options={optionsM} /></div>
+            <p style={{marginTop: .5 + 'rem'}}>Average <span className="text-warning">light</span> during prior 24 hours. Range: 0 - 275.</p>
+            <div><Line data={light} { ...this.props } width={width * .9} height={100 + 'px'} options={optionsL} /></div>
+          </div>
+        </Measure>
       );
     }
   }
