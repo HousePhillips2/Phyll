@@ -33,7 +33,7 @@ export default class SearchBar extends React.Component {
   }
 
   componentDidMount() {
-    this._timer = setInterval(() => this.counter(), 800);
+    this._timer = setInterval(() => this.counter(), 1200);
   }
 
   componentWillUnmount() {
@@ -78,17 +78,30 @@ export default class SearchBar extends React.Component {
     });
   };
 
+  onSuggestionSelected (event, { suggestion, suggestionValue, sectionIndex, method }) {
+    let selected = suggestionValue;
+    if (selected !== currentSelected) {
+      currentSelected = selected;
+      this.props.fetchPlant(selected);
+      this.setState({
+        value: '',
+        suggestions: []
+      });
+    }
+  };
+
+  shouldRenderSuggestions(value) {
+    return value.trim().length > 3;
+  }
+
   storeInputReference (autosuggest) {
     if (autosuggest !== null) {
       this.input = autosuggest.input;
-      let selected = autosuggest.input.value;
-      if (selected.length > 4 && selected !== currentSelected) {
-        currentSelected = selected;
-        this.props.fetchPlant(selected);
-        // this.setState({
-        //   value: ''
-        // });
-      }
+      // let selected = autosuggest.input.value;
+      // if (selected !== currentSelected) {
+      //   currentSelected = selected;
+      //   this.props.fetchPlant(selected);
+      // }
     }
   }
 
@@ -107,9 +120,11 @@ export default class SearchBar extends React.Component {
         suggestions={suggestions}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
         onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
+        onSuggestionSelected={this.onSuggestionSelected.bind(this)}
         getSuggestionValue={getSuggestionValue}
         renderSuggestion={renderSuggestion}
         inputProps={inputProps}
+        focusInputOnSuggestionClick={false}
         ref={this.storeInputReference.bind(this)} />
         
     );

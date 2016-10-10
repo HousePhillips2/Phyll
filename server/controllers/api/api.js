@@ -1,6 +1,6 @@
 ///////////////    NODE MODULES    ///////////////
-const express     = require('express');
-const router      = express.Router();
+const express       = require('express');
+const router        = express.Router();
 
 //////////////    SERVER MODULES    //////////////
 const admin         = require('./admin');
@@ -8,13 +8,14 @@ const garden        = require('./garden');
 const plantData     = require('./plant-data');
 const plantFacts    = require('./plant-facts');
 const plantsLibrary = require('./plants-library');
-//const auth          = require('./auth-config');
+const about         = require('./about');
+
 
 // ROUTE requests
 router.use('/admin', admin);
 router.use('/garden', garden);
 router.use('/plantsLibrary', plantsLibrary);
-//router.use('/auth', auth);
+router.use('/about', about);
 
 // TODO: SPLIT INTO SUB ROUTES?
 router.use('/plantData', plantData);

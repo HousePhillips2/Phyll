@@ -6,39 +6,48 @@ const botsFamily  = {
   // dark: apiai(process.env.DARK_BOT),
   // burnt: apiai(process.env.BURNT_BOT)
 };
-
 const retrieveMood = require('../postgres/retrieve_mood.js');
+const {query_plant} = require ('../../models/plants.js');
 
-let plantbot;
-let userId;
+
 module.exports=function (io) {
-  io.on('connection', function(socket){
-    //once socket.io is connected 
-    //make an api call to fetch plant status
-    plantbot = botsFamily.plantbot;//
-    socket.on('userId', function(id){
+  io.on('connection', (socket) => { //connect with socket.io
+    let plantbot = botsFamily.plantbot;
+    let userId;
+    socket.on('userId', (id) => {
       userId = id;
     });
-    socket.on('client', function(msg){
-      const request = plantbot.textRequest(msg);
-      request.on('response', function(response) {
-        //diverse plantbot to handle client's questions based on plant status (i.e. fine, thirsty, drowning, burnt, dark)
-        //if client's plant is fine, use api.ai response
-        //if not, use our own response (i.e. I dont get enough water or sun ....)
-        //console.log(healthstatus,'healthstatus')
-        if(response.result.action!=='getStatus'){
-          io.emit('plant',response.result.fulfillment.speech);
-        } else {
-          retrieveMood(userId, (healthstatus) =>{
-            console.log(healthstatus,'inside mood');
-            io.emit('plant', healthstatus[0]);
-          });   
+    socket.on('client', (msg) => {
+      const request = plantbot.textRequest(msg);//connect with api.ai server: natural language process tool
+      request.on('response', (response) => {
+        //diverse plantbot to handle client's questions based on question types (i.e. small talks, plant health, plant identity)
+        if(response.result.action === 'getStatus'){ //when client asks about plant's health
+          retrieveMood(userId, (healthstatus) =>{ //query database to retrieve plant health info
+            if(healthstatus){
+              io.emit('plant', healthstatus[0]);
+            } else {
+              io.emit('plant', 'My friend Phyll is missing... It helps keep track of my health. Do you want to have one?');
+            }
+          });
+        } else if (response.result.action === 'getName'){ //when client asks about plant's identity
+          query_plant(userId, (plant) => { //query database to retrieve plant identity
+            if(plant){
+              io.emit('plant',`I am your ${plant[0].plant_nickname}`);
+            } else {
+              io.emit('plant', 'I will be your plantbot. But It seems like you haven\'t add your plant in our site. Could you like to add one?');
+            }
+          });
+        } else { //when client is in small talk with plant
+          io.emit('plant',response.result.fulfillment.speech); //defalt response from pre-build smalltalk domain
+
         }
       });
-      request.on('error', function(error) {
-          console.log(error);
+
+      request.on('error', (error) => {
+          console.log(error, 'plant bot connection error');
       });
-      request.end();        
+
+      request.end();
     });
   });
 };

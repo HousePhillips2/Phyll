@@ -13,11 +13,11 @@ import Logout       from '../components/logout.jsx';
 import Map          from '../components/map/index.jsx';
 import Chatbot      from '../components/chatbot.jsx';
 import AddPlant     from '../components/addPlant.jsx';
-import DashBar      from '../components/dashboardBar.jsx';
-import { _getAdmin, _getPlants, _fetchPlant } from '../redux/actions/helpers';
+import Dashboard    from '../components/dashboard/dashboardMain.jsx';
+import Footer       from '../components/footer.jsx';
 
-require('../stylesheets/main.scss');
-
+import { _getGarden, _getPlants, _fetchPlant } from '../redux/actions/helpers';
+import { toggleNewPlant } from '../redux/actions/actions';
 
 class Home extends React.Component {
   constructor(props) {
@@ -26,15 +26,19 @@ class Home extends React.Component {
 
   componentWillMount() {
     this.props.fetchPlants();
-    this.props.fetchAdmin();
+    this.props.fetchGarden();
+    console.log('condition', this.props.id);
+    if (this.props.id){
+     this.props.fetchUserPlantGeneric(this.props.id);
+    };
   }
 
   // TODO: The initial div needs to go in refactor as it is duplicated in nav
 
   render() {
 
-    let dashboard = this.props.loggedIn ? <DashBar id="dashBar" { ...this.props }/> : <div id="dashBar"></div>;
-    let plantFacts = this.props.plantFacts ? <PlantFacts id="dashBar" { ...this.props }/> : <div id="plantFacts"></div>;
+    let dashboard = this.props.loggedIn ? <Dashboard id="dashboard" { ...this.props }/> : <div id="dashboard"></div>;
+    let plantFacts = this.props.plantFacts ? <PlantFacts id="plantFacts" { ...this.props }/> : <div id="plantFacts"></div>;
 
     return(
 
@@ -61,10 +65,10 @@ class Home extends React.Component {
               </div>
               <div className="card">
                 <div className="card-header">
-                  TODO: How to make a phyll.bot
+                  Make a phyll.bot of your own
                 </div>
                 <div className="card-block">
-                  <p className="card-text">Get on the map with your very own bot. <a href="https://github.com/cachilders/PhyllOS">PhyllOS is yours</a> to perfect.</p>
+                  <p className="card-text">Get on the map with your very own bot. <a href="https://github.com/housephillips2/PhyllOS">PhyllOS is yours</a> to perfect.</p>
                 </div>
               </div>
             </div>
@@ -77,24 +81,13 @@ class Home extends React.Component {
                   Conservatory
                 </div>
                 <div className="card-block">
-                  <p className="card-text">There are so many wonderful plants for your home. Discover the perfect one.</p>
+                  <p className="card-text">There are so many wonderful plants for your home. <Link to="/conservatory">Discover the perfect one</Link>.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {/*<div className="footer row">
-          <div className="content-top column container-fluid">
-            <div className="card">
-              <div className="card-header">
-                Footer Widget (TODO: whatevs)
-              </div>
-              <div className="card-block">
-                Content
-              </div>
-            </div>
-          </div>
-        </div>*/}
+        <Footer { ...this.props} />
       </div>
 
     );
@@ -103,9 +96,11 @@ class Home extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchAdmin  : () => dispatch(_getAdmin()),
-    fetchPlants : () => dispatch(_getPlants()),
-    fetchPlant  : (plant) => dispatch(_fetchPlant(plant))
+    fetchGarden           : () => dispatch(_getGarden()),
+    fetchPlants           : () => dispatch(_getPlants()),
+    toggleNewPlant        : () => dispatch(toggleNewPlant()),
+    fetchPlant            : (plant) => dispatch(_fetchPlant(plant)),
+    fetchUserPlantGeneric : (userId) => dispatch(_fetch_User_Plants(userId))
   };
 }
 
@@ -114,14 +109,17 @@ function mapStateToProps(state) {
   if( state.get('loggedIn') ){
     return {
       plants: state.getIn([ 'plants', 'plants' ]),
-      admin: state.getIn([ 'admin', 'admin' ]),
+      garden: state.getIn([ 'garden', 'garden' ]),
+      user_plants: user.get('user_plants'),
       loggedIn: state.get('loggedIn'),
       username: user.get('name'),
       image: user.get('image'),
+      plant_generic: user.get('generic'),
       firstName: user.get('firstName'),
       lastName: user.get('lastName'),
       plantFacts: state.getIn(['plantFacts', 'plantFacts']),
-      id: user.get('id')
+      id: user.get('id'),
+      newPlant: state.get('newPlant')
     };
   }
 
@@ -129,17 +127,19 @@ function mapStateToProps(state) {
     return {
       plantFacts: state.getIn(['plantFacts', 'plantFacts']),
       plants: state.getIn([ 'plants', 'plants' ]),
-      admin: state.getIn([ 'admin', 'admin' ]),
+      garden: state.getIn([ 'garden', 'garden' ]),
       loggedIn: state.get('loggedIn'),
-      id: state.get('id')
-    }
+      id: state.get('id'),
+      newPlant: state.get('newPlant')
+    };
   }
 
   return {
     plants: state.getIn([ 'plants', 'plants' ]),
-    admin: state.getIn([ 'admin', 'admin' ]),
+    garden: state.getIn([ 'garden', 'garden' ]),
     loggedIn: state.get('loggedIn'),
-    id: state.get('id')
+    id: state.get('id'),
+    newPlant: state.get('newPlant')
   };
 }
 

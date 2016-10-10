@@ -1,5 +1,15 @@
-export function fetchUser() {
+export function setAdminData(adminData) {
+  return {
+    type: 'SET_ADMIN_DATA',
+    adminData
+  };
+}
 
+export function setUserPlantData(userPlantData) {
+  return {
+    type: 'SET_USER_PLANT_DATA',
+    userPlantData
+  };
 }
 
 export function setUser(user) {
@@ -36,9 +46,22 @@ export function setPlants(plants) {
   };
 }
 
-export function setAdmin(admin) {
+export function setGarden(garden) {
   return {
-    type: 'SET_ADMIN',
-    admin
+    type: 'SET_GARDEN',
+    garden
+  };
+}
+
+export function toggleNewPlant() {
+  return {
+    type: 'TOGGLE_NEW_PLANT',
+  };
+}
+
+export function setUserPlantGeneric(userPlantGeneric) {
+  return {
+    type: 'SET_USER_PLANT_GENERIC',
+    userPlantGeneric
   };
 }

@@ -5,18 +5,12 @@ const db      = require('../../models/pg-config.js');
 
 router.get('/', function(req, res) {
 
-  // const friends = [
-  //   {User: 'Phoebe', user_img:'https://figuya.com/uploads/product/profile_picture/6195/profile_Pop-Animation-67-Natsu-Dragneel-Vorschau.jpg', plants: '4 Plants', Light: 'Full Sun'},
-  //   {User: 'Casey', user_img:'https://figuya.com/uploads/product/profile_picture/6189/profile_Pop-Animation-79-Soul-Vorschau.jpg', plants: '3 Plants', Light: 'Full Sun'},
-  //   {User: 'Eric', user_img:'https://figuya.com/uploads/product/profile_picture/6188/profile_Pop-Animation-80-Maka-Albarn-Vorschau.jpg', plants: '2 Plants', Light: 'Full Sun'},
-  //   {User: 'Sergey', user_img:'https://figuya.com/uploads/product/profile_picture/6191/profile_Pop-Animation-72-Sasuke-Uchiha-Vorschau.jpeg', plants: '1 Plants', Light: 'Full Sun'}
-  // ];
-  db.any("select * from api.users")// see below for field names in plants table
+  db.any("SELECT p.user_id, p.plant_id, p.device_id, p.plant_nickname, p.health, p.health_light, p.health_moisture, u.nickname, u.img, u.first_name, u.last_name, u.phone_number, s.plant_img, s.plant_name FROM api.user_plant p INNER JOIN api.users u on p.user_id = u.id INNER JOIN api.plants s on p.plant_id = s.id")
   .then(function (data) {
-    res.send(data);
+    res.send(data); //return user info with user's plant info
   })
   .catch(function (error) {
-    console.log(error);
+    console.log(error, 'get users data');
   });
 
 

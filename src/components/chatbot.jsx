@@ -13,11 +13,15 @@ export default class Chatbot extends React.Component {
     };
   }
   render() {
+
     if(this.props.loggedIn){
+
       this._getUserId();//send user id to chatbot in server before initial the conversation
       let messages = this.state.messages;
-      messages.push(['Hello ' + this.props.firstName + '. What a wonderful day it is.', 0, 'list-group-item list-group-item-success']);
-      //console.log(messages,'update this.state.');
+      let welcome = ['Hello ' + this.props.firstName + '. What a wonderful day it is.', 0, 'list-group-item list-group-item-success', new Date()];
+      if(this.state.lastMessage===null){
+        messages.push(welcome);
+      }
       // TODO: Add login handler on "login to talk to plant" field. Might be better as "add device to..."
       // TODO: Add "you don't have any plants" prompt state after login with no plants
       // TODO: "Talk to [plant name]"
@@ -43,7 +47,7 @@ export default class Chatbot extends React.Component {
               <div className="card" style={{ marginTop: 2 + 'rem' }}>
                 <div className="card-body">
                   <div id='messages' className="list-group list-group-flush">
-                    {messages.map((msg) => <a href="#" className={msg[2]} key={msg[1]}>{msg[0]}</a>)}
+                    {messages.map((msg) => <a href="#" className={msg[2]} key={msg[3]}>{msg[0]}</a>)}
                   </div>
                 </div>
               </div>
@@ -52,6 +56,7 @@ export default class Chatbot extends React.Component {
         </div>
 
       );
+
     } else {
 
       return (
@@ -62,7 +67,7 @@ export default class Chatbot extends React.Component {
           </div>
           <div className="card-body">
             <div id='messages' className="list-group list-group-flush">
-              <span className="list-group-item list-group-item-action list-group-item-success">Login to chat with your plant!</span>
+              <a href="vendor/auth/login"><span className="list-group-item list-group-item-action list-group-item-success">Login to chat with your plant!</span></a>
             </div>
           </div>
         </div>
@@ -76,21 +81,40 @@ export default class Chatbot extends React.Component {
 
   _notifyServer(e){
     e.preventDefault();
-    //console.log(this._msg.value,'type in value');
-    //console.log(this.props.id, 'this.props id in chat bot');
-    socket.emit('client', this._msg.value.toLowerCase());
-    this._onUpdate(this._msg.value);
-    $('#input').val('');
+
+    socket.emit('client', this._msg.value.toLowerCase()); //emit client msg to server
+    this._onUpdate(this._msg.value); //update messages array with current client msg
+    $('#input').val(''); //clean up input field
+
     socket.on('plant', (msg) => {
       if (msg[0] !== this.state.lastMessage) {
-        this._onUpdate(msg);
+        this._onUpdate(msg); //update messages array with response from server
       }
     });
   }
+
   _onUpdate (msg) {
     let newMessages = this.state.messages;
     let counter = this.state.counter + 1;
     newMessages.unshift([msg, counter, this.state.counter % 2 === 0 ? 'list-group-item' : 'list-group-item list-group-item-success']);
-    this.setState({messages: newMessages.slice(0,7), counter: counter, lastMessage: msg[0]});
+    this.setState({messages: newMessages.slice(0,7), counter: counter, lastMessage: msg[0], key: new Date()});
   }
 }
+
+
+// } else if (this.props.loggedIn) {
+
+//       return (
+
+//         <div className="card">
+//           <div className="card-header">
+//             Talk to a houseplant
+//           </div>
+//           <div className="card-body">
+//             <div id='messages' className="list-group list-group-flush">
+//               <span className="list-group-item list-group-item-action list-group-item-danger">Oh no! You don't have any plants yet.</span>
+//             </div>
+//           </div>
+//         </div>
+
+//       );
