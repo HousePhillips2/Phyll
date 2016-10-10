@@ -10,18 +10,13 @@ import UserInfo from '../components/userInfo.jsx';
 export default class Navigation extends Component {
   constructor(props) {
     super(props);
-    this.clickHandler = this.clickHandler.bind(this);
-  }
-
-  clickHandler() {
-    browserHistory.push('/');
   }
 
   render() {
     return(
       <div className="row header">
         <div className="column">
-          <span onClick={this.clickHandler} className="title pull-sm-left text-nowrap home"><i className="phyll-glyphs logo"></i>phyll.IO</span>
+          <Link to="/"><span className="title pull-sm-left text-nowrap home"><i className="phyll-glyphs logo"></i>phyll.IO</span></Link>
           <div className="pull-xs-right" style={{marginTop: 1 + 'rem'}}>
             <div className="btn-group graff">
               <span className="btn btn-secondary dropdown-toggle dropdown-menu-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{border: 'none'}}>
