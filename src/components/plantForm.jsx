@@ -4,6 +4,9 @@ import $ from 'jquery';
 export default class PlantForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      alert: ({status: false, message: ''})
+    }
   }
   render() {
     const user = this.props.user;
@@ -20,68 +23,82 @@ export default class PlantForm extends React.Component {
       submitButton = <a href="vendor/auth/login"><div className="alert alert-danger" role="alert"><strong>Yikes!</strong> Looks like you need to <a href="#" className="alert-link">log in</a>.</div></a>;
     }
 
-    return (
+    if (this.state.alert.status) {
 
-      <div style={{margin:10 + 'px'}}>
+      return (
+        <div className="alert alert-success alert-dismissible fade in" role="alert">
+          <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {this.state.alert.message}
+        </div>
+      );
 
-        <form id="newPlant" onSubmit={this._handleSubmit.bind(this)}>
+    } else {
 
-          <div className="form-group row">
-            <div className="column">
-              <div className="input-group">
-                <span className="input-group-addon">Species</span>
-                <input type="text" className="form-control" id="common_name" value={plant.plant_name} ref={input => this._plantName = input} readOnly/>
-              </div>
-            </div>
-          </div>
+      return (
 
-          <div className="form-group row">
-            <div className="column">
-              <div className="input-group">
-                <span className="input-group-addon">Nickname</span>
-                <input type="text" className="form-control" id="nickname" placeholder="optional" ref={input => this._plantNickName = input}/>
-              </div>
-            </div>
-          </div>
+        <div style={{margin:10 + 'px'}}>
 
-          <div className="form-group row">
-            <div className="column">
+          <form id="newPlant" onSubmit={this._handleSubmit.bind(this)}>
+
+            <div className="form-group row">
+              <div className="column">
                 <div className="input-group">
-                <span className="input-group-addon">Device ID</span>
-                <input type="text" className="form-control" id="deviceId" placeholder="see phyllOS documentation" ref={input => this._deviceId = input}/>
+                  <span className="input-group-addon">Species</span>
+                  <input type="text" className="form-control" id="common_name" value={plant.plant_name} ref={input => this._plantName = input} readOnly/>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="form-group row">
-            <div className="column">
+            <div className="form-group row">
+              <div className="column">
                 <div className="input-group">
-                <span className="input-group-addon">Telephone</span>
-                <input type="text" className="form-control" id="deviceId" placeholder="If you'd like watering notifications." ref={input => this._telephone = input}/>
+                  <span className="input-group-addon">Nickname</span>
+                  <input type="text" className="form-control" id="nickname" placeholder="optional" ref={input => this._plantNickName = input}/>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="form-group row">
-
-            {/* This image upload feature is going to take more handling to make work than an html file input field.
-              It's presently beyond scope in terms of things we need to make the site work. */}
-
-            {/*<div className="column">
-              <label className="btn btn-secondary">
-                Upload an Image <input type="file"  style={{display: 'none'}} id="image" />
-              </label>
-            </div>*/}
-
-            <div className="column">
-              { submitButton }
+            <div className="form-group row">
+              <div className="column">
+                  <div className="input-group">
+                  <span className="input-group-addon">Device ID</span>
+                  <input type="text" className="form-control" id="deviceId" placeholder="see phyllOS documentation" ref={input => this._deviceId = input}/>
+                </div>
+              </div>
             </div>
-          </div>
-        </form>
-      </div>
+
+            <div className="form-group row">
+              <div className="column">
+                  <div className="input-group">
+                  <span className="input-group-addon">Telephone</span>
+                  <input type="text" className="form-control" id="deviceId" placeholder="If you'd like watering notifications." ref={input => this._telephone = input}/>
+                </div>
+              </div>
+            </div>
+
+            <div className="form-group row">
+
+              {/* This image upload feature is going to take more handling to make work than an html file input field.
+                It's presently beyond scope in terms of things we need to make the site work. */}
+
+              {/*<div className="column">
+                <label className="btn btn-secondary">
+                  Upload an Image <input type="file"  style={{display: 'none'}} id="image" />
+                </label>
+              </div>*/}
+
+              <div className="column">
+                { submitButton }
+              </div>
+            </div>
+          </form>
+        </div>
 
 
-    );
+      );
+    }
   }
 
 
@@ -89,8 +106,9 @@ export default class PlantForm extends React.Component {
     e.preventDefault();
     //console.log(this.props.id, this.props.plantFacts[0].id, this._deviceId.value, this._plantNickName.value, this._telephone.value)
     this._addPlant(this.props.id, this.props.plantFacts[0].id, this.props.plantFacts[0].plant_img, this._deviceId.value, this._plantNickName.value, this._telephone.value);
-    //here to redirect user
-    this.props.toggleNewPlant(); // Closes new plant form
+    this.setState({alert: {status: true, message: 'Your plant has been added!'}});
+    setTimeout(this.setState.bind(this,{alert: {status: false, message: ''}}), 5000);
+    setTimeout(this.props.toggleNewPlant.bind(this), 5000);
   }
   _addPlant(user_id, plant_id, plant_img, device_id, plant_nickname, phone){
     $.ajax({
