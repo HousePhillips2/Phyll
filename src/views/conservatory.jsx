@@ -44,15 +44,18 @@ class Conservatory extends React.Component {
               <Search className="form-control form-control-lg" { ...this.props } /> : null
             }
           </div>
+        <div className="card-block">
+          <p className="card-text"><Link to="/">Return Home</Link></p>
+        </div>
         </div>
         { plantFacts }
-        { plants ? 
+        { plants ?
           <div>
             { plants.map( plant => {
               return (
 
                 <Modal { ...this.props } handleClick={ this.props.handleClickPlant } plant={ plant } key={ plant.plant_name }/>
-                
+
               );
             }) }
           </div>
@@ -63,7 +66,7 @@ class Conservatory extends React.Component {
 
     );
   }
-  
+
 }
 
 function mapDispatchToProps(dispatch) {
