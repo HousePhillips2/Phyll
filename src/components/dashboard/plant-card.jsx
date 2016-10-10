@@ -42,10 +42,10 @@ export default class PlantCard extends React.Component {
               <div>
                 <EditPlant { ...this.props}/>
               </div>
-              <div className="container-fluid">
+              <div className="container">
                 { hearts }
                 { device ? 
-                  <div className="container-fluid">
+                  <div className="container">
                     <Charts { ...this.props }/>
                   </div>
                   : <div className="graff text-muted">Add a phyllOS device to track your plant's conditions</div>

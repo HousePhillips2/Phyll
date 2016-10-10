@@ -32,7 +32,7 @@ export default class EditPlant extends React.Component {
 
           <div className="row content">
             <div className="content-top column container-fluid">
-              <h4 className="media-heading pull-xs-left">Edit your { user_plant.plant_name }</h4>
+              <h4 className="media-heading pull-xs-left">Edit your { this.props.plant.plant_name }</h4>
               <span onClick={this.clickHandler} className="close-pane pull-xs-right"><i className="fa fa-times-circle-o" aria-hidden="true"></i></span>
               <div className="card-block container-fluid">
                 <div style={{margin:10 + 'px'}}>
@@ -43,7 +43,7 @@ export default class EditPlant extends React.Component {
                       <div className="column">
                         <div className="input-group">
                           <span className="input-group-addon">Species</span>
-                          <input type="text" className="form-control" id="common_name" defaultValue={user_plant.plant_name} ref={input => this.plant_name = input} readOnly/>
+                          <input type="text" className="form-control" id="common_name" defaultValue={this.props.plant.plant_name} ref={input => this.plant_name = input} readOnly/>
                         </div>
                       </div>
                     </div>
@@ -52,7 +52,7 @@ export default class EditPlant extends React.Component {
                       <div className="column">
                         <div className="input-group">
                           <span className="input-group-addon">Nickname</span>
-                          <input type="text" className="form-control" id="nickname" defaultValue={user_plant.plant_nickname} placeholder="optional" ref={input => this._plantNickName = input}/>
+                          <input type="text" className="form-control" id="nickname" defaultValue={this.props.plant.plant_nickname} placeholder="optional" ref={input => this._plantNickName = input}/>
                         </div>
                       </div>
                     </div>
@@ -61,7 +61,7 @@ export default class EditPlant extends React.Component {
                       <div className="column">
                           <div className="input-group">
                           <span className="input-group-addon">Device ID</span>
-                          <input type="text" className="form-control" id="deviceId" defaultValue={user_plant.device_id} placeholder="see phyllOS documentation" ref={input => this._deviceId = input}/>
+                          <input type="text" className="form-control" id="deviceId" defaultValue={this.props.plant.device_id} placeholder="see phyllOS documentation" ref={input => this._deviceId = input}/>
                         </div>
                       </div>
                     </div>
@@ -70,7 +70,7 @@ export default class EditPlant extends React.Component {
                       <div className="column">
                           <div className="input-group">
                           <span className="input-group-addon">Telephone</span>
-                          <input type="text" className="form-control" id="deviceId" defaultValue={user_plant.phone_number} placeholder="If you'd like watering notifications." ref={input => this._telephone = input}/>
+                          <input type="text" className="form-control" id="deviceId" defaultValue={this.props.plant.phone_number} placeholder="If you'd like watering notifications." ref={input => this._telephone = input}/>
                         </div>
                       </div>
                     </div>
