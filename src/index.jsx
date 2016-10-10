@@ -2,22 +2,28 @@ import * as Tether from 'tether';
 import Bootstrap from 'bootstrap';
 import React from 'react';
 import d3 from 'd3';
-import makeStore from './redux/store/store';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 import {
-  Router, 
-  Route, 
-  Redirect, 
-  browserHistory, 
+  Router,
+  Route,
+  Redirect,
+  browserHistory,
   IndexRoute,
+  useRouterHistory,
 } from 'react-router';
+import { createHistory } from 'history'
 
+import makeStore from './redux/store/store';
 import About from './views/about.jsx'
 import Conservatory from './views/conservatory.jsx'
 import Home from './views/home.jsx';
 import App from './views/app.jsx';
 import { setUser } from './redux/actions/actions';
+
+const history = useRouterHistory(createHistory)({
+  basename: '/base-path'
+})
 
 // Import stylesheets
 require('./stylesheets/main.scss');
@@ -31,7 +37,7 @@ require('./stylesheets/main.scss');
 class MyApp extends React.Component {
 
   render() {
-    
+
     return (
 
       <Provider store={ store }>
@@ -41,7 +47,7 @@ class MyApp extends React.Component {
             <Route path='conservatory' component={ Conservatory }/>
             <Route path='about' component={ About }/>
           </Route>
-          <Redirect from="*" to="/" /> 
+          <Redirect from="*" to="/" />
         </Router>
       </Provider>
 

@@ -6,9 +6,16 @@ $head: 'Slabo 27px', serif;
 $graff: 'Nunito', sans-serif;
 
 .title {
+  color: black;
   font-family: $phyll;
   font-weight: normal;
   font-size: 3em;
+}
+a:title {
+  color: black;
+}
+.title:hover {
+  color: #449d44;
 }
 body {
   font-family: $graff;

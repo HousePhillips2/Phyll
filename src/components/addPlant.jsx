@@ -13,7 +13,6 @@ export default class AddPlant extends React.Component {
 
   clickHandler() {
     this.props.toggleNewPlant();
-    this.props.toggleEditPlant();
   }
 
   render() {
@@ -39,11 +38,9 @@ export default class AddPlant extends React.Component {
 
       );
     } else {
-      return (
 
-        <div></div>
-
-      );
+      return null;
+      
     }
   }
 }
