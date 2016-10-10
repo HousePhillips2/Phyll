@@ -2,7 +2,6 @@ import * as Tether from 'tether';
 import Bootstrap from 'bootstrap';
 import React from 'react';
 import d3 from 'd3';
-import makeStore from './redux/store/store';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 import {
@@ -11,13 +10,20 @@ import {
   Redirect, 
   browserHistory, 
   IndexRoute,
+  useRouterHistory,
 } from 'react-router';
+import { createHistory } from 'history'
 
+import makeStore from './redux/store/store';
 import About from './views/about.jsx'
 import Conservatory from './views/conservatory.jsx'
 import Home from './views/home.jsx';
 import App from './views/app.jsx';
 import { setUser } from './redux/actions/actions';
+
+const history = useRouterHistory(createHistory)({
+  basename: '/base-path'
+})
 
 // Import stylesheets
 require('./stylesheets/main.scss');

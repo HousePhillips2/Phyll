@@ -57,25 +57,6 @@ class Home extends React.Component {
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">
             <div className="card-wrapper">
               <Chatbot { ...this.props }/>
-              <div className="card hidden-xs hidden-sm">
-                <div className="card-header">
-                  Active Bots
-                </div>
-                <Map/>
-              </div>
-              <div className="card">
-                <div className="card-header">
-                  Make a phyll.bot of your own
-                </div>
-                <div className="card-block">
-                  <p className="card-text">Get on the map with your very own bot. <a href="https://github.com/housephillips2/PhyllOS">PhyllOS is yours</a> to perfect.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="content-1 col-lg-5 pull-lg-7 container-fluid">
-            <Users { ...this.props }/>
-            <div className="card-wrapper">
               <div className="card">
                 <div className="card-header">
                   Conservatory
@@ -84,6 +65,25 @@ class Home extends React.Component {
                   <p className="card-text">There are so many wonderful plants for your home. <Link to="/conservatory">Discover the perfect one</Link>.</p>
                 </div>
               </div>
+              <div className="card hidden-xs hidden-sm">
+                <div className="card-header">
+                  Active Bots
+                </div>
+                <Map/>
+              </div>
+            </div>
+          </div>
+          <div className="content-1 col-lg-5 pull-lg-7 container-fluid">
+            <Users { ...this.props }/>
+            <div className="card-wrapper">
+            <div className="card">
+                <div className="card-header">
+                  Make a phyll.bot of your own
+                </div>
+                <div className="card-block">
+                  <p className="card-text">Get on the map with your very own bot. <a href="https://github.com/housephillips2/PhyllOS">PhyllOS is yours</a> to perfect.</p>
+                </div>
+              </div>  
             </div>
           </div>
         </div>

@@ -27,7 +27,7 @@ export default class Dashboard extends React.Component {
                 <a className="media-left"><img className="img-rounded" style={ {width: '125px', height: '125px'} } src={ this.props.image }/></a>
                 { plants.length > 0 ?
                   <div className="media-body">
-                    {plants.map(plant => <PlantCard plant={ plant } key={ plant.id } { ...this.props}/>) }
+                    {plants.map(plant => <PlantCard plant={ plant } key={ plant.plant_id } { ...this.props}/>) }
                   </div>
                 : 
                   <div className="media-body">
