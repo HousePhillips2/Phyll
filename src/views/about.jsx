@@ -69,7 +69,7 @@ class Conservatory extends React.Component {
                   What we used
                 </div>
                 <div className="card-block">
-                  <p className="card-text">Stack details</p>
+                  <p className="card-text"><a href="https://facebook.github.io/react/">React</a> &middot; <a href="http://redux.js.org">Redux</a> &middot; <a href="https://www.postgresql.org">PostgreSQL</a> &middot; <a href="https://www.mongodb.com">MongoDB</a> &middot; <a href="https://expressjs.com">Express</a> &middot; <a href="https://webpack.github.io">Webpack</a> &middot; <a href="https://www.twilio.com">Twilio</a> &middot; <a href="http://passportjs.org">Passport</a> &middot; <a href="https://facebook.github.io/immutable-js/">Immutable</a> &middot; <a href="http://www.chartjs.org">Chart.js</a> &middot; <a href="http://johnny-five.io">Johnny-Five</a> &middot; <a href="https://tessel.io">Tessel</a> &middot; <a href="https://www.raspberrypi.org">Raspberry Pi</a> &middot; <a href="http://getbootstrap.com">Bootstrap</a></p>
                 </div>
               </div>
             </div>
