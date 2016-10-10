@@ -3,7 +3,7 @@ import { List, Map, fromJS } from 'immutable';
 
 export const INITIAL_STATE = Map({
   loggedIn: false,
-  newPlant: false
+  newPlant: false,
 });
 
 export function setUser(state, user) {

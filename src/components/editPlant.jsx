@@ -70,7 +70,7 @@ export default class EditPlant extends React.Component {
                       <div className="column">
                           <div className="input-group">
                           <span className="input-group-addon">Telephone</span>
-                          <input type="text" className="form-control" id="deviceId" defaultValue={this.props.plant.phone_number} placeholder="If you'd like watering notifications." ref={input => this._telephone = input}/>
+                          <input type="text" className="form-control" id="telephone" defaultValue={this.props.plant.phone_number} placeholder="If you'd like watering notifications." ref={input => this._telephone = input}/>
                         </div>
                       </div>
                     </div>
@@ -116,10 +116,9 @@ export default class EditPlant extends React.Component {
     } 
   }
 
-
   _handleUpdate(e){
     e.preventDefault();
-    this._updatePlant(this.props.id, this._deviceId.value, this._plantNickName.value, this._telephone.value);
+    this._updatePlant(this.props.plant.plant_id, this._deviceId.value, this._plantNickName.value, this._telephone.value);
     this.setState({edit: !this.state.edit});
     this.setState({alert: {status: true, message: 'Your changes have been recorded.'}});
     setTimeout(this.setState.bind(this,{alert: {status: false, message: ''}}), 5000);
@@ -127,32 +126,32 @@ export default class EditPlant extends React.Component {
 
   _handleDelete(e){
     e.preventDefault();
-    this._deletePlant(this._deviceId.value);
+    this._deletePlant(this.props.plant.plant_id);
     this.setState({edit: !this.state.edit});
     this.setState({alert: {status: true, message: 'Your plant has been deleted.'}});
     setTimeout(this.setState.bind(this,{alert: {status: false, message: ''}}), 5000);
   }
 
-  _updatePlant(user_id, device_id, plant_nickname, phone){
+  _updatePlant(plant_id, device_id, plant_nickname, phone){
     $.ajax({
       method: 'POST',
       url: '/api/plantData/update',
       json: true,
       contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify({user_id, device_id, plant_nickname, phone}),
+      data: JSON.stringify({plant_id, device_id, plant_nickname, phone}),
       success: (data) => {
 
       }
     });
   }
 
-    _deletePlant(device_id){
+    _deletePlant(plant_id){
     $.ajax({
       method: 'POST',
       url: '/api/plantData/delete',
       json: true,
       contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify({device_id}),
+      data: JSON.stringify({plant_id}),
       success: (data) => {
 
       }

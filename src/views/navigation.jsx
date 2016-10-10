@@ -21,7 +21,7 @@ export default class Navigation extends Component {
     return(
       <div className="row header">
         <div className="column">
-          <span onClick={this.clickHandler} className="title pull-sm-left text-nowrap"><i className="phyll-glyphs logo"></i>phyll.IO</span>
+          <span onClick={this.clickHandler} className="title pull-sm-left text-nowrap home"><i className="phyll-glyphs logo"></i>phyll.IO</span>
           <div className="pull-xs-right" style={{marginTop: 1 + 'rem'}}>
             <div className="btn-group graff">
               <span className="btn btn-secondary dropdown-toggle dropdown-menu-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{border: 'none'}}>
