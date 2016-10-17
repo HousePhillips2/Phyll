@@ -6,7 +6,7 @@ export default class PlantForm extends React.Component {
     super(props);
     this.state = {
       alert: ({status: false, message: ''})
-    }
+    };
   }
   render() {
     const user = this.props.user;

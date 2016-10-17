@@ -7,7 +7,7 @@ export default class EditPlant extends React.Component {
     this.state = {
       edit: false,
       alert: ({status: false, message: ''})
-    }
+    };
     this.clickHandler = this.clickHandler.bind(this);
   }
 
@@ -19,7 +19,7 @@ export default class EditPlant extends React.Component {
 
     let user_id = this.props.id;
     let garden  = this.props.garden.toArray();
-    let user_plant = garden.filter((obj) => {return obj.user_id === user_id })[0];
+    let user_plant = garden.filter((obj) => { return obj.user_id === user_id; })[0];
     if(!user_plant){
 
       return null;

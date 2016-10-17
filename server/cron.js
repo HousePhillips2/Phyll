@@ -43,7 +43,7 @@ const daily = new CronJob('*/10 * * * * 1-7',
           });
           return arrToNumbers.reduce((accumulator, next) => {
             return next < accumulator ? next : accumulator;
-          })
+          });
         };
 
         // -------- identify lowest number from array of numbers ----------
@@ -53,7 +53,7 @@ const daily = new CronJob('*/10 * * * * 1-7',
           });
           return arrToNumbers.reduce((accumulator, next) => {
             return next > accumulator ? next : accumulator;
-          })
+          });
         };
 
         // ---------- calculate an average from array of numbers ----------
