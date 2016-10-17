@@ -75,7 +75,7 @@ class Charts extends React.Component {
             }
           }]
         }
-      }
+      };
       let optionsL = {
         responsive: true,
         legend: {
@@ -101,14 +101,14 @@ class Charts extends React.Component {
             }
           }]
         }
-      }
+      };
       return(
-        <Measure onMeasure={(dimensions) => { this.setState({dimensions}) }} accurate={true} shouldMeasure={true}>
+        <Measure onMeasure={(dimensions) => { this.setState({dimensions}); }} accurate={true} shouldMeasure={true}>
           <div style={{marginLeft: -1 + 'rem'}} className="graff" className="text-muted">
             <p style={{marginTop: .25 + 'rem'}}>Average <span className="text-info">soil moisture</span> throughout past day. Range: 0 - 1050</p>
-            <div><Line data={moisture} { ...this.props } width={width * .9} height={100 + 'px'} options={optionsM} /></div>
+            <div><Line data={moisture} { ...this.props } width={width * .9} height={ 100 } options={optionsM} /></div>
             <p style={{marginTop: .5 + 'rem'}}>Average <span className="text-warning">light</span> during prior 24 hours. Range: 0 - 275</p>
-            <div><Line data={light} { ...this.props } width={width * .9} height={100 + 'px'} options={optionsL} /></div>
+            <div><Line data={light} { ...this.props } width={width * .9} height={ 100 } options={optionsL} /></div>
           </div>
         </Measure>
       );

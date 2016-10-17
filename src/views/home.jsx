@@ -16,7 +16,7 @@ import AddPlant     from '../components/addPlant.jsx';
 import Dashboard    from '../components/dashboard/dashboardMain.jsx';
 import Footer       from '../components/footer.jsx';
 
-import { _getGarden, _getPlants, _fetchPlant } from '../redux/actions/helpers';
+import { _getGarden, _getPlants, _fetchPlant, _getUser } from '../redux/actions/helpers';
 import { toggleNewPlant } from '../redux/actions/actions';
 
 class Home extends React.Component {
