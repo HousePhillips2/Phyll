@@ -18,8 +18,8 @@ router.get('/', function(req, res) {
   request(httpRequestOptions, (error, response, body) => {
     parseString(body, (err, json) => {
       res.send(json);
-    })
-  })
+    });
+  });
 
 });
 

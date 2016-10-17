@@ -3,7 +3,7 @@
     "user_name": "Phoebe Maio",
     "id": "1",
     "img": "images/dummy/p.jpeg",
-    "bio": "",
+    "bio": "Highly motivated software engineer with a solid understanding of JavaScript fundamentals, modern JS frameworks and libraries, and strong analytical skills with experience developing comprehensive data-processing logic.",
     "git": "https://github.com/phoebeye",
     "plants": [
       {
@@ -17,7 +17,7 @@
     "user_name": "Casey Childers",
     "id": "4",
     "img": "images/dummy/c.jpeg",
-    "bio": "Novelist. Copywriter. Full-stack Javascript developer.",
+    "bio": "Dedicated problem solver and skilled full-stack software engineer with a background in content development. Primary interests: user experience and natural language processing.",
     "git": "https://github.com/cachilders",
     "plants": [
       {
@@ -31,7 +31,7 @@
     "user_name": "Eric Churchill",
     "id": "3",
     "img": "images/dummy/e.jpeg",
-    "bio": "Originally from Indiana, He's into servers and making cool hardware connected to the Internet. When he's not coding, you’ll find him exploring San Francisco.",
+    "bio": "Builder of things. Hardware, software, you name it. Friendly, flexible software engineer with a deep understanding of the JavaScript language and full-stack web applications in modern frameworks and libraries, such as React with Redux, Angular, and Express.",
     "git": "https://github.com/churchie317",
     "plants": [
       {
@@ -45,7 +45,7 @@
     "user_name": "Sergey Potashnikov",
     "id": "2",
     "img": "images/dummy/s.jpeg",
-    "bio": "Full-stack Javascript developer, CPA, matador, and aspiring cosmonaut.",
+    "bio": "Talented full-stack Javascript developer with a background in finance and accounting. Handy with a soldering iron and a true team player.",
     "git": "https://github.com/sdp781",
     "plants": [
       {
