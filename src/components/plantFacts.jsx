@@ -1,5 +1,5 @@
-import React from 'react';
-import AddPlant   from './addPlant.jsx';
+import React    from 'react';
+import AddPlant from './addPlant.jsx';
 
 export default class PlantFacts extends React.Component {
   constructor(props) {
@@ -69,6 +69,7 @@ export default class PlantFacts extends React.Component {
           </div>
 
         );
+        
       }
 
     } else {

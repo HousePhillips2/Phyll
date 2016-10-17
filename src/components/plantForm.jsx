@@ -1,6 +1,7 @@
 import { Router } from 'react-router';
-import React from 'react';
-import $ from 'jquery';
+import React      from 'react';
+import $          from 'jquery';
+
 export default class PlantForm extends React.Component {
   constructor(props) {
     super(props);
@@ -8,31 +9,36 @@ export default class PlantForm extends React.Component {
       alert: ({status: false, message: ''})
     };
   }
+
   render() {
     console.log(this.props.fetchUser);
     const user = this.props.user;
     const plant = this.props.plantFacts[0];
-    //console.log(plant,'selected plant in form');
     let submitButton;
 
-    //console.log(this.props)
-    // TODO: add login handling to link when navbar has been refactored
-
     if(this.props.loggedIn){
+
       submitButton = <button className="btn btn-success" type="submit" style={{marginTop: .25 + 'rem'}}>Add Me!</button>;
+
     } else {
+
       submitButton = <a href="vendor/auth/login"><div className="alert alert-danger" role="alert"><strong>Yikes!</strong> Looks like you need to <a href="#" className="alert-link">log in</a>.</div></a>;
+
     }
 
     if (this.state.alert.status) {
 
       return (
+
         <div className="alert alert-success alert-dismissible fade in" role="alert">
           <button type="button" className="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
+
           {this.state.alert.message}
+          
         </div>
+
       );
 
     } else {
@@ -91,14 +97,16 @@ export default class PlantForm extends React.Component {
               </div>*/}
 
               <div className="column">
+
                 { submitButton }
+
               </div>
             </div>
           </form>
         </div>
 
-
       );
+
     }
   }
 

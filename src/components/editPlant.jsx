@@ -1,6 +1,7 @@
 import { Router } from 'react-router';
-import React from 'react';
-import $ from 'jquery';
+import React      from 'react';
+import $          from 'jquery';
+
 export default class EditPlant extends React.Component {
   constructor(props) {
     super(props);
@@ -104,23 +105,26 @@ export default class EditPlant extends React.Component {
             <button type="button" className="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
+
             {this.state.alert.message}
+
           </div>
         );
 
       } else {
 
         return (
+
           <div className="row content">
             <div className="content-top column container-fluid">
               <h4 className="media-heading pull-xs-left">{`${ this.props.plant.plant_nickname }`}, your {`${ this.props.plant.plant_name }`}</h4>
               <span onClick={this.clickHandler} className="edit-pane pull-xs-right"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span>
             </div>
           </div>
+
         );
 
       }
-
     } 
   }
 

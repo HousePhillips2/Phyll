@@ -16,8 +16,14 @@ import AddPlant     from '../components/addPlant.jsx';
 import Dashboard    from '../components/dashboard/dashboardMain.jsx';
 import Footer       from '../components/footer.jsx';
 
-import { _getGarden, _getPlants, _fetchPlant, _getUser } from '../redux/actions/helpers';
-import { toggleNewPlant, setUser } from '../redux/actions/actions';
+import {
+  _getGarden, 
+  _getPlants, 
+  _fetchPlant, 
+  _getUser }        from '../redux/actions/helpers';
+import {
+  toggleNewPlant, 
+  setUser }         from '../redux/actions/actions';
 
 class Home extends React.Component {
   constructor(props) {
@@ -33,8 +39,6 @@ class Home extends React.Component {
     };
   }
 
-  // TODO: The initial div needs to go in refactor as it is duplicated in nav
-
   render() {
 
     let dashboard = this.props.loggedIn ? <Dashboard id="dashboard" { ...this.props }/> : <div id="dashboard"></div>;
@@ -45,18 +49,25 @@ class Home extends React.Component {
       <div className="container-fluid">
         <div className="row search">
           <div className="column jumbotron jumbo-bg">
+
           { this.props.plants ?
             <Search className="form-control form-control-lg" { ...this.props } /> :
             null
           }
+
           </div>
         </div>
+
         { plantFacts }
+
         { dashboard }
+
         <div className="row content">
           <div className="content-2 col-lg-7 push-lg-5 container-fluid">
             <div className="card-wrapper">
+
               <Chatbot { ...this.props }/>
+
               <div className="card">
                 <div className="card-header">
                   Conservatory
@@ -71,26 +82,29 @@ class Home extends React.Component {
                 </div>
                 <Map/>
               </div>
-            </div>
-          </div>
-          <div className="content-1 col-lg-5 pull-lg-7 container-fluid">
-            <Users { ...this.props }/>
-            <div className="card-wrapper">
-            <div className="card">
+              <div className="card">
                 <div className="card-header">
                   Make a phyll.bot of your own
                 </div>
                 <div className="card-block">
                   <p className="card-text">Get on the map with your very own bot. <a href="https://github.com/housephillips2/PhyllOS">PhyllOS is yours</a> to perfect.</p>
                 </div>
-              </div>  
+              </div>
             </div>
           </div>
+          <div className="content-1 col-lg-5 pull-lg-7 container-fluid">
+
+            <Users { ...this.props }/>
+
+          </div>
         </div>
+
         <Footer { ...this.props} />
+
       </div>
 
     );
+    
   }
 }
 

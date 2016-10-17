@@ -1,10 +1,9 @@
-import { ajax } from 'jquery';
-import React from 'react';
+import { ajax }  from 'jquery';
+import React     from 'react';
 
 // import Charts from '../charts.jsx'; // Uncomment this line and comment the one below to revert
-import Charts from '../charts-alt.jsx';
+import Charts    from '../charts-alt.jsx';
 import EditPlant from '../editPlant.jsx';
-
 
 export default class PlantCard extends React.Component {
 
@@ -43,13 +42,23 @@ export default class PlantCard extends React.Component {
                 <EditPlant { ...this.props}/>
               </div>
               <div className="container">
+              
                 { hearts }
+
                 { device ? 
+
                   <div className="container">
                     <Charts { ...this.props }/>
                   </div>
-                  : <div className="graff text-muted">Add a phyllOS device to track your plant's conditions</div>
+
+                : 
+                
+                  <div className="graff text-muted">
+                    Add a phyllOS device to track your plant's conditions
+                  </div>
+                
                 }
+
               </div>
             </div>
           </div>
@@ -57,5 +66,6 @@ export default class PlantCard extends React.Component {
       </div>
       
     );
+    
   }
 }

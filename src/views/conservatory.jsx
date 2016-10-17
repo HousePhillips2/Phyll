@@ -14,8 +14,12 @@ import Plant        from '../components/plant.jsx';
 import Modal        from '../components/plantModal.jsx';
 import Footer       from '../components/footer.jsx';
 
-import { _getGarden, _getPlants, _fetchPlant } from '../redux/actions/helpers';
-import { toggleNewPlant } from '../redux/actions/actions';
+import { 
+  _getGarden, 
+  _getPlants, 
+  _fetchPlant }     from '../redux/actions/helpers';
+import { 
+  toggleNewPlant }   from '../redux/actions/actions';
 
 $(() => $('[data-toggle="tooltip"]').tooltip());
 
@@ -45,25 +49,35 @@ class Conservatory extends React.Component {
             }
           </div>
         </div>
+
         { plantFacts }
+
         { plants ?
+
           <div>
             { plants.map( plant => {
+
               return (
 
                 <Modal { ...this.props } handleClick={ this.props.handleClickPlant } plant={ plant } key={ plant.plant_name }/>
 
               );
+
             }) }
+
           </div>
+          
           : null
+
         }
+
         <Footer { ...this.props} />
+
       </div>
 
     );
-  }
 
+  }
 }
 
 function mapDispatchToProps(dispatch) {

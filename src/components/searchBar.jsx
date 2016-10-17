@@ -1,6 +1,6 @@
-import React from 'react';
-import { render } from 'react-dom';
-import $ from 'jquery';
+import React       from 'react';
+import { render }  from 'react-dom';
+import $           from 'jquery';
 import Autosuggest from 'react-autosuggest';//Reference:  https://github.com/moroshko/react-autosuggest
 // import './theme.css'; Moved to SCSS include at src/stylesheets/components/search-bar.scss
 
@@ -116,6 +116,7 @@ export default class SearchBar extends React.Component {
     };
     
     return (
+
       <Autosuggest
         suggestions={suggestions}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
@@ -125,9 +126,11 @@ export default class SearchBar extends React.Component {
         renderSuggestion={renderSuggestion}
         inputProps={inputProps}
         focusInputOnSuggestionClick={false}
-        ref={this.storeInputReference.bind(this)} />
+        ref={this.storeInputReference.bind(this)}
+      />
         
     );
+    
   }
 }
 

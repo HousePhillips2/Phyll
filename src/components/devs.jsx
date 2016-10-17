@@ -18,6 +18,7 @@ export default class Devs extends React.Component {
           this.props.devs.map(dev => {
 
             return (
+
               <div className="card-block" key={ dev.id }>
                 <div className="media">
                   <a className="media-left" href={ dev.git }><img className="img-rounded" style={ {width: '85px', height: '85px'} } src={ dev.img }/></a>
@@ -29,6 +30,7 @@ export default class Devs extends React.Component {
                   </div>
                 </div>
               </div>
+              
             );
 
           })
