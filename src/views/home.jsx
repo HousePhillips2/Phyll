@@ -2,7 +2,6 @@ import $            from 'jquery';
 import React        from 'react';
 import { render }   from 'react-dom';
 import { Link }     from 'react-router';
-import { connect }  from 'react-redux';
 
 import Users        from '../components/users.jsx';
 import Search       from '../components/searchBar.jsx';
@@ -16,27 +15,9 @@ import AddPlant     from '../components/addPlant.jsx';
 import Dashboard    from '../components/dashboard/dashboardMain.jsx';
 import Footer       from '../components/footer.jsx';
 
-import {
-  _getGarden, 
-  _getPlants, 
-  _fetchPlant, 
-  _getUser }        from '../redux/actions/helpers';
-import {
-  toggleNewPlant, 
-  setUser }         from '../redux/actions/actions';
-
-class Home extends React.Component {
+export default class Home extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  componentWillMount() {
-    this.props.fetchPlants();
-    this.props.fetchGarden();
-    console.log('condition', this.props.id);
-    if (this.props.id){
-     this.props.fetchUserPlantGeneric(this.props.id);
-    };
   }
 
   render() {
@@ -51,8 +32,12 @@ class Home extends React.Component {
           <div className="column jumbotron jumbo-bg">
 
           { this.props.plants ?
-            <Search className="form-control form-control-lg" { ...this.props } /> :
+
+            <Search className="form-control form-control-lg" { ...this.props } />
+          :
+
             null
+
           }
 
           </div>
@@ -108,54 +93,3 @@ class Home extends React.Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    fetchUser             : () => dispatch(setUser()),
-    fetchGarden           : () => dispatch(_getGarden()),
-    fetchPlants           : () => dispatch(_getPlants()),
-    toggleNewPlant        : () => dispatch(toggleNewPlant()),
-    fetchPlant            : (plant) => dispatch(_fetchPlant(plant)),
-    fetchUserPlantGeneric : (userId) => dispatch(_fetch_User_Plants(userId))
-  };
-}
-
-function mapStateToProps(state) {
-  const user = state.get('user');
-  if( state.get('loggedIn') ){
-    return {
-      plants: state.getIn([ 'plants', 'plants' ]),
-      garden: state.getIn([ 'garden', 'garden' ]),
-      user_plants: user.get('user_plants'),
-      loggedIn: state.get('loggedIn'),
-      username: user.get('name'),
-      image: user.get('image'),
-      plant_generic: user.get('generic'),
-      firstName: user.get('firstName'),
-      lastName: user.get('lastName'),
-      plantFacts: state.getIn(['plantFacts', 'plantFacts']),
-      id: user.get('id'),
-      newPlant: state.get('newPlant')
-    };
-  }
-
-  if (state.get('plantFacts') ) {
-    return {
-      plantFacts: state.getIn(['plantFacts', 'plantFacts']),
-      plants: state.getIn([ 'plants', 'plants' ]),
-      garden: state.getIn([ 'garden', 'garden' ]),
-      loggedIn: state.get('loggedIn'),
-      id: state.get('id'),
-      newPlant: state.get('newPlant')
-    };
-  }
-
-  return {
-    plants: state.getIn([ 'plants', 'plants' ]),
-    garden: state.getIn([ 'garden', 'garden' ]),
-    loggedIn: state.get('loggedIn'),
-    id: state.get('id'),
-    newPlant: state.get('newPlant')
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);

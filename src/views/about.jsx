@@ -2,7 +2,6 @@ import $            from 'jquery';
 import React        from 'react';
 import { render }   from 'react-dom';
 import { Link }     from 'react-router';
-import { connect }  from 'react-redux';
 
 import Users        from '../components/users.jsx';
 import Search       from '../components/searchBar.jsx';
@@ -14,10 +13,7 @@ import Footer       from '../components/footer.jsx';
 import Devs         from '../components/devs.jsx';
 import Journals     from '../components/journals.jsx';
 
-import { _getPlants, _fetchPlant, _getAdmin, _getJournals } from '../redux/actions/helpers';
-import { toggleNewPlant } from '../redux/actions/actions';
-
-class Conservatory extends React.Component {
+export default class Conservatory extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -89,60 +85,3 @@ class Conservatory extends React.Component {
 
   }
 }
-
-function mapDispatchToProps(dispatch) {
-  return {
-    fetchPlants    : () => dispatch(_getPlants()),
-    toggleNewPlant : () => dispatch(toggleNewPlant()),
-    fetchPlant     : (plant) => dispatch(_fetchPlant(plant)),
-    fetchDevs      : () => dispatch(_getAdmin()),
-    fetchJournals  : () => dispatch(_getJournals())
-  };
-}
-
-function mapStateToProps(state) {
-  const user = state.get('user');
-  if( state.get('loggedIn') ){
-    return {
-      devs: state.getIn(['admins', 'admins']),
-      journals: state.getIn(['journals', 'journals']),
-      plants: state.getIn([ 'plants', 'plants' ]),
-      garden: state.getIn([ 'garden', 'garden' ]),
-      user_plants: user.get('user_plants'),
-      loggedIn: state.get('loggedIn'),
-      username: user.get('name'),
-      image: user.get('image'),
-      firstName: user.get('firstName'),
-      lastName: user.get('lastName'),
-      plantFacts: state.getIn(['plantFacts', 'plantFacts']),
-      id: user.get('id'),
-      newPlant: state.get('newPlant')
-    };
-  }
-
-  if (state.get('plantFacts') ) {
-    return {
-      devs: state.getIn(['admins', 'admins']),
-      journals: state.getIn(['journals', 'journals']),
-      plantFacts: state.getIn(['plantFacts', 'plantFacts']),
-      plants: state.getIn([ 'plants', 'plants' ]),
-      garden: state.getIn([ 'garden', 'garden' ]),
-      loggedIn: state.get('loggedIn'),
-      id: state.get('id'),
-      newPlant: state.get('newPlant')
-    };
-  }
-
-  return {
-    devs: state.getIn(['admins', 'admins']),
-    journals: state.getIn(['journals', 'journals']),
-    plants: state.getIn([ 'plants', 'plants' ]),
-    garden: state.getIn([ 'garden', 'garden' ]),
-    loggedIn: state.get('loggedIn'),
-    id: state.get('id'),
-    newPlant: state.get('newPlant')
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Conservatory);
-

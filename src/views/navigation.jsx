@@ -6,7 +6,6 @@ import Login                from '../components/login.jsx';
 import Logout               from '../components/logout.jsx';
 import UserInfo             from '../components/userInfo.jsx';
 
-
 export default class Navigation extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +33,7 @@ export default class Navigation extends Component {
 
                 :
 
-                  <Login />
+                  <Login { ...this.props }/>
 
                 }
 

@@ -17,7 +17,6 @@ import App                from './views/app.jsx';
 import Home               from './views/home.jsx';
 import About              from './views/about.jsx';
 import Conservatory       from './views/conservatory.jsx';
-import { setUser }        from './redux/actions/actions';
 
 const history = useRouterHistory(createHistory)({
   basename: '/base-path'
@@ -41,9 +40,9 @@ class MyApp extends React.Component {
       <Provider store={ store }>
         <Router history={ browserHistory }>
           <Route path='/' component={ App }>
-            <IndexRoute component={ Home }/>
-            <Route path='conservatory' component={ Conservatory }/>
-            <Route path='about' component={ About }/>
+            <IndexRoute component={ Home } />
+            <Route path='conservatory' component={ Conservatory } />
+            <Route path='about' component={ About } />
           </Route>
           <Redirect from="*" to="/" />
         </Router>
