@@ -9,6 +9,7 @@ export default class PlantForm extends React.Component {
     };
   }
   render() {
+    console.log(this.props.fetchUser);
     const user = this.props.user;
     const plant = this.props.plantFacts[0];
     //console.log(plant,'selected plant in form');
@@ -117,9 +118,7 @@ export default class PlantForm extends React.Component {
       json: true,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({user_id, plant_id, plant_img, device_id, plant_nickname, phone}),
-      success: (data) => {
-        
-      }
+      success: (data) => this.props.fetchUser()
     });
   }
 }

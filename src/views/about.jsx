@@ -11,8 +11,10 @@ import UserInfo     from '../components/userInfo.jsx';
 import Login        from '../components/login.jsx';
 import Logout       from '../components/logout.jsx';
 import Footer       from '../components/footer.jsx';
+import Devs         from '../components/devs.jsx';
+import Journals     from '../components/journals.jsx';
 
-import { _getPlants, _fetchPlant } from '../redux/actions/helpers';
+import { _getPlants, _fetchPlant, _getAdmin, _getJournals } from '../redux/actions/helpers';
 import { toggleNewPlant } from '../redux/actions/actions';
 
 class Conservatory extends React.Component {
@@ -22,16 +24,18 @@ class Conservatory extends React.Component {
 
   componentWillMount() {
     this.props.fetchPlants();
+    this.props.fetchDevs();
+    this.props.fetchJournals();
   }
 
-  // TODO: The initial div needs to go in refactor as it is duplicated in nav
-
   render() {
-    let plantFacts = this.props.plantFacts ? <PlantFacts id="plantFacts" { ...this.props }/> : <div id="plantFacts"></div>;
+    let plantFacts = this.props.plantFacts ? <PlantFacts id="plantFacts" { ...this.props }/> : null;
     let plants;
     if (this.props.plants) {
       plants = this.props.plants.toArray();
     }
+    let devs = this.props.devs ? <Devs {...this.props}/> : null;
+    let journals = this.props.journals ? <Journals {...this.props}/> : null;
 
     return(
 
@@ -56,38 +60,14 @@ class Conservatory extends React.Component {
                   <p className="card-text">Central to Phyll's philosophy is simplicity without sacrifice. Register your device and add a plant to get started with watering alerts and vital soil quality data. Just having a look? No problem, Phyll's trove of horticultural best practices is available for all visitors, with or without our equipment, and our public social dashboard is always there to show the world where your green thumb ranks against other members of the community.</p>
                 </div>
               </div>
-              <div className="card">
-                <div className="card-header">
-                  Who we are
-                </div>
-                <div className="card-block">
-                  <p className="card-text">Team bios</p>
-                </div>
-              </div>
+              { devs }
+              { journals }
               <div className="card">
                 <div className="card-header">
                   What we used
                 </div>
                 <div className="card-block">
                   <p className="card-text"><a href="https://facebook.github.io/react/">React</a> &middot; <a href="http://redux.js.org">Redux</a> &middot; <a href="https://www.postgresql.org">PostgreSQL</a> &middot; <a href="https://www.mongodb.com">MongoDB</a> &middot; <a href="https://expressjs.com">Express</a> &middot; <a href="https://webpack.github.io">Webpack</a> &middot; <a href="https://www.twilio.com">Twilio</a> &middot; <a href="http://passportjs.org">Passport</a> &middot; <a href="https://facebook.github.io/immutable-js/">Immutable</a> &middot; <a href="http://www.chartjs.org">Chart.js</a> &middot; <a href="http://johnny-five.io">Johnny-Five</a> &middot; <a href="https://tessel.io">Tessel</a> &middot; <a href="https://www.raspberrypi.org">Raspberry Pi</a> &middot; <a href="http://getbootstrap.com">Bootstrap</a></p>
-                </div>
-              </div>
-            </div>
-            <div className="card-wrapper">
-              <div className="card">
-                <div className="card-header">
-                  How we got here
-                </div>
-                <div className="card-block">
-                  <p className="card-text">Dev blog</p>
-                </div>
-              </div>
-              <div className="card">
-                <div className="card-header">
-                  What you can do
-                </div>
-                <div className="card-block">
-                  <p className="card-text">Call to action for contributors</p>
                 </div>
               </div>
             </div>
@@ -103,9 +83,11 @@ class Conservatory extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchPlants   : () => dispatch(_getPlants()),
-    toggleNewPlant: () => dispatch(toggleNewPlant()),
-    fetchPlant    : (plant) => dispatch(_fetchPlant(plant))
+    fetchPlants    : () => dispatch(_getPlants()),
+    toggleNewPlant : () => dispatch(toggleNewPlant()),
+    fetchPlant     : (plant) => dispatch(_fetchPlant(plant)),
+    fetchDevs      : () => dispatch(_getAdmin()),
+    fetchJournals  : () => dispatch(_getJournals())
   };
 }
 
@@ -113,6 +95,8 @@ function mapStateToProps(state) {
   const user = state.get('user');
   if( state.get('loggedIn') ){
     return {
+      devs: state.getIn(['admins', 'admins']),
+      journals: state.getIn(['journals', 'journals']),
       plants: state.getIn([ 'plants', 'plants' ]),
       garden: state.getIn([ 'garden', 'garden' ]),
       user_plants: user.get('user_plants'),
@@ -129,6 +113,8 @@ function mapStateToProps(state) {
 
   if (state.get('plantFacts') ) {
     return {
+      devs: state.getIn(['admins', 'admins']),
+      journals: state.getIn(['journals', 'journals']),
       plantFacts: state.getIn(['plantFacts', 'plantFacts']),
       plants: state.getIn([ 'plants', 'plants' ]),
       garden: state.getIn([ 'garden', 'garden' ]),
@@ -139,6 +125,8 @@ function mapStateToProps(state) {
   }
 
   return {
+    devs: state.getIn(['admins', 'admins']),
+    journals: state.getIn(['journals', 'journals']),
     plants: state.getIn([ 'plants', 'plants' ]),
     garden: state.getIn([ 'garden', 'garden' ]),
     loggedIn: state.get('loggedIn'),

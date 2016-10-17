@@ -7,12 +7,11 @@ export const INITIAL_STATE = Map({
 });
 
 export function setUser(state, user) {
-
   // IF user already loggedIn
-  if( state.get('loggedIn', true)){
-    // RETURN state
-    return state;
-  }
+  // if( state.get('loggedIn', true)){
+  //   // RETURN state
+  //   return state;
+  // }
   // UPDATE state
   return state.set('loggedIn', true) // Can we move this device data into the actual plant array, plant by plant, and not call it plant?
               .set('user', Map({
@@ -61,6 +60,24 @@ export function setPlantFacts(state, plantFacts) {
     Map({
       fetched: true,
       plantFacts: plantFacts
+    })
+  );
+}
+
+export function setAdmin(state, admins) {
+  return state.set('admins',
+    Map({
+      fetched: true,
+      admins: admins
+    })
+  );
+}
+
+export function setJournals(state, journals) {
+  return state.set('journals',
+    Map({
+      fetched: true,
+      journals: journals
     })
   );
 }
