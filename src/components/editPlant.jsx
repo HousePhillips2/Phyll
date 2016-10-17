@@ -15,6 +15,14 @@ export default class EditPlant extends React.Component {
     this.setState({edit: !this.state.edit});
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return true;
+  }
+
+  componentDidUpdate(nextProps, nextState) {
+
+  }
+
   render() {
 
     let user_id = this.props.id;

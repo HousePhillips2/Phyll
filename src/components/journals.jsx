@@ -17,7 +17,6 @@ export default class Journals extends React.Component {
         <div className="card-group">
         {
           entries.map(entry => {
-            console.log(entry);
 
             return (
 
@@ -27,7 +26,7 @@ export default class Journals extends React.Component {
                   <div className="graff text-muted">{ entry.pubDate[0] }</div></a>
                 </div>
               </div>
-              
+
             );
 
           })
