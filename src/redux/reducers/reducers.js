@@ -6,7 +6,8 @@ import {
   removeUser,
   setPlants,
   setGarden,
-  setAdminData,
+  setAdmin,
+  setJournals,
   setPlantFacts,
   toggleNewPlant,
   setUserPlantData,
@@ -33,8 +34,10 @@ export default function reducer(state = INITIAL_STATE, action){
       return setPlantFacts(state, action.plantFacts);
     case 'TOGGLE_NEW_PLANT':
       return toggleNewPlant(state);
-    case 'SET_ADMIN_DATA':
-      return setAdminData(state, action.adminData);
+    case 'SET_ADMIN':
+      return setAdmin(state, action.admins);
+    case 'SET_JOURNALS':
+      return setJournals(state, action.journals);
     default:
       return state;
   }

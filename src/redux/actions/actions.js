@@ -1,7 +1,14 @@
-export function setAdminData(adminData) {
+export function setAdmin(admins) {
   return {
-    type: 'SET_ADMIN_DATA',
-    adminData
+    type: 'SET_ADMIN',
+    admins
+  };
+}
+
+export function setJournals(journals) {
+  return {
+    type: 'SET_JOURNALS',
+    journals
   };
 }
 

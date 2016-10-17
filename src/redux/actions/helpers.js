@@ -1,8 +1,33 @@
 import $ from 'jquery';
-import { setUser, setPlants, setGarden, setPlantFacts, setUserPlantData } from './actions';
+import { setUser, setPlants, setGarden, setPlantFacts, setUserPlantData, setAdmin, setJournals } from './actions';
 import React from 'react';
 import PlantFacts from '../../components/plantFacts.jsx';
 
+export function _getAdmin() {
+  return dispatch => {
+    $.ajax({
+      method: 'GET',
+      url: 'api/admin'
+    }).then(admins => {
+      if( admins ){
+        dispatch(setAdmin(admins));
+      }
+    });
+  };
+}
+
+export function _getJournals() {
+  return dispatch => {
+    $.ajax({
+      method: 'GET',
+      url: 'api/about'
+    }).then(journals => {
+      if( journals ){
+        dispatch(setJournals(journals));
+      }
+    });
+  };
+}
 
 export function _getUser() {
   return dispatch => {

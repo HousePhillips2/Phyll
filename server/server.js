@@ -62,6 +62,10 @@ app.get('/callback',
     res.redirect("/");
   });
 
+// **********************************    MOVE ME! **********************************
+// app.use('/plantsLibrary', plantsLibrary);
+
+
 // static files route
 app.get('/', (req, res) => res.redirect('/index.html'));
 app.use('/static', express.static('node_modules'));
