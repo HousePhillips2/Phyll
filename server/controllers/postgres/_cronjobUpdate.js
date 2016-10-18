@@ -64,26 +64,26 @@ const cronUpdate = (req, res) => {
             // ----- check the sunlight, and adjust condition if necessary ----
             if (plant[0].light_s === 'low' || plant[0].light_s === 'medium-low'){
                 if (Number(phyll.light[2]) > 195){
-                    condition+= 'Im burning! too much sun. ';
+                    condition+= 'I\'m burning! too much sun. ';
                     lightHealthFlag = 1;
                 } else if (Number(phyll.light[2]) < 155){
-                    condition+= 'Im cold! not enough sun. ';
+                    condition+= 'I\'m cold! not enough sun. ';
                     lightHealthFlag = 1;
                 }
             }else if (plant[0].light_s === 'medium'){
                 if (Number(phyll.light[2]) > 250){
-                    condition+= 'Im burning! too much sun. ';
+                    condition+= 'I\'m burning! too much sun. ';
                     lightHealthFlag = 1;
                 } else if (Number(phyll.light[2]) < 165){
-                    condition+= 'Im cold! not enough sun. ';
+                    condition+= 'I\'m cold! not enough sun. ';
                     lightHealthFlag = 1;
                 }
             }else if (plant[0].light_s === 'medium-high' || plant[0].light_s === 'high'){
                 if (Number(phyll.light[2]) > 275){
-                    condition+= 'Im burning! too much sun. ';
+                    condition+= 'I\'m burning! too much sun. ';
                     lightHealthFlag = 1;
                 } else if (Number(phyll.light[2]) < 195){
-                    condition+= 'Im cold! not enough sun. ';
+                    condition+= 'I\'m cold! not enough sun. ';
                     lightHealthFlag = 1;
                 }
             };

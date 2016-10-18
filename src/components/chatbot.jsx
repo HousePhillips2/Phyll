@@ -21,12 +21,9 @@ export default class Chatbot extends React.Component {
       this._getUserId();//send user id to chatbot in server before initial the conversation
       let messages = this.state.messages;
       let welcome = ['Hello ' + this.props.firstName + '. What a wonderful day it is.', 0, 'list-group-item list-group-item-success', new Date()];
-      if(this.state.lastMessage===null){
+      if(this.state.messages.length===0){
         messages.push(welcome);
       }
-      // TODO: Add login handler on "login to talk to plant" field. Might be better as "add device to..."
-      // TODO: Add "you don't have any plants" prompt state after login with no plants
-      // TODO: "Talk to [plant name]"
 
       return (
 
