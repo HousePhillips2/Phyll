@@ -3,7 +3,7 @@ import Measure     from 'react-measure';
 import { connect } from 'react-redux';
 import { Line }    from 'react-chartjs-2';
 
-import { 
+import {
   _loadRawData }   from '../redux/actions/helpers';
 
 
@@ -15,14 +15,14 @@ class Charts extends React.Component {
     };
 
   }
-
-  componentWillMount() {
-    this.props.rawData(this.props.user_plants[0].device_id);
-  }
+  //
+  // componentWillMount() {
+  //   this.props.rawData(this.props.user_plants[0].device_id);
+  // }
 
   render() {
     let { width } = this.state.dimensions;
-    
+
     if( !this.props.plantData ){
 
       return(
@@ -121,7 +121,7 @@ class Charts extends React.Component {
         </Measure>
 
       );
-      
+
     }
   }
 }
@@ -136,7 +136,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    rawData: (deviceId) => dispatch(_loadRawData(deviceId))
+    // rawData: (deviceId) => dispatch(_loadRawData(deviceId))
   };
 }
 
