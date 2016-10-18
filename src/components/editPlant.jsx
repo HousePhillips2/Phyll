@@ -34,6 +34,8 @@ export default class EditPlant extends React.Component {
     let user_id = this.props.id;
     let garden  = this.props.garden.toArray();
     let user_plant = garden.filter((obj) => { return obj.user_id === user_id; })[0];
+    let edit = this.props.guest ? null : <span onClick={ this.clickHandler } className="edit-pane pull-xs-right"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span>;
+    let possession = this.props.guest ? this.props.owner + "\'s" : "your";
     if(!user_plant){
 
       return null;
@@ -123,8 +125,8 @@ export default class EditPlant extends React.Component {
                 { this.props.thumb }
               </div>
               <div className="media-body">
-                <span onClick={ this.clickHandler } className="edit-pane pull-xs-right"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span>
-                <h4 className="media-heading">{`${ this.props.plant.plant_nickname }`}, your {`${ this.props.plant.plant_name }`}</h4>
+                { edit }
+                <h4 className="media-heading">{`${ this.props.plant.plant_nickname }`}, {`${ possession }`} {`${ this.props.plant.plant_name }`}</h4>
                 { this.props.hearts }
               </div>
             </div>
