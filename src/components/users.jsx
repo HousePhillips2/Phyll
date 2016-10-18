@@ -10,9 +10,12 @@ export default class Users extends React.Component {
 
     if (this.props.garden) {
 
-      const users = new Set(this.props.garden.toArray());
-      let restUsers = [...users].filter(user => { return user.user_id!==this.props.id; });
-      //console.log(restUsers, 'restUsers');
+      const users = this.props.garden.toArray();
+      let restUsers = users.filter((user)=>{return user.user_id!==this.props.id; });
+      let deviceUsers = restUsers.filter((user)=>{return user.device_id!=="";});
+      let non_deviceUsers = restUsers.filter((user)=>{return user.device_id==="";}) 
+      deviceUsers.sort((a,b)=>{return b.health-a.health;});// ranking user based on plant's healthness
+      restUsers = deviceUsers.concat(non_deviceUsers); //degrade non_device users to the bottom of the users cards
 
       return(
 
