@@ -15,14 +15,28 @@ import AddPlant     from '../components/addPlant.jsx';
 import Dashboard    from '../components/dashboard/dashboardMain.jsx';
 import Footer       from '../components/footer.jsx';
 
-export default class Home extends React.Component {
+import { _getGarden, _getPlants, _fetchPlant, _getUser, _loadRawData } from '../redux/actions/helpers';
+import { toggleNewPlant, setUser, setDashboardDisplay } from '../redux/actions/actions';
+
+
+class Home extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  componentWillMount() {
+    this.props.fetchPlants();
+    this.props.fetchGarden();
+    if (this.props.id){
+     this.props.fetchUserPlantGeneric(this.props.id);
+    };
+  }
+
+  // TODO: The initial div needs to go in refactor as it is duplicated in nav
+
   render() {
 
-    let dashboard = this.props.loggedIn ? <Dashboard id="dashboard" { ...this.props }/> : <div id="dashboard"></div>;
+    let dashboard = this.props.dashboardDisplay ? <Dashboard id="dashboard" { ...this.props }/> : <div id="dashboard"></div>;
     let plantFacts = this.props.plantFacts ? <PlantFacts id="plantFacts" { ...this.props }/> : <div id="plantFacts"></div>;
 
     return(
@@ -89,7 +103,39 @@ export default class Home extends React.Component {
       </div>
 
     );
-    
+
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    rawData               : (deviceId) => dispatch(_loadRawData(deviceId)),
+    fetchUser             : () => dispatch(setUser()),
+    fetchGarden           : () => dispatch(_getGarden()),
+    fetchPlants           : () => dispatch(_getPlants()),
+    toggleNewPlant        : () => dispatch(toggleNewPlant()),
+    fetchPlant            : (plant) => dispatch(_fetchPlant(plant)),
+    fetchUserPlantGeneric : (userId) => dispatch(_fetch_User_Plants(userId)),
+    setDashboardDisplay   : (displayUser) => dispatch(setDashboardDisplay(displayUser)),
+  };
+}
+
+function mapStateToProps(state) {
+  return {
+    plants: state.getIn([ 'plants', 'plants' ]),
+    garden: state.getIn([ 'garden', 'garden' ]),
+    user_plants: state.getIn([ 'user', 'user_plants' ]),
+    loggedIn: state.get('loggedIn'),
+    username: state.getIn([ 'user', 'name' ]),
+    image: state.getIn([ 'user', 'image' ]),
+    plant_generic: state.getIn([ 'user', 'generic' ]),
+    firstName: state.getIn([ 'user', 'firstName' ]),
+    lastName: state.getIn([ 'user', 'lastName' ]),
+    plantFacts: state.getIn(['plantFacts', 'plantFacts']),
+    id: state.getIn([ 'user', 'id' ]),
+    newPlant: state.get('newPlant'),
+    dashboardDisplay: state.get('dashboardDisplayUser')
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
