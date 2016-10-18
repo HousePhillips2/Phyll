@@ -10,33 +10,25 @@ export default class Dashboard extends React.Component {
   }
 
   render() {
-
+    console.log('inside dashboardMain:', this.props.dashboardDisplay);
     return(
-      
+
       <div id="dashBar" className="row content">
         <div className="content-top column container-fluid">
           <div className="card">
             <div className="card-header">
-
-              { this.props.username }
-              
+              { this.props.dashboardDisplay.nickname }
             </div>
             <div className="card-block">
               <div className="media">
-                <a className="media-left"><img className="img-rounded" style={ {width: '125px', height: '125px'} } src={ this.props.image }/></a>
-
-                { this.props.user_plants.length > 0 ?
-
+                { this.props.loggedIn ? <a className="media-left"><img className="img-rounded" style={ {width: '125px', height: '125px'} } src={ this.props.image }/></a> : null }
+                { this.props.user_plants ?
                   <div className="media-body">
-
-                    {this.props.user_plants.map(plant => <PlantCard plant={ plant } key={ plant.plant_id } { ...this.props}/>) }
-
+                    {this.props.user_plants.map(plant => <PlantCard plant={ plant } key={ plant.plant_id } { ...this.props }/>) }
                   </div>
-
-                : 
-
+                :
                   <div className="media-body">
-                    <div className="head text-success">You don't have any plants! That's easy to fix. Use the search bar above to add one to your profile.</div>
+                    <PlantCard plant={ this.props.dashboardDisplay } { ...this.props } />
                   </div>
 
                 }
@@ -48,6 +40,6 @@ export default class Dashboard extends React.Component {
       </div>
 
     );
-    
+
   }
 }

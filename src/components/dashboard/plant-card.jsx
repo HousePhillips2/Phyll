@@ -12,7 +12,7 @@ export default class PlantCard extends React.Component {
   }
 
   render() {
-    console.log(this.props.plant);
+
     const plant = this.props.plant;
     const device = plant.device_id.match(/^\w{2}:\w{2}:\w{2}:\w{2}:\w{2}:\w{2}$/);
     const message = device ? '' : 'No Device';
@@ -42,21 +42,16 @@ export default class PlantCard extends React.Component {
                 <EditPlant { ...this.props}/>
               </div>
               <div className="container">
-              
                 { hearts }
-
-                { device ? 
-
+                { device ?
                   <div className="container">
                     <Charts { ...this.props }/>
                   </div>
-
                 : 
-                
                   <div className="graff text-muted">
                     Add a phyllOS device to track your plant's conditions
                   </div>
-                
+
                 }
 
               </div>
@@ -64,8 +59,8 @@ export default class PlantCard extends React.Component {
           </div>
         </div>
       </div>
-      
+
     );
-    
+
   }
 }
