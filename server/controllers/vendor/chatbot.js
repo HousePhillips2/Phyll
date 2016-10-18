@@ -37,6 +37,16 @@ module.exports=function (io) {
               io.emit('plant', 'I will be your plantbot. But It seems like you haven\'t add your plant in our site. Could you like to add one?');
             }
           });
+        } else if (response.result.action === 'getEmotion'){
+          query_plant(userId, (plant) => { //query database to retrieve plant identity
+            if(plant[0].health<=2){
+              io.emit('plant','I used to love you, but not any more because you don\'t take good care of me');
+            } else if (plant[0].health<=4){
+              io.emit('plant', 'I love you more if you can do a better job taking good care of me');
+            } else {
+              io.emit('plant', 'Of course! You\'re the BEST because you take good care of me!');
+            }
+          });
         } else { //when client is in small talk with plant
           io.emit('plant',response.result.fulfillment.speech); //defalt response from pre-build smalltalk domain
 
