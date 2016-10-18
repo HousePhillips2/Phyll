@@ -11,7 +11,9 @@ import {
   setPlantFacts,
   toggleNewPlant,
   setUserPlantData,
-  setUserPlantGeneric
+  setUserPlantGeneric,
+  setDashboardDisplay,
+  setDashboardDisplayPlantData
 } from '../containers/app';
 
 
@@ -38,6 +40,10 @@ export default function reducer(state = INITIAL_STATE, action){
       return setAdmin(state, action.admins);
     case 'SET_JOURNALS':
       return setJournals(state, action.journals);
+    case 'SET_DASHBOARD_DISPLAY':
+      return setDashboardDisplay(state, action.user);
+    case 'SET_DASHBOARD_DISPLAY_PLANT_DATA':
+      return setDashboardDisplayPlantData(state, action.deviceId);
     default:
       return state;
   }

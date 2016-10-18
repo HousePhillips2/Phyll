@@ -89,3 +89,7 @@ export function toggleNewPlant(state) {
 export function setUserPlantData(state, userPlantData) {
   return state.setIn(['user', 'plant', 'data'], userPlantData);
 };
+
+export function setDashboardDisplay(state, displayUser){
+  return state.set('dashboardDisplayUser', displayUser);
+}
