@@ -14,6 +14,7 @@ import {
 import {
   toggleNewPlant, 
   setUser,
+  setPlantFacts,
   removeUser }              from '../redux/actions/actions';
 
 
@@ -53,10 +54,12 @@ class App extends React.Component {
 function mapDispatchToProps(dispatch) {
   return {
     login                 : () => dispatch(_getUser()),
+    getUser               : () => dispatch(_getUser()), // Helper dispatch for clarity. This is the same function call as above.
     logout                : () => dispatch(removeUser()),
     fetchUser             : () => dispatch(setUser()),
     fetchGarden           : () => dispatch(_getGarden()),
     fetchPlants           : () => dispatch(_getPlants()),
+    clearPlantFacts       : () => dispatch(setPlantFacts('')),
     toggleNewPlant        : () => dispatch(toggleNewPlant()),
     fetchDevs             : () => dispatch(_getAdmin()),
     fetchJournals         : () => dispatch(_getJournals()),
