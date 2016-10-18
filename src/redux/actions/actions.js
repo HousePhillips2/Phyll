@@ -72,3 +72,17 @@ export function setUserPlantGeneric(userPlantGeneric) {
     userPlantGeneric
   };
 }
+
+export function setDashboardDisplay(user) {
+  return {
+    type: 'SET_DASHBOARD_DISPLAY',
+    user
+  };
+}
+
+export function setDashboardDisplayPlantData(deviceId) {
+  return {
+    type: 'SET_DASHBOARD_DISPLAY_PLANT_DATA',
+    deviceId
+  };
+}
