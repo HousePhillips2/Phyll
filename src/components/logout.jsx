@@ -5,8 +5,12 @@ export default class Logout extends React.Component {
     super(props);
   }
   render() {
+    
     return (
+
       <button className="dropdown-item" type="button" onClick={ this.props.logout }>Logout</button>
+
     );
+
   }
 }

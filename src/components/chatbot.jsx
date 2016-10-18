@@ -1,8 +1,9 @@
 import { Router } from 'react-router';
-import React from 'react';
-import $ from 'jquery';
+import React      from 'react';
+import $          from 'jquery';
 
 const socket = io();
+
 export default class Chatbot extends React.Component {
   constructor(props) {
     super(props);
@@ -12,6 +13,7 @@ export default class Chatbot extends React.Component {
       lastMessage: null
     };
   }
+
   render() {
 
     if(this.props.loggedIn){
@@ -47,7 +49,9 @@ export default class Chatbot extends React.Component {
               <div className="card" style={{ marginTop: 2 + 'rem' }}>
                 <div className="card-body">
                   <div id='messages' className="list-group list-group-flush">
+
                     {messages.map((msg) => <a href="#" className={msg[2]} key={msg[3]}>{msg[0]}</a>)}
+
                   </div>
                 </div>
               </div>
@@ -73,6 +77,7 @@ export default class Chatbot extends React.Component {
         </div>
 
       );
+      
     }
   }
   _getUserId(){
@@ -101,20 +106,3 @@ export default class Chatbot extends React.Component {
   }
 }
 
-
-// } else if (this.props.loggedIn) {
-
-//       return (
-
-//         <div className="card">
-//           <div className="card-header">
-//             Talk to a houseplant
-//           </div>
-//           <div className="card-body">
-//             <div id='messages' className="list-group list-group-flush">
-//               <span className="list-group-item list-group-item-action list-group-item-danger">Oh no! You don't have any plants yet.</span>
-//             </div>
-//           </div>
-//         </div>
-
-//       );

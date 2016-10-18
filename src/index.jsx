@@ -1,24 +1,22 @@
-import * as Tether           from 'tether';
-import Bootstrap             from 'bootstrap';
-import React                 from 'react';
-import { Provider }          from 'react-redux';
-import { render }            from 'react-dom';
-import { createHistory }     from 'history';
+import * as Tether        from 'tether';
+import Bootstrap          from 'bootstrap';
+import React              from 'react';
+import { Provider }       from 'react-redux';
+import { render }         from 'react-dom';
+import { createHistory }  from 'history';
 import {
-          Router,
-          Route,
-          Redirect,
-          browserHistory,
-          IndexRoute,
-          useRouterHistory,
-        }                    from 'react-router';
+  Router,
+  Route,
+  Redirect,
+  browserHistory,
+  IndexRoute,
+  useRouterHistory, }     from 'react-router';
 
-import makeStore             from './redux/store/store';
-import App                   from './views/app.jsx';
-import Home                  from './views/home.jsx';
-import About                 from './views/about.jsx';
-import Conservatory          from './views/conservatory.jsx';
-import { setUser }           from './redux/actions/actions';
+import makeStore          from './redux/store/store';
+import App                from './views/app.jsx';
+import Home               from './views/home.jsx';
+import About              from './views/about.jsx';
+import Conservatory       from './views/conservatory.jsx';
 
 const history = useRouterHistory(createHistory)({
   basename: '/base-path'
@@ -42,15 +40,16 @@ class MyApp extends React.Component {
       <Provider store={ store }>
         <Router history={ browserHistory }>
           <Route path='/' component={ App }>
-            <IndexRoute component={ Home }/>
-            <Route path='conservatory' component={ Conservatory }/>
-            <Route path='about' component={ About }/>
+            <IndexRoute component={ Home } />
+            <Route path='conservatory' component={ Conservatory } />
+            <Route path='about' component={ About } />
           </Route>
           <Redirect from="*" to="/" />
         </Router>
       </Provider>
 
     );
+    
   }
 }
 

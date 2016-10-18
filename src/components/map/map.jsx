@@ -1,6 +1,5 @@
+import L                    from 'leaflet';
 import React, { Component } from 'react';
-import L from 'leaflet';
-
 
 export default class Map extends React.Component {
   constructor() {
@@ -40,8 +39,10 @@ export default class Map extends React.Component {
   render() {
 
     return(
-      <div id="mapid" style={{ height: "550px" }}>
-      </div>
+
+      <div id="mapid" style={{ height: "550px" }}></div>
+
     );
+    
   }
 }

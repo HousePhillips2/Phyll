@@ -1,9 +1,10 @@
-import React from 'react';
-import Measure from 'react-measure';
+import React       from 'react';
+import Measure     from 'react-measure';
 import { connect } from 'react-redux';
-import { Line } from 'react-chartjs-2';
+import { Line }    from 'react-chartjs-2';
 
-import { _loadRawData } from '../redux/actions/helpers';
+import { 
+  _loadRawData }   from '../redux/actions/helpers';
 
 
 class Charts extends React.Component {
@@ -20,15 +21,20 @@ class Charts extends React.Component {
   }
 
   render() {
-    let { width } = this.state.dimensions
+    let { width } = this.state.dimensions;
     
     if( !this.props.plantData ){
+
       return(
-        <Measure onMeasure={(dimensions) => { this.setState({dimensions}) }} accurate={true} shouldMeasure={true}>
+
+        <Measure onMeasure={(dimensions) => { this.setState({dimensions}); }} accurate={true} shouldMeasure={true}>
           <h2 style={{marginLeft: -1 + 'rem'}}>Loading data into application...</h2>
         </Measure>
+
       );
+
     } else {
+
       let m_data = this.props.plantData.map(item => item.moisture);
       let l_data = this.props.plantData.map(item => item.light);
       let labels = this.props.plantData.map(item => item.date);
@@ -102,7 +108,9 @@ class Charts extends React.Component {
           }]
         }
       };
+
       return(
+
         <Measure onMeasure={(dimensions) => { this.setState({dimensions}); }} accurate={true} shouldMeasure={true}>
           <div style={{marginLeft: -1 + 'rem'}} className="graff" className="text-muted">
             <p style={{marginTop: .25 + 'rem'}}>Average <span className="text-info">soil moisture</span> throughout past day. Range: 0 - 1050</p>
@@ -111,7 +119,9 @@ class Charts extends React.Component {
             <div><Line data={light} { ...this.props } width={width * .9} height={ 100 } options={optionsL} /></div>
           </div>
         </Measure>
+
       );
+      
     }
   }
 }
