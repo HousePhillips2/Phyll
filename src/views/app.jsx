@@ -69,44 +69,44 @@ function mapStateToProps(state) {
   const user = state.get('user');
   if( state.get('loggedIn') ){
     return {
-      devs: state.getIn(['admins', 'admins']),
-      journals: state.getIn(['journals', 'journals']),
-      plants: state.getIn([ 'plants', 'plants' ]),
-      garden: state.getIn([ 'garden', 'garden' ]),
-      user_plants: user.get('user_plants'),
-      loggedIn: state.get('loggedIn'),
-      username: user.get('name'),
-      image: user.get('image'),
-      plant_generic: user.get('generic'),
-      firstName: user.get('firstName'),
-      lastName: user.get('lastName'),
-      plantFacts: state.getIn(['plantFacts', 'plantFacts']),
-      id: user.get('id'),
-      newPlant: state.get('newPlant')
+      devs          : state.getIn([ 'admins', 'admins' ]),
+      journals      : state.getIn([ 'journals', 'journals' ]),
+      plantFacts    : state.getIn([ 'plantFacts', 'plantFacts' ]),
+      plants        : state.getIn([ 'plants', 'plants' ]),
+      garden        : state.getIn([ 'garden', 'garden' ]),
+      newPlant      : state.get('newPlant'),
+      loggedIn      : state.get('loggedIn'),
+      user_plants   : user.get('user_plants'),
+      username      : user.get('name'),
+      image         : user.get('image'),
+      plant_generic : user.get('generic'),
+      firstName     : user.get('firstName'),
+      lastName      : user.get('lastName'),
+      id            : user.get('id'),
     };
   }
 
   if (state.get('plantFacts') ) {
     return {
-      devs: state.getIn(['admins', 'admins']),
-    journals: state.getIn(['journals', 'journals']),
-      plantFacts: state.getIn(['plantFacts', 'plantFacts']),
-      plants: state.getIn([ 'plants', 'plants' ]),
-      garden: state.getIn([ 'garden', 'garden' ]),
-      loggedIn: state.get('loggedIn'),
-      id: state.get('id'),
-      newPlant: state.get('newPlant')
+      loggedIn    : state.get('loggedIn'),
+      id          : state.get('id'),
+      newPlant    : state.get('newPlant'),
+      devs        : state.getIn([ 'admins', 'admins' ]),
+      journals    : state.getIn([ 'journals', 'journals' ]),
+      plantFacts  : state.getIn([ 'plantFacts', 'plantFacts' ]),
+      plants      : state.getIn([ 'plants', 'plants' ]),
+      garden      : state.getIn([ 'garden', 'garden' ]),
     };
   }
 
   return {
-    devs: state.getIn(['admins', 'admins']),
-    journals: state.getIn(['journals', 'journals']),
-    plants: state.getIn([ 'plants', 'plants' ]),
-    garden: state.getIn([ 'garden', 'garden' ]),
-    loggedIn: state.get('loggedIn'),
-    id: state.get('id'),
-    newPlant: state.get('newPlant')
+    loggedIn  : state.get('loggedIn'),
+    id        : state.get('id'),
+    newPlant  : state.get('newPlant'),
+    devs      : state.getIn([ 'admins', 'admins' ]),
+    journals  : state.getIn([ 'journals', 'journals' ]),
+    plants    : state.getIn([ 'plants', 'plants' ]),
+    garden    : state.getIn([ 'garden', 'garden' ]),
   };
 }
 
