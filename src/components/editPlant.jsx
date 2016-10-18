@@ -114,8 +114,14 @@ export default class EditPlant extends React.Component {
 
           <div className="row content">
             <div className="content-top column container-fluid">
-              <h4 className="media-heading pull-xs-left">{`${ this.props.plant.plant_nickname }`}, your {`${ this.props.plant.plant_name }`}</h4>
-              <span onClick={this.clickHandler} className="edit-pane pull-xs-right"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+              <div className="media-left">
+                { this.props.thumb }
+              </div>
+              <div className="media-body">
+                <span onClick={this.clickHandler} className="edit-pane pull-xs-right"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                <h4 className="media-heading">{`${ this.props.plant.plant_nickname }`}, your {`${ this.props.plant.plant_name }`}</h4>
+                { this.props.hearts }
+              </div>
             </div>
           </div>
 

@@ -17,13 +17,14 @@ export default class Dashboard extends React.Component {
         <div className="content-top column container-fluid">
           <div className="card">
             <div className="card-header">
-
-              { this.props.username }
-              
+              <a className="media-left"><img className="img-rounded" style={ {width: '50px', height: '50px'} } src={ this.props.image }/></a>
+              <div className="media-body">
+                <h4 className="media-heading">{ this.props.username }</h4>
+                Plant count: <span className="text-success">{ this.props.user_plants.length }</span>
+              </div>
             </div>
             <div className="card-block">
               <div className="media">
-                <a className="media-left"><img className="img-rounded" style={ {width: '125px', height: '125px'} } src={ this.props.image }/></a>
 
                 { this.props.user_plants.length > 0 ?
 
