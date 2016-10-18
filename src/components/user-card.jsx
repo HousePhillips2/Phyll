@@ -8,6 +8,13 @@ export default class userCard extends React.Component {
     super(props);
   }
 
+  handleClick() {
+    if( this.props.user.device_id ){
+      this.props.setDashboardDisplay(this.props.user);
+      this.props.rawData(this.props.user.device_id);
+    }
+  }
+
   render() {
 
     const user = this.props.user;
@@ -30,7 +37,7 @@ export default class userCard extends React.Component {
 
     return(
 
-      <div className="card">
+      <div className="card" onClick={ this.handleClick.bind(this) }>
         <div className="card-block">
           <div className="media">
             <a className="media-left"><img className="img-rounded" style={ {width: '120px', height: '120px'} } src={user.plant_img}/></a>
@@ -41,9 +48,7 @@ export default class userCard extends React.Component {
                   <h4 className="media-heading">{`${ user.first_name }`}'s plant: <span className="text-success">{`${ user.plant_nickname }`}</span></h4>
 
                   { hearts }
-
-                    { device ? 
-
+                    { device ?
                       <div className="media-body">
                         <div className="media">
                           <a className="media-left"><i className="fa fa-fw fa-tint text-info"></i></a>
@@ -62,7 +67,7 @@ export default class userCard extends React.Component {
                     :
 
                       <div className="graff text-muted">No phyllOS device attached</div>
-                    
+
                     }
 
                 </div>
@@ -71,8 +76,8 @@ export default class userCard extends React.Component {
           </div>
         </div>
       </div>
-      
+
     );
-    
+
   }
 }
