@@ -25,8 +25,8 @@ export default class Users extends React.Component {
 
             return (
 
-              <UserCard key={ user.plant_id } user={ user }/>
-              
+              <UserCard key={ user.plant_id } user={ user } setDashboardDisplay={ this.props.setDashboardDisplay } rawData={ this.props.rawData }/>
+
             );
 
           }) }
@@ -34,7 +34,7 @@ export default class Users extends React.Component {
         </div>
 
       );
-      
+
     } else {
 
       return null;
