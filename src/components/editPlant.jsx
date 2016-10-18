@@ -133,15 +133,15 @@ export default class EditPlant extends React.Component {
     this._updatePlant(this.props.plant.plant_id, this._deviceId.value, this._plantNickName.value, this._telephone.value);
     this.setState({edit: !this.state.edit});
     this.setState({alert: {status: true, message: 'Your changes have been recorded.'}});
-    setTimeout(this.setState.bind(this,{alert: {status: false, message: ''}}), 5000);
+    setTimeout(this.setState.bind(this,{alert: {status: false, message: ''}}), 3000);
   }
 
   _handleDelete(e){
     e.preventDefault();
     this._deletePlant(this.props.plant.plant_id);
     this.setState({edit: !this.state.edit});
-    this.setState({alert: {status: true, message: 'Your plant has been deleted.'}});
-    setTimeout(this.setState.bind(this,{alert: {status: false, message: ''}}), 5000);
+    // this.setState({alert: {status: true, message: 'Your plant has been deleted.'}});
+    // setTimeout(this.setState.bind(this,{alert: {status: false, message: ''}}), 3000);
   }
 
   _updatePlant(plant_id, device_id, plant_nickname, phone){
@@ -151,10 +151,7 @@ export default class EditPlant extends React.Component {
       json: true,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({plant_id, device_id, plant_nickname, phone}),
-      success: (data) => {
-
-      }
-    });
+    }).then(this.props.getUser());
   }
 
     _deletePlant(plant_id){
@@ -164,10 +161,7 @@ export default class EditPlant extends React.Component {
       json: true,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({plant_id}),
-      success: (data) => {
-
-      }
-    });
+    }).then(this.props.getUser());
   }
 }
 

@@ -12,7 +12,6 @@ export default class PlantCard extends React.Component {
   }
 
   render() {
-    console.log(this.props.plant);
     const plant = this.props.plant;
     const device = plant.device_id.match(/^\w{2}:\w{2}:\w{2}:\w{2}:\w{2}:\w{2}$/);
     const message = device ? '' : 'No Device';
