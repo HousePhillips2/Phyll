@@ -101,10 +101,7 @@ export default class EditPlant extends React.Component {
       } else if (this.state.alert.status) {
 
         return (
-          <div className="alert alert-warning alert-dismissible fade in" role="alert">
-            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+          <div className="alert alert-warning fade in" role="alert">
 
             {this.state.alert.message}
 

@@ -16,7 +16,7 @@ export default class Users extends React.Component {
       let non_deviceUsers = restUsers.filter((user)=>{return user.device_id==="";}) 
       deviceUsers.sort((a,b)=>{return b.health-a.health;});// ranking user based on plant's healthness
       restUsers = deviceUsers.concat(non_deviceUsers); //degrade non_device users to the bottom of the users cards
-      console.log(restUsers, 'restUsers');
+      // console.log(restUsers, 'restUsers');
       return(
 
         <div className={ 'user-cards' }>

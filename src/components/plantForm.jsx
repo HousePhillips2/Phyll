@@ -30,9 +30,6 @@ export default class PlantForm extends React.Component {
       return (
 
         <div className="alert alert-success alert-dismissible fade in" role="alert">
-          <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
 
           {this.state.alert.message}
           
