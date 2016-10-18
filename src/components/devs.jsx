@@ -24,7 +24,7 @@ export default class Devs extends React.Component {
                   <a className="media-left" href={ dev.git }><img className="img-rounded" style={ {width: '85px', height: '85px'} } src={ dev.img }/></a>
                   <div className="media-body">
                     <div className="container-fluid">
-                      <h4 className="head">{ dev.user_name }</h4>
+                      <a className="media-left" href={ dev.git }><h4 className="head">{ dev.user_name }</h4></a>
                       <div className="graff">{ dev.bio }</div>
                     </div>
                   </div>

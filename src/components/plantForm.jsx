@@ -11,7 +11,6 @@ export default class PlantForm extends React.Component {
   }
 
   render() {
-    console.log(this.props.fetchUser);
     const user = this.props.user;
     const plant = this.props.plantFacts[0];
     let submitButton;
@@ -31,9 +30,6 @@ export default class PlantForm extends React.Component {
       return (
 
         <div className="alert alert-success alert-dismissible fade in" role="alert">
-          <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
 
           {this.state.alert.message}
           
@@ -116,8 +112,9 @@ export default class PlantForm extends React.Component {
     //console.log(this.props.id, this.props.plantFacts[0].id, this._deviceId.value, this._plantNickName.value, this._telephone.value)
     this._addPlant(this.props.id, this.props.plantFacts[0].id, this.props.plantFacts[0].plant_img, this._deviceId.value, this._plantNickName.value, this._telephone.value);
     this.setState({alert: {status: true, message: 'Your plant has been added!'}});
-    setTimeout(this.setState.bind(this,{alert: {status: false, message: ''}}), 5000);
-    setTimeout(this.props.toggleNewPlant.bind(this), 5000);
+    setTimeout(this.setState.bind(this,{alert: {status: false, message: ''}}), 3000);
+    setTimeout(this.props.clearPlantFacts.bind(this), 3000);
+    setTimeout(this.props.toggleNewPlant.bind(this), 3000);
   }
   _addPlant(user_id, plant_id, plant_img, device_id, plant_nickname, phone){
     $.ajax({
@@ -126,11 +123,6 @@ export default class PlantForm extends React.Component {
       json: true,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({user_id, plant_id, plant_img, device_id, plant_nickname, phone}),
-      success: (data) => this.props.fetchUser()
-    });
+    }).then(this.props.getUser());
   }
 }
-
-// PlantForm.contextTypes = {
-//   router: React.PropTypes.func.isRequired
-// };
