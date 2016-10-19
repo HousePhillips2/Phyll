@@ -8,6 +8,8 @@ import {
   setPlants,
   setGarden,
   setAdmin,
+  setPhylls,
+  setFocus,
   setJournals,
   setPlantFacts,
   toggleNewPlant,
@@ -44,6 +46,10 @@ export default function reducer(state = INITIAL_STATE, action){
       return setAdmin(state, action.admins);
     case 'SET_JOURNALS':
       return setJournals(state, action.journals);
+    case 'SET_PHYLLS':
+      return setPhylls(state, action.phylls);
+    case 'SET_FOCUS':
+      return setFocus(state);
     default:
       return state;
   }
