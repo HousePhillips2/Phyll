@@ -10,7 +10,7 @@ export default class userCard extends React.Component {
   }
 
   clickHandler() {
-    this.props.toggleGuestView();
+    this.props.guestView ? null : this.props.toggleGuestView();
     this.props.setGuest(this.props.user);
   }
 

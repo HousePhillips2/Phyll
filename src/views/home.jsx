@@ -22,8 +22,8 @@ export default class Home extends React.Component {
 
   render() {
 
-    let dashboard = this.props.loggedIn ? <Dashboard id="dashboard" { ...this.props }/> : <div id="dashboard"></div>;
-    let plantFacts = this.props.plantFacts ? <PlantFacts id="plantFacts" { ...this.props }/> : <div id="plantFacts"></div>;
+    let dashboard = this.props.loggedIn || this.props.guestView ? <Dashboard id="dashboard" { ...this.props }/> : null;
+    let plantFacts = this.props.plantFacts ? <PlantFacts id="plantFacts" { ...this.props }/> : null;
 
     return(
 

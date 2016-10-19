@@ -35,15 +35,17 @@ export function setUser(state, user) {
 export function setGuest(state, guest) {
   return state.set('guest', {
                 firstName: guest.first_name,
+                name: guest.nickname,
                 user_plants: [{
                   plant_id: guest.plant_id,
                   plant_img: guest.plant_img,
                   plant_name: guest.plant_name,
                   plant_nickname: guest.plant_nickname,
+                  device_id: guest.device_id,
+                  health: guest.health,
                 }],
                 user_id: guest.user_id,
-                img: guest.img,
-                health: guest.health,
+                image: guest.img,
                 plant: Map({
                   data: undefined
                 })

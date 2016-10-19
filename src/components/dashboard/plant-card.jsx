@@ -14,7 +14,7 @@ export default class PlantCard extends React.Component {
   render() {
     const plant = this.props.plant;
     const device = plant.device_id.match(/^\w{2}:\w{2}:\w{2}:\w{2}:\w{2}:\w{2}$/);
-    const message = device ? '' : 'No Device';
+    const message = this.props.guestView ? this.props.guest.firstName + ' doesn\'t have a phyllOS device. ¯\\_(ツ)_/¯': 'Add a phyllOS device to track your plant\'s conditions';
     const health = plant.health;
     const heartFull = <i className="fa fw fa-heart"></i>;
     const heartEmpty = <i className="fa fw fa-heart-o"></i>;
@@ -49,7 +49,7 @@ export default class PlantCard extends React.Component {
                 : 
                 
                   <div style={{marginLeft: -1 + 'rem'}} className="graff" className="text-muted">
-                    <p style={{marginTop: .25 + 'rem'}}>Add a phyllOS device to track your plant's conditions</p>
+                    <p style={{marginTop: .25 + 'rem'}}>{`${message}`}</p>
                   </div>
                 
                 }
