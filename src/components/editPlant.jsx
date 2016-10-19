@@ -10,26 +10,26 @@ export default class EditPlant extends React.Component {
       alert: ({status: false, message: ''})
     };
     this.clickHandler = this.clickHandler.bind(this);
+    this.plantHandler = this.plantHandler.bind(this);
   }
 
   clickHandler() {
     this.setState({edit: !this.state.edit});
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return true;
+  plantHandler() {
+    this.props.fetchPlant(this.props.plant.plant_name);
   }
 
-  componentDidUpdate(nextProps, nextState) {
-
-  }
 
   render() {
-
     let user_id = this.props.id;
     let garden  = this.props.garden.toArray();
     let user_plant = garden.filter((obj) => { return obj.user_id === user_id; })[0];
-    if(!user_plant){
+    let edit = this.props.guestView ? null : <span onClick={ this.clickHandler } className="edit-pane pull-xs-right graff"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span>;
+    let possession = this.props.guestView ? this.props.guest.firstName + "\'s" : "your";
+
+    if(!user_plant && !this.props.guestView){
 
       return null;
   
@@ -114,8 +114,14 @@ export default class EditPlant extends React.Component {
 
           <div className="row content">
             <div className="content-top column container-fluid">
-              <h4 className="media-heading pull-xs-left">{`${ this.props.plant.plant_nickname }`}, your {`${ this.props.plant.plant_name }`}</h4>
-              <span onClick={this.clickHandler} className="edit-pane pull-xs-right"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+              <div className="media-left" onClick={ this.plantHandler }>
+                { this.props.thumb }
+              </div>
+              <div className="media-body">
+                { edit }
+                <h4 className="media-heading">{`${ this.props.plant.plant_nickname }`}, {`${ possession }`} {`${ this.props.plant.plant_name }`}</h4>
+                { this.props.hearts }
+              </div>
             </div>
           </div>
 

@@ -6,6 +6,12 @@ export default class userCard extends React.Component {
 
   constructor(props) {
     super(props);
+    this.clickHandler = this.clickHandler.bind(this);
+  }
+
+  clickHandler() {
+    this.props.guestView ? null : this.props.toggleGuestView();
+    this.props.setGuest(this.props.user);
   }
 
   render() {
@@ -30,34 +36,32 @@ export default class userCard extends React.Component {
 
     return(
 
-      <div className="card">
+      <div className="card garden" onClick={ this.clickHandler }>
+        <div className="card-header">
+          <a className="media-left"><img className="img-rounded" style={ {width: '50px', height: '50px'} } src={ user.img }/></a>
+          <div className="media-body">
+            <h4 className="media-heading">{`${ user.first_name }`}'s top plant: <span className="text-success">{`${ user.plant_nickname }`}</span></h4>
+          </div>
+        </div>
         <div className="card-block">
           <div className="media">
             <a className="media-left"><img className="img-rounded" style={ {width: '120px', height: '120px'} } src={user.plant_img}/></a>
             <div className="media-body">
               <div className="media">
-                <a className="media-left"><img className="img-rounded" style={ {width: '50px', height: '50px'} } src={ user.img }/></a>
                 <div className="media-body">
-                  <h4 className="media-heading">{`${ user.first_name }`}'s plant: <span className="text-success">{`${ user.plant_nickname }`}</span></h4>
-
-                  { hearts }
+                  
+                  <p>{ hearts }</p>
 
                     { device ? 
 
-                      <div className="media-body">
-                        <div className="media">
-                          <a className="media-left"><i className="fa fa-fw fa-tint text-info"></i></a>
-                          <div className="media-body">
-                            <progress className="progress progress-info" value={`${ moisture }`} max="10"></progress>
-                          </div>
-                        </div>
-                        <div className="media">
-                          <a className="media-left"><i className="fa fa-fw fa-sun-o text-warning"></i></a>
-                          <div className="media-body">
-                            <progress className="progress progress-warning" value={`${ light }`} max="10"></progress>
-                          </div>
-                        </div>
-                      </div>
+                      <ul className="fa-ul">
+                        <li>
+                          <i className="fa-li fa fa-tint text-info"></i><progress className="progress progress-info meter" value={`${ moisture }`} max="10"></progress>
+                        </li>
+                        <li>
+                          <i className="fa-li fa fa-sun-o text-warning"></i><progress className="progress progress-warning meter" value={`${ light }`} max="10"></progress>
+                        </li>
+                      </ul>
 
                     :
 

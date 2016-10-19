@@ -22,8 +22,8 @@ export default class Home extends React.Component {
 
   render() {
 
-    let dashboard = this.props.loggedIn ? <Dashboard id="dashboard" { ...this.props }/> : <div id="dashboard"></div>;
-    let plantFacts = this.props.plantFacts ? <PlantFacts id="plantFacts" { ...this.props }/> : <div id="plantFacts"></div>;
+    let dashboard = this.props.loggedIn || this.props.guestView ? <Dashboard id="dashboard" { ...this.props }/> : null;
+    let plantFacts = this.props.plantFacts ? <PlantFacts id="plantFacts" { ...this.props }/> : null;
 
     return(
 
@@ -53,7 +53,7 @@ export default class Home extends React.Component {
 
               <Chatbot { ...this.props }/>
 
-              <div className="card">
+              <div className="card  hidden-sm-down">
                 <div className="card-header">
                   Conservatory
                 </div>
@@ -61,13 +61,13 @@ export default class Home extends React.Component {
                   <p className="card-text">There are so many wonderful plants for your home. <Link to="/conservatory">Discover the perfect one</Link>.</p>
                 </div>
               </div>
-              <div className="card hidden-xs hidden-sm">
+              <div className="card hidden-md-down">
                 <div className="card-header">
                   Active Bots
                 </div>
                 <Map/>
               </div>
-              <div className="card">
+              <div className="card hidden-sm-down">
                 <div className="card-header">
                   Make a phyll.bot of your own
                 </div>
