@@ -26,7 +26,7 @@ export default class PlantCard extends React.Component {
                      {plant.health > 3 ? heartFull : heartEmpty}&nbsp;
                      {plant.health > 4 ? heartFull : heartEmpty}
                    </span>;
-    const thumb = <img className="img-rounded" style={ {width: '75px', height: '75px'} } src={plant.plant_img}/>;
+    const thumb = <img className="img-rounded garden" style={ {width: '75px', height: '75px'} } src={plant.plant_img}/>;
 
     const moisture = plant.health_moisture ? plant.health_moisture : 4;
     const light = plant.health_light ? plant.health_light : 4;
@@ -38,7 +38,9 @@ export default class PlantCard extends React.Component {
           <div className="media">
             <div className="media-body">
               <div>
+
                 <EditPlant { ...this.props} hearts={ hearts } thumb={ thumb }/>
+                
               </div>
               <div className="container">
 

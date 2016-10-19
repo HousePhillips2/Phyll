@@ -26,9 +26,10 @@ export default class EditPlant extends React.Component {
     let user_id = this.props.id;
     let garden  = this.props.garden.toArray();
     let user_plant = garden.filter((obj) => { return obj.user_id === user_id; })[0];
-    let edit = this.props.guestView ? null : <span onClick={ this.clickHandler } className="edit-pane pull-xs-right"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span>;
+    let edit = this.props.guestView ? null : <span onClick={ this.clickHandler } className="edit-pane pull-xs-right graff"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span>;
     let possession = this.props.guestView ? this.props.guest.firstName + "\'s" : "your";
-    if(!user_plant){
+
+    if(!user_plant && !this.props.guestView){
 
       return null;
   

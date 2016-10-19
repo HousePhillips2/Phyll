@@ -17,7 +17,7 @@ class Charts extends React.Component {
   }
 
   componentWillMount() {
-    this.props.rawData(this.props.user_plants[0].device_id);
+    this.props.guestView ? this.props.rawData(this.props.guest.user_plants[0].device_id) : this.props.rawData(this.props.user_plants[0].device_id);
   }
 
   render() {
