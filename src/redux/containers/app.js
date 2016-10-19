@@ -2,8 +2,9 @@ import { List, Map, fromJS } from 'immutable';
 
 
 export const INITIAL_STATE = Map({
-  loggedIn: false,
-  newPlant: false,
+  loggedIn : false,
+  newPlant : false,
+  guestView: false,
 });
 
 export function setUser(state, user) {
@@ -30,6 +31,27 @@ export function setUser(state, user) {
                 })
               }));
 };
+
+export function setGuest(state, guest) {
+  return state.set('guest', {
+                firstName: guest.first_name,
+                name: guest.nickname,
+                user_plants: [{
+                  plant_id: guest.plant_id,
+                  plant_img: guest.plant_img,
+                  plant_name: guest.plant_name,
+                  plant_nickname: guest.plant_nickname,
+                  device_id: guest.device_id,
+                  health: guest.health,
+                }],
+                user_id: guest.user_id,
+                image: guest.img,
+                plant: Map({
+                  data: undefined
+                })
+              });
+};
+
 
 export function removeUser(state) {
   return state.set('loggedIn', false)
@@ -83,6 +105,10 @@ export function setJournals(state, journals) {
 
 export function toggleNewPlant(state) {
   return state.set('newPlant', !state.get('newPlant'));
+}
+
+export function toggleGuestView(state) {
+  return state.set('guestView', !state.get('guestView'));
 }
 
 export function setUserPlantData(state, userPlantData) {

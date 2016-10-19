@@ -25,7 +25,7 @@ export default class Users extends React.Component {
 
             return (
 
-              <UserCard key={ user.plant_id } user={ user }/>
+              <UserCard key={ user.plant_id } user={ user } {...this.props}/>
               
             );
 

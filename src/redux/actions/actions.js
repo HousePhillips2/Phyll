@@ -26,6 +26,13 @@ export function setUser(user) {
   };
 }
 
+export function setGuest(guest) {
+  return {
+    type: 'SET_GUEST',
+    guest
+  };
+}
+
 export function removeUser(){
   return {
     type:  'REMOVE_USER'
@@ -63,6 +70,12 @@ export function setGarden(garden) {
 export function toggleNewPlant() {
   return {
     type: 'TOGGLE_NEW_PLANT',
+  };
+}
+
+export function toggleGuestView() {
+  return {
+    type: 'TOGGLE_GUEST_VIEW',
   };
 }
 
