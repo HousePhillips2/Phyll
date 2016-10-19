@@ -67,6 +67,19 @@ export function setGarden(garden) {
   };
 }
 
+export function setPhylls(phylls) {
+  return {
+    type: 'SET_PHYLLS',
+    phylls
+  };
+}
+
+export function setFocus() {
+  return {
+    type: 'SET_FOCUS',
+  };
+}
+
 export function toggleNewPlant() {
   return {
     type: 'TOGGLE_NEW_PLANT',

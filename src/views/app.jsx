@@ -10,15 +10,16 @@ import {
   _fetchPlant, 
   _getUser,
   _getAdmin,
-  _getJournals }            from '../redux/actions/helpers';
+  _getJournals,
+  _getPhylls }              from '../redux/actions/helpers';
 import {
   toggleNewPlant,
   toggleGuestView,
+  setFocus,
   setGuest, 
   setUser,
   setPlantFacts,
   removeUser }              from '../redux/actions/actions';
-
 
 class App extends React.Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class App extends React.Component {
     this.props.login();
     this.props.fetchPlants();
     this.props.fetchGarden();
+    this.props.fetchPhylls();
     this.props.fetchDevs();
     this.props.fetchJournals();
     if (this.props.id){
@@ -64,7 +66,9 @@ function mapDispatchToProps(dispatch) {
     clearPlantFacts       : () => dispatch(setPlantFacts('')),
     toggleNewPlant        : () => dispatch(toggleNewPlant()),
     toggleGuestView       : () => dispatch(toggleGuestView()),
+    setFocus              : () => dispatch(setFocus()), // Define map center based on current conditions
     setGuest              : (guest) => dispatch(setGuest(guest)),
+    fetchPhylls           : () => dispatch(_getPhylls()), // Update/create device list object {id:device_id, location:[lat,lon]}
     fetchDevs             : () => dispatch(_getAdmin()),
     fetchJournals         : () => dispatch(_getJournals()),
     fetchPlant            : (plant) => dispatch(_fetchPlant(plant)),
@@ -81,6 +85,8 @@ function mapStateToProps(state) {
       plantFacts    : state.getIn([ 'plantFacts', 'plantFacts' ]),
       plants        : state.getIn([ 'plants', 'plants' ]),
       garden        : state.getIn([ 'garden', 'garden' ]),
+      phylls        : state.get('phylls'),
+      mapFocus      : state.get('mapFocus'),
       guest         : state.get('guest'),
       newPlant      : state.get('newPlant'),
       guestView     : state.get('guestView'),
@@ -102,6 +108,8 @@ function mapStateToProps(state) {
       newPlant    : state.get('newPlant'),
       guestView   : state.get('guestView'),
       guest       : state.get('guest'),
+      mapFocus    : state.get('mapFocus'),
+      phylls      : state.get('phylls'),
       devs        : state.getIn([ 'admins', 'admins' ]),
       journals    : state.getIn([ 'journals', 'journals' ]),
       plantFacts  : state.getIn([ 'plantFacts', 'plantFacts' ]),
@@ -116,6 +124,8 @@ function mapStateToProps(state) {
     newPlant  : state.get('newPlant'),
     guestView : state.get('guestView'),
     guest     : state.get('guest'),
+    mapFocus  : state.get('mapFocus'),
+    phylls    : state.get('phylls'),
     devs      : state.getIn([ 'admins', 'admins' ]),
     journals  : state.getIn([ 'journals', 'journals' ]),
     plants    : state.getIn([ 'plants', 'plants' ]),

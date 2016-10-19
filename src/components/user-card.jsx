@@ -12,6 +12,7 @@ export default class userCard extends React.Component {
   clickHandler() {
     this.props.guestView ? null : this.props.toggleGuestView();
     this.props.setGuest(this.props.user);
+    this.props.setFocus();
   }
 
   render() {
