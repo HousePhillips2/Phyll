@@ -12,6 +12,7 @@ export default class Dashboard extends React.Component {
 
   clickHandler() {
     this.props.toggleGuestView();
+    this.props.setFocus();
   }
 
   render() {

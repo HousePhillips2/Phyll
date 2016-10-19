@@ -4,14 +4,13 @@ import React, { Component } from 'react';
 export default class Map extends React.Component {
   constructor() {
     super();
-
   }
 
   componentDidMount() {
     var map = L.map('mapid', {
       // lat, long coordinates
-      center: [37.7758, -122.4128],
-      zoom: 15,
+      center: this.props.mapFocus,
+      zoom: 16,
       scrollWheelZoom: false,
       dragging: true,
       touchZoom: false
@@ -32,12 +31,12 @@ export default class Map extends React.Component {
       iconAnchor:   [22, 94]
     });
 
-    L.marker([37.7758, -122.4128], {icon: icon}).addTo(map);
+    L.marker(this.props.mapFocus, {icon: icon}).addTo(map);
 
   }
 
   render() {
-
+    
     return(
 
       <div id="mapid" style={{ height: "550px" }}></div>

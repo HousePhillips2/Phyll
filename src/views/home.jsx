@@ -65,7 +65,7 @@ export default class Home extends React.Component {
                 <div className="card-header">
                   Active Bots
                 </div>
-                <Map/>
+                <Map {...this.props}/>
               </div>
               <div className="card hidden-sm-down">
                 <div className="card-header">
