@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import {
   INITIAL_STATE,
   setUser,
+  setGuest,
   setUserData,
   removeUser,
   setPlants,
@@ -10,6 +11,7 @@ import {
   setJournals,
   setPlantFacts,
   toggleNewPlant,
+  toggleGuestView,
   setUserPlantData,
   setUserPlantGeneric
 } from '../containers/app';
@@ -18,6 +20,10 @@ import {
 export default function reducer(state = INITIAL_STATE, action){
 
   switch( action.type ){
+    case 'SET_GUEST':
+      return setGuest(state, action.guest);
+    case 'TOGGLE_GUEST_VIEW':
+      return toggleGuestView(state);
     case 'SET_USER':
       return setUser(state, action.user);
     case 'SET_USER_PLANT_DATA':

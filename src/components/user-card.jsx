@@ -6,6 +6,12 @@ export default class userCard extends React.Component {
 
   constructor(props) {
     super(props);
+    this.clickHandler = this.clickHandler.bind(this);
+  }
+
+  clickHandler() {
+    this.props.toggleGuestView();
+    this.props.setGuest(this.props.user);
   }
 
   render() {
@@ -30,7 +36,7 @@ export default class userCard extends React.Component {
 
     return(
 
-      <div className="card">
+      <div className="card garden" onClick={ this.clickHandler }>
         <div className="card-header">
           <a className="media-left"><img className="img-rounded" style={ {width: '50px', height: '50px'} } src={ user.img }/></a>
           <div className="media-body">
