@@ -1,6 +1,6 @@
-import d3 from 'd3';
+import d3    from 'd3';
 import React from 'react';
-import $ from 'jquery';
+import $     from 'jquery';
 
 
 export default class barChart extends React.Component {
@@ -19,9 +19,13 @@ export default class barChart extends React.Component {
   render() {
 
     if( !this.state.rawData.length ){
+
       return(
+
         <h2>Loading data into application...</h2>
+
       );
+
     }
 
     let params = {
@@ -40,7 +44,9 @@ export default class barChart extends React.Component {
       <div>
         <svg>
           <svg width={ fullWidth } height={ params.height }>
+
             <Histogram { ...params } data={ this.state.rawData } />
+            
           </svg>
         </svg>
       </div>
@@ -74,5 +80,4 @@ export default class barChart extends React.Component {
     });
 
   }
-
 }

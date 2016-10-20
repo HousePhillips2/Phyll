@@ -13,7 +13,9 @@ export default class Plant extends React.Component {
 
   render(){
     let plant = this.props.plant;
+
     return (
+
       <div>
         {/*<label>{plant.plant_name}</label>*/}
         <div>
@@ -27,9 +29,10 @@ export default class Plant extends React.Component {
           </a>
         </div>
       </div>
-    );
-  }
 
+    );
+
+  }
 };
 
 

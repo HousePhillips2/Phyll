@@ -1,4 +1,4 @@
-import React from 'react';
+import React     from 'react';
 import Auth0Lock from 'auth0-lock';
 
 
@@ -10,7 +10,10 @@ export default class Login extends React.Component {
   render() {
     
     return (
+
       <a href="vendor/auth/login"><button className="dropdown-item" type="button">Login</button></a>
+
     );
+
   }
 }

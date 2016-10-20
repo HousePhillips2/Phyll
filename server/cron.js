@@ -15,9 +15,9 @@ const daily = new CronJob('*/10 * * * * 1-7',
 
     // --------------------------- query MongoDB --------------------------
 
-    // request('http://phyll-dev.herokuapp.com/io/dailyData', function(error, response, body){
+    request('http://phyll-dev.herokuapp.com/io/dailyData', function(error, response, body){
     /* uncomment above ^ for production. Uncomment below for development   */
-    request('http://localhost:8080/io/dailyData', function(error, response, body){
+    // request('http://localhost:8080/io/dailyData', function(error, response, body){
 
 
     // ----------------- extract all existing Phyll devices (currently 2) ----------
@@ -43,7 +43,7 @@ const daily = new CronJob('*/10 * * * * 1-7',
           });
           return arrToNumbers.reduce((accumulator, next) => {
             return next < accumulator ? next : accumulator;
-          })
+          });
         };
 
         // -------- identify lowest number from array of numbers ----------
@@ -53,7 +53,7 @@ const daily = new CronJob('*/10 * * * * 1-7',
           });
           return arrToNumbers.reduce((accumulator, next) => {
             return next > accumulator ? next : accumulator;
-          })
+          });
         };
 
         // ---------- calculate an average from array of numbers ----------
@@ -88,8 +88,8 @@ const daily = new CronJob('*/10 * * * * 1-7',
 
         var httpRequestOptions = {
           //******* choose which of the subsequent two lines you want to work with (production vs dev)
-          url: 'http://localhost:8080/postgres/daily',
-          // url: 'http://phyll-dev.herokuapp.com/postgres/daily',
+          // url: 'http://localhost:8080/postgres/daily',
+          url: 'http://phyll-dev.herokuapp.com/postgres/daily',
           form: {
             device1: device1,
             device2: device2

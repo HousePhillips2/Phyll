@@ -1,7 +1,5 @@
 import React from 'react';
-import {ModalContainer, ModalDialog} from 'react-modal-dialog';
 import Plant from './plant.jsx';
-
 
 export default class View extends React.Component {
 
@@ -19,7 +17,9 @@ export default class View extends React.Component {
 
       <div className='plant-clickable' onClick={this.handleClick} style={{display:'inline-block', transform:'scale(.95)'}} >
         <div >
+
           <Plant plant={this.props.plant}/>
+
         </div>
       </div>
 

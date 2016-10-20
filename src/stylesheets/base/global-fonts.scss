@@ -11,17 +11,25 @@ $graff: 'Nunito', sans-serif;
   font-weight: normal;
   font-size: 3em;
 }
-a:title {
-  color: black;
-}
+
 .title:hover {
   color: #449d44;
 }
+
+a:title {
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 body {
   font-family: $graff;
   font-weight: normal;
   font-size: 120%
 }
+
 h1, h2, h3, h4, h5, h6 {
   font-family: $head;
   font-weight: normal;

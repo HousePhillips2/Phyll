@@ -1,2 +1,2 @@
-web npm start
-worker: npm cron
+web: npm start
+worker: npm run cron

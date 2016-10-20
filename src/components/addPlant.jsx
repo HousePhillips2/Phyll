@@ -1,9 +1,9 @@
-import React from 'react';
+import React      from 'react';
 import { render } from 'react-dom';
-import $ from 'jquery';
-import SearchBar from '../components/searchBar.jsx';
+import $          from 'jquery';
+import SearchBar  from '../components/searchBar.jsx';
 import PlantFacts from '../components/plantFacts.jsx';
-import PlantForm from '../components/plantForm.jsx';
+import PlantForm  from '../components/plantForm.jsx';
 
 export default class AddPlant extends React.Component {
   constructor() {
@@ -37,6 +37,7 @@ export default class AddPlant extends React.Component {
         </div>
 
       );
+      
     } else {
 
       return null;
