@@ -29,6 +29,7 @@ const cronUpdate = (req, res) => {
             let light = phyll.light.map(el => {
                 return Number(el);
             });
+            console.log(moisture,light,'in cronUpdate');
             // ---- define variables representing state of health (either 1-5 or 1-10 range)
             let hearts  = plant[0].health;
             let heartsL = plant[0].health_light;
@@ -63,26 +64,26 @@ const cronUpdate = (req, res) => {
 
             // ----- check the sunlight, and adjust condition if necessary ----
             if (plant[0].light_s === 'low' || plant[0].light_s === 'medium-low'){
-                if (Number(phyll.light[2]) > 195){
+                if (Number(phyll.light[1]) > 195){
                     condition+= 'I\'m burning! too much sun. ';
                     lightHealthFlag = 1;
-                } else if (Number(phyll.light[2]) < 155){
+                } else if (Number(phyll.light[1]) < 155){
                     condition+= 'I\'m cold! not getting enough sun. ';
                     lightHealthFlag = 1;
                 }
             }else if (plant[0].light_s === 'medium'){
-                if (Number(phyll.light[2]) > 250){
+                if (Number(phyll.light[1]) > 250){
                     condition+= 'I\'m burning! too much sun. ';
                     lightHealthFlag = 1;
-                } else if (Number(phyll.light[2]) < 165){
+                } else if (Number(phyll.light[1]) < 165){
                     condition+= 'I\'m cold! not getting enough sun. ';
                     lightHealthFlag = 1;
                 }
             }else if (plant[0].light_s === 'medium-high' || plant[0].light_s === 'high'){
-                if (Number(phyll.light[2]) > 275){
+                if (Number(phyll.light[1]) > 275){
                     condition+= 'I\'m burning! too much sun. ';
                     lightHealthFlag = 1;
-                } else if (Number(phyll.light[2]) < 195){
+                } else if (Number(phyll.light[1]) < 195){
                     condition+= 'I\'m cold! not getting enough sun. ';
                     lightHealthFlag = 1;
                 }
