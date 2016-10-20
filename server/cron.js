@@ -9,8 +9,8 @@ const CronJob = require('cron').CronJob;
     //send summary to deployed server in order to capture data in Postgres DB
 
 // replace next-line specs with this -- '*/10 * * * * 1-7' -- for test-running every 10 secs
-const daily = new CronJob('*/10 * * * * 1-7',
-  // '30 21 * * 1-7'
+const daily = new CronJob(//'*/10 * * * * 1-7',
+  '30 20 * * 1-7',
   function() {
 
     // --------------------------- query MongoDB --------------------------
@@ -88,8 +88,8 @@ const daily = new CronJob('*/10 * * * * 1-7',
 
         var httpRequestOptions = {
           //******* choose which of the subsequent two lines you want to work with (production vs dev)
-          // url: 'http://localhost:8080/postgres/daily',
-          url: 'http://phyll-dev.herokuapp.com/postgres/daily',
+          url: 'http://localhost:8080/postgres/daily',
+          //url: 'http://phyll-dev.herokuapp.com/postgres/daily',
           form: {
             device1: device1,
             device2: device2
