@@ -31,7 +31,6 @@ passport.deserializeUser(function(user, done) {
 
 router.get('/login',
   passport.authenticate('auth0', {}), (req, res) => {
-  // console.log('redirected!');
   res.redirect("/");
 });
 
@@ -41,8 +40,7 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/loggedin', (req,res) => {
-  if(req.user !==undefined){
-    //console.log(req.session.passport.user)
+  if(req.user !== undefined){
     let user_obj={
       fb_id: req.user.id.slice(9),
       first_name: req.user._json.given_name,
@@ -56,11 +54,10 @@ router.get('/loggedin', (req,res) => {
       let userId = updated_user_obj.id; //user id from users table
       query_plant(userId, (plant) => {
         updated_user_obj.plant = plant; //if plant exist, plant would be plant info stored in db; if not, plant is equal to false;
-
-          retrieve_generic(userId, (generic) => {
-            updated_user_obj.generic = generic;
-            res.send(updated_user_obj); // update user_obj with user id from users table, which will be used for add plant
-          })
+        retrieve_generic(userId, (generic) => {
+          updated_user_obj.generic = generic;
+          res.send(updated_user_obj); // update user_obj with user id from users table, which will be used for add plant
+        });
       });
     });
   } else {

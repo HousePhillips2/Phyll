@@ -22,7 +22,7 @@ router.use('/plantData', plantData);
 router.use('/plantFacts', plantFacts);
 
 router.get('/', (req, res) => {
-  console.log('look ma');
+  // console.log('look ma');
 });
 
 

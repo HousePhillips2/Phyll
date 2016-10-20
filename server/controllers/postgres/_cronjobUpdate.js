@@ -29,6 +29,7 @@ const cronUpdate = (req, res) => {
             let light = phyll.light.map(el => {
                 return Number(el);
             });
+            console.log(moisture,light,'in cronUpdate');
             // ---- define variables representing state of health (either 1-5 or 1-10 range)
             let hearts  = plant[0].health;
             let heartsL = plant[0].health_light;
@@ -40,7 +41,7 @@ const cronUpdate = (req, res) => {
                     condition+= 'I\'m drowning! too much water. ';
                     waterHealthFlag = 1;
                 } else if (Number(phyll.moisture[1]) < 600){
-                    condition+= 'I\'m thirsty, not enough water. ';
+                    condition+= 'I\'m thirsty, not getting enough water. ';
                     waterHealthFlag = 1;
                 }
             }else if (plant[0].water_s === 'medium'){
@@ -48,7 +49,7 @@ const cronUpdate = (req, res) => {
                     condition+= 'I\'m drowning! too much water. ';
                     waterHealthFlag = 1;
                 } else if (Number(phyll.moisture[1]) < 750){
-                    condition+= 'I\'m thirsty, not enough water. ';
+                    condition+= 'I\'m thirsty, not getting enough water. ';
                     waterHealthFlag = 1;
                 }
             }else if (plant[0].water_s === 'medium-high' || plant[0].water_s === 'high'){
@@ -56,34 +57,34 @@ const cronUpdate = (req, res) => {
                     condition+= 'I\'m drowning! too much water. ';
                     waterHealthFlag = 1;
                 } else if (Number(phyll.moisture[1]) < 800){
-                    condition+= 'I\'m thirsty, not enough water. ';
+                    condition+= 'I\'m thirsty, not getting enough water. ';
                     waterHealthFlag = 1;
                 }
             };
 
             // ----- check the sunlight, and adjust condition if necessary ----
             if (plant[0].light_s === 'low' || plant[0].light_s === 'medium-low'){
-                if (Number(phyll.light[2]) > 195){
-                    condition+= 'Im burning! too much sun. ';
+                if (Number(phyll.light[1]) > 195){
+                    condition+= 'I\'m burning! too much sun. ';
                     lightHealthFlag = 1;
-                } else if (Number(phyll.light[2]) < 155){
-                    condition+= 'Im cold! not enough sun. ';
+                } else if (Number(phyll.light[1]) < 155){
+                    condition+= 'I\'m cold! not getting enough sun. ';
                     lightHealthFlag = 1;
                 }
             }else if (plant[0].light_s === 'medium'){
-                if (Number(phyll.light[2]) > 250){
-                    condition+= 'Im burning! too much sun. ';
+                if (Number(phyll.light[1]) > 250){
+                    condition+= 'I\'m burning! too much sun. ';
                     lightHealthFlag = 1;
-                } else if (Number(phyll.light[2]) < 165){
-                    condition+= 'Im cold! not enough sun. ';
+                } else if (Number(phyll.light[1]) < 165){
+                    condition+= 'I\'m cold! not getting enough sun. ';
                     lightHealthFlag = 1;
                 }
             }else if (plant[0].light_s === 'medium-high' || plant[0].light_s === 'high'){
-                if (Number(phyll.light[2]) > 275){
-                    condition+= 'Im burning! too much sun. ';
+                if (Number(phyll.light[1]) > 275){
+                    condition+= 'I\'m burning! too much sun. ';
                     lightHealthFlag = 1;
-                } else if (Number(phyll.light[2]) < 195){
-                    condition+= 'Im cold! not enough sun. ';
+                } else if (Number(phyll.light[1]) < 195){
+                    condition+= 'I\'m cold! not getting enough sun. ';
                     lightHealthFlag = 1;
                 }
             };

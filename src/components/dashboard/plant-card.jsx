@@ -1,10 +1,9 @@
-import { ajax } from 'jquery';
-import React from 'react';
+import { ajax }  from 'jquery';
+import React     from 'react';
 
 // import Charts from '../charts.jsx'; // Uncomment this line and comment the one below to revert
-import Charts from '../charts-alt.jsx';
+import Charts    from '../charts-alt.jsx';
 import EditPlant from '../editPlant.jsx';
-
 
 export default class PlantCard extends React.Component {
 
@@ -13,10 +12,9 @@ export default class PlantCard extends React.Component {
   }
 
   render() {
-    console.log(this.props.plant);
     const plant = this.props.plant;
     const device = plant.device_id.match(/^\w{2}:\w{2}:\w{2}:\w{2}:\w{2}:\w{2}$/);
-    const message = device ? '' : 'No Device';
+    const message = this.props.guestView ? this.props.guest.firstName + ' doesn\'t have a phyllOS device. ¯\\_(ツ)_/¯': 'Add a phyllOS device to track your plant\'s conditions';
     const health = plant.health;
     const heartFull = <i className="fa fw fa-heart"></i>;
     const heartEmpty = <i className="fa fw fa-heart-o"></i>;
@@ -28,6 +26,7 @@ export default class PlantCard extends React.Component {
                      {plant.health > 3 ? heartFull : heartEmpty}&nbsp;
                      {plant.health > 4 ? heartFull : heartEmpty}
                    </span>;
+    const thumb = <img className="img-rounded garden" style={ {width: '75px', height: '75px'} } src={plant.plant_img}/>;
 
     const moisture = plant.health_moisture ? plant.health_moisture : 4;
     const light = plant.health_light ? plant.health_light : 4;
@@ -37,19 +36,26 @@ export default class PlantCard extends React.Component {
       <div className="card">
         <div className="card-block">
           <div className="media">
-            <a className="media-left"><img className="img-rounded" style={ {width: '85px', height: '85px'} } src={plant.plant_img}/></a>
             <div className="media-body">
               <div>
-                <EditPlant { ...this.props}/>
+
+                <EditPlant { ...this.props} hearts={ hearts } thumb={ thumb }/>
+                
               </div>
               <div className="container">
-                { hearts }
+
                 { device ? 
-                  <div className="container">
+
                     <Charts { ...this.props }/>
+
+                : 
+                
+                  <div style={{marginLeft: -1 + 'rem'}} className="graff" className="text-muted">
+                    <p style={{marginTop: .25 + 'rem'}}>{`${message}`}</p>
                   </div>
-                  : <div className="graff text-muted">Add a phyllOS device to track your plant's conditions</div>
+                
                 }
+
               </div>
             </div>
           </div>
@@ -57,5 +63,6 @@ export default class PlantCard extends React.Component {
       </div>
       
     );
+    
   }
 }

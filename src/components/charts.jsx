@@ -1,6 +1,6 @@
-import React from 'react';
-import d3 from 'd3';
-import $ from 'jquery';
+import React       from 'react';
+import d3          from 'd3';
+import $           from 'jquery';
 import { connect } from 'react-redux';
 
 import LineChart from './line-chart/index.jsx';
@@ -44,24 +44,36 @@ class Charts extends React.Component {
     const props = Object.assign({}, this.props, params);
 
     if( !this.props.plantData ){
+
       return(
+
         <h2>Loading data into application...</h2>
+
       );
+
     } else {
+      
       return(
+
         <div>
           <span id="moisturechart">
             <svg width={ params.fullWidth } height={ params.height }>
+
               <LineChart dataType="moisture" { ...props }/>
+              
             </svg>
           </span>
           <span id="lightchart">
             <svg width={ params.fullWidth } height={ params.height }>
+
               <LineChart dataType="light" { ...props }/>
+
             </svg>
           </span>
         </div>
+
       );
+
     }
   }
 }

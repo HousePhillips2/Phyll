@@ -1,26 +1,35 @@
 import { Router } from 'react-router';
-import React from 'react';
-import $ from 'jquery';
+import React      from 'react';
+import $          from 'jquery';
+
 export default class EditPlant extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       edit: false,
       alert: ({status: false, message: ''})
-    }
+    };
     this.clickHandler = this.clickHandler.bind(this);
+    this.plantHandler = this.plantHandler.bind(this);
   }
 
   clickHandler() {
     this.setState({edit: !this.state.edit});
   }
 
-  render() {
+  plantHandler() {
+    this.props.fetchPlant(this.props.plant.plant_name);
+  }
 
+
+  render() {
     let user_id = this.props.id;
     let garden  = this.props.garden.toArray();
-    let user_plant = garden.filter((obj) => {return obj.user_id === user_id })[0];
-    if(!user_plant){
+    let user_plant = garden.filter((obj) => { return obj.user_id === user_id; })[0];
+    let edit = this.props.guestView ? null : <span onClick={ this.clickHandler } className="edit-pane pull-xs-right graff"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span>;
+    let possession = this.props.guestView ? this.props.guest.firstName + "\'s" : "your";
+
+    if(!user_plant && !this.props.guestView){
 
       return null;
   
@@ -92,27 +101,33 @@ export default class EditPlant extends React.Component {
       } else if (this.state.alert.status) {
 
         return (
-          <div className="alert alert-warning alert-dismissible fade in" role="alert">
-            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+          <div className="alert alert-warning fade in" role="alert">
+
             {this.state.alert.message}
+
           </div>
         );
 
       } else {
 
         return (
+
           <div className="row content">
             <div className="content-top column container-fluid">
-              <h4 className="media-heading pull-xs-left">{`${ this.props.plant.plant_nickname }`}, your {`${ this.props.plant.plant_name }`}</h4>
-              <span onClick={this.clickHandler} className="edit-pane pull-xs-right"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+              <div className="media-left" onClick={ this.plantHandler }>
+                { this.props.thumb }
+              </div>
+              <div className="media-body">
+                { edit }
+                <h4 className="media-heading">{`${ this.props.plant.plant_nickname }`}, {`${ possession }`} {`${ this.props.plant.plant_name }`}</h4>
+                { this.props.hearts }
+              </div>
             </div>
           </div>
+
         );
 
       }
-
     } 
   }
 
@@ -121,15 +136,15 @@ export default class EditPlant extends React.Component {
     this._updatePlant(this.props.plant.plant_id, this._deviceId.value, this._plantNickName.value, this._telephone.value);
     this.setState({edit: !this.state.edit});
     this.setState({alert: {status: true, message: 'Your changes have been recorded.'}});
-    setTimeout(this.setState.bind(this,{alert: {status: false, message: ''}}), 5000);
+    setTimeout(this.setState.bind(this,{alert: {status: false, message: ''}}), 3000);
   }
 
   _handleDelete(e){
     e.preventDefault();
     this._deletePlant(this.props.plant.plant_id);
     this.setState({edit: !this.state.edit});
-    this.setState({alert: {status: true, message: 'Your plant has been deleted.'}});
-    setTimeout(this.setState.bind(this,{alert: {status: false, message: ''}}), 5000);
+    // this.setState({alert: {status: true, message: 'Your plant has been deleted.'}});
+    // setTimeout(this.setState.bind(this,{alert: {status: false, message: ''}}), 3000);
   }
 
   _updatePlant(plant_id, device_id, plant_nickname, phone){
@@ -139,10 +154,7 @@ export default class EditPlant extends React.Component {
       json: true,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({plant_id, device_id, plant_nickname, phone}),
-      success: (data) => {
-
-      }
-    });
+    }).then(this.props.getUser());
   }
 
     _deletePlant(plant_id){
@@ -152,10 +164,7 @@ export default class EditPlant extends React.Component {
       json: true,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({plant_id}),
-      success: (data) => {
-
-      }
-    });
+    }).then(this.props.getUser());
   }
 }
 

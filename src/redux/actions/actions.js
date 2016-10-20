@@ -1,7 +1,14 @@
-export function setAdminData(adminData) {
+export function setAdmin(admins) {
   return {
-    type: 'SET_ADMIN_DATA',
-    adminData
+    type: 'SET_ADMIN',
+    admins
+  };
+}
+
+export function setJournals(journals) {
+  return {
+    type: 'SET_JOURNALS',
+    journals
   };
 }
 
@@ -16,6 +23,13 @@ export function setUser(user) {
   return {
     type: 'SET_USER',
     user
+  };
+}
+
+export function setGuest(guest) {
+  return {
+    type: 'SET_GUEST',
+    guest
   };
 }
 
@@ -53,9 +67,28 @@ export function setGarden(garden) {
   };
 }
 
+export function setPhylls(phylls) {
+  return {
+    type: 'SET_PHYLLS',
+    phylls
+  };
+}
+
+export function setFocus() {
+  return {
+    type: 'SET_FOCUS',
+  };
+}
+
 export function toggleNewPlant() {
   return {
     type: 'TOGGLE_NEW_PLANT',
+  };
+}
+
+export function toggleGuestView() {
+  return {
+    type: 'TOGGLE_GUEST_VIEW',
   };
 }
 

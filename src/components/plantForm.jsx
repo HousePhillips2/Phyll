@@ -1,37 +1,40 @@
 import { Router } from 'react-router';
-import React from 'react';
-import $ from 'jquery';
+import React      from 'react';
+import $          from 'jquery';
+
 export default class PlantForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       alert: ({status: false, message: ''})
-    }
+    };
   }
+
   render() {
     const user = this.props.user;
     const plant = this.props.plantFacts[0];
-    //console.log(plant,'selected plant in form');
     let submitButton;
 
-    //console.log(this.props)
-    // TODO: add login handling to link when navbar has been refactored
-
     if(this.props.loggedIn){
+
       submitButton = <button className="btn btn-success" type="submit" style={{marginTop: .25 + 'rem'}}>Add Me!</button>;
+
     } else {
+
       submitButton = <a href="vendor/auth/login"><div className="alert alert-danger" role="alert"><strong>Yikes!</strong> Looks like you need to <a href="#" className="alert-link">log in</a>.</div></a>;
+
     }
 
     if (this.state.alert.status) {
 
       return (
+
         <div className="alert alert-success alert-dismissible fade in" role="alert">
-          <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+
           {this.state.alert.message}
+          
         </div>
+
       );
 
     } else {
@@ -90,14 +93,16 @@ export default class PlantForm extends React.Component {
               </div>*/}
 
               <div className="column">
+
                 { submitButton }
+
               </div>
             </div>
           </form>
         </div>
 
-
       );
+
     }
   }
 
@@ -107,8 +112,9 @@ export default class PlantForm extends React.Component {
     //console.log(this.props.id, this.props.plantFacts[0].id, this._deviceId.value, this._plantNickName.value, this._telephone.value)
     this._addPlant(this.props.id, this.props.plantFacts[0].id, this.props.plantFacts[0].plant_img, this._deviceId.value, this._plantNickName.value, this._telephone.value);
     this.setState({alert: {status: true, message: 'Your plant has been added!'}});
-    setTimeout(this.setState.bind(this,{alert: {status: false, message: ''}}), 5000);
-    setTimeout(this.props.toggleNewPlant.bind(this), 5000);
+    setTimeout(this.setState.bind(this,{alert: {status: false, message: ''}}), 3000);
+    setTimeout(this.props.clearPlantFacts.bind(this), 3000);
+    setTimeout(this.props.toggleNewPlant.bind(this), 3000);
   }
   _addPlant(user_id, plant_id, plant_img, device_id, plant_nickname, phone){
     $.ajax({
@@ -117,13 +123,6 @@ export default class PlantForm extends React.Component {
       json: true,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({user_id, plant_id, plant_img, device_id, plant_nickname, phone}),
-      success: (data) => {
-        this.props.fetchPlants();
-      }
-    });
+    }).then(this.props.getUser());
   }
 }
-
-// PlantForm.contextTypes = {
-//   router: React.PropTypes.func.isRequired
-// };

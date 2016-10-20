@@ -78,7 +78,7 @@ deviceSchema.statics.list = (req, res) => { // no arguments
 
 // Purge all but the 1k most recent posts from a device
 deviceSchema.statics.prune = (req, res) => { // query with {deviceId: "id to be found"}
-  const trim = {$each: [], $slice: -1000}
+  const trim = {$each: [], $slice: -1000};
   Device.findOneAndUpdate({deviceId: req}, {
     $push: {
       date        : trim,

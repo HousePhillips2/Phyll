@@ -62,15 +62,13 @@ app.get('/callback',
     res.redirect("/");
   });
 
-// **********************************    MOVE ME! **********************************
-// app.use('/plantsLibrary', plantsLibrary);
-
-
 // static files route
 app.get('/', (req, res) => res.redirect('/index.html'));
 app.use('/static', express.static('node_modules'));
 app.use('/images', express.static('src/images'));
 app.use('/glyphs', express.static('src/glyphs'));
+// This route is exclusively to address a compiling error resulting in the wrong file address
+app.use('/leaflet-src.map', express.static('node_modules/leaflet/dist/leaflet-src.map'));
 
 // wildcard route for dynamic react routing
 app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../dist/index.html')));

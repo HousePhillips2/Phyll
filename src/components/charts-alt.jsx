@@ -1,9 +1,10 @@
-import React from 'react';
-import Measure from 'react-measure';
+import React       from 'react';
+import Measure     from 'react-measure';
 import { connect } from 'react-redux';
-import { Line } from 'react-chartjs-2';
+import { Line }    from 'react-chartjs-2';
 
-import { _loadRawData } from '../redux/actions/helpers';
+import { 
+  _loadRawData }   from '../redux/actions/helpers';
 
 
 class Charts extends React.Component {
@@ -16,19 +17,24 @@ class Charts extends React.Component {
   }
 
   componentWillMount() {
-    this.props.rawData(this.props.user_plants[0].device_id);
+    this.props.guestView ? this.props.rawData(this.props.guest.user_plants[0].device_id) : this.props.rawData(this.props.user_plants[0].device_id);
   }
 
   render() {
-    let { width } = this.state.dimensions
+    let { width } = this.state.dimensions;
     
     if( !this.props.plantData ){
+
       return(
-        <Measure onMeasure={(dimensions) => { this.setState({dimensions}) }} accurate={true} shouldMeasure={true}>
+
+        <Measure onMeasure={(dimensions) => { this.setState({dimensions}); }} accurate={true} shouldMeasure={true}>
           <h2 style={{marginLeft: -1 + 'rem'}}>Loading data into application...</h2>
         </Measure>
+
       );
+
     } else {
+
       let m_data = this.props.plantData.map(item => item.moisture);
       let l_data = this.props.plantData.map(item => item.light);
       let labels = this.props.plantData.map(item => item.date);
@@ -51,6 +57,7 @@ class Charts extends React.Component {
         }]
       };
       let optionsM = {
+        maintainAspectRatio: false,
         responsive: true,
         legend: {
           display: false,
@@ -75,8 +82,9 @@ class Charts extends React.Component {
             }
           }]
         }
-      }
+      };
       let optionsL = {
+        maintainAspectRatio: false,
         responsive: true,
         legend: {
           display: false,
@@ -101,17 +109,21 @@ class Charts extends React.Component {
             }
           }]
         }
-      }
+      };
+
       return(
-        <Measure onMeasure={(dimensions) => { this.setState({dimensions}) }} accurate={true} shouldMeasure={true}>
+
+        <Measure onMeasure={(dimensions) => { this.setState({dimensions}); }} accurate={true} shouldMeasure={true}>
           <div style={{marginLeft: -1 + 'rem'}} className="graff" className="text-muted">
             <p style={{marginTop: .25 + 'rem'}}>Average <span className="text-info">soil moisture</span> throughout past day. Range: 0 - 1050</p>
-            <div><Line data={moisture} { ...this.props } width={width * .9} height={100 + 'px'} options={optionsM} /></div>
+            <div><Line data={moisture} { ...this.props } width={width * .9} height={ 100 } options={optionsM} style={{ height: 100 + 'px' }}/></div>
             <p style={{marginTop: .5 + 'rem'}}>Average <span className="text-warning">light</span> during prior 24 hours. Range: 0 - 275</p>
-            <div><Line data={light} { ...this.props } width={width * .9} height={100 + 'px'} options={optionsL} /></div>
+            <div><Line data={light} { ...this.props } width={width * .9} height={ 100 } options={optionsL} style={{ height: 100 + 'px' }}/></div>
           </div>
         </Measure>
+
       );
+      
     }
   }
 }
